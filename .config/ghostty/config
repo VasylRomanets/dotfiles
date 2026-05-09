@@ -1,0 +1,91 @@
+# Font family to use
+# Options: String: font name
+font-family = FiraCode Nerd Font Mono Reg
+
+# Font size in points
+# Options: Number
+font-size = 20
+
+# Color theme name or path
+# Options: String
+theme = light:Catppuccin Macchiato,dark:Catppuccin Macchiato
+
+# Cursor style
+# Options: block, bar, underline, block_hollow
+cursor-style = block
+
+# Cursor opacity
+# Options: 0.0 to 1.0
+cursor-opacity = 0.8
+
+# Background opacity
+# Options: 0.0 to 1.0
+background-opacity = 0.8
+
+# Background blur
+# Options: 0 to 100
+background-blur = 15
+
+# Horizontal padding
+# Options: Points
+window-padding-x = 20
+
+# Vertical padding
+# Options: Points
+window-padding-y = 20
+
+# Auto-balance padding
+# Options: Boolean
+window-padding-balance = true
+
+# Enable VSync
+# Options: Boolean
+window-vsync = true
+
+# Confirm before closing
+# Options: Boolean
+confirm-close-surface = true
+
+# Save window state
+# Options: always, never, default
+window-save-state = always
+
+# Trim spaces when copying
+# Options: Boolean
+clipboard-trim-trailing-spaces = true
+
+# Paste protection warning
+# Options: Boolean
+clipboard-paste-protection = true
+
+# Safe bracketed paste
+# Options: Boolean
+clipboard-paste-bracketed-safe = true
+
+# Shell integration
+# Options: detect, none, bash, fish, zsh
+shell-integration = zsh
+
+# Shell integration features
+# Options: cursor, sudo, title
+shell-integration-features = no-cursor
+
+# Allow desktop notifications
+# Options: Boolean
+desktop-notifications = true
+
+# macOS titlebar style
+# Options: native, transparent, tabs, hidden
+macos-titlebar-style = hidden
+
+# Enable window shadow
+# Options: Boolean
+macos-window-shadow = true
+
+# Auto secure keyboard input
+# Options: Boolean
+macos-auto-secure-input = true
+
+# Show secure input indicator
+# Options: Boolean
+macos-secure-input-indication = true
