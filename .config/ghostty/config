@@ -5,11 +5,13 @@
 # font-family = GeistMono Nerd Font Mono
 # font-family = Hasklig
 # font-family = RobotoMono Nerd Font
-font-family = JuliaMono
+# font-family = MartianMono Nerd Font
+# font-family = JuliaMono
+font-family = MesloLGS Nerd Font Mono
 
 # Font family to use for title
 # Options: String
-window-title-font-family = JuliaMono
+window-title-font-family = MesloLGS Nerd Font Mono
 
 # Font size in points
 # Options: Number
