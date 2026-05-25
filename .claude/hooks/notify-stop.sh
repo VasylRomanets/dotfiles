@@ -1,0 +1,2 @@
+#!/bin/sh
+afplay /System/Library/Sounds/Blow.aiff
