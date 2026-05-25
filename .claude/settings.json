@@ -1,0 +1,190 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(* --help *)",
+      "Bash(* --version)",
+      "Bash(gh issue list *)",
+      "Bash(gh issue status *)",
+      "Bash(gh issue view *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr status *)",
+      "Bash(gh pr view *)",
+      "Bash(gh release list *)",
+      "Bash(gh release view *)",
+      "Bash(gh repo list *)",
+      "Bash(gh repo view *)",
+      "Bash(gh run list *)",
+      "Bash(gh run view *)",
+      "Bash(gh run watch *)",
+      "Bash(sh ~/.claude/hooks/notify-idle.sh)",
+      "Bash(sh ~/.claude/hooks/notify-permission-request.sh)",
+      "Bash(sh ~/.claude/hooks/notify-stop.sh)",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": []
+  },
+  "mcpServers": {},
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ~/.claude/hooks/notify-permission-request.sh",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ~/.claude/hooks/notify-idle.sh",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ~/.claude/hooks/notify-stop.sh",
+            "async": true
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/bin/sh ~/.claude/statusline.sh"
+  },
+  "enabledPlugins": {},
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Bearing down like Michael Scott",
+      "Schruting it",
+      "Doing absolutely nothing",
+      "That's what she said",
+      "Fact-checking with Dwight",
+      "Microwaving fish",
+      "Idling like Kevin",
+      "Calculating",
+      "Declaring bankruptcy",
+      "Maintaining professionalism",
+      "Speed-reading like Jim",
+      "Surveilling like Dwight",
+      "Generating synergy",
+      "Forming an alliance",
+      "Running the numbers like Oscar",
+      "Beet farming",
+      "Beet-root processing",
+      "How the turntable",
+      "Questioning Ryan's startup",
+      "Pretending to work",
+      "Staring at Pam",
+      "Processing like Dwight",
+      "Completing performance reviews",
+      "Reading the employee handbook",
+      "Asking HR",
+      "Toby-ing",
+      "Visiting accounting",
+      "Checking the parking lot",
+      "Printing in color",
+      "Running the Dundies",
+      "Starting a pyramid scheme",
+      "Identifying as a friend first",
+      "Updating threat level midnight",
+      "Initiating a fire drill",
+      "Blood-typing",
+      "Workshopping improv",
+      "Waiting for the beach games",
+      "Recruiting for the party planning committee",
+      "Checking if Mose is okay",
+      "Organizing the safety training",
+      "Building character",
+      "World's best bossing",
+      "Practicing parkour",
+      "Waiting for 5pm like Stanley",
+      "Being assistant to the regional manager",
+      "Attending Pretzel Day",
+      "Running the Michael Scott Paper Company",
+      "Doing the Scarn",
+      "Citing HIPAA violations",
+      "Managing expectations like Jan",
+      "Bears. Beets. Processing.",
+      "Slaying it like Kelly Kapoor",
+      "Looking busy for David Wallace",
+      "Negotiating with Darryl",
+      "Being number two",
+      "Surviving a Dwight prank",
+      "Closing the Cooper account",
+      "Explaining to corporate",
+      "Making Pretzel Day happen",
+      "Taking the deposition",
+      "Spilling Kevin's famous chili",
+      "Putting a stapler in Jell-O",
+      "Living in the office like Dwight",
+      "Hosting the Finer Things Club",
+      "Doing the Lazy Scranton",
+      "Pining for Holly",
+      "Downsizing",
+      "Sabotaging Utica",
+      "Impersonating Dwight",
+      "Screaming into the void like Toby",
+      "Quoting Sun Tzu like Dwight",
+      "Having a surplus",
+      "Playing flonkerton",
+      "Winning a Dundie",
+      "Being the Nard Dog",
+      "Crying in the parking lot",
+      "Checking the beet harvest",
+      "Filing another HR complaint",
+      "Getting punched by Dwight",
+      "Hosting booze cruise",
+      "Speed-dating like Michael",
+      "Going to Utica",
+      "Sending a fax from Future Dwight",
+      "Serenity by Jan-ning",
+      "Planning Café Disco",
+      "Rebranding as Sabre",
+      "Memorizing Battlestar Galactica",
+      "Avoiding eye contact like Toby",
+      "Staring out the window like Jim",
+      "Getting promoted like Ryan",
+      "Breaking up by Post-it",
+      "Outsourcing to India like Ryan",
+      "Figuring out Stanley's crossword",
+      "Hiding from Michael like everyone else",
+      "Calculating using Kevin's method",
+      "Eating lunch in the car with Toby",
+      "Texting Ryan like Kelly",
+      "Waiting for Kevin to finish a sentence",
+      "Establishing Dunder Mifflin Infinity",
+      "Starring in Threat Level Midnight",
+      "Doing Dwight's safety training backwards",
+      "Applying for Dwight's hay maze",
+      "Getting a Dundie for the worst category",
+      "Surviving another all-hands with Michael",
+      "Following Creed's five-year plan",
+      "Being voluntold by Michael",
+      "Dating my boss's ex like Jim",
+      "Roleplaying CSI: Scranton",
+      "Playing chess with Creed"
+    ]
+  },
+  "effortLevel": "high",
+  "tui": "fullscreen",
+  "theme": "dark",
+  "editorMode": "normal",
+  "terminalProgressBarEnabled": true
+}
