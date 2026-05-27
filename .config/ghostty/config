@@ -84,7 +84,7 @@ shell-integration-features = no-cursor
 
 # Allow desktop notifications
 # Options: Boolean
-desktop-notifications = true
+desktop-notifications = false
 
 # macOS titlebar style
 # Options: native, transparent, tabs, hidden
