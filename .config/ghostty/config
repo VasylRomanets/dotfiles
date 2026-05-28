@@ -19,8 +19,7 @@ font-size = 20
 
 # Color theme name or path
 # Options: String
-# theme = light:Catppuccin Macchiato,dark:Catppuccin Macchiato
-theme = Dracula
+theme = ghostty-theme-everforest-dark-hard
 
 # Cursor style
 # Options: block, bar, underline, block_hollow
