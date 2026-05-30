@@ -1,5 +1,4 @@
-# Font family to use
-# Options: String
+# Typography
 # font-family = Hack Nerd Font
 # font-family = Monaspace Neon
 # font-family = GeistMono Nerd Font Mono
@@ -8,99 +7,38 @@
 # font-family = MartianMono Nerd Font
 # font-family = JuliaMono
 font-family = MesloLGS Nerd Font Mono
-
-# Font family to use for title
-# Options: String
-window-title-font-family = MesloLGS Nerd Font Mono
-
-# Font size in points
-# Options: Number
 font-size = 20
+font-thicken = true
 
-# Color theme name or path
-# Options: String
+# Appearance
 theme = ghostty-theme-everforest-dark-hard
-
-# Cursor style
-# Options: block, bar, underline, block_hollow
-cursor-style = block
-
-# Cursor opacity
-# Options: 0.0 to 1.0
+background-blur = 10
+background-opacity = 0.95
 cursor-opacity = 0.8
 
-# Background opacity
-# Options: 0.0 to 1.0
-background-opacity = 0.8
-
-# Background blur
-# Options: 0 to 100
-background-blur = 15
-
-# Horizontal padding
-# Options: Points
-window-padding-x = 20
-
-# Vertical padding
-# Options: Points
-window-padding-y = 20
-
-# Auto-balance padding
-# Options: Boolean
+# Window
+window-padding-x = 15
+window-padding-y = 15
 window-padding-balance = true
-
-# Enable VSync
-# Options: Boolean
+window-save-state = always
+window-title-font-family = MesloLGS Nerd Font Mono
 window-vsync = true
-
-# Confirm before closing
-# Options: Boolean
 confirm-close-surface = true
 
-# Save window state
-# Options: always, never, default
-window-save-state = always
-
-# Trim spaces when copying
-# Options: Boolean
-clipboard-trim-trailing-spaces = true
-
-# Paste protection warning
-# Options: Boolean
-clipboard-paste-protection = true
-
-# Safe bracketed paste
-# Options: Boolean
-clipboard-paste-bracketed-safe = true
-
-# Shell integration
-# Options: detect, none, bash, fish, zsh
-shell-integration = zsh
-
-# Shell integration features
-# Options: cursor, sudo, title
-shell-integration-features = no-cursor
-
-# Allow desktop notifications
-# Options: Boolean
-desktop-notifications = false
-
-# macOS titlebar style
-# Options: native, transparent, tabs, hidden
+# macOS
+macos-auto-secure-input = true
+macos-option-as-alt = left
+macos-secure-input-indication = true
 macos-titlebar-style = tabs
-
-# Enable window shadow
-# Options: Boolean
+macos-window-buttons = hidden
 macos-window-shadow = true
 
-# macOS titlebar buttons
-# Options: visible, hidden
-macos-window-buttons = hidden
+# Clipboard
+clipboard-paste-bracketed-safe = true
+clipboard-paste-protection = true
+clipboard-trim-trailing-spaces = true
 
-# Auto secure keyboard input
-# Options: Boolean
-macos-auto-secure-input = true
-
-# Show secure input indicator
-# Options: Boolean
-macos-secure-input-indication = true
+# Shell
+shell-integration = zsh
+shell-integration-features = no-cursor
+desktop-notifications = false
