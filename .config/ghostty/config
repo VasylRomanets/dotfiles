@@ -13,7 +13,7 @@ font-thicken = true
 # Appearance
 theme = everforest-dark-hard
 background-blur = 10
-background-opacity = 0.95
+background-opacity = 0.8
 cursor-opacity = 0.8
 
 # Window
