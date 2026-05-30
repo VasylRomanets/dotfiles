@@ -25,4 +25,4 @@ setopt_if_exists NO_CASE_GLOB         # case-insensitive globbing (e.g. *.MD mat
 setopt_if_exists NO_CLOBBER           # prevent overwriting files with >
 setopt_if_exists SHARE_HISTORY        # share history across terminal sessions
 
-unset setopt_if_exists # clean up helper function
+unset -f setopt_if_exists # clean up helper function
