@@ -12,6 +12,8 @@ setopt_if_exists() {
   fi
 }
 
+declare -U PATH # prevent duplicate entries
+
 setopt_if_exists CORRECT_ALL          # e.g. gti → git
 setopt_if_exists HIST_FIND_NO_DUPS    # skip duplicates when searching
 setopt_if_exists HIST_IGNORE_ALL_DUPS # ignore all duplicates, not just consecutive
