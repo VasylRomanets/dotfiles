@@ -24,11 +24,21 @@ source "$ZSH_CONFIG_HOME/options.zsh"
 
 # Plugins
 BREW_PREFIX=$(brew --prefix)
-source "$BREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
+
+# safely source a Homebrew-installed zsh plugin by name
+source_brew_plugin() {
+  [[ -x "$BREW_PREFIX/bin/brew" ]] || return 1
+  local plugin_path="$BREW_PREFIX/share/$1/$1.zsh"
+  [[ -r "$plugin_path" ]] && source "$plugin_path"
+}
+
+source_brew_plugin powerlevel10k
 [[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
-source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$BREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source_brew_plugin zsh-autosuggestions
+source_brew_plugin zsh-syntax-highlighting
+source_brew_plugin zsh-history-substring-search
+
+unset -f source_brew_plugin
 
 # Keybindings
 bindkey '^[[A' history-substring-search-up
