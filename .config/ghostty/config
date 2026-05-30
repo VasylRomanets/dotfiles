@@ -11,7 +11,7 @@ font-size = 20
 font-thicken = true
 
 # Appearance
-theme = ghostty-theme-everforest-dark-hard
+theme = everforest-dark-hard
 background-blur = 10
 background-opacity = 0.95
 cursor-opacity = 0.8

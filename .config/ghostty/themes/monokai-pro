@@ -1,3 +1,10 @@
+background = #2d2a2e
+cursor-color = #c1c0c0
+cursor-text = #8e8d8d
+foreground = #fcfcfa
+selection-background = #5b595c
+selection-foreground = #fcfcfa
+
 palette = 0=#2d2a2e
 palette = 1=#ff6188
 palette = 2=#a9dc76
@@ -14,9 +21,3 @@ palette = 12=#fc9867
 palette = 13=#ab9df2
 palette = 14=#78dce8
 palette = 15=#fcfcfa
-background = #2d2a2e
-foreground = #fcfcfa
-cursor-color = #c1c0c0
-cursor-text = #8e8d8d
-selection-background = #5b595c
-selection-foreground = #fcfcfa
