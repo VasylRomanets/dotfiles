@@ -15,6 +15,13 @@ if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Configs
+ZSH_CONFIG_HOME="$XDG_CONFIG_HOME/zsh"
+source "$ZSH_CONFIG_HOME/aliases.zsh"
+source "$ZSH_CONFIG_HOME/diagnostics.zsh"
+source "$ZSH_CONFIG_HOME/highlight.zsh" # must be sourced before zsh-syntax-highlighting
+source "$ZSH_CONFIG_HOME/options.zsh"
+
 # Plugins
 BREW_PREFIX=$(brew --prefix)
 source "$BREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
@@ -22,12 +29,6 @@ source "$BREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme"
 source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$BREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
-
-# Configs
-ZSH_CONFIG_HOME="$XDG_CONFIG_HOME/zsh"
-source "$ZSH_CONFIG_HOME/aliases.zsh"
-source "$ZSH_CONFIG_HOME/diagnostics.zsh"
-source "$ZSH_CONFIG_HOME/options.zsh"
 
 # Keybindings
 bindkey '^[[A' history-substring-search-up
