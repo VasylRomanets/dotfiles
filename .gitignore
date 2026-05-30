@@ -1,2 +1,4 @@
 .DS_Store
 .config/micro/buffers/
+.cache/
+.local/
