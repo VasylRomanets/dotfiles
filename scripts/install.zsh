@@ -5,12 +5,13 @@ DOTFILES="$(dirname "$SCRIPT_DIR")"
 
 linked=0
 skipped=0
+copied=0
 
-git -C "$DOTFILES" ls-files | while IFS= read -r file; do
-  # skip scripts — they belong to the repo, not to ~
-  [[ "$file" == scripts/* ]] && continue
-  [[ "$file" == .gitignore ]] && continue
+# exclude scripts/, apps/ and .gitignore — handled separately or don't belong in ~/
+dotfiles=$(git -C "$DOTFILES" ls-files | grep -v "^scripts/" | grep -v "^apps/" | grep -v "^\.gitignore$")
 
+# symlink dotfiles to ~/
+print "$dotfiles" | while IFS= read -r file; do
   src="$DOTFILES/$file"
   dst="$HOME/$file"
 
@@ -28,5 +29,16 @@ git -C "$DOTFILES" ls-files | while IFS= read -r file; do
   (( linked++ ))
 done
 
+# copy CotEditor themes — sandboxing prevents symlinks
+COTEDIT_THEMES="$HOME/Library/Containers/com.coteditor.CotEditor/Data/Library/Application Support/CotEditor/Themes"
+if [[ -d "$DOTFILES/apps/coteditor/themes" ]]; then
+  mkdir -p "$COTEDIT_THEMES"
+  for theme in "$DOTFILES/apps/coteditor/themes/"*; do
+    cp -f "$theme" "$COTEDIT_THEMES/"
+    print "copied $(basename "$theme") → CotEditor/Themes"
+    (( copied++ ))
+  done
+fi
+
 print ""
-print "done: $linked linked, $skipped skipped"
+print "done: $linked linked, $copied copied, $skipped skipped"
