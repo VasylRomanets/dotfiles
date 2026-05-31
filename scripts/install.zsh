@@ -7,13 +7,11 @@ linked=0
 skipped=0
 copied=0
 
-# exclude scripts/, apps/ and .gitignore — handled separately or don't belong in ~/
-dotfiles=$(git -C "$DOTFILES" ls-files | grep -v "^scripts/" | grep -v "^apps/" | grep -v "^\.gitignore$")
-
-# symlink dotfiles to ~/
-print "$dotfiles" | while IFS= read -r file; do
+# symlink everything in home/ to ~/
+git -C "$DOTFILES" ls-files home/ | while IFS= read -r file; do
+  # strip the leading home/ prefix to get the destination path
+  dst="$HOME/${file#home/}"
   src="$DOTFILES/$file"
-  dst="$HOME/$file"
 
   mkdir -p "$(dirname "$dst")"
 
