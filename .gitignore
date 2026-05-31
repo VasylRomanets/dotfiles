@@ -1,5 +1,6 @@
 .DS_Store
 .gitconfig.local
+.config/micro/backups/
 .config/micro/buffers/
 .cache/
 .local/
