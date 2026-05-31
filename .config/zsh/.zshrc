@@ -1,6 +1,6 @@
 # Environment
-export PATH="$HOME/.local/bin:$PATH"
-export EDITOR="micro"
+export PATH="$HOME/.local/bin:$PATH" # prepend ~/.local/bin to the system PATH so user-installed binaries take priority
+export EDITOR="micro" # nano has odd shortcuts, vim has odd everything, micro is just right
 export VISUAL="$EDITOR"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.

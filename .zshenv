@@ -25,4 +25,4 @@ elif [[ -f /usr/local/bin/brew ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_ANALYTICS=1 # my brew habits are nobody's business
