@@ -4,7 +4,7 @@ autoload -Uz compinit
 # only rebuild completion cache once per day for faster shell startup
 # on macOS, stat uses -f '%Sm' -t '%j' instead of GNU's date -r
 ZSH_COMP_DUMP_PATH="$XDG_CACHE_HOME/zsh/zcompdump"
-typeset -i updated_at=$(date +'%j' -r "$ZSH_COMP_DUMP_PATH" 2>/dev/null || stat -f '%Sm' -t '%j' "$ZSH_COMP_DUMP_PATH" 2>/dev/null)
+typeset -i updated_at="$(date +'%j' -r "$ZSH_COMP_DUMP_PATH" 2>/dev/null || stat -f '%Sm' -t '%j' "$ZSH_COMP_DUMP_PATH" 2>/dev/null)"
 if [[ $(date +'%j') != $updated_at ]]; then
   compinit -d "$ZSH_COMP_DUMP_PATH"
 else
