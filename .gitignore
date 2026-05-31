@@ -5,3 +5,6 @@ home/.cache/
 home/.config/micro/backups/
 home/.config/micro/buffers/
 home/.local/
+home/.ssh/id_*
+home/.ssh/known_hosts
+home/.ssh/known_hosts.old
