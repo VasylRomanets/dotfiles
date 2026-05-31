@@ -21,7 +21,6 @@ source "$ZDOTDIR/highlight.zsh" # must be sourced before zsh-syntax-highlighting
 source "$ZDOTDIR/options.zsh"
 
 # Plugins
-
 # safely source a Homebrew-installed zsh plugin by name
 source_brew_plugin() {
   [[ -x "$HOMEBREW_PREFIX/bin/brew" ]] || return 1
@@ -37,8 +36,7 @@ source_brew_plugin zsh-history-substring-search
 
 unset -f source_brew_plugin
 
-# Completions must be sourced after plugins since it calls compinit
-source "$ZDOTDIR/completions.zsh"
+source "$ZDOTDIR/completions.zsh" # must be sourced after plugins — calls compinit
 
 # Keybindings
 bindkey '^[[A' history-substring-search-up
