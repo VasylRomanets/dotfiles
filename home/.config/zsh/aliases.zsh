@@ -21,3 +21,7 @@ alias tree="eza --tree --icons"
 
 # Fun
 alias moo="fortune | cowsay --random --rainbow --aurora"
+
+joke() {
+  curl -s 'https://v2.jokeapi.dev/joke/Programming?type=single' | python3 -c "import sys,json; print(json.load(sys.stdin)['joke'])"
+}
