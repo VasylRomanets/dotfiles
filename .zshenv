@@ -14,6 +14,7 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # tools
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 
 # initialize Homebrew so its binaries are available in all session types
