@@ -9,6 +9,7 @@ skipped=0
 git -C "$DOTFILES" ls-files | while IFS= read -r file; do
   # skip scripts — they belong to the repo, not to ~
   [[ "$file" == scripts/* ]] && continue
+  [[ "$file" == .gitignore ]] && continue
 
   src="$DOTFILES/$file"
   dst="$HOME/$file"
