@@ -1,6 +1,3 @@
-# tell zsh where to find .zshrc and other zsh config files
-export ZDOTDIR="$HOME/.config/zsh"
-
 # showing my XDG awareness here
 # these XDG base directories keep config, state, and cache out of ~/
 # also, If I ever want non-default paths, one change propagates everywhere
@@ -8,6 +5,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+# tell zsh where to find .zshrc and other zsh config files
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # locale
 export LANG="en_US.UTF-8"
