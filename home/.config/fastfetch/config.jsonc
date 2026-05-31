@@ -1,0 +1,78 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "$HOME/.config/fastfetch/ascii/cat-looking-at-bug.txt",
+    "color": {
+      "1": "magenta",
+      "2": "yellow",
+      "3": "green",
+      "4": "cyan",
+      "5": "red",
+    },
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "\u001b[33;1m❯ git log --author → Vasyl Romanets\u001b[0m",
+    },
+    "break",
+    {
+      "type": "custom",
+      "key": "URL",
+      "keyColor": "magenta",
+      "format": "https://github.com/VasylRomanets",
+    },
+    {
+      "type": "datetime",
+      "key": "Date",
+      "keyColor": "magenta",
+      "format": "{day-pretty}.{month-pretty}.{year} ({weekday})",
+    },
+    {
+      "type": "custom",
+      "key": "Location",
+      "keyColor": "magenta",
+      "format": "Kyiv, Ukraine",
+    },
+    {
+      "type": "weather",
+      "location": "Kyiv",
+      "keyColor": "magenta",
+      "outputFormat": "%t,+%C",
+      "timeout": 2000,
+    },
+    {
+      // {2} = name, {10} = version, {8} = build
+      "type": "os",
+      "keyColor": "magenta",
+      "format": "{2} {10} {8}",
+    },
+    {
+      // {1} = name, {4} = version
+      "type": "shell",
+      "keyColor": "magenta",
+      "format": "{1} v{4}",
+    },
+    {
+      "type": "terminal",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "terminalfont",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "uptime",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "command",
+      "key": "Theme",
+      "keyColor": "magenta",
+      "text": "grep '^theme' $HOME/.config/ghostty/config | awk '{print $3}' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
+    },
+    "break",
+    "colors",
+  ],
+}
