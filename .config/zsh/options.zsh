@@ -1,9 +1,13 @@
+export CORRECT_IGNORE=".*"
+export CORRECT_IGNORE_FILE="_*"
+export SPROMPT="Correct '%F{red}%R%f' to '%F{green}%r%f' [nyae]?"
+
 ZSH_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}/zsh
 mkdir -p "$ZSH_STATE_HOME" # ensure directory exists before writing history
 
 HISTFILE=$ZSH_STATE_HOME/history
 HISTSIZE=10000
-SAVEHIST=10000
+SAVEHIST=$HISTSIZE
 
 # set the option only if it's supported by current shell version
 setopt_if_exists() {
