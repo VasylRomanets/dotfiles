@@ -28,11 +28,11 @@ BREW_PREFIX=$(brew --prefix)
 # safely source a Homebrew-installed zsh plugin by name
 source_brew_plugin() {
   [[ -x "$BREW_PREFIX/bin/brew" ]] || return 1
-  local plugin_path="$BREW_PREFIX/share/$1/$1.zsh"
+  local plugin_path="$BREW_PREFIX/share/$1/${2:-$1.zsh}"
   [[ -r "$plugin_path" ]] && source "$plugin_path"
 }
 
-source_brew_plugin powerlevel10k
+source_brew_plugin powerlevel10k powerlevel10k.zsh-theme
 [[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
 source_brew_plugin zsh-autosuggestions
 source_brew_plugin zsh-syntax-highlighting
