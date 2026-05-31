@@ -9,12 +9,24 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # tell zsh where to find .zshrc and other zsh config files
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
+# where the magic happens (mostly config files)
+export DOTFILES_PATH="$HOME/dev/projects/dotfiles"
+export DOTFILES_SCRIPTS_PATH="$DOTFILES_PATH/scripts"
+
 # locale
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# tools
-export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+# print directly if content fits on one screen
+# don't clear the screen when opening/closing
+# case-insensitive search unless pattern contains uppercase
+# render ANSI colors correctly (e.g. in git output)
+# no bell sound at end of file
+export LESS='--quit-if-one-screen --no-init --ignore-case --RAW-CONTROL-CHARS --quiet'
+
+# disable history file — search patterns don't need to persist
+export LESSHISTFILE='-'
+
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 
 # initialize Homebrew so its binaries are available in all session types
@@ -27,3 +39,4 @@ elif [[ -f /usr/local/bin/brew ]]; then
 fi
 
 export HOMEBREW_NO_ANALYTICS=1 # my brew habits are nobody's business
+export HOMEBREW_BUNDLE_FILE="$DOTFILES_SCRIPTS_PATH/Brewfile"
