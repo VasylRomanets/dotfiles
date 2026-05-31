@@ -37,6 +37,9 @@ source_brew_plugin zsh-history-substring-search
 
 unset -f source_brew_plugin
 
+# Completions must be sourced after plugins since it calls compinit
+source "$ZDOTDIR/completions.zsh"
+
 # Keybindings
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
