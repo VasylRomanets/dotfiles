@@ -1,6 +1,7 @@
 *.local
 .DS_Store
-.config/micro/backups/
-.config/micro/buffers/
-.cache/
-.local/
+
+home/.cache/
+home/.config/micro/backups/
+home/.config/micro/buffers/
+home/.local/
