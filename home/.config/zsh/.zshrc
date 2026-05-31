@@ -16,6 +16,7 @@ fi
 # Configs
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/diagnostics.zsh"
+source "$ZDOTDIR/eza.zsh"
 source "$ZDOTDIR/highlight.zsh" # must be sourced before zsh-syntax-highlighting
 source "$ZDOTDIR/options.zsh"
 
