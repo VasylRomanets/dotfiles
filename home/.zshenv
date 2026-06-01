@@ -11,7 +11,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # where the magic happens (mostly config files)
 export DOTFILES_PATH="$HOME/dev/projects/dotfiles"
-export DOTFILES_SCRIPTS_PATH="$DOTFILES_PATH/scripts"
+export DOTFILES_SETUP_PATH="$DOTFILES_PATH/setup"
 
 # locale
 export LANG="en_US.UTF-8"
@@ -39,4 +39,4 @@ elif [[ -f /usr/local/bin/brew ]]; then
 fi
 
 export HOMEBREW_NO_ANALYTICS=1 # my brew habits are nobody's business
-export HOMEBREW_BUNDLE_FILE="$DOTFILES_SCRIPTS_PATH/Brewfile"
+export HOMEBREW_BUNDLE_FILE="$DOTFILES_SETUP_PATH/Brewfile"

@@ -1,0 +1,88 @@
+# dotfiles
+
+> ~/ as code
+
+My personal dotfiles for macOS — version controlled, XDG-compliant, and Everforest-themed.
+
+## Structure
+
+```
+dotfiles/
+├── apps/                  # GUI app configs that can't be symlinked
+│   └── coteditor/
+│       └── themes/
+├── home/                  # mirrors ~/ — everything here gets symlinked
+│   ├── .config/
+│   │   ├── ghostty/
+│   │   ├── git/
+│   │   ├── micro/
+│   │   ├── ripgrep/
+│   │   └── zsh/
+│   ├── .zshenv
+│   └── .hushlogin
+└── setup/
+    ├── bootstrap.zsh      # full machine setup (run once on a new Mac)
+    ├── install.zsh        # creates symlinks from home/ to ~/ and copies files
+    ├── macos.zsh          # sensible macOS defaults
+    └── Brewfile           # all Homebrew packages
+```
+
+## New Machine Setup
+
+### Prerequisites
+
+1. Clone the repo:
+```zsh
+git clone git@github.com:VasylRomanets/dotfiles.git ~/dev/projects/dotfiles
+```
+
+2. Run the bootstrap script:
+```zsh
+~/dev/projects/dotfiles/setup/bootstrap.zsh
+```
+
+This will:
+- Install Xcode Command Line Tools
+- Install Homebrew
+- Install all packages from `Brewfile`
+- Create symlinks from `home/` to `~/` and copy files
+
+3. Apply macOS defaults (optional):
+```zsh
+~/dev/projects/dotfiles/setup/macos.zsh
+```
+
+### Manual Steps
+
+These can't be automated and must be done manually on each machine:
+
+**Git identity** — create `~/.config/git/config.local`:
+```ini
+[user]
+    name = Your Name
+    email = your.name@email.com
+```
+
+**SSH** — create `~/.ssh/config.local`:
+```
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/your_key
+```
+
+## Updating
+
+After adding new files to the repo, re-run:
+```zsh
+~/dev/projects/dotfiles/setup/install.zsh
+```
+
+## Theme
+
+Most of the tools are themed with [Everforest Dark Hard](https://github.com/sainnhe/everforest) by sainnhe:
+- Ghostty terminal theme
+- zsh syntax highlighting
+- ripgrep output colors
+- eza file listing colors
+- micro editor theme
