@@ -10,34 +10,13 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # where the magic happens (mostly config files)
-export DOTFILES_PATH="$HOME/dev/projects/dotfiles"
-export DOTFILES_SETUP_PATH="$DOTFILES_PATH/setup"
+export DOTFILES_HOME="$HOME/dev/projects/dotfiles"
+export DOTFILES_SETUP_HOME="$DOTFILES_HOME/setup"
 
-# locale
+# locale settings
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# print directly if content fits on one screen
-# don't clear the screen when opening/closing
-# case-insensitive search unless pattern contains uppercase
-# render ANSI colors correctly (e.g. in git output)
-# no bell sound at end of file
-export LESS='--quit-if-one-screen --no-init --ignore-case --RAW-CONTROL-CHARS --quiet'
-
-# disable history file — search patterns don't need to persist
-export LESSHISTFILE='-'
-
+# some app specific configs
 export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
-
-# initialize Homebrew so its binaries are available in all session types
-# (login, interactive, and non-interactive scripts)
-# /opt/homebrew is Apple Silicon, /usr/local is Intel Mac
-if [[ -f /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ -f /usr/local/bin/brew ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
-
-export HOMEBREW_NO_ANALYTICS=1 # my brew habits are nobody's business
-export HOMEBREW_BUNDLE_FILE="$DOTFILES_SETUP_PATH/Brewfile"
