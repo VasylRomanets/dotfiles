@@ -1,9 +1,16 @@
 *.local
 .DS_Store
 
-home/.claude.json
-home/.claude.json.backup
 home/.cache/
+home/.config/claude/.claude.json
+home/.config/claude/.claude.json.backup
+home/.config/claude/history.jsonl
+home/.config/claude/backups/
+home/.config/claude/cache/
+home/.config/claude/projects/
+home/.config/claude/session-env/
+home/.config/claude/sessions/
+home/.config/claude/shell-snapshots/
 home/.config/micro/backups/
 home/.config/micro/buffers/
 home/.local/
