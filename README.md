@@ -64,8 +64,6 @@ These can't be automated and must be done manually on each machine:
 **SSH** — create `~/.ssh/config.local`:
 ```
 Host github.com
-  AddKeysToAgent yes
-  UseKeychain yes
   IdentityFile ~/.ssh/your_key
 ```
 
