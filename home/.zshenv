@@ -27,6 +27,7 @@ export LESS='--quit-if-one-screen --no-init --ignore-case --RAW-CONTROL-CHARS --
 # disable history file — search patterns don't need to persist
 export LESSHISTFILE='-'
 
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 
 # initialize Homebrew so its binaries are available in all session types
