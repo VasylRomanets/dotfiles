@@ -56,7 +56,7 @@ if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 fi
 
 ###############################################################################
-# Zsh Configs                                                                 #
+# Zsh Configs (Pre-Plugins)                                                   #
 ###############################################################################
 
 source "$ZDOTDIR/aliases.zsh"
@@ -86,6 +86,10 @@ source_brew_plugin powerlevel10k powerlevel10k.zsh-theme
 [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
 
 unset -f source_brew_plugin
+
+###############################################################################
+# Zsh Configs (Post-Plugins)                                                  #
+###############################################################################
 
 # must be sourced after plugins — calls compinit
 source "$ZDOTDIR/completions.zsh"
