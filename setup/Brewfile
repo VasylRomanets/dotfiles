@@ -1,4 +1,5 @@
 tap "code-hex/tap"
+
 brew "asciiquarium"
 brew "bat"
 brew "c2048"
@@ -6,6 +7,7 @@ brew "cmatrix"
 brew "eza"
 brew "fastfetch"
 brew "fortune"
+brew "git"
 brew "git-filter-repo"
 brew "htop"
 brew "lolcat"
@@ -14,20 +16,18 @@ brew "micro"
 brew "powerlevel10k"
 brew "ripgrep"
 brew "sl"
+brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-history-substring-search"
 brew "zsh-syntax-highlighting"
 brew "code-hex/tap/neo-cowsay"
+
 cask "cleanmymac"
-cask "discord"
-cask "dotnet-sdk"
 cask "font-hack-nerd-font"
 cask "font-meslo-lg-nerd-font"
 cask "fork"
 cask "ghostty"
-cask "godot-mono"
 cask "google-chrome"
-cask "google-drive"
 cask "iina"
 cask "keka"
 cask "mediamate"
@@ -36,16 +36,17 @@ cask "raycast"
 cask "reflex-app"
 cask "signal"
 cask "spotify"
-cask "steam"
-cask "transmission"
 cask "visual-studio-code"
 cask "zed"
+
 mas "Bitwarden", id: 1352778147
+mas "ClearVPN", id: 1531601984
 mas "CotEditor", id: 1024640650
 mas "Hidden Bar", id: 1452453066
 mas "Spark Desktop", id: 6445813049
 mas "Todoist", id: 585829637
 mas "WhatsApp", id: 310633997
+
 vscode "catppuccin.catppuccin-vsc"
 vscode "catppuccin.catppuccin-vsc-icons"
 vscode "editorconfig.editorconfig"
