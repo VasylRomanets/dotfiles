@@ -1,7 +1,5 @@
 # dotfiles
 
-> ~/ as code
-
 My personal dotfiles for macOS — version controlled, XDG-compliant, and Everforest-themed.
 
 ## Structure
