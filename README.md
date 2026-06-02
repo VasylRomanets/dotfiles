@@ -94,9 +94,3 @@ Many thanks to the dotfiles community for sharing their insights and configurati
 ## License
 
 [MIT](./LICENSE)
-
----
-
-<p align="center">
-  Crafted with ♡ using Ghostty, Zsh, and Claude Code.
-</p>
