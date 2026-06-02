@@ -79,6 +79,7 @@ source_brew_plugin() {
   [[ -r "$plugin_path" ]] && source "$plugin_path"
 }
 
+source_brew_plugin <(fzf --zsh)
 source_brew_plugin zsh-autosuggestions
 source_brew_plugin zsh-syntax-highlighting
 source_brew_plugin zsh-history-substring-search
