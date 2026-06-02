@@ -100,4 +100,3 @@ Many thanks to the dotfiles community for sharing their insights and configurati
 <p align="center">
   Crafted with ♡ using Ghostty, Zsh, and Claude Code.
 </p>
-
