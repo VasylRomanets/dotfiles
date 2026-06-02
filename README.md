@@ -36,6 +36,9 @@ dotfiles/
 
 ## New Machine Setup
 
+> [!WARNING]
+> Works on my machine! But remember, these configs are highly opinionated and hardcoded for macOS. Give the installation scripts a quick review before running them so you don't accidentally overwrite your own favorite settings.
+
 ### Prerequisites
 
 1. Clone the repo:
