@@ -10,6 +10,8 @@
 
 ```
 dotfiles/
+├── .github/               # GitHub-specific repo configs
+│   └── assets/            # media for documentation
 ├── apps/                  # GUI app configs that can't be symlinked
 │   └── coteditor/
 │       └── themes/
