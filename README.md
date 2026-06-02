@@ -52,7 +52,8 @@ This will:
 - Install Xcode Command Line Tools
 - Install Homebrew
 - Install all packages from `Brewfile`
-- Create symlinks from `home/` to `~/` and copy files
+- Create symlinks from `home/` to `~/`
+- Copy CotEditor themes
 
 3. Apply macOS defaults (optional):
 ```zsh
