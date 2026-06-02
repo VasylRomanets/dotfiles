@@ -11,18 +11,21 @@ dotfiles/
 │       └── themes/
 ├── home/                  # mirrors ~/ — everything here gets symlinked
 │   ├── .config/
+|   |   ├── claude/
+|   |   ├── fastfetch/
 │   │   ├── ghostty/
 │   │   ├── git/
 │   │   ├── micro/
 │   │   ├── ripgrep/
 │   │   └── zsh/
+│   ├── .ssh/
 │   ├── .zshenv
 │   └── .hushlogin
 └── setup/
+    ├── Brewfile           # all Homebrew packages
     ├── bootstrap.zsh      # full machine setup (run once on a new Mac)
     ├── install.zsh        # creates symlinks from home/ to ~/ and copies files
-    ├── macos.zsh          # sensible macOS defaults
-    └── Brewfile           # all Homebrew packages
+    └── macos.zsh          # sensible macOS defaults
 ```
 
 ## New Machine Setup
