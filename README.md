@@ -81,12 +81,11 @@ After adding new files to the repo, re-run:
 
 ## Theme
 
-Most of the tools are themed with [Everforest Dark Hard](https://github.com/sainnhe/everforest) by sainnhe:
-- Ghostty terminal theme
-- zsh syntax highlighting
-- ripgrep output colors
-- eza file listing colors
-- micro editor theme
+Most of the tools are themed with [Everforest Dark Hard](https://github.com/sainnhe/everforest) by [sainnhe](https://github.com/sainnhe).
+
+## Inspiration
+
+Many thanks to the dotfiles community for sharing their insights and configurations over the years.
 
 ## License
 
