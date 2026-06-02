@@ -85,3 +85,7 @@ Most of the tools are themed with [Everforest Dark Hard](https://github.com/sain
 - ripgrep output colors
 - eza file listing colors
 - micro editor theme
+
+## License
+
+[MIT](./LICENSE)
