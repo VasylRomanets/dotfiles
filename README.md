@@ -1,10 +1,6 @@
 # dotfiles
 
-> My personal dotfiles for macOS — version controlled, XDG-compliant, and Everforest-themed.
-
-<p align="center">
-  <img src=".github/assets/preview.png" width="100%" alt="Terminal Workspace">
-</p>
+> My personal dotfiles for macOS — version-controlled, XDG-compliant, and Everforest-themed.
 
 ## Structure
 
@@ -95,3 +91,10 @@ Most of the tools are themed with [Everforest Dark Hard](https://github.com/sain
 ## License
 
 [MIT](./LICENSE)
+
+---
+
+<p align="center">
+  Crafted with ♡ using Ghostty, Zsh, and Claude Code.
+</p>
+
