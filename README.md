@@ -1,6 +1,6 @@
 # dotfiles
 
-My personal dotfiles for macOS — version controlled, XDG-compliant, and Everforest-themed.
+> My personal dotfiles for macOS — version controlled, XDG-compliant, and Everforest-themed.
 
 <p align="center">
   <img src=".github/assets/preview.png" width="100%" alt="Terminal Workspace">
