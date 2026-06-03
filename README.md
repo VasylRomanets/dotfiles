@@ -93,7 +93,7 @@ After adding new files to the repo, re-run:
 ## Appearance
 
 * **Theme:** Most tools are themed with [Everforest Dark Hard](https://github.com/sainnhe/everforest) for a warm, low-fatigue aesthetic.
-* **Font:** The terminal and editors use [Meslo LG Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo), a beautiful font optimized for terminal prompts and coding.
+* **Font:** The terminal and editors use [Meslo LG Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo), a beautiful font optimized for prompting and coding.
 
 ## Inspiration
 
