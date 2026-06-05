@@ -79,7 +79,6 @@ source_brew_plugin() {
   [[ -r "$plugin_path" ]] && source "$plugin_path"
 }
 
-source_brew_plugin <(fzf --zsh)
 source_brew_plugin zsh-autosuggestions
 source_brew_plugin zsh-syntax-highlighting
 source_brew_plugin zsh-history-substring-search
@@ -87,6 +86,12 @@ source_brew_plugin powerlevel10k powerlevel10k.zsh-theme
 [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
 
 unset -f source_brew_plugin
+
+# fzf generates its integration script dynamically via CLI; source_brew_plugin
+# expects a static file under $HOMEBREW_PREFIX/share/ and would silently no-op;
+# also, 'source <()' (not eval) is required: the script uses 'return' and
+# '{ } always { }' (try/finally) which only behave correctly when sourced as a file
+source <(fzf --zsh)
 
 ###############################################################################
 # Zsh Configs (Post-Plugins)                                                  #
