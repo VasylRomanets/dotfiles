@@ -27,6 +27,7 @@ dotfiles/
 │   │   ├── micro/
 │   │   ├── ripgrep/
 │   │   └── zsh/
+│   ├── .hammerspoon/
 │   ├── .ssh/
 │   ├── .zshenv
 │   └── .hushlogin
