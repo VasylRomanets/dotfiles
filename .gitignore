@@ -14,6 +14,8 @@ home/.config/claude/shell-snapshots/
 home/.config/micro/backups/
 home/.config/micro/buffers/
 home/.hammerspoon/Spoons/
+home/.local/share/
+home/.local/state/
 home/.ssh/id_*
 home/.ssh/known_hosts
 home/.ssh/known_hosts.old
