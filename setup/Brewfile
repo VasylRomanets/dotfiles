@@ -41,7 +41,7 @@ brew "tetris"                  # good old tetris
 brew "code-hex/tap/neo-cowsay" # cowsay with many more animals
 
 # ── Cask: Fonts ───────────────────────────────────────────────────────────────
-cask "font-hack-nerd-font"     # hack typeface patched with Nerd Font icons
+cask "font-hack-nerd-font"     # pretty monospace font
 cask "font-meslo-lg-nerd-font" # my main terminal & editor font (MesloLGS NF)
 
 # ── Cask ──────────────────────────────────────────────────────────────────────
@@ -63,12 +63,12 @@ cask "raycast"                # Spotlight on steroids
 cask "reflex-app"             # media key forwarder for Spotify
 cask "shottr"                 # lightweight screenshot tool
 cask "signal"                 # encrypted, privacy-focused messaging
-cask "spotify"                # music streaming client
+cask "spotify"                # music
 cask "transmission"           # lightweight BitTorrent client
-cask "unity-hub"              # launcher for Unity editor installs
+cask "unity-hub"              # launcher for Unity editor
 cask "visual-studio-code"     # code editor
 cask "zed"                    # fast code editor
-cask "zoom"                   # video conferencing client
+cask "zoom"                   # video conferencing
 
 # ── App Store ─────────────────────────────────────────────────────────────────
 mas "Bitwarden", id: 1352778147     # open-source password manager
