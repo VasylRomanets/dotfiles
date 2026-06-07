@@ -20,8 +20,8 @@ dotfiles/
 │       └── themes/
 ├── home/                  # mirrors ~/ — everything here gets symlinked
 │   ├── .config/
-|   |   ├── claude/
-|   |   ├── fastfetch/
+│   │   ├── claude/
+│   │   ├── fastfetch/
 │   │   ├── ghostty/
 │   │   ├── git/
 │   │   ├── micro/
