@@ -28,6 +28,8 @@ dotfiles/
 │   │   ├── ripgrep/
 │   │   └── zsh/
 │   ├── .hammerspoon/
+│   ├── .local/
+│   │   └── bin/           # CLI utilities and custom executable scripts
 │   ├── .ssh/
 │   ├── .zshenv
 │   └── .hushlogin

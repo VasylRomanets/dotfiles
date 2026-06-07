@@ -1,5 +1,5 @@
-*.local
 .DS_Store
+config.local
 
 home/.cache/
 home/.config/claude/.claude.json
@@ -14,7 +14,6 @@ home/.config/claude/shell-snapshots/
 home/.config/micro/backups/
 home/.config/micro/buffers/
 home/.hammerspoon/Spoons/
-home/.local/
 home/.ssh/id_*
 home/.ssh/known_hosts
 home/.ssh/known_hosts.old
