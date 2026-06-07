@@ -1,78 +1,97 @@
-tap "code-hex/tap"
+# ── Tap ───────────────────────────────────────────────────────────────────────
+tap "code-hex/tap" # required for neo-cowsay
 
-brew "asciiquarium"
-brew "bat"
-brew "c2048"
-brew "cbonsai"
-brew "cmatrix"
-brew "eza"
-brew "fastfetch"
-brew "fd"
-brew "fortune"
-brew "fzf"
-brew "gh"
-brew "git"
-brew "git-delta"
-brew "git-filter-repo"
-brew "htop"
-brew "jq"
-brew "lolcat"
-brew "mas"
-brew "micro"
-brew "powerlevel10k"
-brew "ripgrep"
-brew "shellcheck"
-brew "sl"
-brew "snake"
-brew "tetris"
-brew "tokei"
-brew "wifi-password"
-brew "zsh"
-brew "zsh-autosuggestions"
-brew "zsh-history-substring-search"
-brew "zsh-syntax-highlighting"
-brew "code-hex/tap/neo-cowsay"
+# ── Brew: Essential CLI tools ─────────────────────────────────────────────────
+brew "bat"                          # cat with syntax highlighting and git integration
+brew "eza"                          # modern ls with colors and git awareness
+brew "fastfetch"                    # system info display (neofetch successor)
+brew "fd"                           # fast, user-friendly alternative to find
+brew "fzf"                          # fuzzy finder for files, history, and more
+brew "gh"                           # official GitHub CLI
+brew "git"                          # version control
+brew "git-delta"                    # syntax-highlighting pager for git diffs
+brew "git-filter-repo"              # rewrite git history (replaces BFG)
+brew "git-lfs"                      # git large file storage extension
+brew "htop"                         # interactive process viewer
+brew "jq"                           # JSON processor
+brew "mas"                          # CLI for the Mac App Store
+brew "micro"                        # simple text editor
+brew "powerlevel10k"                # Zsh prompt theme
+brew "ripgrep"                      # ultra-fast recursive grep
+brew "shellcheck"                   # static analysis tool for shell scripts
+brew "tokei"                        # count lines of code by language
+brew "wifi-password"                # show the password for the connected Wi-Fi network
+brew "yq"                           # YAML processor (like jq for YAML)
+brew "zoxide"                       # smarter cd that learns your most-used directories
+brew "zsh"                          # the Z shell itself
+brew "zsh-autosuggestions"          # fish-like command suggestions from history
+brew "zsh-history-substring-search" # arrow-key history search by substring
+brew "zsh-syntax-highlighting"      # highlight commands as you type
 
-cask "cleanmymac"
-cask "font-hack-nerd-font"
-cask "font-meslo-lg-nerd-font"
-cask "fork"
-cask "ghostty"
-cask "google-chrome"
-cask "hammerspoon"
-cask "handbrake"
-cask "iina"
-cask "keka"
-cask "mediamate"
-cask "obsidian"
-cask "raycast"
-cask "reflex-app"
-cask "signal"
-cask "spotify"
-cask "transmission"
-cask "visual-studio-code"
-cask "zed"
+# ── Brew: Fun (comment out this whole section to skip) ────────────────────────
+brew "asciiquarium"            # aquarium animation
+brew "c2048"                   # 2048 puzzle game
+brew "cbonsai"                 # grow a bonsai tree
+brew "cmatrix"                 # matrix rain animation
+brew "fortune"                 # print a random adage or joke
+brew "lolcat"                  # rainbow-colorize any command output
+brew "sl"                      # steam locomotive (penalty for typing sl instead of ls)
+brew "snake"                   # classic snake game
+brew "tetris"                  # good old tetris
+brew "code-hex/tap/neo-cowsay" # cowsay with many more animals
 
-mas "Bitwarden", id: 1352778147
-mas "ClearVPN", id: 1531601984
-mas "CotEditor", id: 1024640650
-mas "Hidden Bar", id: 1452453066
-mas "Spark Desktop", id: 6445813049
-mas "Todoist", id: 585829637
-mas "WhatsApp", id: 310633997
+# ── Cask: Fonts ───────────────────────────────────────────────────────────────
+cask "font-hack-nerd-font"     # hack typeface patched with Nerd Font icons
+cask "font-meslo-lg-nerd-font" # my main terminal & editor font (MesloLGS NF)
 
-vscode "catppuccin.catppuccin-vsc"
-vscode "catppuccin.catppuccin-vsc-icons"
-vscode "editorconfig.editorconfig"
-vscode "esbenp.prettier-vscode"
-vscode "foxundermoon.shell-format"
-vscode "mads-hartmann.bash-ide-vscode"
-vscode "mechatroner.rainbow-csv"
-vscode "ms-dotnettools.csdevkit"
-vscode "ms-dotnettools.csharp"
-vscode "ms-dotnettools.vscode-dotnet-runtime"
-vscode "ms-vscode.mono-debug"
-vscode "neikeq.godot-csharp-vscode"
-vscode "oderwat.indent-rainbow"
-vscode "visualstudiotoolsforunity.vstuc"
-vscode "zhuangtongfa.material-theme"
+# ── Cask ──────────────────────────────────────────────────────────────────────
+cask "blackhole-2ch"          # virtual audio driver for routing audio between apps
+cask "claude-code"            # AI coding assistant
+cask "cleanmymac"             # system cleaner and optimizer
+cask "discord"                # voice, video, and text chat
+cask "fork"                   # git GUI client
+cask "ghostty"                # my favourite terminal emulator
+cask "git-credential-manager" # cross-platform git credential storage
+cask "google-chrome"          # web browser
+cask "hammerspoon"            # lua-driven macOS automation and scripting
+cask "handbrake"              # video transcoder
+cask "iina"                   # media player
+cask "keka"                   # file archiver
+cask "mediamate"              # now-playing overlay for Spotify and media controls
+cask "obsidian"               # markdown-based personal knowledge base
+cask "raycast"                # Spotlight on steroids
+cask "reflex-app"             # media key forwarder for Spotify
+cask "shottr"                 # lightweight screenshot tool
+cask "signal"                 # encrypted, privacy-focused messaging
+cask "spotify"                # music streaming client
+cask "transmission"           # lightweight BitTorrent client
+cask "unity-hub"              # launcher for Unity editor installs
+cask "visual-studio-code"     # code editor
+cask "zed"                    # fast code editor
+cask "zoom"                   # video conferencing client
+
+# ── App Store ─────────────────────────────────────────────────────────────────
+mas "Bitwarden", id: 1352778147     # open-source password manager
+mas "ClearVPN", id: 1531601984      # simple VPN client
+mas "CotEditor", id: 1024640650     # plain-text and code editor
+mas "Hidden Bar", id: 1452453066    # hide clutter from the menu bar
+mas "Spark Desktop", id: 6445813049 # email client
+mas "Todoist", id: 585829637        # to-do list
+mas "WhatsApp", id: 310633997       # messaging
+
+# ── VS Code ───────────────────────────────────────────────────────────────────
+vscode "catppuccin.catppuccin-vsc"            # catppuccin pastel color theme
+vscode "catppuccin.catppuccin-vsc-icons"      # catppuccin file icon theme
+vscode "editorconfig.editorconfig"            # editorconfig support
+vscode "esbenp.prettier-vscode"               # prettier code formatter
+vscode "foxundermoon.shell-format"            # shell script formatter
+vscode "mads-hartmann.bash-ide-vscode"        # bash language server integration
+vscode "mechatroner.rainbow-csv"              # syntax highlighting and editing for CSV/TSV
+vscode "ms-dotnettools.csdevkit"              # dev kit for C# and .NET
+vscode "ms-dotnettools.csharp"                # language support for C#
+vscode "ms-dotnettools.vscode-dotnet-runtime" # .NET runtime
+vscode "ms-vscode.mono-debug"                 # Mono debugger support
+vscode "neikeq.godot-csharp-vscode"           # Godot engine and C# support
+vscode "oderwat.indent-rainbow"               # colorize indentation levels
+vscode "visualstudiotoolsforunity.vstuc"      # Unity integration
+vscode "zhuangtongfa.material-theme"          # material color theme (One Dark Pro)
