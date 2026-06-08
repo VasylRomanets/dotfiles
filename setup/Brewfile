@@ -1,6 +1,6 @@
 # ── Tap ───────────────────────────────────────────────────────────────────────
-tap "code-hex/tap"            # required for neo-cowsay
-tap "VasylRomanets/spinpacks" # themed spinner verb packs for Claude Code
+tap "code-hex/tap"      # required for neo-cowsay
+tap "VasylRomanets/tap" # reuqired for spinpacks
 
 # ── Brew: Essential CLI tools ─────────────────────────────────────────────────
 brew "bat"                          # cat with syntax highlighting and git integration
