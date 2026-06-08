@@ -1,5 +1,6 @@
 # ── Tap ───────────────────────────────────────────────────────────────────────
-tap "code-hex/tap" # required for neo-cowsay
+tap "code-hex/tap"            # required for neo-cowsay
+tap "VasylRomanets/spinpacks" # themed spinner verb packs for Claude Code
 
 # ── Brew: Essential CLI tools ─────────────────────────────────────────────────
 brew "bat"                          # cat with syntax highlighting and git integration
@@ -37,6 +38,7 @@ brew "fortune"                 # print a random adage or joke
 brew "lolcat"                  # rainbow-colorize any command output
 brew "sl"                      # steam locomotive (penalty for typing sl instead of ls)
 brew "snake"                   # classic snake game
+brew "spinpacks"               # themed spinner verb packs for Claude Code
 brew "tetris"                  # good old tetris
 brew "code-hex/tap/neo-cowsay" # cowsay with many more animals
 
