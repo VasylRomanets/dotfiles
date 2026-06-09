@@ -49,7 +49,7 @@ dotfiles/
 
 1. Clone the repo:
 ```zsh
-git clone https://github.com/VasylRomanets/dotfiles.git ~/dev/dotfiles
+git clone https://github.com/vasylromanets/dotfiles.git ~/dev/dotfiles
 ```
 
 2. Run the bootstrap script:
