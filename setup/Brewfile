@@ -1,6 +1,6 @@
 # ── Tap ───────────────────────────────────────────────────────────────────────
 tap "code-hex/tap", trusted: true      # required for neo-cowsay
-tap "vasylromanets/tap", trusted: true # reuqired for spinpacks
+tap "vasylromanets/tap", trusted: true # required for spinpacks
 
 # ── Brew: Essential CLI tools ─────────────────────────────────────────────────
 brew "bat"                          # cat with syntax highlighting and git integration
