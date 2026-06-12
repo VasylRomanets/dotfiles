@@ -38,7 +38,6 @@ brew "wifi-password" # show the password for the connected Wi-Fi network
 
 # ── Brew: Fun (comment out this whole section to skip) ────────────────────────
 brew "asciiquarium" # aquarium animation
-brew "c2048"        # 2048 puzzle game
 brew "cbonsai"      # grow a bonsai tree
 brew "cmatrix"      # matrix rain animation
 brew "figlet"       # print large ASCII text banners
@@ -46,9 +45,7 @@ brew "fortune"      # print a random adage or joke
 brew "lolcat"       # rainbow-colorize any command output
 brew "pipes-sh"     # animated pipes terminal screensaver
 brew "sl"           # steam locomotive (penalty for typing sl instead of ls)
-brew "snake"        # classic snake game
 brew "spinpacks"    # themed spinner verb packs for Claude Code
-brew "tetris"       # good old tetris
 brew "neo-cowsay"   # cowsay with many more animals
 
 # ── Cask: Fonts ───────────────────────────────────────────────────────────────
