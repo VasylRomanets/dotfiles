@@ -37,6 +37,7 @@ brew "cbonsai"      # grow a bonsai tree
 brew "cmatrix"      # matrix rain animation
 brew "fortune"      # print a random adage or joke
 brew "lolcat"       # rainbow-colorize any command output
+brew "pipes-sh"     # animated pipes terminal screensaver
 brew "sl"           # steam locomotive (penalty for typing sl instead of ls)
 brew "snake"        # classic snake game
 brew "spinpacks"    # themed spinner verb packs for Claude Code
