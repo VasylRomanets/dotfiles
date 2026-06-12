@@ -9,7 +9,7 @@
 ## Structure
 
 > [!NOTE]
-> **Real talk about XDG compliance:** This setup is as XDG-compliant as macOS allows. However, a few stubborn tools (e.g. `SSH`, `.zshenv`) hardcode their paths and refuse to leave the `$HOME` folder.
+> **Real talk about XDG compliance:** This setup is as XDG-compliant as possible. However, a few stubborn tools (e.g. `SSH`, `.zshenv`) hardcode their paths and refuse to leave the `$HOME` folder.
 
 ```
 dotfiles/
