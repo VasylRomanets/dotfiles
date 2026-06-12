@@ -77,7 +77,7 @@ cask "zoom"                   # video conferencing
 mas "Bitwarden", id: 1352778147     # open-source password manager
 mas "ClearVPN", id: 1531601984      # simple VPN client
 mas "CotEditor", id: 1024640650     # plain-text and code editor
-mas "Hidden Bar", id: 1452453066    # hide clutter from the menu bar
+mas "Hidden Bar", id: 1452453066    # hide clutter from menu bar
 mas "Spark Desktop", id: 6445813049 # email client
 mas "Today", id: 6443714928         # today’s schedule in menu bar
 mas "Todoist", id: 585829637        # to-do list
