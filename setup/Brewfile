@@ -30,6 +30,7 @@ brew "asciinema"     # record and share terminal sessions
 brew "croc"          # securely send things from one computer to another
 brew "fastfetch"     # system info display (neofetch successor)
 brew "htop"          # interactive process viewer
+brew "jrnl"          # command-line journal
 brew "shellcheck"    # static analysis tool for shell scripts
 brew "tokei"         # count lines of code by language
 brew "wifi-password" # show the password for the connected Wi-Fi network
