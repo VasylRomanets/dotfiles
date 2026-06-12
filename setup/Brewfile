@@ -27,6 +27,7 @@ brew "zsh-syntax-highlighting"      # highlight commands as you type
 
 # ── Brew: Useful ──────────────────────────────────────────────────────────────
 brew "asciinema"     # record and share terminal sessions
+brew "croc"          # securely send things from one computer to another
 brew "fastfetch"     # system info display (neofetch successor)
 brew "htop"          # interactive process viewer
 brew "shellcheck"    # static analysis tool for shell scripts
