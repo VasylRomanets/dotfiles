@@ -31,6 +31,7 @@ brew "zsh-history-substring-search" # arrow-key history search by substring
 brew "zsh-syntax-highlighting"      # highlight commands as you type
 
 # ── Brew: Fun (comment out this whole section to skip) ────────────────────────
+brew "asciinema"    # record and share terminal sessions
 brew "asciiquarium" # aquarium animation
 brew "c2048"        # 2048 puzzle game
 brew "cbonsai"      # grow a bonsai tree
