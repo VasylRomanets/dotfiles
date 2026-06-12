@@ -29,6 +29,7 @@ brew "zsh-syntax-highlighting"      # highlight commands as you type
 brew "asciinema"     # record and share terminal sessions
 brew "croc"          # securely send things from one computer to another
 brew "fastfetch"     # system info display (neofetch successor)
+brew "grex"          # generate regular expressions
 brew "htop"          # interactive process viewer
 brew "jrnl"          # command-line journal
 brew "shellcheck"    # static analysis tool for shell scripts
