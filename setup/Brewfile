@@ -35,6 +35,7 @@ brew "asciiquarium" # aquarium animation
 brew "c2048"        # 2048 puzzle game
 brew "cbonsai"      # grow a bonsai tree
 brew "cmatrix"      # matrix rain animation
+brew "figlet"       # print large ASCII text banners
 brew "fortune"      # print a random adage or joke
 brew "lolcat"       # rainbow-colorize any command output
 brew "pipes-sh"     # animated pipes terminal screensaver
