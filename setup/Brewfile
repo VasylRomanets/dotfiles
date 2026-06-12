@@ -2,10 +2,9 @@
 tap "code-hex/tap", trusted: true      # required for neo-cowsay
 tap "vasylromanets/tap", trusted: true # required for spinpacks
 
-# ── Brew: Essential CLI tools ─────────────────────────────────────────────────
+# ── Brew: Essential ───────────────────────────────────────────────────────────
 brew "bat"                          # cat with syntax highlighting and git integration
 brew "eza"                          # modern ls with colors and git awareness
-brew "fastfetch"                    # system info display (neofetch successor)
 brew "fd"                           # fast, user-friendly alternative to find
 brew "fzf"                          # fuzzy finder for files, history, and more
 brew "gh"                           # official GitHub CLI
@@ -13,16 +12,12 @@ brew "git"                          # version control
 brew "git-delta"                    # syntax-highlighting pager for git diffs
 brew "git-filter-repo"              # rewrite git history (replaces BFG)
 brew "git-lfs"                      # git large file storage extension
-brew "htop"                         # interactive process viewer
 brew "jq"                           # JSON processor
 brew "mas"                          # CLI for the Mac App Store
 brew "micro"                        # simple text editor
 brew "powerlevel10k"                # Zsh prompt theme
 brew "ripgrep"                      # ultra-fast recursive grep
-brew "shellcheck"                   # static analysis tool for shell scripts
 brew "stow"                         # symlink farm manager
-brew "tokei"                        # count lines of code by language
-brew "wifi-password"                # show the password for the connected Wi-Fi network
 brew "yq"                           # YAML processor (like jq for YAML)
 brew "zoxide"                       # smarter cd that learns your most-used directories
 brew "zsh"                          # the Z shell itself
@@ -30,8 +25,15 @@ brew "zsh-autosuggestions"          # fish-like command suggestions from history
 brew "zsh-history-substring-search" # arrow-key history search by substring
 brew "zsh-syntax-highlighting"      # highlight commands as you type
 
+# ── Brew: Useful ──────────────────────────────────────────────────────────────
+brew "asciinema"     # record and share terminal sessions
+brew "fastfetch"     # system info display (neofetch successor)
+brew "htop"          # interactive process viewer
+brew "shellcheck"    # static analysis tool for shell scripts
+brew "tokei"         # count lines of code by language
+brew "wifi-password" # show the password for the connected Wi-Fi network
+
 # ── Brew: Fun (comment out this whole section to skip) ────────────────────────
-brew "asciinema"    # record and share terminal sessions
 brew "asciiquarium" # aquarium animation
 brew "c2048"        # 2048 puzzle game
 brew "cbonsai"      # grow a bonsai tree
