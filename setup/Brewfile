@@ -20,6 +20,7 @@ brew "micro"                        # simple text editor
 brew "powerlevel10k"                # Zsh prompt theme
 brew "ripgrep"                      # ultra-fast recursive grep
 brew "shellcheck"                   # static analysis tool for shell scripts
+brew "stow"                         # symlink farm manager
 brew "tokei"                        # count lines of code by language
 brew "wifi-password"                # show the password for the connected Wi-Fi network
 brew "yq"                           # YAML processor (like jq for YAML)
