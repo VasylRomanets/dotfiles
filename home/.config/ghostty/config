@@ -15,6 +15,7 @@ theme = everforest-dark-hard
 background-blur = 10
 background-opacity = 0.95
 cursor-opacity = 0.8
+custom-shader = shaders/cursor_smear.glsl
 
 # Window
 window-padding-x = 15
