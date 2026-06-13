@@ -60,7 +60,6 @@ fi
 ###############################################################################
 
 source "$ZDOTDIR/aliases.zsh"
-source "$ZDOTDIR/diagnostics.zsh"
 source "$ZDOTDIR/eza.zsh"
 source "$ZDOTDIR/options.zsh"
 source "$ZDOTDIR/keybindings.zsh"
