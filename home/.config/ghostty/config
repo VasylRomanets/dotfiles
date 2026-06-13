@@ -12,20 +12,20 @@ font-size = 20
 font-thicken = true
 
 # Appearance
-theme = everforest-dark-hard
 background-blur = 10
 background-opacity = 0.95
 cursor-opacity = 0.8
 custom-shader = shaders/cursor_smear.glsl
+theme = everforest-dark-hard
 
 # Window
+confirm-close-surface = true
+window-padding-balance = true
 window-padding-x = 15
 window-padding-y = 15
-window-padding-balance = true
 window-save-state = always
 window-title-font-family = MesloLGS Nerd Font Mono
 window-vsync = true
-confirm-close-surface = true
 
 # macOS
 macos-auto-secure-input = true
@@ -40,7 +40,9 @@ clipboard-paste-bracketed-safe = true
 clipboard-paste-protection = true
 clipboard-trim-trailing-spaces = true
 
+# Notifications
+desktop-notifications = false
+
 # Shell
 shell-integration = zsh
 shell-integration-features = no-cursor
-desktop-notifications = false
