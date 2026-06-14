@@ -25,7 +25,7 @@ alias tree="eza --color=always --group-directories-first --icons --tree --level=
 # rm
 alias rms="trash"
 
-# Fun
+# fortune & cowsay
 alias moo="fortune | cowsay --random --rainbow --aurora"
 
 joke() {
