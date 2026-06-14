@@ -62,7 +62,6 @@ fi
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/eza.zsh"
 source "$ZDOTDIR/options.zsh"
-source "$ZDOTDIR/keybindings.zsh"
 
 # must be sourced before zsh-syntax-highlighting
 source "$ZDOTDIR/highlight.zsh"
@@ -98,3 +97,9 @@ source <(fzf --zsh)
 
 # must be sourced after plugins — calls compinit
 source "$ZDOTDIR/completions.zsh"
+
+###############################################################################
+# Keybindings                                                                 #
+###############################################################################
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
