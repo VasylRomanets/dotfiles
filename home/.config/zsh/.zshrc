@@ -20,7 +20,7 @@ export LESS='--quit-if-one-screen --no-init --ignore-case --RAW-CONTROL-CHARS --
 # disable history file — search patterns don't need to persist
 export LESSHISTFILE='-'
 
-# my brew habits are nobody's business
+# opt out of Homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
 
 # dump a brewfile straight to my dotfiles repo
