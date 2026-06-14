@@ -15,7 +15,7 @@ font-thicken = true
 background-blur = 10
 background-opacity = 0.95
 cursor-opacity = 0.8
-custom-shader = shaders/cursor_smear.glsl
+# custom-shader = shaders/cursor_smear.glsl
 theme = everforest-dark-hard
 
 # Window
