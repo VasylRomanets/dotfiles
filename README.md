@@ -50,12 +50,12 @@ dotfiles/
 
 1. Clone the repo:
 ```zsh
-git clone https://github.com/vasylromanets/dotfiles.git ~/dotfiles
+git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
 ```
 
 2. Run the bootstrap script:
 ```zsh
-~/dotfiles/setup/bootstrap.zsh
+~/.dotfiles/setup/bootstrap.zsh
 ```
 
 This will:
@@ -67,7 +67,7 @@ This will:
 
 3. Apply macOS defaults (optional):
 ```zsh
-~/dotfiles/setup/macos.zsh
+~/.dotfiles/setup/macos.zsh
 ```
 
 ### Manual Steps
@@ -91,7 +91,7 @@ Host github.com
 
 After adding new files to the repo, re-run:
 ```zsh
-~/dotfiles/setup/install.zsh
+~/.dotfiles/setup/install.zsh
 ```
 
 ## Appearance
