@@ -22,7 +22,7 @@ alias ll="eza --color=always --group-directories-first --icons --long --git"
 alias la="eza --color=always --group-directories-first --icons --long --git --all"
 alias tree="eza --color=always --group-directories-first --icons --tree --level=2"
 
-# rm
+# trash
 alias rms="trash"
 
 # fortune & cowsay
