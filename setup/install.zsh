@@ -29,9 +29,9 @@ done
 
 # copy CotEditor themes — sandboxing prevents symlinks
 COTEDIT_THEMES="$HOME/Library/Containers/com.coteditor.CotEditor/Data/Library/Application Support/CotEditor/Themes"
-if [[ -d "$DOTFILES/apps/coteditor/themes" ]]; then
+if [[ -d "$DOTFILES/copy/coteditor/themes" ]]; then
   mkdir -p "$COTEDIT_THEMES"
-  for theme in "$DOTFILES/apps/coteditor/themes/"*; do
+  for theme in "$DOTFILES/copy/coteditor/themes/"*; do
     cp -f "$theme" "$COTEDIT_THEMES/"
     print "copied $(basename "$theme") → CotEditor/Themes"
     (( copied++ ))
