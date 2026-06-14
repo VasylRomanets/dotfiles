@@ -2,9 +2,6 @@
 # Shell Environment                                                           #
 ###############################################################################
 
-# prepend ~/.local/bin to the system PATH so user-installed binaries take priority
-export PATH="$HOME/.local/bin:$PATH"
-
 # nano has odd shortcuts, vim has odd everything, micro is just right
 export EDITOR="micro"
 export VISUAL="$EDITOR"
@@ -25,6 +22,12 @@ export HOMEBREW_NO_ANALYTICS=1
 
 # dump a brewfile straight to my dotfiles repo
 export HOMEBREW_BUNDLE_FILE="$DOTFILES_SETUP_HOME/Brewfile"
+
+# a secret loaded from macOS Keychain;
+# it's used in $CLAUDE_CONFIG_DIR/.claude.json to avoid hardcoding it as plaintext;
+# to add it to the Keychain run:
+#   security add-generic-password -a "$(whoami)" -s "claude-code-github-mcp-pat" -w "your-token"
+export CLAUDE_CODE_GITHUB_MCP_PAT=$(security find-generic-password -a "$(whoami)" -s "claude-code-github-mcp-pat" -w 2>/dev/null)
 
 ###############################################################################
 # Initialize Homebrew                                                         #
