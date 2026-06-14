@@ -101,7 +101,3 @@ After adding new files to the repo, re-run:
 ## Inspiration
 
 Many thanks to the dotfiles community for sharing their insights and configurations over the years.
-
-## License
-
-[MIT](./LICENSE)
