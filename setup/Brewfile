@@ -3,23 +3,23 @@ tap "code-hex/tap", trusted: true      # required for neo-cowsay
 tap "vasylromanets/tap", trusted: true # required for spinpacks
 
 # ── Brew: Essential ───────────────────────────────────────────────────────────
-brew "bat"                          # cat with syntax highlighting and git integration
-brew "eza"                          # modern ls with colors and git awareness
-brew "fd"                           # fast, user-friendly alternative to find
+brew "bat"                          # syntax-highlighted file viewer (better cat)
+brew "eza"                          # file listing (better ls)
+brew "fd"                           # find files (better find)
 brew "fzf"                          # fuzzy finder for files, history, and more
 brew "gh"                           # official GitHub CLI
 brew "git"                          # version control
-brew "git-delta"                    # syntax-highlighting pager for git diffs
-brew "git-filter-repo"              # rewrite git history (replaces BFG)
+brew "git-delta"                    # syntax-highlighted diffs (better diff-so-fancy)
+brew "git-filter-repo"              # rewrite git history (better bfg)
 brew "git-lfs"                      # git large file storage extension
 brew "jq"                           # JSON processor
 brew "mas"                          # CLI for the Mac App Store
 brew "micro"                        # simple text editor
 brew "powerlevel10k"                # Zsh prompt theme
-brew "ripgrep"                      # ultra-fast recursive grep
+brew "ripgrep"                      # searching within files (better grep)
 brew "stow"                         # symlink farm manager
 brew "yq"                           # YAML processor (like jq for YAML)
-brew "zoxide"                       # smarter cd that learns your most-used directories
+brew "zoxide"                       # auto-learning navigation (better cd)
 brew "zsh"                          # the Z shell itself
 brew "zsh-autosuggestions"          # fish-like command suggestions from history
 brew "zsh-history-substring-search" # arrow-key history search by substring
@@ -27,13 +27,17 @@ brew "zsh-syntax-highlighting"      # highlight commands as you type
 
 # ── Brew: Useful ──────────────────────────────────────────────────────────────
 brew "asciinema"     # record and share terminal sessions
-brew "croc"          # securely send things from one computer to another
-brew "fastfetch"     # system info display (neofetch successor)
-brew "grex"          # generate regular expressions
-brew "htop"          # interactive process viewer
+brew "btop"          # resource and process monitor (better htop)
+brew "croc"          # encrypted peer-to-peer file transfer
+brew "duf"           # mounted disk usage overview (better df)
+brew "fastfetch"     # system info display (better neofetch)
+brew "grex"          # generate regex from provided examples
 brew "jrnl"          # command-line journal
 brew "shellcheck"    # static analysis tool for shell scripts
-brew "tokei"         # count lines of code by language
+brew "tealdeer"      # simplified man pages (tldr command)
+brew "tokei"         # count lines of code by language (better cloc)
+brew "trash-cli"     # move files to trash instead of permanently deleting (safer rm)
+brew "watch"         # run commands periodically
 brew "wifi-password" # show the password for the connected Wi-Fi network
 
 # ── Brew: Fun ─────────────────────────────────────────────────────────────────
@@ -43,13 +47,12 @@ brew "cmatrix"      # matrix rain animation
 brew "figlet"       # print large ASCII text banners
 brew "fortune"      # print a random adage or joke
 brew "lolcat"       # rainbow-colorize any command output
+brew "neo-cowsay"   # cowsay with many more animals
 brew "pipes-sh"     # animated pipes terminal screensaver
 brew "sl"           # steam locomotive (penalty for typing sl instead of ls)
 brew "spinpacks"    # themed spinner verb packs for Claude Code
-brew "neo-cowsay"   # cowsay with many more animals
 
 # ── Cask: Fonts ───────────────────────────────────────────────────────────────
-cask "font-hack-nerd-font"     # pretty monospace font
 cask "font-meslo-lg-nerd-font" # my main terminal & editor font (MesloLGS NF)
 
 # ── Cask ──────────────────────────────────────────────────────────────────────
@@ -82,9 +85,9 @@ cask "zoom"                   # video conferencing
 mas "Bitwarden", id: 1352778147     # open-source password manager
 mas "ClearVPN", id: 1531601984      # simple VPN client
 mas "CotEditor", id: 1024640650     # plain-text and code editor
-mas "Hidden Bar", id: 1452453066    # hide clutter from menu bar
+mas "Hidden Bar", id: 1452453066    # hide clutter from the menu bar
 mas "Spark Desktop", id: 6445813049 # email client
-mas "Today", id: 6443714928         # today’s schedule in menu bar
+mas "Today", id: 6443714928         # today’s schedule in the menu bar
 mas "Todoist", id: 585829637        # to-do list
 mas "WhatsApp", id: 310633997       # messaging
 
