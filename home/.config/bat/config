@@ -1,1 +1,3 @@
---theme="everforest-dark"
+--theme=auto
+--theme-dark="everforest-dark"
+--theme-light="everforest-light"
