@@ -27,7 +27,3 @@ alias rms="trash"
 
 # fortune & cowsay
 alias moo="fortune | cowsay --random --rainbow --aurora"
-
-joke() {
-  curl -s 'https://v2.jokeapi.dev/joke/Programming?type=single' | python3 -c "import sys,json; print(json.load(sys.stdin)['joke'])"
-}

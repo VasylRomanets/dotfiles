@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Fetch and print a random programming joke.
+#
+# USAGE: joke
+# URL:   https://v2.jokeapi.dev
+
+curl -s 'https://v2.jokeapi.dev/joke/Programming?type=single' | jq -r '.joke'
