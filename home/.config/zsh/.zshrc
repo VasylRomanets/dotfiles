@@ -6,6 +6,9 @@
 export EDITOR="micro"
 export VISUAL="$EDITOR"
 
+# use bat to display and format terminal manual (man) pages
+export MANPAGER="sh -c 'col -bx | bat --language=man --plain'"
+
 # interactive pager (less) configs:
 # print directly if content fits on one screen
 # don't clear the screen when opening/closing
