@@ -20,6 +20,7 @@ dotfiles/
 │       └── themes/
 ├── home/                  # mirrors ~/ — everything here gets symlinked
 │   ├── .config/
+│   │   ├── bat/
 │   │   ├── claude/
 │   │   ├── fastfetch/
 │   │   ├── ghostty/
@@ -31,8 +32,8 @@ dotfiles/
 │   ├── .local/
 │   │   └── bin/           # CLI utilities and custom executable scripts
 │   ├── .ssh/
-│   ├── .zshenv
-│   └── .hushlogin
+│   ├── .hushlogin
+│   └── .zshenv
 └── setup/
     ├── Brewfile           # all Homebrew packages
     ├── bootstrap.zsh      # full machine setup (run once on a new Mac)
