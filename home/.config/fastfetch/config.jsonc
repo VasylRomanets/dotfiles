@@ -14,14 +14,14 @@
   "modules": [
     {
       "type": "custom",
-      "format": "\u001b[33;1m❯ git log --author → Vasyl Romanets\u001b[0m",
+      "format": "\u001b[33;1m❯ git log --author \"Vasyl Romanets\"\u001b[0m",
     },
     "break",
     {
       "type": "custom",
       "key": "URL",
       "keyColor": "magenta",
-      "format": "https://github.com/VasylRomanets",
+      "format": "https://github.com/vasylromanets",
     },
     {
       "type": "datetime",
