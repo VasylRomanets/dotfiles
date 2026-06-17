@@ -1,3 +1,4 @@
+unset ZSH_HIGHLIGHT_STYLES
 typeset -A ZSH_HIGHLIGHT_STYLES
 
 # Everforest Dark Hard
