@@ -1,5 +1,6 @@
 .DS_Store
 config.local
+settings.local.json
 
 home/.cache/
 home/.config/claude/.claude.json
