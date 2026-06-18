@@ -47,21 +47,6 @@ elif [[ -f /usr/local/bin/brew ]]; then
 fi
 
 ###############################################################################
-# Startup                                                                     #
-###############################################################################
-
-fastfetch
-
-###############################################################################
-# Initialize Powerlevel10k Instant Prompt                                     #
-###############################################################################
-
-# should stay close to the top of .zshrc
-if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-###############################################################################
 # Zsh Configs (Pre-Plugins)                                                   #
 ###############################################################################
 
@@ -79,15 +64,13 @@ source "$ZDOTDIR/highlight.zsh"
 # safely source a brew-installed zsh plugin by name
 source_brew_plugin() {
   [[ -x "$HOMEBREW_PREFIX/bin/brew" ]] || return 1
-  local plugin_path="$HOMEBREW_PREFIX/share/$1/${2:-$1.zsh}"
+  local plugin_path="$HOMEBREW_PREFIX/share/$1/$1.zsh"
   [[ -r "$plugin_path" ]] && source "$plugin_path"
 }
 
 source_brew_plugin zsh-autosuggestions
 source_brew_plugin zsh-syntax-highlighting
 source_brew_plugin zsh-history-substring-search
-source_brew_plugin powerlevel10k powerlevel10k.zsh-theme
-[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
 
 unset -f source_brew_plugin
 
@@ -107,5 +90,18 @@ source "$ZDOTDIR/completions.zsh"
 ###############################################################################
 # Keybindings                                                                 #
 ###############################################################################
+
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+###############################################################################
+# Starship                                                                    #
+###############################################################################
+
+eval "$(starship init zsh)"
+
+###############################################################################
+# Startup                                                                     #
+###############################################################################
+
+fastfetch

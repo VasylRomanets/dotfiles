@@ -1,0 +1,171 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# ╭─  dotfiles  main ⇣1⇡2 +1 !2 ───────────────────── ✘1  3s  12:34
+# ╰─❯
+
+format = """
+[╭─](dimmed white)$os$directory$git_branch$git_status\
+$fill $status$cmd_duration$jobs$username$hostname$time$line_break\
+[╰─](dimmed white)$character"""
+
+add_newline = true
+
+[fill]
+style = "dimmed white"
+symbol = "─"
+# symbol = "·"
+
+# ─────────────────────────────── Left ────────────────────────────────
+
+[os]
+disabled = true
+format = " [$symbol]($style)"
+style = "white"
+
+[os.symbols]
+Macos = ""
+
+[directory]
+style = "cyan"
+truncation_length = 4
+truncate_to_repo = true
+read_only = " 󰌾"
+read_only_style = "red"
+format = "[  $path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+symbol = " "
+style = "purple"
+truncation_length = 32
+truncation_symbol = "…"
+format = "[on ](dimmed white)[$symbol$branch]($style) "
+
+[git_state]
+style = "red"
+format = '[\($state( $progress_current/$progress_total)\)]($style) '
+
+[git_status]
+ahead = "[⇡${count} ](yellow)"
+behind = "[⇣${count} ](yellow)"
+diverged = "[⇣${behind_count}⇡${ahead_count} ](yellow)"
+stashed = "[*${count} ](yellow)"
+conflicted = "[~${count} ](red)"
+staged = "[+${count} ](yellow)"
+modified = "[!${count} ](yellow)"
+untracked = "[?${count} ](yellow)"
+deleted = ""
+format = '($ahead_behind$stashed$conflicted$staged$modified$untracked)'
+
+# ─────────────────────────────── Right ───────────────────────────────
+
+[status]
+disabled = true
+style = "red"
+symbol = "✘"
+pipestatus = true
+format = "[$symbol$status]($style) "
+
+[cmd_duration]
+min_time = 3000
+style = "dimmed white"
+show_milliseconds = false
+format = "[ $duration]($style) "
+
+[jobs]
+style = "red"
+symbol = "✦"
+number_threshold = 1
+symbol_threshold = 1
+format = "[$symbol]($style) "
+
+[username]
+show_always = false
+style_user = "white"
+style_root = "bold red"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = true
+style = "white"
+format = "[@$hostname ]($style)"
+
+[time]
+disabled = false
+style = "dimmed white"
+time_format = "%H:%M"
+format = "[ $time]($style)"
+
+# ──────────────────────────── Prompt char ────────────────────────────
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+vimcmd_replace_symbol = "[▶](green)"
+vimcmd_replace_one_symbol = "[▶](green)"
+vimcmd_visual_symbol = "[V](green)"
+
+# ──────────────────────────── Runtimes ───────────────────────────────
+
+[python]
+style = "cyan"
+format = "[$symbol$virtualenv]($style) "
+
+[nodejs]
+style = "green"
+format = "[$symbol$version]($style) "
+
+[ruby]
+style = "red"
+format = "[$symbol$version]($style) "
+
+[rust]
+style = "blue"
+format = "[$symbol$version]($style) "
+
+[golang]
+style = "cyan"
+format = "[$symbol$version]($style) "
+
+[dotnet]
+style = "purple"
+format = "[$symbol$version]($style) "
+
+[java]
+style = "blue"
+format = "[$symbol$version]($style) "
+
+[lua]
+style = "blue"
+format = "[$symbol$version]($style) "
+
+[php]
+style = "purple"
+format = "[$symbol$version]($style) "
+
+[scala]
+style = "red"
+format = "[$symbol$version]($style) "
+
+[haskell]
+style = "yellow"
+format = "[$symbol$version]($style) "
+
+# ──────────────────────────── Cloud / Infra ──────────────────────────
+
+[terraform]
+style = "blue"
+format = "[$symbol$workspace]($style) "
+
+[aws]
+style = "yellow"
+format = "[$symbol$profile(\\($region\\))]($style) "
+
+[gcloud]
+style = "blue"
+format = "[$symbol$account(@$domain)(\\($region\\))]($style) "
+
+[kubernetes]
+disabled = false
+style = "purple"
+format = "[$symbol$context(\\($namespace\\))]($style) "

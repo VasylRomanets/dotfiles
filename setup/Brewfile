@@ -15,8 +15,8 @@ brew "git-lfs"                      # git large file storage extension
 brew "jq"                           # JSON processor
 brew "mas"                          # CLI for the Mac App Store
 brew "micro"                        # simple text editor
-brew "powerlevel10k"                # Zsh prompt theme
 brew "ripgrep"                      # searching within files (better grep)
+brew "starship"                     # cross-shell prompt manager
 brew "stow"                         # symlink farm manager
 brew "yq"                           # YAML processor (like jq for YAML)
 brew "zoxide"                       # auto-learning navigation (better cd)
