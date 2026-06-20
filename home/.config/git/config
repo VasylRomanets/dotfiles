@@ -13,6 +13,12 @@
 [delta]
     navigate = true
 
+[fetch]
+    prune = true
+
+[push]
+    autoSetupRemote = true
+
 [gpg]
     format = ssh
 
