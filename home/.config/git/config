@@ -33,3 +33,16 @@
 
 [tag]
   gpgSign = true
+
+[alias]
+  a = add
+  b = branch
+  c = commit
+  co = checkout
+  d = diff
+  f = fetch
+  l = log --oneline --graph --decorate
+  p = push
+  pu = pull
+  s = status
+  st = stash

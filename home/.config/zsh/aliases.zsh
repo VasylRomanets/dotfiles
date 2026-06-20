@@ -1,16 +1,5 @@
 # git
 alias g="git"
-alias gf="git fetch"
-alias gs="git status"
-alias ga="git add"
-alias gc="git commit"
-alias gpu="git pull"
-alias gp="git push"
-alias gl="git log --oneline --graph --decorate"
-alias gd="git diff"
-alias gco="git checkout"
-alias gb="git branch"
-alias gst="git stash"
 
 # grep & ripgrep
 alias grep="grep --color=auto"
