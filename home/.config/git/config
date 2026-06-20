@@ -2,7 +2,7 @@
     path = ~/.config/git/config.local
 
 [init]
-  defaultBranch = main
+    defaultBranch = main
 
 [core]
     pager = delta
