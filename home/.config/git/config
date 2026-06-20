@@ -19,6 +19,9 @@
 [push]
     autoSetupRemote = true
 
+[merge]
+    conflictStyle = zdiff3
+
 [gpg]
     format = ssh
 
@@ -30,6 +33,3 @@
 
 [tag]
     gpgSign = true
-
-[merge]
-    conflictStyle = zdiff3
