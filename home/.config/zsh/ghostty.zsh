@@ -1,7 +1,14 @@
 ghostty-theme() {
   local config="$XDG_CONFIG_HOME/ghostty/config"
   local theme
-  theme=$(command ls "$XDG_CONFIG_HOME/ghostty/themes" | fzf --query="$1")
+
+  if [[ "$1" == "-r" ]]; then
+    local themes=("$XDG_CONFIG_HOME/ghostty/themes"/*(N:t))
+    theme=${themes[RANDOM % ${#themes[@]} + 1]}
+  else
+    theme=$(command ls "$XDG_CONFIG_HOME/ghostty/themes" | fzf --query="$1")
+  fi
+
   [[ -z "$theme" ]] && return
   perl -i -pe "s/^theme = .*/theme = $theme/" "$config"
   killall -USR2 ghostty
