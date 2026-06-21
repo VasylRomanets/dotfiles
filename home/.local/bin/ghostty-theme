@@ -12,7 +12,7 @@
 # License: MIT
 
 themes_dir="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes"
-config="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config"
+config=$(realpath "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config")
 
 if [[ "$1" == "-r" ]]; then
   theme=$(command ls "$themes_dir" | awk 'BEGIN{srand()} {a[NR]=$0} END{print a[int(rand()*NR)+1]}')
