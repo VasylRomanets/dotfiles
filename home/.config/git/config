@@ -45,6 +45,7 @@
   d = diff
   f = fetch
   l = log --oneline --graph --decorate
+  lp = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(magenta)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   p = push
   pu = pull
   s = status
