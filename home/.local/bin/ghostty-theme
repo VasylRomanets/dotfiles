@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Switch Ghostty themes interactively — fuzzy pick, direct select, or randomize.
+#
+# USAGE: ghostty-theme           — fuzzy picker
+#        ghostty-theme <name>    — apply directly or pre-filter picker
+#        ghostty-theme -r        — apply a random theme
+#
+# Author:  Vasyl Romanets
+# GitHub:  https://github.com/vasylromanets
+# Created: 2026-06-21
+# License: MIT
+
+themes_dir="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes"
+config="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config"
+
+if [[ "$1" == "-r" ]]; then
+  theme=$(command ls "$themes_dir" | awk 'BEGIN{srand()} {a[NR]=$0} END{print a[int(rand()*NR)+1]}')
+elif [[ -n "$1" && -f "$themes_dir/$1" ]]; then
+  theme="$1"
+else
+  theme=$(command ls "$themes_dir" | fzf --query="$1")
+fi
+
+[[ -z "$theme" ]] && exit 0
+
+perl -i -pe "s/^theme = .*/theme = $theme/" "$config"
+killall -USR2 ghostty
+echo "$theme theme is applied."
