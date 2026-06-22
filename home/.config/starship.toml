@@ -3,8 +3,6 @@
 # ╭─  dotfiles  main ⇣1⇡2 +1 !2 ───────────────────── 󱦟 3s  12:34
 # ╰─❯
 
-add_newline = true
-
 format = """
 [╭─](dimmed white)\
 $directory\
