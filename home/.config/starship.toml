@@ -59,7 +59,17 @@ staged = "[+${count} ](yellow)"
 modified = "[!${count} ](yellow)"
 deleted = "[-${count} ](red)"
 untracked = "[?${count} ](yellow)"
-format = '($ahead_behind$stashed$conflicted$staged$modified$deleted$untracked)'
+format = """
+(\
+$ahead_behind\
+$stashed\
+$conflicted\
+$staged\
+$modified\
+$deleted\
+$untracked\
+)\
+"""
 
 # ─────────────────────────────── Right ───────────────────────────────
 
