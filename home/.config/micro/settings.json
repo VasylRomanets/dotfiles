@@ -1,3 +1,4 @@
 {
-    "colorscheme": "everforest-dark-hard"
+    "colorscheme": "everforest-dark-hard",
+    "rmtrailingws": true
 }
