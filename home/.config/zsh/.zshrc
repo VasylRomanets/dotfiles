@@ -52,6 +52,7 @@ fi
 
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/eza.zsh"
+source "$ZDOTDIR/fzf.zsh"
 source "$ZDOTDIR/options.zsh"
 
 # must be sourced before zsh-syntax-highlighting
