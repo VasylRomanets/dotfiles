@@ -1,4 +1,7 @@
 {
     "colorscheme": "everforest-dark-hard",
-    "rmtrailingws": true
+    "rmtrailingws": true,
+    "softwrap": true,
+    "tabstospaces": true,
+    "wordwrap": true
 }
