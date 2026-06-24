@@ -61,7 +61,7 @@ cask "claude-code"            # AI coding assistant
 cask "cleanmymac"             # system cleaner and optimizer
 cask "discord"                # voice, video, and text chat
 cask "fork"                   # git GUI client
-cask "ghostty"                # my favourite terminal emulator
+cask "ghostty"                # terminal emulator
 cask "git-credential-manager" # cross-platform git credential storage
 cask "google-chrome"          # web browser
 cask "hammerspoon"            # lua-driven macOS automation and scripting
@@ -70,20 +70,20 @@ cask "iina"                   # media player
 cask "keka"                   # file archiver
 cask "mediamate"              # now-playing overlay for Spotify and media controls
 cask "obsidian"               # markdown-based personal knowledge base
-cask "raycast"                # Spotlight on steroids
+cask "raycast"                # app launcher (better Spotlight)
 cask "reflex-app"             # media key forwarder for Spotify
-cask "shottr"                 # lightweight screenshot tool
+cask "shottr"                 # screenshot tool
 cask "signal"                 # encrypted, privacy-focused messaging
 cask "spotify"                # music
-cask "transmission"           # lightweight BitTorrent client
+cask "transmission"           # BitTorrent client
 cask "unity-hub"              # launcher for Unity editor
 cask "visual-studio-code"     # code editor
 cask "zed"                    # fast code editor
 cask "zoom"                   # video conferencing
 
 # ── App Store ─────────────────────────────────────────────────────────────────
-mas "Bitwarden", id: 1352778147     # open-source password manager
-mas "ClearVPN", id: 1531601984      # simple VPN client
+mas "Bitwarden", id: 1352778147     # password manager
+mas "ClearVPN", id: 1531601984      # VPN client
 mas "CotEditor", id: 1024640650     # plain-text and code editor
 mas "Hidden Bar", id: 1452453066    # hide clutter from the menu bar
 mas "Spark Desktop", id: 6445813049 # email client
