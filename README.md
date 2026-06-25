@@ -13,10 +13,10 @@
 
 ```
 dotfiles/
-├── .stowrc                # GNU Stow config
-├── copy/                  # GUI app configs that can't be symlinked
+├── .stowrc           # GNU Stow config
+├── copy/             # GUI app configs that can't be symlinked
 │   └── coteditor/
-├── link/                  # per-tool packages — each mirrors ~/ and gets stowed
+├── link/             # per-tool packages — each mirrors ~/ and gets stowed
 │   ├── bat/
 │   ├── bin/
 │   ├── claude/
@@ -30,10 +30,10 @@ dotfiles/
 │   ├── starship/
 │   └── zsh/
 └── setup/
-    ├── Brewfile           # all Homebrew packages
-    ├── bootstrap.zsh      # full machine setup (run once on a new Mac)
-    ├── install.zsh        # stows packages from link/ to ~/ and copies files
-    └── macos.zsh          # sensible macOS defaults
+    ├── Brewfile      # all Homebrew packages
+    ├── bootstrap.zsh # full machine setup (run once on a new Mac)
+    ├── install.zsh   # stows packages from link/ to ~/ and copies files
+    └── macos.zsh     # sensible macOS defaults
 ```
 
 ## New Machine Setup
