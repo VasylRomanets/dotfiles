@@ -32,6 +32,8 @@ export HOMEBREW_BUNDLE_FILE="$DOTFILES_SETUP_HOME/Brewfile"
 #   security add-generic-password -a "$(whoami)" -s "claude-code-github-mcp-pat" -w "your-token"
 export CLAUDE_CODE_GITHUB_MCP_PAT=$(security find-generic-password -a "$(whoami)" -s "claude-code-github-mcp-pat" -w 2>/dev/null)
 
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/config.toml"
+
 ###############################################################################
 # Initialize Homebrew                                                         #
 ###############################################################################
