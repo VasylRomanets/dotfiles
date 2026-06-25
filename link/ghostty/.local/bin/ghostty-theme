@@ -2,6 +2,8 @@
 
 # Switch Ghostty themes interactively — fuzzy pick, direct select, or randomize.
 #
+# REQUIRES: fzf (brew install fzf)
+#
 # USAGE: ghostty-theme           — fuzzy picker
 #        ghostty-theme <name>    — apply directly or pre-filter picker
 #        ghostty-theme -r        — apply a random theme
