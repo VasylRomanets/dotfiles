@@ -2,10 +2,6 @@
 # Shell Environment                                                           #
 ###############################################################################
 
-# nano has odd shortcuts, vim has odd everything, micro is just right
-export EDITOR="micro"
-export VISUAL="$EDITOR"
-
 # use bat to display and format terminal manual (man) pages
 export MANPAGER="sh -c 'col -bx | bat --language=man --plain'"
 

@@ -10,6 +10,10 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # prepend ~/.local/bin so user-installed binaries take priority
 export PATH="$HOME/.local/bin:$PATH"
 
+# nano has odd shortcuts, vim has odd everything, micro is just right
+export EDITOR="micro"
+export VISUAL="$EDITOR"
+
 # dotfiles repo paths
 export DOTFILES_HOME="$HOME/dev/projects/dotfiles"
 export DOTFILES_SETUP_HOME="$DOTFILES_HOME/setup"
