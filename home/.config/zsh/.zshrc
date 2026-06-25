@@ -16,20 +16,18 @@ export LESS='--quit-if-one-screen --no-init --ignore-case --RAW-CONTROL-CHARS --
 # disable history file — search patterns don't need to persist
 export LESSHISTFILE='-'
 
-# dump a brewfile straight to my dotfiles repo
-export HOMEBREW_BUNDLE_FILE="$DOTFILES_SETUP_HOME/Brewfile"
-
 # a secret loaded from macOS Keychain;
 # it's used in $CLAUDE_CONFIG_DIR/.claude.json to avoid hardcoding it as plaintext;
 # to add it to the Keychain run:
 #   security add-generic-password -a "$(whoami)" -s "claude-code-github-mcp-pat" -w "your-token"
 export CLAUDE_CODE_GITHUB_MCP_PAT=$(security find-generic-password -a "$(whoami)" -s "claude-code-github-mcp-pat" -w 2>/dev/null)
 
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/config.toml"
+###############################################################################
+# Homebrew                                                                    #
+###############################################################################
 
-###############################################################################
-# Initialize Homebrew                                                         #
-###############################################################################
+# dump a brewfile straight to my dotfiles repo
+export HOMEBREW_BUNDLE_FILE="$DOTFILES_SETUP_HOME/Brewfile"
 
 # HOMEBREW_PREFIX is set here
 # also brew prepends its path to the front of PATH,
@@ -42,7 +40,7 @@ elif [[ -f /usr/local/bin/brew ]]; then
 fi
 
 ###############################################################################
-# Zsh Configs (Pre-Plugins)                                                   #
+# Pre-Plugin Config                                                           #
 ###############################################################################
 
 source "$ZDOTDIR/aliases.zsh"
@@ -77,7 +75,7 @@ unset -f source_brew_plugin
 source <(fzf --zsh)
 
 ###############################################################################
-# Zsh Configs (Post-Plugins)                                                  #
+# Post-Plugin Config                                                          #
 ###############################################################################
 
 # must be sourced after plugins — calls compinit
@@ -94,10 +92,11 @@ bindkey '^[[B' history-substring-search-down
 # Starship                                                                    #
 ###############################################################################
 
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/config.toml"
 eval "$(starship init zsh)"
 
 ###############################################################################
-# Startup                                                                     #
+# Greeting                                                                    #
 ###############################################################################
 
 fastfetch
