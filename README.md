@@ -13,12 +13,9 @@
 
 ```
 dotfiles/
-├── .github/               # GitHub-specific repo configs
-│   └── assets/            # media for documentation
 ├── .stowrc                # GNU Stow config
 ├── copy/                  # GUI app configs that can't be symlinked
 │   └── coteditor/
-│       └── themes/
 ├── link/                  # per-tool packages — each mirrors ~/ and gets stowed
 │   ├── bat/
 │   ├── bin/
