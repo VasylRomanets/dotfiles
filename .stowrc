@@ -1,0 +1,12 @@
+# source folder
+--dir=link
+
+# target folder
+--target=~
+
+# always create real folders and only symlink individual files
+--no-folding
+
+# Perl regexes, not globs
+--ignore=\.DS_Store$
+--ignore=\.gitignore$

@@ -15,29 +15,27 @@
 dotfiles/
 ├── .github/               # GitHub-specific repo configs
 │   └── assets/            # media for documentation
+├── .stowrc                # GNU Stow config
 ├── copy/                  # GUI app configs that can't be symlinked
 │   └── coteditor/
 │       └── themes/
-├── home/                  # mirrors ~/ — everything here gets symlinked
-│   ├── .config/
-│   │   ├── bat/
-│   │   ├── claude/
-│   │   ├── fastfetch/
-│   │   ├── ghostty/
-│   │   ├── git/
-│   │   ├── micro/
-│   │   ├── ripgrep/
-│   │   └── zsh/
-│   ├── .hammerspoon/
-│   ├── .local/
-│   │   └── bin/           # CLI utilities and custom executable scripts
-│   ├── .ssh/
-│   ├── .hushlogin
-│   └── .zshenv
+├── link/                  # per-tool packages — each mirrors ~/ and gets stowed
+│   ├── bat/
+│   ├── bin/
+│   ├── claude/
+│   ├── fastfetch/
+│   ├── ghostty/
+│   ├── git/
+│   ├── hammerspoon/
+│   ├── micro/
+│   ├── ripgrep/
+│   ├── ssh/
+│   ├── starship/
+│   └── zsh/
 └── setup/
     ├── Brewfile           # all Homebrew packages
     ├── bootstrap.zsh      # full machine setup (run once on a new Mac)
-    ├── install.zsh        # creates symlinks from home/ to ~/ and copies files
+    ├── install.zsh        # stows packages from link/ to ~/ and copies files
     └── macos.zsh          # sensible macOS defaults
 ```
 
@@ -62,7 +60,7 @@ This will:
 - Install Xcode Command Line Tools
 - Install Homebrew
 - Install all packages from `Brewfile`
-- Create symlinks from `home/` to `~/`
+- Stow packages from `link/` to `~/` using GNU Stow
 - Copy CotEditor themes
 
 3. Apply macOS defaults (optional):
