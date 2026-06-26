@@ -1,9 +1,16 @@
 link/.config/claude/.claude.json
 link/.config/claude/.claude.json.backup
+link/.config/claude/.last-cleanup
+link/.config/claude/.last-update-result.json
 link/.config/claude/history.jsonl
 link/.config/claude/backups/
 link/.config/claude/cache/
+link/.config/claude/file-history/
+link/.config/claude/paste-cache/
+link/.config/claude/plans/
+link/.config/claude/plugins/
 link/.config/claude/projects/
 link/.config/claude/session-env/
 link/.config/claude/sessions/
 link/.config/claude/shell-snapshots/
+link/.config/claude/telemetry/
