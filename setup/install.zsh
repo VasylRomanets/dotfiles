@@ -4,7 +4,6 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES="$(dirname "$SCRIPT_DIR")"
 
 stowed=0
-shell_linked=0
 failed=0
 copied=0
 
@@ -43,10 +42,10 @@ for pkg_dir in packages/*/; do
     shell_target="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/packages/$pkg"
     mkdir -p "$shell_target"
     if stow --dir="$pkg_dir" --target="$shell_target" shell; then
-      print "linked shell/$pkg"
-      (( shell_linked++ ))
+      print "stowed shell/$pkg"
+      (( stowed++ ))
     else
-      print "warning: failed to link shell/$pkg"
+      print "warning: failed to stow shell/$pkg"
       (( failed++ ))
     fi
   fi
@@ -66,4 +65,4 @@ for pkg_dir in packages/*/; do
 done
 
 print ""
-print "done: $stowed stowed, $shell_linked shell-linked, $copied copied, $failed failed"
+print "done: $stowed stowed, $copied copied, $failed failed"
