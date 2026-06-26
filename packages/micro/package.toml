@@ -1,0 +1,7 @@
+description = "Modern terminal-based text editor"
+
+[install]
+brews = ["micro"]
+
+[link]
+target = "~"

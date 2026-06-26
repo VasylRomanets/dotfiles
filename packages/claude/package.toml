@@ -1,0 +1,7 @@
+description = "Claude Code AI assistant"
+
+[install]
+casks = ["claude"]
+
+[link]
+target = "~"

@@ -1,9 +1,0 @@
-.config/claude/.claude.json
-.config/claude/.claude.json.backup
-.config/claude/history.jsonl
-.config/claude/backups/
-.config/claude/cache/
-.config/claude/projects/
-.config/claude/session-env/
-.config/claude/sessions/
-.config/claude/shell-snapshots/

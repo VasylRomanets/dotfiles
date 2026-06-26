@@ -1,0 +1,8 @@
+description = "Z shell configuration"
+dependencies = ["fzf", "micro", "ripgrep"]
+
+[install]
+brews = ["zsh", "zsh-autosuggestions", "zsh-history-substring-search", "zsh-syntax-highlighting"]
+
+[link]
+target = "~"

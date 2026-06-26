@@ -1,0 +1,4 @@
+description = "Fuzzy file finder with shell integration"
+
+[install]
+brews = ["fzf"]

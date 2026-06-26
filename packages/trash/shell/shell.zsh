@@ -1,0 +1,1 @@
+alias rms="trash"

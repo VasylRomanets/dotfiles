@@ -1,0 +1,4 @@
+description = "Safe file deletion that moves files to the Trash"
+
+[install]
+brews = ["trash"]

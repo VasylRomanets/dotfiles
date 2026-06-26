@@ -13,14 +13,21 @@
 
 ```
 dotfiles/
-├── .stowrc           # GNU Stow config
-├── copy/             # GUI app configs that can't be symlinked
-│   └── coteditor/
-├── link/             # per-tool packages — each mirrors ~/ and gets stowed
+├── .stowrc              # GNU Stow config
+├── packages/            # per-tool packages
+│   ├── <pkg>/
+│   │   ├── link/        # files to symlink to ~ (optional)
+│   │   ├── copy/        # files to copy to target (optional)
+│   │   ├── shell/       # shell integration sourced by .zshrc (optional)
+│   │   └── package.toml # brew deps, link target, copy target, dependencies
 │   ├── bat/
 │   ├── bin/
 │   ├── claude/
+│   ├── coteditor/
+│   ├── cowsay/
+│   ├── eza/
 │   ├── fastfetch/
+│   ├── fzf/
 │   ├── ghostty/
 │   ├── git/
 │   ├── hammerspoon/
@@ -28,12 +35,13 @@ dotfiles/
 │   ├── ripgrep/
 │   ├── ssh/
 │   ├── starship/
+│   ├── trash/
 │   └── zsh/
 └── setup/
-    ├── Brewfile      # all Homebrew packages
-    ├── bootstrap.zsh # full machine setup (run once on a new Mac)
-    ├── install.zsh   # stows packages from link/ to ~/ and copies files
-    └── macos.zsh     # sensible macOS defaults
+    ├── Brewfile         # all Homebrew packages
+    ├── bootstrap.zsh    # full machine setup (run once on a new Mac)
+    ├── install.zsh      # stows packages and shell/ files, copies assets
+    └── macos.zsh        # sensible macOS defaults
 ```
 
 ## New Machine Setup
@@ -57,8 +65,7 @@ This will:
 - Install Xcode Command Line Tools
 - Install Homebrew
 - Install all packages from `Brewfile`
-- Stow packages from `link/` to `~/` using GNU Stow
-- Copy CotEditor themes
+- Stow and copy all packages via `install.zsh`
 
 3. Apply macOS defaults (optional):
 ```zsh

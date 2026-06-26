@@ -1,0 +1,7 @@
+description = "System information tool for shell greeting"
+
+[install]
+brews = ["fastfetch"]
+
+[link]
+target = "~"

@@ -1,0 +1,7 @@
+description = "Version control system"
+
+[install]
+brews = ["git"]
+
+[link]
+target = "~"

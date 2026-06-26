@@ -1,0 +1,7 @@
+description = "macOS automation with Lua scripting"
+
+[install]
+casks = ["hammerspoon"]
+
+[link]
+target = "~"

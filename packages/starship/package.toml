@@ -1,0 +1,7 @@
+description = "Cross-shell prompt"
+
+[install]
+brews = ["starship"]
+
+[link]
+target = "~"

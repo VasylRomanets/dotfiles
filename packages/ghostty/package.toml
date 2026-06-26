@@ -1,0 +1,7 @@
+description = "GPU-accelerated terminal emulator"
+
+[install]
+casks = ["ghostty"]
+
+[link]
+target = "~"

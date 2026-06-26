@@ -1,0 +1,7 @@
+description = "Fast recursive search tool"
+
+[install]
+brews = ["ripgrep"]
+
+[link]
+target = "~"

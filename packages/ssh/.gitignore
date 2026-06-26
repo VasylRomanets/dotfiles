@@ -1,0 +1,3 @@
+link/.ssh/id_*
+link/.ssh/known_hosts
+link/.ssh/known_hosts.old
