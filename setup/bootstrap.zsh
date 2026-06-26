@@ -2,8 +2,7 @@
 
 set -e # exit on any error
 
-DOTFILES_PATH="$(dirname "$(dirname "$(realpath "$0")")")"
-SETUP_PATH="$DOTFILES_PATH/setup"
+SETUP_PATH="$(dirname "$(realpath "$0")")"
 
 print_step() { echo "\n\033[1;32m==>\033[0m $1"; }
 print_info() { echo "    $1"; }
