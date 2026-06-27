@@ -1,7 +1,5 @@
-description = "Version control system"
-
-[install]
-brews = ["git"]
+[homebrew]
+formulae = ["git"]
 
 [link]
 target = "~"

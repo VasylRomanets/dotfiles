@@ -1,7 +1,5 @@
-description = "Syntax-highlighting cat replacement"
-
-[install]
-brews = ["bat"]
+[homebrew]
+formulae = ["bat"]
 
 [link]
 target = "~"

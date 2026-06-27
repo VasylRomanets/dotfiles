@@ -1,7 +1,5 @@
-description = "Cross-shell prompt"
-
-[install]
-brews = ["starship"]
+[homebrew]
+formulae = ["starship"]
 
 [link]
 target = "~"

@@ -1,7 +1,5 @@
-description = "GPU-accelerated terminal emulator"
-
-[install]
-casks = ["ghostty"]
+[homebrew]
+formulae = ["ghostty"]
 
 [link]
 target = "~"

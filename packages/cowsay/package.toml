@@ -1,4 +1,2 @@
-description = "Talking cow ASCII art with fortune cookie quotes"
-
-[install]
-brews = ["cowsay", "fortune"]
+[homebrew]
+formulae = ["cowsay", "fortune"]

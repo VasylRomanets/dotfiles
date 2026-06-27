@@ -1,7 +1,5 @@
-description = "System information tool for shell greeting"
-
-[install]
-brews = ["fastfetch"]
+[homebrew]
+formulae = ["fastfetch"]
 
 [link]
 target = "~"

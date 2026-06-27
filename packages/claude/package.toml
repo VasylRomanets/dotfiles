@@ -1,6 +1,4 @@
-description = "Claude Code AI assistant"
-
-[install]
+[homebrew]
 casks = ["claude"]
 
 [link]

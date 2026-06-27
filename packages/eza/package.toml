@@ -1,4 +1,2 @@
-description = "Modern ls replacement with icons and colors"
-
-[install]
-brews = ["eza"]
+[homebrew]
+formulae = ["eza"]

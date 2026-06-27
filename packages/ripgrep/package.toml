@@ -1,7 +1,5 @@
-description = "Fast recursive search tool"
-
-[install]
-brews = ["ripgrep"]
+[homebrew]
+formulae = ["ripgrep"]
 
 [link]
 target = "~"

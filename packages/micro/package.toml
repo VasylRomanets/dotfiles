@@ -1,7 +1,5 @@
-description = "Modern terminal-based text editor"
-
-[install]
-brews = ["micro"]
+[homebrew]
+formulae = ["micro"]
 
 [link]
 target = "~"
