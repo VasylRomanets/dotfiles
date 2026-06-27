@@ -18,6 +18,7 @@ brew "micro"                        # terminal-based text editor (better nano)
 brew "ripgrep"                      # searching within files (better grep)
 brew "starship"                     # cross-shell prompt manager
 brew "stow"                         # symlink farm manager
+brew "toml2json"                    # TOML to JSON convertor
 brew "yq"                           # YAML processor (like jq for YAML)
 brew "zoxide"                       # auto-learning navigation (better cd)
 brew "zsh"                          # the Z shell itself
