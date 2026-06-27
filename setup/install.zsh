@@ -58,7 +58,7 @@ for pkg_dir in packages/*/; do
   if [[ -d "$pkg_dir/link" ]]; then
     link_target="$(toml_get "$setup" '.link.target')"
     link_target="${${link_target/#\~/$HOME}:-$HOME}"
-    for src in "$pkg_dir/link/"**/*(.N); do
+    for src in "$pkg_dir/link/"**/*(.DN); do
       rel="${src#$pkg_dir/link/}"
       symlink "$DOTFILES/$src" "$link_target/$rel"
     done
