@@ -53,6 +53,8 @@ for pkg_dir in packages/*/; do
     continue
   fi
 
+  local pkg_linked=0
+
   if [[ -d "$pkg_dir/link" ]]; then
     link_target="$(toml_get "$setup" '.link.target')"
     link_target="${${link_target/#\~/$HOME}:-$HOME}"
@@ -60,7 +62,7 @@ for pkg_dir in packages/*/; do
       rel="${src#$pkg_dir/link/}"
       symlink "$DOTFILES/$src" "$link_target/$rel"
     done
-    print "linked $pkg"
+    pkg_linked=1
   fi
 
   if [[ -d "$pkg_dir/shell" ]]; then
@@ -69,8 +71,10 @@ for pkg_dir in packages/*/; do
     for src in "$pkg_dir/shell/"*.zsh(N); do
       symlink "$DOTFILES/$src" "$source_dir/${src:t}"
     done
-    print "linked shell/$pkg"
+    pkg_linked=1
   fi
+
+  (( pkg_linked )) && print "linked $pkg"
 
   if [[ -d "$pkg_dir/copy" ]]; then
     copy_target="$(toml_get "$setup" '.copy.target')"
@@ -79,12 +83,12 @@ for pkg_dir in packages/*/; do
       mkdir -p "$copy_target"
       for f in "$pkg_dir/copy/"**/*(.N); do
         cp -f "$f" "$copy_target/"
-        print "copied $(basename "$f") → $pkg"
         (( copied++ ))
       done
+      print "copied $pkg"
     fi
   fi
 done
 
 print ""
-print "done: $linked linked, $copied copied, $skipped skipped, $failed failed"
+print "done: $linked symlinks, $copied files copied, $skipped packages skipped, $failed conflicts"
