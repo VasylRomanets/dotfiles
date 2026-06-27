@@ -59,6 +59,7 @@ for pkg_dir in packages/*/; do
     link_target="$(toml_get "$setup" '.link.target')"
     link_target="${${link_target/#\~/$HOME}:-$HOME}"
     for src in "$pkg_dir/link/"**/*(.DN); do
+      [[ "${src:t}" == ".DS_Store" ]] && continue
       rel="${src#$pkg_dir/link/}"
       symlink "$DOTFILES/$src" "$link_target/$rel"
     done
