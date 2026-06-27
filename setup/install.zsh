@@ -3,7 +3,7 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES="$(dirname "$SCRIPT_DIR")"
 
-stowed=0
+linked=0
 skipped=0
 failed=0
 copied=0
@@ -12,6 +12,18 @@ toml_get() {
   local file="$1" query="$2"
   [[ -f "$file" ]] || return
   toml2json "$file" | jq -r "$query // empty"
+}
+
+symlink() {
+  local src="$1" dest="$2"
+  if [[ -e "$dest" && ! -L "$dest" ]]; then
+    print "warning: $dest exists and is not a symlink — skipping"
+    (( failed++ ))
+    return
+  fi
+  mkdir -p "$(dirname "$dest")"
+  ln -sf "$src" "$dest"
+  (( linked++ ))
 }
 
 cd "$DOTFILES"
@@ -40,25 +52,20 @@ for pkg_dir in packages/*/; do
   if [[ -d "$pkg_dir/link" ]]; then
     link_target="$(toml_get "$setup" '.link.target')"
     link_target="${${link_target/#\~/$HOME}:-$HOME}"
-    if stow --dir="$pkg_dir" --target="$link_target" link; then
-      print "stowed $pkg"
-      (( stowed++ ))
-    else
-      print "warning: failed to stow $pkg"
-      (( failed++ ))
-    fi
+    for src in "$pkg_dir/link/"**/*(.N); do
+      rel="${src#$pkg_dir/link/}"
+      symlink "$DOTFILES/$src" "$link_target/$rel"
+    done
+    print "linked $pkg"
   fi
 
   if [[ -d "$pkg_dir/shell" ]]; then
-    shell_target="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/source"
-    mkdir -p "$shell_target"
-    if stow --dir="$pkg_dir" --target="$shell_target" shell; then
-      print "stowed shell/$pkg"
-      (( stowed++ ))
-    else
-      print "warning: failed to stow shell/$pkg"
-      (( failed++ ))
-    fi
+    source_dir="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/source"
+    mkdir -p "$source_dir"
+    for src in "$pkg_dir/shell/"*.zsh(N); do
+      symlink "$DOTFILES/$src" "$source_dir/${src:t}"
+    done
+    print "linked shell/$pkg"
   fi
 
   if [[ -d "$pkg_dir/copy" ]]; then
@@ -66,7 +73,7 @@ for pkg_dir in packages/*/; do
     copy_target="${copy_target/#\~/$HOME}"
     if [[ -n "$copy_target" ]]; then
       mkdir -p "$copy_target"
-      for f in "$pkg_dir/copy/"**/*(.); do
+      for f in "$pkg_dir/copy/"**/*(.N); do
         cp -f "$f" "$copy_target/"
         print "copied $(basename "$f") → $pkg"
         (( copied++ ))
@@ -76,4 +83,4 @@ for pkg_dir in packages/*/; do
 done
 
 print ""
-print "done: $stowed stowed, $copied copied, $skipped skipped, $failed failed"
+print "done: $linked linked, $copied copied, $skipped skipped, $failed failed"

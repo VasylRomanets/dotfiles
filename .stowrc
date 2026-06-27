@@ -1,5 +1,0 @@
-# always create real dirs and only symlink individual files
---no-folding
-
-# Perl regexes, not globs
---ignore=\.DS_Store$
