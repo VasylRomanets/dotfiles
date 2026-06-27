@@ -1,5 +1,0 @@
-[homebrew]
-formulae = ["fzf", "micro", "ripgrep", "zsh", "zsh-autosuggestions", "zsh-history-substring-search", "zsh-syntax-highlighting"]
-
-[link]
-target = "~"

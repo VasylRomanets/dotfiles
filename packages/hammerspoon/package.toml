@@ -1,5 +1,0 @@
-[homebrew]
-formulae = ["hammerspoon"]
-
-[link]
-target = "~"

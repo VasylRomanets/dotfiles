@@ -19,6 +19,6 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # Packages
-for f in "$ZDOTDIR/packages/"*/shell.zsh(N); do
+for f in "$ZDOTDIR/source/"*.zsh(N); do
   source "$f"
 done

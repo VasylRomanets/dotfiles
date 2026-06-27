@@ -1,5 +1,0 @@
-[homebrew]
-formulae = ["bat"]
-
-[link]
-target = "~"

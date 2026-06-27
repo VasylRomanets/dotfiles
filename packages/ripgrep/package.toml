@@ -1,5 +1,0 @@
-[homebrew]
-formulae = ["ripgrep"]
-
-[link]
-target = "~"

@@ -1,5 +1,0 @@
-[homebrew]
-formulae = ["fastfetch"]
-
-[link]
-target = "~"

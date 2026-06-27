@@ -1,5 +1,5 @@
-[mas]
-apps = [1024640650]
+[requires]
+app = "CotEditor"
 
 [copy]
 target = "~/Library/Containers/com.coteditor.CotEditor/Data/Library/Application Support/CotEditor/Themes"

@@ -1,5 +1,0 @@
-[homebrew]
-formulae = ["git"]
-
-[link]
-target = "~"

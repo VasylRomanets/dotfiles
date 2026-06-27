@@ -1,5 +1,0 @@
-[homebrew]
-formulae = ["micro"]
-
-[link]
-target = "~"
