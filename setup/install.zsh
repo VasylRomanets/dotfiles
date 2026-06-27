@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+for cmd in toml2json jq; do
+  command -v "$cmd" &>/dev/null || { print "error: $cmd not found — run bootstrap.zsh first"; exit 1 }
+done
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES="$(dirname "$SCRIPT_DIR")"
 
