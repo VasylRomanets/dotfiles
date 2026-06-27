@@ -13,36 +13,39 @@
 
 ```
 dotfiles/
-├── .stowrc              # GNU Stow config
-├── packages/            # per-tool packages
-│   ├── <pkg>/
-│   │   ├── link/        # files to symlink to ~ (optional)
-│   │   ├── copy/        # files to copy to target (optional)
-│   │   ├── shell/       # shell integration sourced by .zshrc (optional)
-│   │   └── package.toml # brew deps, link target, copy target, dependencies
-│   ├── bat/
-│   ├── bin/
-│   ├── claude/
-│   ├── coteditor/
-│   ├── cowsay/
-│   ├── eza/
-│   ├── fastfetch/
-│   ├── fzf/
-│   ├── ghostty/
-│   ├── git/
-│   ├── hammerspoon/
-│   ├── micro/
-│   ├── ripgrep/
-│   ├── ssh/
-│   ├── starship/
-│   ├── trash/
-│   └── zsh/
+├── packages/
+│   └── <pkg>/
+│       ├── link/        # files to symlink (mirrored structure, optional)
+│       ├── shell/       # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
+│       ├── copy/        # files to copy (optional)
+│       └── setup.toml   # install conditions and copy/link target (optional)
 └── setup/
     ├── Brewfile         # all Homebrew packages
     ├── bootstrap.zsh    # full machine setup (run once on a new Mac)
-    ├── install.zsh      # stows packages and shell/ files, copies assets
+    ├── install.zsh      # symlinks packages, sources shell files, copies assets
     └── macos.zsh        # sensible macOS defaults
 ```
+
+## setup.toml
+
+Each package may optionally include a `setup.toml`. Packages without one are always processed, symlinking `link/` to `~` by default.
+
+```toml
+# Skip this package if the CLI tool is not installed
+[requires]
+command = "bat"      # checked via command -v
+app = "Ghostty"      # checked via /Applications/Ghostty.app
+
+# Override symlink destination (defaults to ~)
+[link]
+target = "~"
+
+# Copy files from copy/ to this directory
+[copy]
+target = "~/Library/..."
+```
+
+`[requires]` accepts either `command` or `app`. `[link]` is rarely needed since `~` is the default. `[copy]` is only used by packages that ship assets rather than symlinks (e.g. `coteditor`).
 
 ## New Machine Setup
 
@@ -65,7 +68,7 @@ This will:
 - Install Xcode Command Line Tools
 - Install Homebrew
 - Install all packages from `Brewfile`
-- Stow and copy all packages via `install.zsh`
+- Symlink and copy all packages via `install.zsh`
 
 3. Apply macOS defaults (optional):
 ```zsh
