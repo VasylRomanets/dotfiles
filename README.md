@@ -31,7 +31,7 @@ dotfiles/
 Each package may optionally include a `setup.toml`. Packages without one are always processed, symlinking `link/` to `~` by default.
 
 ```toml
-# Skip this package if the CLI tool is not installed
+# Skip this package if the CLI tool/GUI app is not installed
 [requires]
 command = "bat"      # checked via command -v
 app = "Ghostty"      # checked via /Applications/Ghostty.app
