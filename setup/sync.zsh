@@ -40,7 +40,7 @@ check_deps() {
 
 on_start() {
   check_deps
-  info "Creating symlinks and copying files..."
+  echo "Creating symlinks and copying files..."
 }
 
 toml_get() {
@@ -125,8 +125,7 @@ sync_packages() {
 }
 
 on_finish() {
-  echo
-  success "Done: $linked symlinks, $copied files copied, $skipped packages skipped, $failed conflicts."
+  echo "Done: $linked symlinks, $copied files copied, $skipped packages skipped, $failed conflicts."
 }
 
 main() {

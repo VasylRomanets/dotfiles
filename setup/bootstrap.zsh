@@ -39,43 +39,63 @@ on_error() {
   exit 1
 }
 
-on_start() {
-  echo "${RED}     _       _    __ _ _         ${RESET}"
-  echo "${YELLOW}  __| | ___ | |_ / _(_) | ___  ___${RESET}"
-  echo "${GREEN} / _\` |/ _ \\| __| |_| | |/ _ \\/ __|${RESET}"
-  echo "${CYAN}| (_| | (_) | |_|  _| | |  __/\\__ \\${RESET}"
-  echo "${YELLOW} \\__,_|\\___/ \\__|_| |_|_|\\___||___/${RESET}"
+print_nyan() {
+  echo -n "${RED}-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+  echo "${RESET}${BOLD},------,${RESET}"
+  echo -n "${YELLOW}-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+  echo "${RESET}${BOLD}|   /\_/\\${RESET}"
+  echo -n "${GREEN}-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+  echo "${RESET}${BOLD}~|__( ^ .^)${RESET}"
+  echo -n "${CYAN}-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+  echo "${RESET}${BOLD}\"\"  \"\"${RESET}"
+}
+
+print_logo() {
+  echo "${MAGENTA}     _       _    __ _ _         ${RESET}"
+  echo "${MAGENTA}  __| | ___ | |_ / _(_) | ___  ___${RESET}"
+  echo "${MAGENTA} / _\` |/ _ \\| __| |_| | |/ _ \\/ __|${RESET}"
+  echo "${MAGENTA}| (_| | (_) | |_|  _| | |  __/\\__ \\${RESET}"
+  echo "${MAGENTA} \\__,_|\\___/ \\__|_| |_|_|\\___||___/${RESET}"
   echo
-  echo "${GREEN}         by @vasylromanets${RESET}"
+  echo "${CYAN}         by @vasylromanets${RESET}"
+}
+
+on_start() {
+  print_logo
   echo
   echo "This script will set up your Mac from scratch."
   echo
-  read -q "?Proceed? [y/N] " || { echo; echo "As you wish! Have a great day!"; echo; exit }
+  read -q "?Proceed? [y/N] " || { echo; echo; info "As you wish! Have a great day!"; echo; print_nyan; exit }
+  echo
   echo
 }
 
 install_xcode_clt() {
-  info "Checking Xcode Command Line Tools..."
+  echo "Checking Xcode Command Line Tools..."
   if ! xcode-select -p &>/dev/null; then
-    info "Opening installer — click Install in the dialog and wait for it to finish."
+    echo "Opening installer — click Install in the dialog and wait for it to finish."
     xcode-select --install
     until xcode-select -p &>/dev/null; do
       sleep 5
     done
     success "Xcode Command Line Tools installed."
+    echo
   else
     success "Xcode Command Line Tools already installed."
+    echo
   fi
 }
 
 install_homebrew() {
-  info "Checking Homebrew..."
+  echo "Checking Homebrew..."
   if ! _exists brew; then
-    info "Installing Homebrew..."
+    echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     success "Homebrew installed."
+    echo
   else
     success "Homebrew already installed."
+    echo
   fi
 
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -90,7 +110,7 @@ install_packages() {
   echo
   echo "Installing Homebrew packages..."
   brew bundle --file="$SETUP_PATH/Brewfile"
-  success "Packages installed."
+  echo
 }
 
 sync_dotfiles() {
@@ -99,20 +119,11 @@ sync_dotfiles() {
 
 on_finish() {
   echo
-  success "Bootstrap complete!"
-  success "Happy Coding!"
+  info "Bootstrap complete!"
+  info "Don't forget to restart your terminal!"
+  info "Happy coding!"
   echo
-  echo -n "${RED}-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
-  echo "${RESET}${BOLD},------,${RESET}"
-  echo -n "${YELLOW}-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
-  echo "${RESET}${BOLD}|   /\_/\\${RESET}"
-  echo -n "${GREEN}-_-_-_-_-_-_-_-_-_-_-_-_-_-"
-  echo "${RESET}${BOLD}~|__( ^ .^)${RESET}"
-  echo -n "${CYAN}-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
-  echo "${RESET}${BOLD}\"\"  \"\"${RESET}"
-  echo
-  info "P.S.: Don't forget to restart your terminal!"
-  echo
+  print_nyan
 }
 
 main() {
