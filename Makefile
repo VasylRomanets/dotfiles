@@ -8,3 +8,5 @@ sync:
 
 macos:
 	./setup/macos.zsh
+
+.PHONY: bootstrap sync macos
