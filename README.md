@@ -106,4 +106,6 @@ After adding new files to the repo, re-run:
 
 ## Inspiration
 
-Many thanks to the dotfiles community for sharing their insights and configurations over the years.
+Many thanks to the [dotfiles community](https://github.com/topics/dotfiles) for sharing their insights and configurations over the years.
+
+`setup/bootstrap.zsh` is based on [Denys Dovhan's dotfiles](https://github.com/denysdovhan/dotfiles).
