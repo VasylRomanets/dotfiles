@@ -1,3 +1,5 @@
+default: bootstrap
+
 bootstrap:
 	./setup/bootstrap.zsh
 
