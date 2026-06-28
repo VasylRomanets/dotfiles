@@ -22,7 +22,7 @@ dotfiles/
 └── setup/
     ├── Brewfile         # all Homebrew packages
     ├── bootstrap.zsh    # full machine setup (run once on a new Mac)
-    ├── install.zsh      # symlinks packages, sources shell files, copies assets
+    ├── sync.zsh         # symlinks packages, sources shell files, copies assets
     └── macos.zsh        # sensible macOS defaults
 ```
 
@@ -68,7 +68,7 @@ This will:
 - Install Xcode Command Line Tools
 - Install Homebrew
 - Install all packages from `Brewfile`
-- Symlink and copy all packages via `install.zsh`
+- Symlink and copy all packages via `sync.zsh`
 
 3. Apply macOS defaults (optional):
 ```zsh
@@ -96,7 +96,7 @@ Host github.com
 
 After adding new files to the repo, re-run:
 ```zsh
-~/.dotfiles/setup/install.zsh
+~/.dotfiles/setup/sync.zsh
 ```
 
 ## Appearance

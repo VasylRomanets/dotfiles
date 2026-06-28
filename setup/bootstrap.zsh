@@ -89,7 +89,7 @@ install_packages() {
 
 sync_dotfiles() {
   info "Creating symlinks and copying files..."
-  "$SETUP_PATH/install.zsh"
+  "$SETUP_PATH/sync.zsh"
 }
 
 on_finish() {
