@@ -82,7 +82,13 @@ install_homebrew() {
 }
 
 install_packages() {
-  info "Installing Homebrew packages..."
+  echo "Make sure you reviewed the Brewfile and commented out anything you don't need:"
+  echo "  $SETUP_PATH/Brewfile"
+  echo
+  read -q "?Proceed? [y/N] " || { echo; echo "Skipping package installation."; echo; return }
+  echo
+  echo
+  echo "Installing Homebrew packages..."
   brew bundle --file="$SETUP_PATH/Brewfile"
   success "Packages installed."
 }
