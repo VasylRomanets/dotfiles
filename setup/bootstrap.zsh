@@ -164,8 +164,23 @@ sync_dotfiles() {
   echo
 }
 
-on_finish() {
+set_macos_defaults() {
+  warning "Make sure you reviewed the macos.zsh and commented out anything you don't need:"
+  warning "  $SETUP_PATH/macos.zsh"
   echo
+  read -q "?Set macOS defaults? [y/N] " || {
+    echo
+    echo "Skipping macOS defaults."
+    echo
+    return
+  }
+  echo
+  echo
+  "$SETUP_PATH/macos.zsh"
+  echo
+}
+
+on_finish() {
   info "Bootstrap complete!"
   info "Don't forget to restart your terminal!"
   info "Happy coding!"
@@ -179,6 +194,7 @@ main() {
   install_homebrew
   install_packages
   sync_dotfiles
+  set_macos_defaults
   on_finish
 }
 
