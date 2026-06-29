@@ -61,6 +61,10 @@ git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
 # or: make bootstrap
 ```
 
+<p align="center">
+  <img src=".github/assets/bootstrap.webp" width="100%" alt="Bootstrap process">
+</p>
+
 This will:
 - Install Xcode Command Line Tools
 - Install Homebrew
