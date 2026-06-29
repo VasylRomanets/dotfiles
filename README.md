@@ -62,7 +62,7 @@ git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
 ```
 
 <p align="center">
-  <img src=".github/assets/bootstrap.webp" width="100%" alt="Bootstrap process">
+  <img src=".github/assets/bootstrap.webp" width="60%" alt="Bootstrap process">
 </p>
 
 This will:
