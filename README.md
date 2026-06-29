@@ -1,15 +1,12 @@
 # dotfiles
 
-> My personal dotfiles for macOS — version-controlled, XDG-compliant, and Everforest-themed.
+> My personal macOS dotfiles crafted with love - version-controlled, Everforest-themed, XDG-compliant where possible.
 
 <p align="center">
   <img src=".github/assets/preview.png" width="100%" alt="Everforest Terminal Workspace">
 </p>
 
 ## Structure
-
-> [!NOTE]
-> **Real talk about XDG compliance:** This setup is as XDG-compliant as possible. However, a few stubborn tools (e.g. `SSH`, `.zshenv`) hardcode their paths and refuse to leave the `$HOME` folder.
 
 ```
 dotfiles/
@@ -20,9 +17,10 @@ dotfiles/
 │       ├── copy/        # files to copy (optional)
 │       └── setup.toml   # install conditions and copy/link target (optional)
 └── setup/
-    ├── Brewfile         # all Homebrew packages
-    ├── bootstrap.zsh    # full machine setup (run once on a new Mac)
-    ├── sync.zsh         # symlinks packages, sources shell files, copies assets
+    ├── _lib.zsh         # shared utilities (colors, logging)
+    ├── Brewfile         # Homebrew formulae, casks, mas apps and vscode extensions
+    ├── bootstrap.zsh    # full machine setup
+    ├── sync.zsh         # symlinks dotfiles and copies assets
     └── macos.zsh        # sensible macOS defaults
 ```
 
@@ -45,14 +43,12 @@ target = "~"
 target = "~/Library/..."
 ```
 
-`[requires]` accepts either `command` or `app`. `[link]` is rarely needed since `~` is the default. `[copy]` is only used by packages that ship assets rather than symlinks (e.g. `coteditor`).
+`[requires]` accepts `command`, `app`, or both. `[link]` is rarely needed since `~` is the default. `[copy]` is only used by packages that can't be symlinked because of macOS sandboxing (e.g. `coteditor`).
 
 ## New Machine Setup
 
 > [!WARNING]
-> Works on my machine! But remember, these configs are highly opinionated and hardcoded for macOS. Give the installation scripts a quick review before running them so you don't accidentally overwrite your own favorite settings.
-
-### Prerequisites
+> Works on my machine! Review the installation scripts and dotfiles before adopting.
 
 1. Clone the repo:
 ```zsh
@@ -62,41 +58,25 @@ git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
 2. Run the bootstrap script:
 ```zsh
 ~/.dotfiles/setup/bootstrap.zsh
+# or: make bootstrap
 ```
 
 This will:
 - Install Xcode Command Line Tools
 - Install Homebrew
-- Install all packages from `Brewfile`
-- Symlink and copy all packages via `sync.zsh`
+- Install formulae, casks, App Store apps and VS Code extensions from Brewfile
+- Symlink dotfiles and copy assets
+- Configure Git and SSH
+- Apply macOS defaults
 
-3. Apply macOS defaults (optional):
-```zsh
-~/.dotfiles/setup/macos.zsh
-```
-
-### Manual Steps
-
-These can't be automated and must be done manually on each machine:
-
-**Git identity** — create `~/.config/git/config.local`:
-```ini
-[user]
-    name = Your Name
-    email = your.name@email.com
-```
-
-**SSH** — create `~/.ssh/config.local`:
-```
-Host github.com
-  IdentityFile ~/.ssh/your_key
-```
+You'll be prompted before each step.
 
 ## Updating
 
-After adding new files to the repo, re-run:
+After adding or modifying dotfiles, re-run `sync.zsh` to apply them:
 ```zsh
 ~/.dotfiles/setup/sync.zsh
+# or: make sync
 ```
 
 ## Appearance
@@ -104,8 +84,10 @@ After adding new files to the repo, re-run:
 * **Theme:** Most tools are themed with [Everforest Dark Hard](https://github.com/sainnhe/everforest) for a warm, low-fatigue aesthetic.
 * **Font:** The terminal and editors use [Meslo LG Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo).
 
-## Inspiration
+## Credits
 
 Many thanks to the [dotfiles community](https://github.com/topics/dotfiles) for sharing their insights and configurations over the years.
 
-`setup/bootstrap.zsh` is based on [Denys Dovhan's dotfiles](https://github.com/denysdovhan/dotfiles).
+`setup/bootstrap.zsh` is based on [Denys Dovhan's bootstrap.sh](https://github.com/denysdovhan/dotfiles/blob/master/scripts/bootstrap.sh).
+
+`setup/macos.zsh` is inspired by [Mathias Bynens' .macos](https://github.com/mathiasbynens/dotfiles/blob/main/.macos).
