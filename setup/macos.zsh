@@ -41,6 +41,9 @@ echo "Applying macOS defaults..."
 # disable crash reporter dialogs
 defaults write com.apple.CrashReporter DialogType -string "none"
 
+# reduce motion (disables app open/close zoom animations)
+defaults write com.apple.universalaccess reduceMotion -bool true
+
 ###############################################################################
 # Keyboard                                                                    #
 ###############################################################################
@@ -119,6 +122,9 @@ defaults write com.apple.dock minimize-to-application -bool true
 # don't automatically rearrange Spaces based on most recent use
 # defaults write com.apple.dock mru-spaces -bool false
 
+# don't show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
 # automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
@@ -160,6 +166,10 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
 # use plain text mode for new documents
 defaults write com.apple.TextEdit RichText -int 0
+
+# open and save files as UTF-8
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
 ###############################################################################
 # Touch ID                                                                    #
