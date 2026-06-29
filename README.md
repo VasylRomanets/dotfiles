@@ -3,7 +3,7 @@
 > My personal macOS dotfiles crafted with love - version-controlled, Everforest-themed, XDG-compliant where possible.
 
 <p align="center">
-  <img src=".github/assets/preview.png" width="100%" alt="Everforest Terminal Workspace">
+  <img src=".github/assets/rice-terminal.png" width="100%" alt="Riced Terminal Workspace">
 </p>
 
 ## Structure
