@@ -88,7 +88,9 @@ on_start() {
 }
 
 install_xcode_clt() {
-  read -q "?Install Xcode Command Line Tools? [y/N] " || {
+  info "Step 1 - Install Xcode Command Line Tools"
+  echo
+  read -q "?Proceed? [y/N] " || {
     echo
     echo "Skipping Xcode Command Line Tools installation."
     echo
@@ -112,7 +114,9 @@ install_xcode_clt() {
 }
 
 install_homebrew() {
-  read -q "?Install Homebrew? [y/N] " || {
+  info "Step 2 - Install Homebrew"
+  echo
+  read -q "?Proceed? [y/N] " || {
     echo
     echo "Skipping Homebrew installation."
     echo
@@ -135,10 +139,12 @@ install_homebrew() {
 }
 
 install_packages() {
-  warning "Make sure you reviewed the Brewfile and commented out anything you don't need:"
-  warning "  $SETUP_PATH/Brewfile"
+  info "Step 3 - Install Homebrew packages"
   echo
-  read -q "?Install Homebrew packages? [y/N] " || {
+  warning "Make sure you reviewed the Brewfile and commented out anything you don't need:"
+  echo "  $SETUP_PATH/Brewfile"
+  echo
+  read -q "?Proceed? [y/N] " || {
     echo
     echo "Skipping Homebrew packages installation."
     echo
@@ -148,13 +154,16 @@ install_packages() {
   echo
   echo "Installing Homebrew packages..."
   brew bundle --file="$SETUP_PATH/Brewfile"
+  success "Packages installed."
   echo
 }
 
 sync_dotfiles() {
-  read -q "?Sync dotfiles? [y/N] " || {
+  info "Step 4 - Symlink dotfiles and copy assets"
+  echo
+  read -q "?Proceed? [y/N] " || {
     echo
-    echo "Skipping dotfiles syncing."
+    echo "Skipping dotfiles and assets."
     echo
     return
   }
@@ -165,10 +174,12 @@ sync_dotfiles() {
 }
 
 set_macos_defaults() {
-  warning "Make sure you reviewed the macos.zsh and commented out anything you don't need:"
-  warning "  $SETUP_PATH/macos.zsh"
+  info "Step 5 - Set macOS defaults"
   echo
-  read -q "?Set macOS defaults? [y/N] " || {
+  warning "Make sure you reviewed the macos.zsh and commented out anything you don't need:"
+  echo "  $SETUP_PATH/macos.zsh"
+  echo
+  read -q "?Proceed? [y/N] " || {
     echo
     echo "Skipping macOS defaults."
     echo
