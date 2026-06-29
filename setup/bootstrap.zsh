@@ -6,36 +6,14 @@
 set -e
 trap on_error ERR
 
-RESET=$'\033[0m'
-BOLD=$'\033[1m'
-CYAN=$'\033[0;96m'
-MAGENTA=$'\033[0;35m'
-RED=$'\033[0;91m'
-YELLOW=$'\033[0;93m'
-GREEN=$'\033[0;92m'
-
-SETUP_PATH="$(dirname "$(realpath "$0")")"
+SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 TMP_BREWFILE=""
 TMP_MAS_BREWFILE=""
 
+source "$SETUP_PATH/_lib.zsh"
+
 _exists() {
   command -v "$1" &>/dev/null
-}
-
-info() {
-  echo "${MAGENTA}${*}${RESET}"
-}
-
-warning() {
-  echo "${YELLOW}${*}${RESET}"
-}
-
-error() {
-  echo "${RED}${*}${RESET}"
-}
-
-success() {
-  echo "${GREEN}${*}${RESET}"
 }
 
 cleanup() {
@@ -47,7 +25,6 @@ on_error() {
   cleanup
   echo
   error "Bootstrap failed — check the output above."
-  echo
   exit 1
 }
 
@@ -80,17 +57,18 @@ on_start() {
   echo "  · Install Homebrew"
   echo "  · Install formulae, casks and App Store apps from Brewfile"
   echo "  · Symlink dotfiles and copy assets"
-  echo "  · Set macOS defaults"
+  echo "  · Apply macOS defaults"
   echo
   echo "You'll be prompted before each step."
   echo
   read -q "?Proceed? [y/N] " || {
     echo
+    echo "Skipping bootstrap."
     echo
-    info "As you wish! Have a great day!"
+    info "No rush — come back anytime!"
     echo
     print_nyan
-    exit
+    exit 0
   }
   echo
   echo
@@ -144,7 +122,13 @@ install_homebrew() {
     echo
   fi
 
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  else
+    error "Homebrew not found after installation — something went wrong."
+  fi
 }
 
 install_packages() {
@@ -249,7 +233,7 @@ sync_dotfiles() {
 }
 
 set_macos_defaults() {
-  info "Step 6 - Set macOS defaults"
+  info "Step 6 - Apply macOS defaults"
   echo
   warning "Review macos.zsh and comment out anything you don't need:"
   echo "  $SETUP_PATH/macos.zsh"
@@ -268,9 +252,8 @@ set_macos_defaults() {
 
 on_finish() {
   cleanup
-  info "Bootstrap complete!"
-  info "Don't forget to restart your terminal!"
-  info "Happy coding!"
+  info "Bootstrap complete — happy coding!"
+  info "P.S.: Don't forget to restart your terminal."
   echo
   print_nyan
 }

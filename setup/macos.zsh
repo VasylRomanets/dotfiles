@@ -1,44 +1,72 @@
 #!/bin/zsh
 
-# sensible macOS defaults for a developer setup
-# inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+# Sensible macOS defaults for a developer setup.
+# Inspired by https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 #
-# note: some settings require a logout/restart to take effect
-# note: run this script on a fresh macOS install for best results
+# Note: some settings require a logout/restart to take effect.
 
-echo "applying macOS defaults..."
+SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
+source "$SETUP_PATH/_lib.zsh"
+
+echo "Applying macOS defaults..."
 
 ###############################################################################
 # General                                                                     #
 ###############################################################################
 
 # disable automatic capitalization (annoying when typing code)
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+# defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
 # disable smart dashes (annoying when typing code)
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+# defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # disable automatic period substitution
-defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+# defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
 # disable smart quotes (annoying when typing code)
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+# defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # enable full keyboard access for all controls
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+# defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# expand save panel by default
+# defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+# expand print panel by default
+# defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+
+# disable crash reporter dialogs
+defaults write com.apple.CrashReporter DialogType -string "none"
+
+###############################################################################
+# Keyboard                                                                    #
+###############################################################################
+
+# disable press-and-hold (enables key repeat in all apps)
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# set a fast key repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+
+# shorten the delay before key repeat kicks in
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 ###############################################################################
 # Trackpad & Mouse                                                             #
 ###############################################################################
 
 # enable tap to click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+# defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# enable three-finger drag
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+# defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
 ###############################################################################
 # Finder                                                                      #
@@ -51,19 +79,19 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # show status bar
-defaults write com.apple.finder ShowStatusBar -bool true
+# defaults write com.apple.finder ShowStatusBar -bool true
 
 # show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
 # display full POSIX path as Finder window title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+# defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 # search the current folder by default
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+# defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 # disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
@@ -75,18 +103,21 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # use list view in all Finder windows by default
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
+# remove items from Trash after 30 days
+# defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
 
-# set the icon size to 48 pixels
-defaults write com.apple.dock tilesize -int 48
+# set the icon size to 56 pixels
+defaults write com.apple.dock tilesize -int 56
 
 # minimize windows into their application's icon
 defaults write com.apple.dock minimize-to-application -bool true
 
 # don't automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
+# defaults write com.apple.dock mru-spaces -bool false
 
 # automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
@@ -101,27 +132,44 @@ defaults write com.apple.dock autohide-time-modifier -float 0.5
 # Screenshots                                                                 #
 ###############################################################################
 
-# save screenshots to Downloads
-defaults write com.apple.screencapture location -string "${HOME}/Downloads"
+# save screenshots to ~/Pictures/Screenshots
+defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
 
 # save screenshots in PNG format
-defaults write com.apple.screencapture type -string "png"
+# defaults write com.apple.screencapture type -string "png"
 
 # disable shadow in screenshots
-defaults write com.apple.screencapture disable-shadow -bool true
+# defaults write com.apple.screencapture disable-shadow -bool true
 
 ###############################################################################
 # Software Updates                                                            #
 ###############################################################################
 
 # check for updates daily
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+# defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # download updates in the background
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
 # install security updates automatically
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+###############################################################################
+# TextEdit                                                                    #
+###############################################################################
+
+# use plain text mode for new documents
+defaults write com.apple.TextEdit RichText -int 0
+
+###############################################################################
+# Touch ID                                                                    #
+###############################################################################
+
+# enable Touch ID for sudo (persists across macOS updates via sudo_local)
+if [[ ! -f /etc/pam.d/sudo_local ]]; then
+  sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
+  sudo sed -i '' 's/#auth/auth/' /etc/pam.d/sudo_local
+fi
 
 ###############################################################################
 # Kill affected apps                                                          #
@@ -131,4 +179,4 @@ for app in "Finder" "Dock" "SystemUIServer"; do
   killall "${app}" &>/dev/null
 done
 
-echo "done — some settings may require a logout or restart to take effect"
+success "Done — some settings may require a logout or restart to take effect."

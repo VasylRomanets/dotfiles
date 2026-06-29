@@ -2,39 +2,22 @@
 
 # Syncs dotfiles — symlinks packages, sources shell files, copies assets.
 
-RESET=$'\033[0m'
-MAGENTA=$'\033[0;35m'
-RED=$'\033[0;91m'
-YELLOW=$'\033[0;93m'
-GREEN=$'\033[0;92m'
+SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
+DOTFILES="$(dirname "$SETUP_PATH")"
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-DOTFILES="$(dirname "$SCRIPT_DIR")"
+source "$SETUP_PATH/_lib.zsh"
 
 linked=0
 skipped=0
 failed=0
 copied=0
 
-info() {
-  echo "${MAGENTA}${*}${RESET}"
-}
-
-warning() {
-  echo "${YELLOW}${*}${RESET}"
-}
-
-error() {
-  echo "${RED}${*}${RESET}"
-}
-
-success() {
-  echo "${GREEN}${*}${RESET}"
-}
-
 check_deps() {
   for cmd in toml2json jq; do
-    command -v "$cmd" &>/dev/null || { error "$cmd not found — run bootstrap.zsh first!"; exit 1 }
+    command -v "$cmd" &>/dev/null || {
+      error "$cmd not found — run bootstrap.zsh first!"
+      exit 1
+    }
   done
 }
 
@@ -53,12 +36,16 @@ symlink() {
   local src="$1" dest="$2"
   if [[ -e "$dest" && ! -L "$dest" ]]; then
     warning "$dest exists and is not a symlink — skipping"
-    (( failed++ ))
+    (( ++failed ))
     return
   fi
   mkdir -p "$(dirname "$dest")"
-  ln -sf "$src" "$dest"
-  (( linked++ ))
+  if ln -sf "$src" "$dest"; then
+    (( ++linked ))
+  else
+    warning "Failed to symlink $dest"
+    (( ++failed ))
+  fi
 }
 
 sync_packages() {
@@ -73,7 +60,7 @@ sync_packages() {
 
     if [[ -n "$req_command" ]] && ! command -v "$req_command" &>/dev/null; then
       warning "Skipping $pkg — $req_command not found"
-      (( skipped++ ))
+      (( ++skipped ))
       continue
     fi
 
@@ -81,7 +68,7 @@ sync_packages() {
        [[ ! -d "/Applications/$req_app.app" ]] && \
        [[ ! -d "$HOME/Applications/$req_app.app" ]]; then
       warning "Skipping $pkg — $req_app not installed"
-      (( skipped++ ))
+      (( ++skipped ))
       continue
     fi
 
@@ -107,7 +94,9 @@ sync_packages() {
       pkg_linked=1
     fi
 
-    (( pkg_linked )) && success "Linked $pkg"
+    if (( pkg_linked )); then
+      success "Linked $pkg"
+    fi
 
     if [[ -d "$pkg_dir/copy" ]]; then
       copy_target="$(toml_get "$setup" '.copy.target')"
@@ -115,8 +104,9 @@ sync_packages() {
       if [[ -n "$copy_target" ]]; then
         mkdir -p "$copy_target"
         for f in "$pkg_dir/copy/"**/*(.N); do
+          [[ "${f:t}" == ".DS_Store" ]] && continue
           cp -f "$f" "$copy_target/"
-          (( copied++ ))
+          (( ++copied ))
         done
         success "Copied $pkg"
       fi
@@ -125,7 +115,8 @@ sync_packages() {
 }
 
 on_finish() {
-  echo "Done: $linked symlinks, $copied files copied, $skipped packages skipped, $failed conflicts."
+  echo
+  success "Done — $linked symlinks, $copied files copied, $skipped packages skipped, $failed conflicts."
 }
 
 main() {
