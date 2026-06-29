@@ -57,6 +57,7 @@ on_start() {
   echo "  · Install Homebrew"
   echo "  · Install formulae, casks and App Store apps from Brewfile"
   echo "  · Symlink dotfiles and copy assets"
+  echo "  · Configure Git and SSH"
   echo "  · Apply macOS defaults"
   echo
   echo "You'll be prompted before each step."
@@ -131,7 +132,7 @@ install_homebrew() {
   fi
 }
 
-install_packages() {
+install_homebrew_packages() {
   info "Step 3 - Install Homebrew packages"
   echo
 
@@ -232,8 +233,94 @@ sync_dotfiles() {
   echo
 }
 
-set_macos_defaults() {
-  info "Step 6 - Apply macOS defaults"
+configure_git() {
+  info "Step 6 - Configure Git"
+  echo
+  read -q "?Proceed? [y/N] " || {
+    echo
+    echo "Skipping Git config."
+    echo
+    return
+  }
+  echo
+  echo
+
+  local git_config="$HOME/.config/git/config.local"
+
+  if [[ -f "$git_config" ]]; then
+    read -q "?$git_config already exists — overwrite? [y/N] " || {
+      echo
+      echo "Skipping Git config."
+      echo
+      return
+    }
+    echo
+    echo
+    rm -f "$git_config"
+  fi
+
+  echo "Git identity — used for commits."
+  read "git_name?  Full name:  "
+  read "git_email?  Email:      "
+  echo
+
+  if [[ -n "$git_name" && -n "$git_email" ]]; then
+    mkdir -p "$(dirname "$git_config")"
+    cat > "$git_config" <<EOF
+[user]
+    name = $git_name
+    email = $git_email
+EOF
+    success "Created $git_config"
+    echo
+  else
+    echo "No input — skipping Git config."
+    echo
+  fi
+}
+
+configure_ssh() {
+  info "Step 7 - Configure SSH"
+  echo
+  read -q "?Proceed? [y/N] " || {
+    echo
+    echo "Skipping SSH config."
+    echo
+    return
+  }
+  echo
+  echo
+
+  local ssh_config="$HOME/.ssh/config.local"
+
+  if [[ -f "$ssh_config" ]]; then
+    read -q "?$ssh_config already exists — overwrite? [y/N] " || {
+      echo
+      echo "Skipping SSH config."
+      echo
+      return
+    }
+    echo
+    echo
+    rm -f "$ssh_config"
+  fi
+
+  echo "SSH config — used for GitHub and other hosts."
+  read "ssh_key?  Key path [~/.ssh/id_ed25519]:  "
+  ssh_key="${ssh_key:-~/.ssh/id_ed25519}"
+  echo
+
+  mkdir -p "$HOME/.ssh"
+  cat > "$ssh_config" <<EOF
+Host github.com
+  IdentityFile $ssh_key
+EOF
+  success "Created $ssh_config"
+  echo
+}
+
+apply_macos_defaults() {
+  info "Step 8 - Apply macOS defaults"
   echo
   warning "Review macos.zsh and comment out anything you don't need:"
   echo "  $SETUP_PATH/macos.zsh"
@@ -262,10 +349,12 @@ main() {
   on_start
   install_xcode_clt
   install_homebrew
-  install_packages
+  install_homebrew_packages
   install_mas_apps
   sync_dotfiles
-  set_macos_defaults
+  configure_git
+  configure_ssh
+  apply_macos_defaults
   on_finish
 }
 
