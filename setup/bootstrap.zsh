@@ -24,6 +24,10 @@ info() {
   echo "${MAGENTA}${*}${RESET}"
 }
 
+warning() {
+  echo "${YELLOW}${*}${RESET}"
+}
+
 error() {
   echo "${RED}${*}${RESET}"
 }
@@ -63,14 +67,35 @@ print_logo() {
 on_start() {
   print_logo
   echo
-  echo "This script will set up your Mac from scratch."
+  echo "This script will set up your Mac from scratch:"
+  echo "  · Install Xcode Command Line Tools"
+  echo "  · Install Homebrew and all packages from Brewfile"
+  echo "  · Symlink dotfiles and copy assets"
+  echo "  · Set macOS defaults"
   echo
-  read -q "?Proceed? [y/N] " || { echo; echo; info "As you wish! Have a great day!"; echo; print_nyan; exit }
+  echo "You'll be prompted before each step."
+  echo
+  read -q "?Proceed? [y/N] " || {
+    echo
+    echo
+    info "As you wish! Have a great day!"
+    echo
+    print_nyan
+    exit
+  }
   echo
   echo
 }
 
 install_xcode_clt() {
+  read -q "?Install Xcode Command Line Tools? [y/N] " || {
+    echo
+    echo "Skipping Xcode Command Line Tools installation."
+    echo
+    return
+  }
+  echo
+  echo
   echo "Checking Xcode Command Line Tools..."
   if ! xcode-select -p &>/dev/null; then
     echo "Opening installer — click Install in the dialog and wait for it to finish."
@@ -87,6 +112,14 @@ install_xcode_clt() {
 }
 
 install_homebrew() {
+  read -q "?Install Homebrew? [y/N] " || {
+    echo
+    echo "Skipping Homebrew installation."
+    echo
+    return
+  }
+  echo
+  echo
   echo "Checking Homebrew..."
   if ! _exists brew; then
     echo "Installing Homebrew..."
@@ -102,10 +135,15 @@ install_homebrew() {
 }
 
 install_packages() {
-  echo "Make sure you reviewed the Brewfile and commented out anything you don't need:"
-  echo "  $SETUP_PATH/Brewfile"
+  warning "Make sure you reviewed the Brewfile and commented out anything you don't need:"
+  warning "  $SETUP_PATH/Brewfile"
   echo
-  read -q "?Proceed? [y/N] " || { echo; echo "Skipping package installation."; echo; return }
+  read -q "?Install Homebrew packages? [y/N] " || {
+    echo
+    echo "Skipping Homebrew packages installation."
+    echo
+    return
+  }
   echo
   echo
   echo "Installing Homebrew packages..."
@@ -114,7 +152,16 @@ install_packages() {
 }
 
 sync_dotfiles() {
+  read -q "?Sync dotfiles? [y/N] " || {
+    echo
+    echo "Skipping dotfiles syncing."
+    echo
+    return
+  }
+  echo
+  echo
   "$SETUP_PATH/sync.zsh"
+  echo
 }
 
 on_finish() {
