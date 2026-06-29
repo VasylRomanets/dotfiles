@@ -15,6 +15,8 @@ YELLOW=$'\033[0;93m'
 GREEN=$'\033[0;92m'
 
 SETUP_PATH="$(dirname "$(realpath "$0")")"
+TMP_BREWFILE=""
+TMP_MAS_BREWFILE=""
 
 _exists() {
   command -v "$1" &>/dev/null
@@ -36,7 +38,13 @@ success() {
   echo "${GREEN}${*}${RESET}"
 }
 
+cleanup() {
+  [[ -n "$TMP_BREWFILE" ]] && rm -f "$TMP_BREWFILE" || true
+  [[ -n "$TMP_MAS_BREWFILE" ]] && rm -f "$TMP_MAS_BREWFILE" || true
+}
+
 on_error() {
+  cleanup
   echo
   error "Bootstrap failed — check the output above."
   echo
@@ -69,7 +77,8 @@ on_start() {
   echo
   echo "This script will set up your Mac from scratch:"
   echo "  · Install Xcode Command Line Tools"
-  echo "  · Install Homebrew and all packages from Brewfile"
+  echo "  · Install Homebrew"
+  echo "  · Install formulae, casks and App Store apps from Brewfile"
   echo "  · Symlink dotfiles and copy assets"
   echo "  · Set macOS defaults"
   echo
@@ -141,7 +150,14 @@ install_homebrew() {
 install_packages() {
   info "Step 3 - Install Homebrew packages"
   echo
-  warning "Make sure you reviewed the Brewfile and commented out anything you don't need:"
+
+  if ! _exists brew; then
+    echo "Homebrew not installed — skipping."
+    echo
+    return
+  fi
+
+  warning "Review the Brewfile and comment out anything you don't need:"
   echo "  $SETUP_PATH/Brewfile"
   echo
   read -q "?Proceed? [y/N] " || {
@@ -152,14 +168,73 @@ install_packages() {
   }
   echo
   echo
+
+  TMP_BREWFILE="$(mktemp /private/tmp/Brewfile.XXXXXX)"
+  grep -E '^(tap |brew |cask |vscode )' "$SETUP_PATH/Brewfile" >> "$TMP_BREWFILE" || true
+
   echo "Installing Homebrew packages..."
-  brew bundle --file="$SETUP_PATH/Brewfile"
-  success "Packages installed."
+  brew bundle --file="$TMP_BREWFILE"
+  rm -f "$TMP_BREWFILE"
+  TMP_BREWFILE=""
+  success "Homebrew packages installed."
+  echo
+}
+
+install_mas_apps() {
+  info "Step 4 - Install App Store apps"
+  echo
+
+  if ! _exists brew; then
+    echo "Homebrew not installed — skipping."
+    echo
+    return
+  fi
+
+  if ! grep -qE '^mas ' "$SETUP_PATH/Brewfile"; then
+    echo "No App Store apps in Brewfile — skipping."
+    echo
+    return
+  fi
+
+  if ! _exists mas; then
+    echo "mas not installed — skipping."
+    echo
+    return
+  fi
+
+  read -q "?Proceed? [y/N] " || {
+    echo
+    echo "Skipping App Store apps installation."
+    echo
+    return
+  }
+  echo
+  echo
+
+  warning "Make sure you're signed into the App Store before proceeding."
+  open "macappstore://showAccountPage"
+  read -q "?Signed in? [y/N] " || {
+    echo
+    echo "Skipping App Store apps installation."
+    echo
+    return
+  }
+  echo
+  echo
+
+  TMP_MAS_BREWFILE="$(mktemp /private/tmp/Brewfile.mas.XXXXXX)"
+  grep -E '^(tap |mas )' "$SETUP_PATH/Brewfile" >> "$TMP_MAS_BREWFILE" || true
+
+  echo "Installing App Store apps..."
+  brew bundle --file="$TMP_MAS_BREWFILE"
+  rm -f "$TMP_MAS_BREWFILE"
+  TMP_MAS_BREWFILE=""
+  success "App Store apps installed."
   echo
 }
 
 sync_dotfiles() {
-  info "Step 4 - Symlink dotfiles and copy assets"
+  info "Step 5 - Symlink dotfiles and copy assets"
   echo
   read -q "?Proceed? [y/N] " || {
     echo
@@ -174,9 +249,9 @@ sync_dotfiles() {
 }
 
 set_macos_defaults() {
-  info "Step 5 - Set macOS defaults"
+  info "Step 6 - Set macOS defaults"
   echo
-  warning "Make sure you reviewed the macos.zsh and commented out anything you don't need:"
+  warning "Review macos.zsh and comment out anything you don't need:"
   echo "  $SETUP_PATH/macos.zsh"
   echo
   read -q "?Proceed? [y/N] " || {
@@ -192,6 +267,7 @@ set_macos_defaults() {
 }
 
 on_finish() {
+  cleanup
   info "Bootstrap complete!"
   info "Don't forget to restart your terminal!"
   info "Happy coding!"
@@ -204,6 +280,7 @@ main() {
   install_xcode_clt
   install_homebrew
   install_packages
+  install_mas_apps
   sync_dotfiles
   set_macos_defaults
   on_finish
