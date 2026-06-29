@@ -10,7 +10,7 @@
 # - ffmpeg -i bootstrap.mov -vf "fps=15,scale=830:-1" -loop 0 bootstrap.webp
 
 DEMO_PATH="$(cd "$(dirname "$0")" && pwd)"
-source "$DEMO_PATH/../setup/_lib.zsh"
+source "$DEMO_PATH/../../setup/_lib.zsh"
 
 fake_type() {
   local text="$1"
