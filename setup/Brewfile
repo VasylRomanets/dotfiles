@@ -41,6 +41,7 @@ brew "tokei"         # count lines of code by language (better cloc)
 brew "trash-cli"     # move files to trash instead of permanently deleting (safer rm)
 brew "watch"         # run commands periodically
 brew "wifi-password" # show the password for the connected Wi-Fi network
+brew "xdg-ninja"     # check $HOME for unwanted files and directories
 
 # ── Brew: Fun ─────────────────────────────────────────────────────────────────
 brew "asciiquarium" # aquarium animation
