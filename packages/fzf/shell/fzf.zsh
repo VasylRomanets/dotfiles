@@ -27,8 +27,4 @@ else
   export FZF_CTRL_T_COMMAND="find . \( -name .DS_Store -o -name .git \) -prune -o -print"
 fi
 
-# fzf generates its integration script dynamically via CLI; source_brew_plugin
-# expects a static file under $HOMEBREW_PREFIX/share/ and would silently no-op;
-# also, 'source <()' (not eval) is required: the script uses 'return' and
-# '{ } always { }' (try/finally) which only behave correctly when sourced as a file
 source <(fzf --zsh)
