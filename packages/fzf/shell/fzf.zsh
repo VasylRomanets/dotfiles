@@ -22,7 +22,7 @@ fzf_rose_pine_moon="
 export FZF_DEFAULT_OPTS="$fzf_rose_pine_moon"
 
 if (( $+commands[fd] )); then
-  export FZF_CTRL_T_COMMAND="fd --hidden --follow --exclude .DS_Store --exclude .git"
+  export FZF_CTRL_T_COMMAND="fd --hidden --follow"
 else
   export FZF_CTRL_T_COMMAND="find . \( -name .DS_Store -o -name .git \) -prune -o -print"
 fi
