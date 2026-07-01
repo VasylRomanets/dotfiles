@@ -21,6 +21,12 @@ fzf_rose_pine_moon="
 
 export FZF_DEFAULT_OPTS="$fzf_rose_pine_moon"
 
+if (( $+commands[fd] )); then
+  export FZF_CTRL_T_COMMAND="fd --hidden --follow --exclude .DS_Store --exclude .git"
+else
+  export FZF_CTRL_T_COMMAND="find . \( -name .DS_Store -o -name .git \) -prune -o -print"
+fi
+
 # fzf generates its integration script dynamically via CLI; source_brew_plugin
 # expects a static file under $HOMEBREW_PREFIX/share/ and would silently no-op;
 # also, 'source <()' (not eval) is required: the script uses 'return' and
