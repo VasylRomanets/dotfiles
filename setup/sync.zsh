@@ -14,7 +14,7 @@ copied=0
 
 check_deps() {
   for cmd in toml2json jq; do
-    command -v "$cmd" &>/dev/null || {
+    _exists "$cmd" || {
       error "$cmd not found — run bootstrap.zsh first!"
       exit 1
     }
@@ -59,7 +59,7 @@ sync_packages() {
     req_command="$(toml_get "$setup" '.requires.command')"
     req_app="$(toml_get "$setup" '.requires.app')"
 
-    if [[ -n "$req_command" ]] && ! command -v "$req_command" &>/dev/null; then
+    if [[ -n "$req_command" ]] && ! _exists "$req_command"; then
       warning "Skipping $pkg — $req_command not found"
       (( ++skipped ))
       continue

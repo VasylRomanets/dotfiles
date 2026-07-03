@@ -12,10 +12,6 @@ TMP_MAS_BREWFILE=""
 
 source "$SETUP_PATH/_lib.zsh"
 
-_exists() {
-  command -v "$1" &>/dev/null
-}
-
 cleanup() {
   [[ -n "$TMP_BREWFILE" ]] && rm -f "$TMP_BREWFILE" || true
   [[ -n "$TMP_MAS_BREWFILE" ]] && rm -f "$TMP_MAS_BREWFILE" || true

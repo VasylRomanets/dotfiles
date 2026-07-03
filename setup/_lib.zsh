@@ -33,3 +33,7 @@ require_macos() {
     exit 1
   }
 }
+
+_exists() {
+  command -v "$1" &>/dev/null
+}
