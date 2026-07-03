@@ -25,3 +25,11 @@ error() {
 success() {
   echo "${GREEN}${*}${RESET}"
 }
+
+require_macos() {
+  [[ "$(uname)" == "Darwin" ]] || {
+    error "These dotfiles are macOS only!"
+    error "Nice try, though."
+    exit 1
+  }
+}

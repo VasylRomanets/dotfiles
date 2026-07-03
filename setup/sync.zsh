@@ -22,6 +22,7 @@ check_deps() {
 }
 
 on_start() {
+  require_macos
   check_deps
   echo "Creating symlinks and copying files..."
 }

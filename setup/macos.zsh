@@ -7,6 +7,7 @@
 
 SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 source "$SETUP_PATH/_lib.zsh"
+require_macos
 
 echo "Applying macOS defaults..."
 

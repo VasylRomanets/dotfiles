@@ -52,6 +52,7 @@ print_logo() {
 on_start() {
   print_logo
   echo
+  require_macos
   echo "This script will set up your Mac from scratch:"
   echo "  · Install Xcode Command Line Tools"
   echo "  · Install Homebrew"
