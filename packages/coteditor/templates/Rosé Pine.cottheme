@@ -1,0 +1,62 @@
+{
+  "attributes": {
+    "color": "$text"
+  },
+  "background": {
+    "color": "$base"
+  },
+  "characters": {
+    "color": "$gold"
+  },
+  "commands": {
+    "color": "$rose"
+  },
+  "comments": {
+    "color": "$muted"
+  },
+  "insertionPoint": {
+    "color": "$text",
+    "usesSystemSetting": false
+  },
+  "invisibles": {
+    "color": "$highlightHigh"
+  },
+  "highlight": {
+    "color": "$iris",
+    "usesSystemSetting": false
+  },
+  "keywords": {
+    "color": "$pine"
+  },
+  "lineHighlight": {
+    "color": "$highlightLow"
+  },
+  "metadata": {
+    "author": "Vasyl Romanets",
+    "description": "$description",
+    "distributionURL": "https://github.com/vasylromanets/rose-pine-coteditor",
+    "license": "MIT"
+  },
+  "numbers": {
+    "color": "$gold"
+  },
+  "selection": {
+    "color": "$highlightMed",
+    "usesSystemSetting": false
+  },
+  "strings": {
+    "color": "$gold"
+  },
+  "text": {
+    "color": "$text"
+  },
+  "types": {
+    "color": "$foam"
+  },
+  "values": {
+    "color": "$rose"
+  },
+  "variables": {
+    "color": "$text"
+  }
+}

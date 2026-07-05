@@ -1,0 +1,62 @@
+{
+  "attributes": {
+    "color": "#575279"
+  },
+  "background": {
+    "color": "#faf4ed"
+  },
+  "characters": {
+    "color": "#ea9d34"
+  },
+  "commands": {
+    "color": "#d7827e"
+  },
+  "comments": {
+    "color": "#9893a5"
+  },
+  "insertionPoint": {
+    "color": "#575279",
+    "usesSystemSetting": false
+  },
+  "invisibles": {
+    "color": "#cecacd"
+  },
+  "highlight": {
+    "color": "#907aa9",
+    "usesSystemSetting": false
+  },
+  "keywords": {
+    "color": "#286983"
+  },
+  "lineHighlight": {
+    "color": "#f4ede8"
+  },
+  "metadata": {
+    "author": "Vasyl Romanets",
+    "description": "All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+    "distributionURL": "https://github.com/vasylromanets/rose-pine-coteditor",
+    "license": "MIT"
+  },
+  "numbers": {
+    "color": "#ea9d34"
+  },
+  "selection": {
+    "color": "#dfdad9",
+    "usesSystemSetting": false
+  },
+  "strings": {
+    "color": "#ea9d34"
+  },
+  "text": {
+    "color": "#575279"
+  },
+  "types": {
+    "color": "#56949f"
+  },
+  "values": {
+    "color": "#d7827e"
+  },
+  "variables": {
+    "color": "#575279"
+  }
+}
