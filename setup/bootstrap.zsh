@@ -205,7 +205,7 @@ install_mas_apps() {
   echo
 
   TMP_MAS_BREWFILE="$(mktemp /private/tmp/Brewfile.mas.XXXXXX)"
-  grep -E '^(tap |mas )' "$SETUP_PATH/Brewfile" >> "$TMP_MAS_BREWFILE" || true
+  grep -E '^mas ' "$SETUP_PATH/Brewfile" >> "$TMP_MAS_BREWFILE" || true
 
   echo "Installing App Store apps..."
   brew bundle --file="$TMP_MAS_BREWFILE"
