@@ -42,7 +42,8 @@ echo "Applying macOS defaults..."
 # disable crash reporter dialogs
 defaults write com.apple.CrashReporter DialogType -string "none"
 
-# reduce motion (disables app open/close zoom animations)
+# replace app open/close animations with simple fade effect;
+# requires full disk access for terminal
 defaults write com.apple.universalaccess reduceMotion -bool true
 
 ###############################################################################
