@@ -136,6 +136,16 @@ defaults write com.apple.dock autohide -bool true
 # speed up the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0.5
 
+# disable hot corners
+defaults write com.apple.dock wvous-tl-corner -int 1
+defaults write com.apple.dock wvous-tr-corner -int 1
+defaults write com.apple.dock wvous-bl-corner -int 1
+defaults write com.apple.dock wvous-br-corner -int 1
+defaults write com.apple.dock wvous-tl-modifier -int 0
+defaults write com.apple.dock wvous-tr-modifier -int 0
+defaults write com.apple.dock wvous-bl-modifier -int 0
+defaults write com.apple.dock wvous-br-modifier -int 0
+
 ###############################################################################
 # Screenshots                                                                 #
 ###############################################################################
