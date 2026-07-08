@@ -15,14 +15,16 @@ font-thicken = true
 background-blur = 10
 background-opacity = 0.95
 cursor-opacity = 0.8
+cursor-style = block_hollow
+cursor-style-blink = false
 # custom-shader = shaders/cursor_smear.glsl
 theme = everforest-dark-hard
 
 # Window
 confirm-close-surface = true
 window-padding-balance = true
-window-padding-x = 15
-window-padding-y = 15
+window-padding-x = 10
+window-padding-y = 10
 window-save-state = always
 window-title-font-family = MesloLGS Nerd Font Mono
 window-vsync = true
