@@ -51,21 +51,21 @@ cherry_pick = "[🍒 PICKING](bold red)"
 ahead = "[⇡${count} ](yellow)"
 behind = "[⇣${count} ](yellow)"
 diverged = "[⇣${behind_count}⇡${ahead_count} ](yellow)"
-stashed = "[*${count} ](yellow)"
 conflicted = "[~${count} ](red)"
 staged = "[+${count} ](yellow)"
 modified = "[!${count} ](yellow)"
 deleted = "[-${count} ](red)"
 untracked = "[?${count} ](yellow)"
+stashed = "[*${count} ](dimmed white)"
 format = """
 (\
 $ahead_behind\
-$stashed\
 $conflicted\
 $staged\
 $modified\
 $deleted\
 $untracked\
+$stashed\
 )\
 """
 
