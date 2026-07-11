@@ -33,6 +33,7 @@ brew "bloom", trusted: true # Rosé Pine themes generator
 brew "btop"                 # resource and process monitor (better htop)
 brew "croc"                 # encrypted peer-to-peer file transfer
 brew "duf"                  # mounted disk usage overview (better df)
+brew "faker"                # fake data generator
 brew "fastfetch"            # system info display (better neofetch)
 brew "grex"                 # generate regex from provided examples
 brew "jrnl"                 # command-line journal
