@@ -46,6 +46,9 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 # requires full disk access for terminal
 defaults write com.apple.universalaccess reduceMotion -bool true
 
+# set accent color (5 = purple)
+defaults write -g AppleAccentColor -int 5
+
 ###############################################################################
 # Keyboard                                                                    #
 ###############################################################################
