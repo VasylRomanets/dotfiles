@@ -39,6 +39,9 @@ echo "Applying macOS defaults..."
 # expand print panel by default
 # defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
+# always open documents in tabs instead of new windows
+defaults write -g AppleWindowTabbingMode -string always
+
 # disable crash reporter dialogs
 defaults write com.apple.CrashReporter DialogType -string "none"
 
