@@ -93,6 +93,10 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
+# open new Finder windows to the home folder
+defaults write com.apple.finder NewWindowTarget -string PfHm
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
+
 # show status bar
 # defaults write com.apple.finder ShowStatusBar -bool true
 
@@ -121,9 +125,18 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 # remove items from Trash after 30 days
 # defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 
+# keep the desktop clean by hiding disk icons
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
+
+# remove all persistent (pinned) apps from the Dock
+defaults write com.apple.dock persistent-apps -array ""
 
 # set the icon size to 56 pixels
 defaults write com.apple.dock tilesize -int 56
@@ -155,6 +168,15 @@ defaults write com.apple.dock wvous-tl-modifier -int 0
 defaults write com.apple.dock wvous-tr-modifier -int 0
 defaults write com.apple.dock wvous-bl-modifier -int 0
 defaults write com.apple.dock wvous-br-modifier -int 0
+
+###############################################################################
+# Privacy                                                                     #
+###############################################################################
+
+# disable Apple's ad personalization and tracking
+defaults write com.apple.AdLib forceLimitAdTracking -bool true
+defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
+defaults write com.apple.AdLib allowIdentifierForAdvertising -bool false
 
 ###############################################################################
 # Screenshots                                                                 #
