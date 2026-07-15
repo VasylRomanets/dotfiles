@@ -11,3 +11,7 @@
 # runtime
 *.log
 *.pid
+
+# local configurations
+config.local
+settings.local.json
