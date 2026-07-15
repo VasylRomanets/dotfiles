@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Print ASCII art of a little house in a pine forest.
+#
+# USAGE: forest
+# URL:   https://ascii.co.uk/art/forest (original art by ejm96)
+
+e=$'\033'
+RESET="${e}[0m"
+GREEN="${e}[0;92m"
+YELLOW="${e}[0;93m"
+RED="${e}[0;91m"
+
+echo
+printf '%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n' "$GREEN" '   ' "$YELLOW" '*' "$GREEN" '          ' "$YELLOW" '*' "$GREEN" '            ' "$YELLOW" '*' "$GREEN" '        ' "$YELLOW" '*' "$GREEN" '          ' "$YELLOW" '*' "$GREEN" '   ' "$RESET"
+printf '%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n' "$GREEN" '        ' "$YELLOW" '*' "$GREEN" '           ' "$YELLOW" '*' "$GREEN" '           ' "$YELLOW" '*' "$GREEN" '           ' "$YELLOW" '*' "$GREEN" '      ' "$RESET"
+printf '%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n' "$GREEN" '     ' "$YELLOW" '*' "$GREEN" '           ' "$YELLOW" '*' "$GREEN" '       ' "$YELLOW" '*' "$GREEN" '              ' "$YELLOW" '*' "$GREEN" '       ' "$YELLOW" '*' "$GREEN" '  ' "$RESET"
+printf '%s%s%s%s%s%s%s\n' "$GREEN" ' ^  ^  ^   ^      ' "$RED" '___I_' "$GREEN" '      ^  ^   ^  ^  ^   ^  ^' "$RESET"
+printf '%s%s%s%s%s%s%s\n' "$GREEN" '/|\/|\/|\ /|\    ' "$RED" '/\-_--\' "$GREEN" '    /|\/|\ /|\/|\/|\ /|\/|\' "$RESET"
+printf '%s%s%s%s%s%s%s\n' "$GREEN" '/|\/|\/|\ /|\   ' "$RED" '/  \_-__\' "$GREEN" '   /|\/|\ /|\/|\/|\ /|\/|\' "$RESET"
+printf '%s%s%s%s%s%s%s\n' "$GREEN" '/|\/|\/|\ /|\   ' "$RED" '|[]| [] |' "$GREEN" '   /|\/|\ /|\/|\/|\ /|\/|\' "$RESET"
+echo
