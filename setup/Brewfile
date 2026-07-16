@@ -37,6 +37,7 @@ brew "faker"                # fake data generator
 brew "fastfetch"            # system info display (better neofetch)
 brew "grex"                 # generate regex from provided examples
 brew "jrnl"                 # command-line journal
+brew "mole"                 # Mac cleaner and optimizer (like CleanMyMac but CLI)
 brew "shellcheck"           # static analysis tool for shell scripts
 brew "stow"                 # symlink farm manager
 brew "taplo"                # TOML toolkit
