@@ -18,7 +18,6 @@ brew "mas"                          # CLI for the Mac App Store
 brew "micro"                        # terminal-based text editor (better nano)
 brew "ripgrep"                      # searching within files (better grep)
 brew "starship"                     # cross-shell prompt manager
-brew "stow"                         # symlink farm manager
 brew "toml2json"                    # TOML to JSON convertor
 brew "yazi"                         # terminal file manager
 brew "yq"                           # YAML processor (like jq for YAML)
@@ -39,6 +38,7 @@ brew "fastfetch"            # system info display (better neofetch)
 brew "grex"                 # generate regex from provided examples
 brew "jrnl"                 # command-line journal
 brew "shellcheck"           # static analysis tool for shell scripts
+brew "stow"                 # symlink farm manager
 brew "taplo"                # TOML toolkit
 brew "tealdeer"             # simplified man pages (tldr command)
 brew "tokei"                # count lines of code by language (better cloc)
