@@ -87,7 +87,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # Finder                                                                      #
 ###############################################################################
 
-# show all filename extensions
+# show all file extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # show hidden files by default
