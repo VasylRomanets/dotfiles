@@ -147,7 +147,7 @@ defaults write com.apple.dock minimize-to-application -bool true
 # don't automatically rearrange Spaces based on most recent use
 # defaults write com.apple.dock mru-spaces -bool false
 
-# don't show recent applications in Dock
+# don't show recent apps in Dock
 defaults write com.apple.dock show-recents -bool false
 
 # automatically hide and show the Dock
