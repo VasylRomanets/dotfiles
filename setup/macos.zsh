@@ -170,6 +170,24 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 defaults write com.apple.dock wvous-br-modifier -int 0
 
 ###############################################################################
+# Stage Manager                                                              #
+###############################################################################
+
+# enable Stage Manager
+defaults write com.apple.WindowManager GloballyEnabled -bool true
+
+# auto-hide recent apps
+defaults write com.apple.WindowManager AutoHide -bool true
+
+# the left-edge hover-to-reveal trigger for recent apps can't be disabled,
+# but it can be delayed
+defaults write com.apple.WindowManager AutoHideDelay -float 3.0
+
+# remove the left/right inset Stage Manager adds when reopening a
+# previously maximized window, so it fills the screen width again
+defaults write com.apple.WindowManager StageFrameMinimumHorizontalInset -int 0
+
+###############################################################################
 # Privacy                                                                     #
 ###############################################################################
 
