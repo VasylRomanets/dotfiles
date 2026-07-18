@@ -46,18 +46,18 @@ brew "tokei"         # count lines of code by language (better cloc)
 brew "trash-cli"     # move files to trash instead of permanently deleting (safer rm)
 brew "vivid"         # LS_COLORS theme generator (colorizes output of eza, fd, etc)
 brew "watch"         # run commands periodically
-brew "wifi-password" # show the password for the connected Wi-Fi network
+brew "wifi-password" # show password for connected Wi-Fi network
 brew "xdg-ninja"     # check $HOME for unwanted files and directories
 
 # ── Brew: Fun & Rice ──────────────────────────────────────────────────────────
 brew "asciiquarium" # aquarium animation
 brew "cava"         # bar spectrum audio visualizer
-brew "cbonsai"      # grow a bonsai tree
+brew "cbonsai"      # grow bonsai trees
 brew "cmatrix"      # matrix rain animation
 brew "fastfetch"    # print ASCII art & system info (better neofetch)
 brew "figlet"       # print large ASCII text banners
-brew "fortune"      # print a random adage or joke
-brew "kotofetch"    # print a random Japanese quote
+brew "fortune"      # print random adages or jokes
+brew "kotofetch"    # print random Japanese quotes
 brew "lolcat"       # rainbow-colorize any command output
 brew "neo-cowsay"   # cowsay with many more animals
 brew "pipes-sh"     # animated pipes terminal screensaver
