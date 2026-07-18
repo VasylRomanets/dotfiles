@@ -14,6 +14,7 @@ brew "git-delta"                    # syntax-highlighted diffs (better diff-so-f
 brew "git-filter-repo"              # rewrite git history (better bfg)
 brew "git-lfs"                      # git large file storage extension
 brew "jq"                           # JSON processor
+brew "lazygit"                      # TUI git client
 brew "mas"                          # CLI for the Mac App Store
 brew "micro"                        # terminal-based text editor (better nano)
 brew "ripgrep"                      # searching within files (better grep)
