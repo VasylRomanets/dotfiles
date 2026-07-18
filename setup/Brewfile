@@ -54,7 +54,7 @@ brew "asciiquarium" # aquarium animation
 brew "cava"         # bar spectrum audio visualizer
 brew "cbonsai"      # grow a bonsai tree
 brew "cmatrix"      # matrix rain animation
-brew "fastfetch"    # system info display (better neofetch)
+brew "fastfetch"    # print ASCII art & system info (better neofetch)
 brew "figlet"       # print large ASCII text banners
 brew "fortune"      # print a random adage or joke
 brew "kotofetch"    # Japanese quotes in the terminal
