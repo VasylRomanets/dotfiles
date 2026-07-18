@@ -81,6 +81,7 @@ cask "hammerspoon"            # Lua-driven macOS automation and scripting
 cask "handbrake"              # video transcoder
 cask "iina"                   # media player
 cask "keka"                   # file archiver
+cask "markdown-preview"       # markdown previewer with bundled Quick Look extension
 cask "mediamate"              # now-playing overlay for Spotify and media controls
 cask "obsidian"               # markdown-based personal knowledge base
 cask "raycast"                # app launcher (better Spotlight)
