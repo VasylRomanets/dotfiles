@@ -5,7 +5,7 @@ tap "vasylromanets/tap" # required for spinpacks
 
 # ── Brew: Essential ───────────────────────────────────────────────────────────
 brew "bat"                          # syntax-highlighted file viewer (better cat)
-brew "eza"                          # file listing (better ls)
+brew "eza"                          # list files (better ls)
 brew "fd"                           # find files (better find)
 brew "fzf"                          # fuzzy finder for files, history, and more
 brew "gh"                           # official GitHub CLI
@@ -14,13 +14,13 @@ brew "git-delta"                    # syntax-highlighted diffs (better diff-so-f
 brew "git-filter-repo"              # rewrite git history (better bfg)
 brew "git-lfs"                      # git large file storage extension
 brew "jq"                           # JSON processor
-brew "lazygit"                      # TUI git client
+brew "lazygit"                      # terminal-based git client
 brew "mas"                          # CLI for the Mac App Store
 brew "micro"                        # terminal-based text editor (better nano)
-brew "ripgrep"                      # searching within files (better grep)
+brew "ripgrep"                      # search within files (better grep)
 brew "starship"                     # cross-shell prompt manager
 brew "toml2json"                    # TOML to JSON converter
-brew "yazi"                         # terminal file manager
+brew "yazi"                         # terminal-based file manager
 brew "yq"                           # YAML processor (like jq for YAML)
 brew "zoxide"                       # auto-learning navigation (better cd)
 brew "zsh"                          # the Z shell itself
@@ -28,7 +28,7 @@ brew "zsh-autosuggestions"          # fish-like command suggestions from history
 brew "zsh-history-substring-search" # arrow-key history search by substring
 brew "zsh-syntax-highlighting"      # highlight commands as you type
 
-# ── Brew: Useful ──────────────────────────────────────────────────────────────
+# ── Brew: Nice-to-have ────────────────────────────────────────────────────────
 brew "asciinema"            # record and share terminal sessions
 brew "bloom", trusted: true # Rosé Pine themes generator
 brew "btop"                 # resource and process monitor (better htop)
@@ -50,7 +50,7 @@ brew "watch"                # run commands periodically
 brew "wifi-password"        # show the password for the connected Wi-Fi network
 brew "xdg-ninja"            # check $HOME for unwanted files and directories
 
-# ── Brew: Fun ─────────────────────────────────────────────────────────────────
+# ── Brew: Fun & Rice ──────────────────────────────────────────────────────────
 brew "asciiquarium"              # aquarium animation
 brew "cava"                      # bar spectrum audio visualizer
 brew "cbonsai"                   # grow a bonsai tree
@@ -65,9 +65,9 @@ brew "sl"                        # steam locomotive (penalty for typing sl inste
 brew "spinpacks", trusted: true  # themed spinner verb packs for Claude Code
 
 # ── Cask: Fonts ───────────────────────────────────────────────────────────────
-cask "font-meslo-lg-nerd-font" # my main terminal & editor font (MesloLGS NF)
+cask "font-meslo-lg-nerd-font" # terminal & editor font (MesloLGS NF)
 
-# ── Cask ──────────────────────────────────────────────────────────────────────
+# ── Cask: Apps ────────────────────────────────────────────────────────────────
 cask "blackhole-2ch"          # virtual audio driver for routing audio between apps
 cask "claude-code"            # AI coding assistant
 cask "cleanmymac"             # system cleaner and optimizer
