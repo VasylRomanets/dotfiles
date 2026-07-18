@@ -35,7 +35,6 @@ brew "btop"          # resource and process monitor (better htop)
 brew "croc"          # encrypted peer-to-peer file transfer
 brew "duf"           # mounted disk usage overview (better df)
 brew "faker"         # fake data generator
-brew "fastfetch"     # system info display (better neofetch)
 brew "grex"          # generate regex from provided examples
 brew "jrnl"          # command-line journal
 brew "mole"          # Mac cleaner and optimizer (like CleanMyMac but CLI)
@@ -55,6 +54,7 @@ brew "asciiquarium" # aquarium animation
 brew "cava"         # bar spectrum audio visualizer
 brew "cbonsai"      # grow a bonsai tree
 brew "cmatrix"      # matrix rain animation
+brew "fastfetch"    # system info display (better neofetch)
 brew "figlet"       # print large ASCII text banners
 brew "fortune"      # print a random adage or joke
 brew "kotofetch"    # Japanese quotes in the terminal
