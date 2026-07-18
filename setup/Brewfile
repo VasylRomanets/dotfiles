@@ -19,7 +19,7 @@ brew "mas"                          # CLI for the Mac App Store
 brew "micro"                        # terminal-based text editor (better nano)
 brew "ripgrep"                      # searching within files (better grep)
 brew "starship"                     # cross-shell prompt manager
-brew "toml2json"                    # TOML to JSON convertor
+brew "toml2json"                    # TOML to JSON converter
 brew "yazi"                         # terminal file manager
 brew "yq"                           # YAML processor (like jq for YAML)
 brew "zoxide"                       # auto-learning navigation (better cd)
