@@ -1,7 +1,7 @@
 # ── Tap ───────────────────────────────────────────────────────────────────────
-tap "code-hex/tap"      # required for neo-cowsay
-tap "rose-pine/tap"     # required for bloom
-tap "vasylromanets/tap" # required for spinpacks
+tap "code-hex/tap", trusted: true      # required for neo-cowsay
+tap "rose-pine/tap", trusted: true     # required for bloom
+tap "vasylromanets/tap", trusted: true # required for spinpacks
 
 # ── Brew: Essential ───────────────────────────────────────────────────────────
 brew "bat"                          # syntax-highlighted file viewer (better cat)
@@ -29,40 +29,40 @@ brew "zsh-history-substring-search" # arrow-key history search by substring
 brew "zsh-syntax-highlighting"      # highlight commands as you type
 
 # ── Brew: Nice-to-have ────────────────────────────────────────────────────────
-brew "asciinema"            # record and share terminal sessions
-brew "bloom", trusted: true # Rosé Pine themes generator
-brew "btop"                 # resource and process monitor (better htop)
-brew "croc"                 # encrypted peer-to-peer file transfer
-brew "duf"                  # mounted disk usage overview (better df)
-brew "faker"                # fake data generator
-brew "fastfetch"            # system info display (better neofetch)
-brew "grex"                 # generate regex from provided examples
-brew "jrnl"                 # command-line journal
-brew "mole"                 # Mac cleaner and optimizer (like CleanMyMac but CLI)
-brew "shellcheck"           # static analysis tool for shell scripts
-brew "stow"                 # symlink farm manager
-brew "taplo"                # TOML toolkit
-brew "tealdeer"             # simplified man pages (tldr command)
-brew "tokei"                # count lines of code by language (better cloc)
-brew "trash-cli"            # move files to trash instead of permanently deleting (safer rm)
-brew "vivid"                # LS_COLORS theme generator (colorizes output of eza, fd, etc)
-brew "watch"                # run commands periodically
-brew "wifi-password"        # show the password for the connected Wi-Fi network
-brew "xdg-ninja"            # check $HOME for unwanted files and directories
+brew "asciinema"     # record and share terminal sessions
+brew "bloom"         # Rosé Pine themes generator
+brew "btop"          # resource and process monitor (better htop)
+brew "croc"          # encrypted peer-to-peer file transfer
+brew "duf"           # mounted disk usage overview (better df)
+brew "faker"         # fake data generator
+brew "fastfetch"     # system info display (better neofetch)
+brew "grex"          # generate regex from provided examples
+brew "jrnl"          # command-line journal
+brew "mole"          # Mac cleaner and optimizer (like CleanMyMac but CLI)
+brew "shellcheck"    # static analysis tool for shell scripts
+brew "stow"          # symlink farm manager
+brew "taplo"         # TOML toolkit
+brew "tealdeer"      # simplified man pages (tldr command)
+brew "tokei"         # count lines of code by language (better cloc)
+brew "trash-cli"     # move files to trash instead of permanently deleting (safer rm)
+brew "vivid"         # LS_COLORS theme generator (colorizes output of eza, fd, etc)
+brew "watch"         # run commands periodically
+brew "wifi-password" # show the password for the connected Wi-Fi network
+brew "xdg-ninja"     # check $HOME for unwanted files and directories
 
 # ── Brew: Fun & Rice ──────────────────────────────────────────────────────────
-brew "asciiquarium"              # aquarium animation
-brew "cava"                      # bar spectrum audio visualizer
-brew "cbonsai"                   # grow a bonsai tree
-brew "cmatrix"                   # matrix rain animation
-brew "figlet"                    # print large ASCII text banners
-brew "fortune"                   # print a random adage or joke
-brew "kotofetch"                 # Japanese quotes in the terminal
-brew "lolcat"                    # rainbow-colorize any command output
-brew "neo-cowsay", trusted: true # cowsay with many more animals
-brew "pipes-sh"                  # animated pipes terminal screensaver
-brew "sl"                        # steam locomotive (penalty for typing sl instead of ls)
-brew "spinpacks", trusted: true  # themed spinner verb packs for Claude Code
+brew "asciiquarium" # aquarium animation
+brew "cava"         # bar spectrum audio visualizer
+brew "cbonsai"      # grow a bonsai tree
+brew "cmatrix"      # matrix rain animation
+brew "figlet"       # print large ASCII text banners
+brew "fortune"      # print a random adage or joke
+brew "kotofetch"    # Japanese quotes in the terminal
+brew "lolcat"       # rainbow-colorize any command output
+brew "neo-cowsay"   # cowsay with many more animals
+brew "pipes-sh"     # animated pipes terminal screensaver
+brew "sl"           # steam locomotive (penalty for typing sl instead of ls)
+brew "spinpacks"    # themed spinner verb packs for Claude Code
 
 # ── Cask: Fonts ───────────────────────────────────────────────────────────────
 cask "font-meslo-lg-nerd-font" # terminal & editor font (MesloLGS NF)
