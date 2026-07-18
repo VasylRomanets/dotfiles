@@ -57,7 +57,7 @@ brew "cmatrix"      # matrix rain animation
 brew "fastfetch"    # print ASCII art & system info (better neofetch)
 brew "figlet"       # print large ASCII text banners
 brew "fortune"      # print a random adage or joke
-brew "kotofetch"    # Japanese quotes in the terminal
+brew "kotofetch"    # print a random Japanese quote
 brew "lolcat"       # rainbow-colorize any command output
 brew "neo-cowsay"   # cowsay with many more animals
 brew "pipes-sh"     # animated pipes terminal screensaver
