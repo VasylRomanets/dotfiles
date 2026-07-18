@@ -101,7 +101,7 @@ mas "Hidden Bar", id: 1452453066    # hide clutter from the menu bar
 mas "Spark Desktop", id: 6445813049 # email client
 mas "Today", id: 6443714928         # today’s schedule in the menu bar
 mas "Todoist", id: 585829637        # to-do list
-mas "WhatsApp", id: 310633997       # messaging
+mas "WhatsApp", id: 310633997       # encrypted messaging
 
 # ── VS Code ───────────────────────────────────────────────────────────────────
 vscode "catppuccin.catppuccin-vsc"            # catppuccin pastel color theme
