@@ -23,7 +23,7 @@ error_symbol = "[❯](red)"
 
 [fill]
 style = "dimmed white"
-symbol = "─"
+symbol = "·"
 
 # ─────────────────────────────── Left ────────────────────────────────
 
