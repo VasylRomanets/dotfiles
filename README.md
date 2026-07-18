@@ -58,7 +58,7 @@ git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
 2. Run the bootstrap script:
 ```zsh
 ~/.dotfiles/setup/bootstrap.zsh
-# or: make bootstrap
+# or: cd ~/.dotfiles && make bootstrap
 ```
 
 <p align="center">
@@ -80,7 +80,7 @@ You'll be prompted before each step.
 After adding or modifying dotfiles, re-run `sync.zsh` to apply them:
 ```zsh
 ~/.dotfiles/setup/sync.zsh
-# or: make sync
+# or: cd ~/.dotfiles && make sync
 ```
 
 ## Appearance
