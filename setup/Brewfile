@@ -74,7 +74,7 @@ cask "cleanmymac"             # system cleaner and optimizer
 cask "discord"                # voice, video, and text chat
 cask "fork"                   # git GUI client
 cask "ghostty"                # terminal emulator
-cask "git-credential-manager" # cross-platform git credential storage
+cask "git-credential-manager" # git credential storage (supports OAuth, unlike osxkeychain)
 cask "gitcomet"               # FOSS git GUI client
 cask "google-chrome"          # web browser
 cask "hammerspoon"            # Lua-driven macOS automation and scripting
