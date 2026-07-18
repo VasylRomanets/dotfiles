@@ -77,7 +77,7 @@ cask "ghostty"                # terminal emulator
 cask "git-credential-manager" # cross-platform git credential storage
 cask "gitcomet"               # FOSS git GUI client
 cask "google-chrome"          # web browser
-cask "hammerspoon"            # lua-driven macOS automation and scripting
+cask "hammerspoon"            # Lua-driven macOS automation and scripting
 cask "handbrake"              # video transcoder
 cask "iina"                   # media player
 cask "keka"                   # file archiver
