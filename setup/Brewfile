@@ -3,8 +3,8 @@ tap "code-hex/tap", trusted: true      # required for neo-cowsay
 tap "rose-pine/tap", trusted: true     # required for bloom
 tap "vasylromanets/tap", trusted: true # required for spinpacks
 
-# ── Brew: Essential ───────────────────────────────────────────────────────────
-brew "bat"                          # syntax-highlighted file viewer (better cat)
+# ── Brew: Must-have ───────────────────────────────────────────────────────────
+brew "bat"                          # print syntax-highlighted file contents (better cat)
 brew "eza"                          # list files (better ls)
 brew "fd"                           # find files (better find)
 brew "fzf"                          # fuzzy finder for files, history, and more
@@ -14,13 +14,13 @@ brew "git-delta"                    # syntax-highlighted diffs (better diff-so-f
 brew "git-filter-repo"              # rewrite git history (better bfg)
 brew "git-lfs"                      # git large file storage extension
 brew "jq"                           # JSON processor
-brew "lazygit"                      # terminal-based git client
+brew "lazygit"                      # TUI git client
 brew "mas"                          # CLI for the Mac App Store
-brew "micro"                        # terminal-based text editor (better nano)
+brew "micro"                        # text editor (better nano)
 brew "ripgrep"                      # search within files (better grep)
 brew "starship"                     # cross-shell prompt manager
 brew "toml2json"                    # TOML to JSON converter
-brew "yazi"                         # terminal-based file manager
+brew "yazi"                         # file manager
 brew "yq"                           # YAML processor (like jq for YAML)
 brew "zoxide"                       # auto-learning navigation (better cd)
 brew "zsh"                          # the Z shell itself
@@ -36,8 +36,8 @@ brew "croc"          # encrypted peer-to-peer file transfer
 brew "duf"           # mounted disk usage overview (better df)
 brew "faker"         # fake data generator
 brew "grex"          # generate regex from provided examples
-brew "jrnl"          # command-line journal
-brew "mole"          # Mac cleaner and optimizer (like CleanMyMac but CLI)
+brew "jrnl"          # journal and note taker
+brew "mole"          # system cleaner and optimizer (like CleanMyMac but CLI)
 brew "shellcheck"    # static analysis tool for shell scripts
 brew "stow"          # symlink farm manager
 brew "taplo"         # TOML toolkit
@@ -54,7 +54,7 @@ brew "asciiquarium" # aquarium animation
 brew "cava"         # bar spectrum audio visualizer
 brew "cbonsai"      # grow bonsai trees
 brew "cmatrix"      # matrix rain animation
-brew "fastfetch"    # print ASCII art & system info (better neofetch)
+brew "fastfetch"    # print ASCII art and system info (better neofetch)
 brew "figlet"       # print large ASCII text banners
 brew "fortune"      # print random adages or jokes
 brew "kotofetch"    # print random Japanese quotes
@@ -65,17 +65,17 @@ brew "sl"           # steam locomotive (penalty for typing sl instead of ls)
 brew "spinpacks"    # themed spinner verb packs for Claude Code
 
 # ── Cask: Fonts ───────────────────────────────────────────────────────────────
-cask "font-meslo-lg-nerd-font" # terminal & editor font (MesloLGS NF)
+cask "font-meslo-lg-nerd-font" # terminal and editor font (MesloLGS NF)
 
 # ── Cask: Apps ────────────────────────────────────────────────────────────────
 cask "blackhole-2ch"          # virtual audio driver for routing audio between apps
 cask "claude-code"            # AI coding assistant
 cask "cleanmymac"             # system cleaner and optimizer
 cask "discord"                # voice, video, and text chat
-cask "fork"                   # git GUI client
+cask "fork"                   # git client
 cask "ghostty"                # terminal emulator
 cask "git-credential-manager" # git credential storage (supports OAuth, unlike osxkeychain)
-cask "gitcomet"               # FOSS git GUI client
+cask "gitcomet"               # FOSS git client
 cask "google-chrome"          # web browser
 cask "hammerspoon"            # Lua-driven macOS automation and scripting
 cask "handbrake"              # video transcoder
@@ -84,11 +84,11 @@ cask "keka"                   # file archiver
 cask "markdown-preview"       # Markdown previewer with bundled Quick Look extension
 cask "mediamate"              # now-playing overlay for Spotify and media controls
 cask "obsidian"               # Markdown-based personal knowledge base
-cask "raycast"                # app launcher (better Spotlight)
+cask "raycast"                # app launcher, window manager, clipboard history, and more
 cask "reflex-app"             # media key forwarder for Spotify
 cask "shottr"                 # screenshot tool
 cask "signal"                 # encrypted, privacy-focused messaging
-cask "spotify"                # music
+cask "spotify"                # music streaming
 cask "transmission"           # BitTorrent client
 cask "unity-hub"              # launcher for Unity editor
 cask "visual-studio-code"     # code editor
