@@ -75,6 +75,7 @@ cask "discord"                # voice, video, and text chat
 cask "fork"                   # git GUI client
 cask "ghostty"                # terminal emulator
 cask "git-credential-manager" # cross-platform git credential storage
+cask "gitcomet"               # FOSS git GUI client
 cask "google-chrome"          # web browser
 cask "hammerspoon"            # lua-driven macOS automation and scripting
 cask "handbrake"              # video transcoder
