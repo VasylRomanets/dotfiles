@@ -64,6 +64,7 @@ brew "neo-cowsay"   # cowsay with many more animals
 brew "pipes-sh"     # animated pipes terminal screensaver
 brew "sl"           # steam locomotive (penalty for typing sl instead of ls)
 brew "spinpacks"    # themed spinner verb packs for Claude Code
+brew "stormy"       # minimal neofetch-like weather CLI
 
 # ── Cask: Fonts ───────────────────────────────────────────────────────────────
 cask "font-meslo-lg-nerd-font" # terminal and editor font (MesloLGS NF)
