@@ -5,6 +5,7 @@ tap "vasylromanets/tap", trusted: true # required for spinpacks
 tap "veirt/veirt", trusted: true       # required for weathr
 
 # ── Brew: Must-have ───────────────────────────────────────────────────────────
+brew "atuin"                        # fuzzy-search shell history and sync it across machines
 brew "bat"                          # print syntax-highlighted file contents (better cat)
 brew "eza"                          # list files (better ls)
 brew "fd"                           # find files (better find)
