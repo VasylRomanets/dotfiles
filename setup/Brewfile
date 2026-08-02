@@ -5,30 +5,29 @@ tap "vasylromanets/tap", trusted: true # required for spinpacks
 tap "veirt/veirt", trusted: true       # required for weathr
 
 # ── Brew: Must-have ───────────────────────────────────────────────────────────
-brew "atuin"                        # fuzzy-search shell history and sync it across machines
-brew "bat"                          # print syntax-highlighted file contents (better cat)
-brew "eza"                          # list files (better ls)
-brew "fd"                           # find files (better find)
-brew "fzf"                          # fuzzy finder for files, history, and more
-brew "gh"                           # official GitHub CLI
-brew "git"                          # version control
-brew "git-delta"                    # syntax-highlighted diffs (better diff-so-fancy)
-brew "git-filter-repo"              # rewrite git history (better bfg)
-brew "git-lfs"                      # git large file storage extension
-brew "jq"                           # JSON processor
-brew "lazygit"                      # TUI git client
-brew "mas"                          # CLI for the Mac App Store
-brew "micro"                        # text editor (better nano)
-brew "ripgrep"                      # search within files (better grep)
-brew "starship"                     # cross-shell prompt manager
-brew "toml2json"                    # TOML to JSON converter
-brew "yazi"                         # file manager
-brew "yq"                           # YAML processor (like jq for YAML)
-brew "zoxide"                       # auto-learning navigation (better cd)
-brew "zsh"                          # the Z shell itself
-brew "zsh-autosuggestions"          # fish-like command suggestions from history
-brew "zsh-history-substring-search" # arrow-key history search by substring
-brew "zsh-syntax-highlighting"      # highlight commands as you type
+brew "atuin"                   # fuzzy-search shell history and sync it across machines
+brew "bat"                     # print syntax-highlighted file contents (better cat)
+brew "eza"                     # list files (better ls)
+brew "fd"                      # find files (better find)
+brew "fzf"                     # fuzzy finder for files, history, and more
+brew "gh"                      # official GitHub CLI
+brew "git"                     # version control
+brew "git-delta"               # syntax-highlighted diffs (better diff-so-fancy)
+brew "git-filter-repo"         # rewrite git history (better bfg)
+brew "git-lfs"                 # git large file storage extension
+brew "jq"                      # JSON processor
+brew "lazygit"                 # TUI git client
+brew "mas"                     # CLI for the Mac App Store
+brew "micro"                   # text editor (better nano)
+brew "ripgrep"                 # search within files (better grep)
+brew "starship"                # cross-shell prompt manager
+brew "toml2json"               # TOML to JSON converter
+brew "yazi"                    # file manager
+brew "yq"                      # YAML processor (like jq for YAML)
+brew "zoxide"                  # auto-learning navigation (better cd)
+brew "zsh"                     # the Z shell itself
+brew "zsh-autosuggestions"     # fish-like command suggestions from history
+brew "zsh-syntax-highlighting" # highlight commands as you type
 
 # ── Brew: Nice-to-have ────────────────────────────────────────────────────────
 brew "asciinema"     # record and share terminal sessions

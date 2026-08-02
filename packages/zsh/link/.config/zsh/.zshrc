@@ -7,16 +7,12 @@ source "$ZDOTDIR/settings.zsh"
 source "$ZDOTDIR/highlight.zsh" # must precede zsh-syntax-highlighting
 
 # Plugins
-for plugin in zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search; do
+for plugin in zsh-autosuggestions zsh-syntax-highlighting; do
   source "$HOMEBREW_PREFIX/share/$plugin/$plugin.zsh"
 done
 
 # Post-plugin config
 source "$ZDOTDIR/completions.zsh" # must follow plugins — calls compinit
-
-# Keybindings
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 # Packages
 for f in "$ZDOTDIR/source/"*.zsh(N); do
