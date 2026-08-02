@@ -1,0 +1,19 @@
+[location]
+# Auto-detect location via IP (defaults to true if config missing)
+auto = true
+
+# Hide the location name in the UI
+hide = false
+
+# How to display the location in the HUD: "coordinates" | "city" | "mixed"
+display = "city"
+
+[units]
+# Temperature unit: "celsius" or "fahrenheit"
+temperature = "celsius"
+
+# Wind speed unit: "kmh", "ms", "mph", or "kn"
+wind_speed = "kmh"
+
+# Precipitation unit: "mm" or "inch"
+precipitation = "mm"
