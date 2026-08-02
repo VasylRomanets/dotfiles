@@ -46,4 +46,7 @@ _fzf_comprun() {
   esac
 }
 
+# let atuin own CTRL-R for history search instead of fzf
+(( $+commands[atuin] )) && export FZF_CTRL_R_COMMAND=""
+
 source <(fzf --zsh)
