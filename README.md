@@ -26,29 +26,6 @@ dotfiles/
     └── macos.zsh          # sensible macOS defaults
 ```
 
-## Package Setup
-
-Each package may optionally include a `setup.toml`. Packages without one are always processed, symlinking `link/` to `~` by default.
-
-```toml
-# Skip this package if the CLI tool/GUI app is not installed
-[requires]
-command = "bat" # checked via command -v
-app = "Ghostty" # checked via /Applications/Ghostty.app
-
-# Override symlink destination (defaults to ~)
-[link]
-target = "~"
-
-# Copy files from copy/ to this directory
-[copy]
-target = "~/Library/..."
-```
-
-`[requires]` accepts `command`, `app`, or both. `[link]` is rarely needed since `~` is the default. `[copy]` is only used by packages that can't be symlinked because of macOS sandboxing (e.g. any app installed from the Mac App Store).
-
-A package can also define `hooks/pre-setup.zsh` and/or `hooks/post-setup.zsh` for setup steps beyond symlinking/copying (e.g. resolving plugin dependencies). Both are optional and run only for packages that pass `[requires]`.
-
 ## New Machine Setup
 
 > [!WARNING]
@@ -92,6 +69,29 @@ Renaming or removing a package file can leave a stale symlink behind. Run `prune
 ~/.dotfiles/setup/prune-symlinks.zsh
 # or: cd ~/.dotfiles && make prune-symlinks
 ```
+
+## Package Setup
+
+Each package may optionally include a `setup.toml`. Packages without one are always processed, symlinking `link/` to `~` by default.
+
+```toml
+# Skip this package if the CLI tool/GUI app is not installed
+[requires]
+command = "bat" # checked via command -v
+app = "Ghostty" # checked via /Applications/Ghostty.app
+
+# Override symlink destination (defaults to ~)
+[link]
+target = "~"
+
+# Copy files from copy/ to this directory
+[copy]
+target = "~/Library/..."
+```
+
+`[requires]` accepts `command`, `app`, or both. `[link]` is rarely needed since `~` is the default. `[copy]` is only used by packages that can't be symlinked because of macOS sandboxing (e.g. any app installed from the Mac App Store).
+
+A package can also define `hooks/pre-setup.zsh` and/or `hooks/post-setup.zsh` for setup steps beyond symlinking/copying (e.g. resolving plugin dependencies). Both are optional and run only for packages that pass `[requires]`.
 
 ## Appearance
 
