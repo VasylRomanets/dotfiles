@@ -13,7 +13,7 @@ dotfiles/
 ├── packages/
 │   └── <pkg>/
 │       ├── link/          # files to symlink (mirrored structure, optional)
-│       ├── shell/         # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
+│       ├── source/        # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
 │       ├── copy/          # files to copy (optional)
 │       ├── hooks/         # pre-setup.zsh / post-setup.zsh run by sync.zsh (optional)
 │       └── setup.toml     # install conditions and copy/link target (optional)

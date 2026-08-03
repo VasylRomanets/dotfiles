@@ -100,10 +100,10 @@ sync_packages() {
       pkg_linked=1
     fi
 
-    if [[ -d "$pkg_dir/shell" ]]; then
+    if [[ -d "$pkg_dir/source" ]]; then
       source_dir="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/source"
       mkdir -p "$source_dir"
-      for src in "$pkg_dir/shell/"*.zsh(N); do
+      for src in "$pkg_dir/source/"*.zsh(N); do
         symlink "$DOTFILES/$src" "$source_dir/${src:t}"
       done
       pkg_linked=1
