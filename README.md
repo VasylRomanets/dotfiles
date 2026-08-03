@@ -20,7 +20,7 @@ dotfiles/
     ├── _lib.zsh           # shared utilities (colors, logging)
     ├── Brewfile           # Homebrew formulae, casks, mas apps and vscode extensions
     ├── bootstrap.zsh      # full machine setup
-    ├── sync.zsh           # symlinks dotfiles and copies assets
+    ├── sync.zsh           # symlinks package files and copies assets
     ├── prune-symlinks.zsh # removes orphaned symlinks left by renamed/removed package files
     └── macos.zsh          # sensible macOS defaults
 ```
@@ -49,7 +49,7 @@ target = "~/Library/..."
 ## New Machine Setup
 
 > [!WARNING]
-> Works on my machine! Review the installation scripts and dotfiles before adopting.
+> Works on my machine! Review the installation scripts and package files before adopting.
 
 1. Clone the repo:
 ```zsh
@@ -70,7 +70,7 @@ This will:
 - Install Xcode Command Line Tools
 - Install Homebrew
 - Install formulae, casks, App Store apps and VS Code extensions from Brewfile
-- Symlink dotfiles and copy assets
+- Symlink package files and copy assets
 - Configure Git and SSH
 - Apply macOS defaults
 
@@ -78,7 +78,7 @@ You'll be prompted before each step.
 
 ## Updating
 
-After adding or modifying dotfiles, re-run `sync.zsh` to apply them:
+After adding or modifying package files, re-run `sync.zsh` to apply them:
 ```zsh
 ~/.dotfiles/setup/sync.zsh
 # or: cd ~/.dotfiles && make sync
