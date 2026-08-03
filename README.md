@@ -12,16 +12,17 @@
 dotfiles/
 ├── packages/
 │   └── <pkg>/
-│       ├── link/        # files to symlink (mirrored structure, optional)
-│       ├── shell/       # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
-│       ├── copy/        # files to copy (optional)
-│       └── setup.toml   # install conditions and copy/link target (optional)
+│       ├── link/          # files to symlink (mirrored structure, optional)
+│       ├── shell/         # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
+│       ├── copy/          # files to copy (optional)
+│       └── setup.toml     # install conditions and copy/link target (optional)
 └── setup/
-    ├── _lib.zsh         # shared utilities (colors, logging)
-    ├── Brewfile         # Homebrew formulae, casks, mas apps and vscode extensions
-    ├── bootstrap.zsh    # full machine setup
-    ├── sync.zsh         # symlinks dotfiles and copies assets
-    └── macos.zsh        # sensible macOS defaults
+    ├── _lib.zsh           # shared utilities (colors, logging)
+    ├── Brewfile           # Homebrew formulae, casks, mas apps and vscode extensions
+    ├── bootstrap.zsh      # full machine setup
+    ├── sync.zsh           # symlinks dotfiles and copies assets
+    ├── prune-symlinks.zsh # removes orphaned symlinks left by renamed/removed package files
+    └── macos.zsh          # sensible macOS defaults
 ```
 
 ## setup.toml
@@ -81,6 +82,12 @@ After adding or modifying dotfiles, re-run `sync.zsh` to apply them:
 ```zsh
 ~/.dotfiles/setup/sync.zsh
 # or: cd ~/.dotfiles && make sync
+```
+
+Renaming or removing a package file can leave a stale symlink behind. Run `prune-symlinks.zsh` occasionally to clean those up:
+```zsh
+~/.dotfiles/setup/prune-symlinks.zsh
+# or: cd ~/.dotfiles && make prune-symlinks
 ```
 
 ## Appearance
