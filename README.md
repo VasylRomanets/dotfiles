@@ -26,7 +26,7 @@ dotfiles/
     └── macos.zsh          # sensible macOS defaults
 ```
 
-## setup.toml
+## Package Setup
 
 Each package may optionally include a `setup.toml`. Packages without one are always processed, symlinking `link/` to `~` by default.
 
