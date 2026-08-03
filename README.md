@@ -32,8 +32,8 @@ Each package may optionally include a `setup.toml`. Packages without one are alw
 ```toml
 # Skip this package if the CLI tool/GUI app is not installed
 [requires]
-command = "bat"      # checked via command -v
-app = "Ghostty"      # checked via /Applications/Ghostty.app
+command = "bat" # checked via command -v
+app = "Ghostty" # checked via /Applications/Ghostty.app
 
 # Override symlink destination (defaults to ~)
 [link]
