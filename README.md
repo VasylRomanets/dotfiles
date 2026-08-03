@@ -15,6 +15,7 @@ dotfiles/
 │       ├── link/          # files to symlink (mirrored structure, optional)
 │       ├── shell/         # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
 │       ├── copy/          # files to copy (optional)
+│       ├── hooks/         # pre-setup.zsh / post-setup.zsh run by sync.zsh (optional)
 │       └── setup.toml     # install conditions and copy/link target (optional)
 └── setup/
     ├── _lib.zsh           # shared utilities (colors, logging)
@@ -45,6 +46,8 @@ target = "~/Library/..."
 ```
 
 `[requires]` accepts `command`, `app`, or both. `[link]` is rarely needed since `~` is the default. `[copy]` is only used by packages that can't be symlinked because of macOS sandboxing (e.g. any app installed from the Mac App Store).
+
+A package can also define `hooks/pre-setup.zsh` and/or `hooks/post-setup.zsh` for setup steps beyond symlinking/copying (e.g. resolving plugin dependencies). Both are optional and run only for packages that pass `[requires]`.
 
 ## New Machine Setup
 

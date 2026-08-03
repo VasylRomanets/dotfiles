@@ -49,6 +49,18 @@ symlink() {
   fi
 }
 
+run_hook() {
+  local hook="$1" pkg="$2" label="$3"
+  [[ -f "$hook" ]] || return
+  echo "Running $label hook for $pkg..."
+  if zsh "$hook"; then
+    success "Ran $label hook for $pkg"
+  else
+    warning "$label hook failed for $pkg"
+    (( ++failed ))
+  fi
+}
+
 sync_packages() {
   cd "$DOTFILES"
 
@@ -72,6 +84,8 @@ sync_packages() {
       (( ++skipped ))
       continue
     fi
+
+    run_hook "$pkg_dir/hooks/pre-setup.zsh" "$pkg" "pre-setup"
 
     local pkg_linked=0
 
@@ -112,6 +126,8 @@ sync_packages() {
         success "Copied $pkg"
       fi
     fi
+
+    run_hook "$pkg_dir/hooks/post-setup.zsh" "$pkg" "post-setup"
   done
 }
 
