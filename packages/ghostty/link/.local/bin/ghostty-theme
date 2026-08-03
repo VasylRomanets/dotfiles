@@ -16,16 +16,32 @@
 themes_dir="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes"
 config=$(realpath "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config")
 
+favorite_builtin_themes=(
+  "Black Metal" "Catppuccin Frappe" "Catppuccin Latte" "Catppuccin Macchiato"
+  "Catppuccin Mocha" "Gruvbox Dark" "Gruvbox Dark Hard" "Gruvbox Material Dark"
+  "Kanagawa Dragon" "Kanagawa Wave" "Monokai Pro" "Monokai Pro Octagon"
+  "Nightfox" "Carbonfox" "Dawnfox" "Dayfox" "Duskfox" "Nordfox" "Terafox"
+  "Nord" "Nord Wave" "Onenord" "Rose Pine" "Rose Pine Dawn" "Rose Pine Moon"
+  "TokyoNight" "TokyoNight Day" "TokyoNight Moon" "TokyoNight Storm" "Vague"
+)
+
+local_themes=()
+while IFS= read -r f; do
+  local_themes+=("$f")
+done < <(command ls "$themes_dir")
+
+themes=("${favorite_builtin_themes[@]}" "${local_themes[@]}")
+
 if [[ "$1" == "-r" ]]; then
-  theme=$(command ls "$themes_dir" | awk 'BEGIN{srand()} {a[NR]=$0} END{print a[int(rand()*NR)+1]}')
-elif [[ -n "$1" && -f "$themes_dir/$1" ]]; then
+  theme="${themes[RANDOM % ${#themes[@]}]}"
+elif [[ -n "$1" ]] && printf '%s\n' "${themes[@]}" | grep -qxF "$1"; then
   theme="$1"
 else
-  theme=$(command ls "$themes_dir" | fzf --query="$1")
+  theme=$(printf '%s\n' "${themes[@]}" | fzf --query="$1")
 fi
 
 [[ -z "$theme" ]] && exit 0
 
-perl -i -pe "s/^theme = .*/theme = $theme/" "$config"
+perl -i -pe "s/^theme = .*/theme = \"$theme\"/" "$config"
 killall -USR2 ghostty
 echo "$theme theme is applied."
