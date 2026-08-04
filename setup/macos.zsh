@@ -105,6 +105,10 @@ defaults write com.apple.finder ShowStatusBar -bool false
 # show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
+# hide widgets on desktop
+defaults write com.apple.WindowManager StandardHideWidgets -bool true
+defaults write com.apple.WindowManager StageManagerHideWidgets -bool true
+
 # display full POSIX path as Finder window title
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
