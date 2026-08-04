@@ -218,13 +218,17 @@ defaults write com.apple.WindowManager AutoHideDelay -float 3.0
 defaults write com.apple.WindowManager StageFrameMinimumHorizontalInset -int 0
 
 ###############################################################################
-# Privacy                                                                     #
+# Privacy & Security                                                          #
 ###############################################################################
 
 # disable Apple's ad personalization and tracking
 defaults write com.apple.AdLib forceLimitAdTracking -bool true
 defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
 defaults write com.apple.AdLib allowIdentifierForAdvertising -bool false
+
+# show custom message on login window / lock screen
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText \
+    -string "Contact romanets.vasyl@gmail.com if you found this MacBook"
 
 ###############################################################################
 # Screenshots                                                                 #
@@ -277,7 +281,7 @@ fi
 # Kill affected apps                                                          #
 ###############################################################################
 
-for app in "Finder" "Dock" "SystemUIServer"; do
+for app in "Finder" "Dock" "SystemUIServer" "ControlCenter"; do
   killall "${app}" &>/dev/null
 done
 
