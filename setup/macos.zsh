@@ -9,6 +9,11 @@ SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 source "$SETUP_PATH/_lib.zsh"
 require_macos
 
+# prompt for the admin password once upfront, rather than mid-script —
+# a couple of settings below need sudo (marked inline)
+warning "A few settings need admin privileges — you may be prompted for your password."
+sudo -v
+
 echo "Applying macOS defaults..."
 
 ###############################################################################
