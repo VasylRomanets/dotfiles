@@ -99,8 +99,8 @@ defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write com.apple.finder NewWindowTarget -string PfHm
 defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
 
-# show status bar
-# defaults write com.apple.finder ShowStatusBar -bool true
+# hide status bar
+defaults write com.apple.finder ShowStatusBar -bool false
 
 # show path bar
 defaults write com.apple.finder ShowPathbar -bool true
