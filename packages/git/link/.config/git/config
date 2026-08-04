@@ -8,6 +8,7 @@
   pager = delta
   quotepath = false
   fsmonitor = true
+  untrackedCache = true
 
 [interactive]
   diffFilter = delta --color-only
