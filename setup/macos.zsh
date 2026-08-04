@@ -144,8 +144,10 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 # remove all persistent (pinned) apps from the Dock
 defaults write com.apple.dock persistent-apps -array ""
 
-# set the icon size to 56 pixels
-defaults write com.apple.dock tilesize -int 56
+# set the icon size and magnification
+defaults write com.apple.dock tilesize -int 60
+defaults write com.apple.dock largesize -int 70
+defaults write com.apple.dock magnification -bool true
 
 # minimize windows into their application's icon
 defaults write com.apple.dock minimize-to-application -bool true
