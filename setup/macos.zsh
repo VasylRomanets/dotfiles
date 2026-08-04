@@ -29,8 +29,8 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 # always open documents in tabs instead of new windows
 defaults write -g AppleWindowTabbingMode -string always
 
-# disable crash reporter dialogs
-defaults write com.apple.CrashReporter DialogType -string "none"
+# show crash reporter notification instead of dialog
+defaults write com.apple.CrashReporter DialogType -string "notification"
 
 ###############################################################################
 # Text Input                                                                  #
