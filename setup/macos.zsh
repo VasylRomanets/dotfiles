@@ -9,7 +9,7 @@ SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 source "$SETUP_PATH/_lib.zsh"
 require_macos
 
-# prompt for the admin password once upfront, rather than mid-script —
+# prompt for your password once upfront, rather than mid-script —
 # a couple of settings below need sudo (marked inline)
 warning "A few settings need admin privileges — you may be prompted for your password."
 sudo -v
@@ -23,18 +23,18 @@ echo "Applying macOS defaults..."
 # enable full keyboard access for all controls
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# expand save panel by default
+# expand the save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-# expand print panel by default
+# expand the print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 # always open documents in tabs instead of new windows
 defaults write -g AppleWindowTabbingMode -string always
 
-# show crash reporter notification instead of dialog
+# show a crash reporter notification instead of a dialog
 defaults write com.apple.CrashReporter DialogType -string "notification"
 
 ###############################################################################
@@ -63,11 +63,11 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 # Appearance                                                                  #
 ###############################################################################
 
-# replace app open/close animations with simple fade effect;
-# requires full disk access for terminal
+# replace app open/close animations with a simple fade effect;
+# requires full disk access for Terminal
 defaults write com.apple.universalaccess reduceMotion -bool true
 
-# set accent color (5 = purple)
+# set the accent color (5 = purple)
 defaults write -g AppleAccentColor -int 5
 
 ###############################################################################
@@ -111,13 +111,13 @@ defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write com.apple.finder NewWindowTarget -string PfHm
 defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
 
-# hide status bar
+# hide the status bar
 defaults write com.apple.finder ShowStatusBar -bool false
 
-# show path bar
+# show the path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
-# display full POSIX path as Finder window title
+# display the full POSIX path as the Finder window title
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # keep folders on top when sorting by name
@@ -163,7 +163,7 @@ defaults write com.apple.dock minimize-to-application -bool true
 # don't automatically rearrange Spaces based on most recent use
 # defaults write com.apple.dock mru-spaces -bool false
 
-# don't show recent apps in Dock
+# don't show recent apps in the Dock
 defaults write com.apple.dock show-recents -bool false
 
 # automatically hide and show the Dock
@@ -189,15 +189,15 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 # Menu Bar                                                                    #
 ###############################################################################
 
-# hide AM/PM, show day of week and date
+# hide AM/PM, show the day of week and date
 defaults write com.apple.menuextra.clock ShowAMPM -bool false
 defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 defaults write com.apple.menuextra.clock ShowDate -int 1
 
-# show battery percentage
+# show the battery percentage
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 
-# remove Siri from menu bar
+# remove Siri from the menu bar
 defaults write com.apple.Siri StatusMenuVisible -bool false
 
 ###############################################################################
@@ -218,7 +218,7 @@ defaults write com.apple.WindowManager AutoHideDelay -float 3.0
 # previously maximized window, so it fills the screen width again
 defaults write com.apple.WindowManager StageFrameMinimumHorizontalInset -int 0
 
-# hide widgets on desktop
+# hide widgets on the desktop
 defaults write com.apple.WindowManager StandardHideWidgets -bool true
 defaults write com.apple.WindowManager StageManagerHideWidgets -bool true
 
@@ -231,7 +231,7 @@ defaults write com.apple.AdLib forceLimitAdTracking -bool true
 defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
 defaults write com.apple.AdLib allowIdentifierForAdvertising -bool false
 
-# show custom message on login window / lock screen (requires sudo)
+# show a custom message on the login window / lock screen (requires sudo)
 sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText \
     -string "Contact romanets.vasyl@gmail.com if you found this MacBook"
 
@@ -245,7 +245,7 @@ defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screen
 # save screenshots in PNG format
 # defaults write com.apple.screencapture type -string "png"
 
-# disable shadow in screenshots
+# disable the shadow in screenshots
 # defaults write com.apple.screencapture disable-shadow -bool true
 
 ###############################################################################
