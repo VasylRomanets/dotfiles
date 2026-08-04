@@ -79,7 +79,7 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 ###############################################################################
-# Trackpad & Mouse                                                             #
+# Trackpad & Mouse                                                            #
 ###############################################################################
 
 # enable tap to click
@@ -111,10 +111,6 @@ defaults write com.apple.finder ShowStatusBar -bool false
 
 # show path bar
 defaults write com.apple.finder ShowPathbar -bool true
-
-# hide widgets on desktop
-defaults write com.apple.WindowManager StandardHideWidgets -bool true
-defaults write com.apple.WindowManager StageManagerHideWidgets -bool true
 
 # display full POSIX path as Finder window title
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
@@ -217,6 +213,10 @@ defaults write com.apple.WindowManager AutoHideDelay -float 3.0
 # previously maximized window, so it fills the screen width again
 defaults write com.apple.WindowManager StageFrameMinimumHorizontalInset -int 0
 
+# hide widgets on desktop
+defaults write com.apple.WindowManager StandardHideWidgets -bool true
+defaults write com.apple.WindowManager StageManagerHideWidgets -bool true
+
 ###############################################################################
 # Privacy & Security                                                          #
 ###############################################################################
@@ -226,7 +226,7 @@ defaults write com.apple.AdLib forceLimitAdTracking -bool true
 defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
 defaults write com.apple.AdLib allowIdentifierForAdvertising -bool false
 
-# show custom message on login window / lock screen
+# show custom message on login window / lock screen (requires sudo)
 sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText \
     -string "Contact romanets.vasyl@gmail.com if you found this MacBook"
 
@@ -271,7 +271,7 @@ defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 # Touch ID                                                                    #
 ###############################################################################
 
-# enable Touch ID for sudo (persists across macOS updates via sudo_local)
+# enable Touch ID for sudo (persists across macOS updates via sudo_local; requires sudo)
 if [[ ! -f /etc/pam.d/sudo_local ]]; then
   sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
   sudo sed -i '' 's/#auth/auth/' /etc/pam.d/sudo_local
