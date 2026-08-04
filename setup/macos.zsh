@@ -15,21 +15,6 @@ echo "Applying macOS defaults..."
 # General                                                                     #
 ###############################################################################
 
-# disable automatic capitalization (annoying when typing code)
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
-
-# disable smart dashes (annoying when typing code)
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-# disable automatic period substitution
-defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-
-# disable smart quotes (annoying when typing code)
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# disable auto-correct
-# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
 # enable full keyboard access for all controls
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
@@ -46,6 +31,25 @@ defaults write -g AppleWindowTabbingMode -string always
 
 # disable crash reporter dialogs
 defaults write com.apple.CrashReporter DialogType -string "none"
+
+###############################################################################
+# Text Input                                                                  #
+###############################################################################
+
+# disable automatic capitalization (annoying when typing code)
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# disable smart dashes (annoying when typing code)
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# disable automatic period substitution
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# disable smart quotes (annoying when typing code)
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# disable auto-correct
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 ###############################################################################
 # Appearance                                                                  #
