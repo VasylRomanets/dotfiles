@@ -36,20 +36,23 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 # Text Input                                                                  #
 ###############################################################################
 
-# disable automatic capitalization (annoying when typing code)
+# disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# disable automatic text completion
+defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
+
+# disable automatic capitalization
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
-# disable smart dashes (annoying when typing code)
+# disable smart dashes
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# disable smart quotes
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # disable automatic period substitution
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-
-# disable smart quotes (annoying when typing code)
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 ###############################################################################
 # Appearance                                                                  #
