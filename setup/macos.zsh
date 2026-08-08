@@ -9,9 +9,8 @@ SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 source "$SETUP_PATH/_lib.zsh"
 require_macos
 
-# prompt for your password once upfront, rather than mid-script —
-# a couple of settings below need sudo (marked inline)
-warning "A few settings need admin privileges — you may be prompted for your password."
+# prompt for a password once upfront, rather than mid-script
+warning "A few settings require admin access — you may be prompted for your password."
 sudo -v
 
 echo "Applying macOS defaults..."
@@ -232,7 +231,7 @@ defaults write com.apple.AdLib forceLimitAdTracking -bool true
 defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
 defaults write com.apple.AdLib allowIdentifierForAdvertising -bool false
 
-# show a custom message on the login window / lock screen (requires sudo)
+# show a custom message on the login window / lock screen
 sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText \
     -string "Contact romanets.vasyl@gmail.com if you found this MacBook"
 
@@ -277,7 +276,7 @@ defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 # Touch ID                                                                    #
 ###############################################################################
 
-# enable Touch ID for sudo (persists across macOS updates via sudo_local; requires sudo)
+# enable Touch ID for sudo (persists across macOS updates via sudo_local)
 if [[ ! -f /etc/pam.d/sudo_local ]]; then
   sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
   sudo sed -i '' 's/#auth/auth/' /etc/pam.d/sudo_local
