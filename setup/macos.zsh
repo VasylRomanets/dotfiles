@@ -189,8 +189,9 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 # Menu Bar                                                                    #
 ###############################################################################
 
-# hide AM/PM, show the day of week and date
+# hide AM/PM, use 24-hour format, show the day of week and date
 defaults write com.apple.menuextra.clock ShowAMPM -bool false
+defaults write com.apple.menuextra.clock Show24Hour -bool true
 defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 defaults write com.apple.menuextra.clock ShowDate -int 1
 
