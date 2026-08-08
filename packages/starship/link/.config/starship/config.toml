@@ -74,7 +74,7 @@ $stashed\
 [cmd_duration]
 min_time = 3000
 style = "dimmed white"
-format = "[ 󱦟 $duration]($style)"
+format = "[ 󰪢 $duration]($style)"
 
 [time]
 disabled = false
