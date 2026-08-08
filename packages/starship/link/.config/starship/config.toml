@@ -3,6 +3,9 @@
 # ╭─  dotfiles  main ⇣1⇡2 +1 !2 ───────────────────── 󱦟 3s  12:34
 # ╰─❯
 
+# some cool icons and symbols, kept for reference:
+#  󰉋 󰌾  󱦟 󰜥                  ╭─ ╰─
+
 format = """
 [╭─](dimmed white)\
 $directory\
