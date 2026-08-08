@@ -31,7 +31,7 @@ symbol = "·"
 style = "cyan"
 truncation_length = 4
 truncate_to_repo = true
-read_only = " 󰌾"
+read_only = " "
 read_only_style = "red"
 format = "[ $path]($style)[$read_only]($read_only_style) "
 
