@@ -7,3 +7,6 @@ search_mode = "daemon-fuzzy"
 [daemon]
 enabled = true
 autostart = true
+
+[keymap.emacs]
+"ctrl-x" = "delete"
