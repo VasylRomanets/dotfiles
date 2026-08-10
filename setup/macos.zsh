@@ -297,6 +297,9 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText \
 # disable the Guest User account
 sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
 
+# start the screen saver after 2 minutes of inactivity
+defaults -currentHost write com.apple.screensaver idleTime -int 120
+
 # require a password immediately after sleep or the screen saver starts
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
