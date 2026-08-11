@@ -25,12 +25,46 @@
       "Bash(sh ~/.config/claude/hooks/notify-idle.sh)",
       "Bash(sh ~/.config/claude/hooks/notify-permission-request.sh)",
       "Bash(sh ~/.config/claude/hooks/notify-stop.sh)",
+      "Bash(/bin/sh ~/.config/claude/hooks/atuin-record-history.sh)",
       "WebFetch",
       "WebSearch"
     ],
     "deny": []
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh ~/.config/claude/hooks/atuin-record-history.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh ~/.config/claude/hooks/atuin-record-history.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh ~/.config/claude/hooks/atuin-record-history.sh"
+          }
+        ]
+      }
+    ],
     "PermissionRequest": [
       {
         "hooks": [
