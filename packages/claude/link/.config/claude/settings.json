@@ -22,9 +22,9 @@
       "Bash(gh run list *)",
       "Bash(gh run view *)",
       "Bash(gh run watch *)",
-      "Bash(sh ~/.config/claude/hooks/notify-idle.sh)",
-      "Bash(sh ~/.config/claude/hooks/notify-permission-request.sh)",
-      "Bash(sh ~/.config/claude/hooks/notify-stop.sh)",
+      "Bash(/bin/sh ~/.config/claude/hooks/notify-idle.sh)",
+      "Bash(/bin/sh ~/.config/claude/hooks/notify-permission-request.sh)",
+      "Bash(/bin/sh ~/.config/claude/hooks/notify-stop.sh)",
       "Bash(/bin/sh ~/.config/claude/hooks/atuin-record-history.sh)",
       "WebFetch",
       "WebSearch"
@@ -70,7 +70,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh ~/.config/claude/hooks/notify-permission-request.sh",
+            "command": "/bin/sh ~/.config/claude/hooks/notify-permission-request.sh",
             "async": true
           }
         ]
@@ -82,7 +82,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh ~/.config/claude/hooks/notify-idle.sh",
+            "command": "/bin/sh ~/.config/claude/hooks/notify-idle.sh",
             "async": true
           }
         ]
@@ -93,7 +93,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh ~/.config/claude/hooks/notify-stop.sh",
+            "command": "/bin/sh ~/.config/claude/hooks/notify-stop.sh",
             "async": true
           }
         ]
