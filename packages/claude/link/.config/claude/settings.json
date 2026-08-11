@@ -22,10 +22,10 @@
       "Bash(gh run list *)",
       "Bash(gh run view *)",
       "Bash(gh run watch *)",
-      "Bash(/bin/sh ~/.config/claude/hooks/notify-idle.sh)",
-      "Bash(/bin/sh ~/.config/claude/hooks/notify-permission-request.sh)",
-      "Bash(/bin/sh ~/.config/claude/hooks/notify-stop.sh)",
-      "Bash(/bin/sh ~/.config/claude/hooks/atuin-record-history.sh)",
+      "Bash(/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-idle.sh)",
+      "Bash(/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-permission-request.sh)",
+      "Bash(/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-stop.sh)",
+      "Bash(/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/atuin-record-history.sh)",
       "WebFetch",
       "WebSearch"
     ],
@@ -38,7 +38,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/sh ~/.config/claude/hooks/atuin-record-history.sh"
+            "command": "/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/atuin-record-history.sh"
           }
         ]
       }
@@ -49,7 +49,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/sh ~/.config/claude/hooks/atuin-record-history.sh"
+            "command": "/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/atuin-record-history.sh"
           }
         ]
       }
@@ -60,7 +60,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/sh ~/.config/claude/hooks/atuin-record-history.sh"
+            "command": "/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/atuin-record-history.sh"
           }
         ]
       }
@@ -70,7 +70,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/sh ~/.config/claude/hooks/notify-permission-request.sh",
+            "command": "/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-permission-request.sh",
             "async": true
           }
         ]
@@ -82,7 +82,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/sh ~/.config/claude/hooks/notify-idle.sh",
+            "command": "/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-idle.sh",
             "async": true
           }
         ]
@@ -93,7 +93,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/sh ~/.config/claude/hooks/notify-stop.sh",
+            "command": "/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-stop.sh",
             "async": true
           }
         ]
@@ -102,7 +102,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "/bin/sh ~/.config/claude/statusline.sh"
+    "command": "/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/statusline.sh"
   },
   "enabledPlugins": {},
   "spinnerVerbs": {
