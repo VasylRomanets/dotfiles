@@ -1,5 +1,7 @@
 .define launch : open -a "{{1}}" 2>/dev/null
+.define resize : open -g "rectangle://execute-action?name={{1}}" 2>/dev/null
 
+# app shortcuts
 alt - b : @launch("Google Chrome")
 alt - f : @launch("Finder")
 alt - g : @launch("Fork")
@@ -7,3 +9,10 @@ alt - s : @launch("Spotify")
 alt - t : @launch("Todoist")
 alt - w : @launch("Ghostty")
 alt - z : @launch("zoom.us")
+
+# window management (Rectangle)
+alt - 1 : @resize("maximize")
+alt - 2 : @resize("center")
+alt - 3 : @resize("almost-maximize")
+alt - 4 : @resize("smaller")
+alt - 5 : @resize("larger")
