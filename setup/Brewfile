@@ -90,6 +90,7 @@ cask "markdown-preview"       # Markdown previewer with bundled Quick Look exten
 cask "mediamate"              # now-playing overlay for Spotify and media controls
 cask "obsidian"               # Markdown-based personal knowledge base
 cask "raycast"                # app launcher, window manager, clipboard history, and more
+cask "rectangle"              # window manager (driven from skhd via URL scheme)
 cask "reflex-app"             # media key forwarder for Spotify
 cask "shottr"                 # screenshot tool
 cask "signal"                 # encrypted, privacy-focused messaging
