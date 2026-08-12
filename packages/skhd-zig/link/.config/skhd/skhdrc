@@ -1,5 +1,6 @@
 .define launch : open -a "{{1}}" 2>/dev/null
 .define resize : open -g "rectangle://execute-action?name={{1}}" 2>/dev/null
+.define spotify : osascript -e 'tell application "Spotify" to {{1}}'
 
 # app shortcuts
 alt - b : @launch("Google Chrome")
@@ -16,3 +17,8 @@ alt - 2 : @resize("center")
 alt - 3 : @resize("almost-maximize")
 alt - 4 : @resize("smaller")
 alt - 5 : @resize("larger")
+
+# media keys (control Spotify only)
+play : @spotify("playpause")
+next : @spotify("next track")
+previous : @spotify("previous track")
