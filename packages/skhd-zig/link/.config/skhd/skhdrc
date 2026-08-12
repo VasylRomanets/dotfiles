@@ -1,0 +1,9 @@
+.define launch : open -a "{{1}}" 2>/dev/null
+
+alt - b : @launch("Google Chrome")
+alt - f : @launch("Finder")
+alt - g : @launch("Fork")
+alt - s : @launch("Spotify")
+alt - t : @launch("Todoist")
+alt - w : @launch("Ghostty")
+alt - z : @launch("zoom.us")

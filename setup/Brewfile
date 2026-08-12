@@ -1,5 +1,6 @@
 # ── Tap ───────────────────────────────────────────────────────────────────────
 tap "code-hex/tap", trusted: true      # required for neo-cowsay
+tap "jackielii/tap", trusted: true     # required for skhd-zig
 tap "rose-pine/tap", trusted: true     # required for bloom
 tap "vasylromanets/tap", trusted: true # required for spinpacks
 tap "veirt/veirt", trusted: true       # required for weathr
@@ -92,6 +93,7 @@ cask "raycast"                # app launcher, window manager, clipboard history,
 cask "reflex-app"             # media key forwarder for Spotify
 cask "shottr"                 # screenshot tool
 cask "signal"                 # encrypted, privacy-focused messaging
+cask "skhd-zig"               # global hotkeys that run shell commands (active port of skhd)
 cask "spotify"                # music streaming
 cask "transmission"           # BitTorrent client
 cask "unity-hub"              # launcher for Unity editor
