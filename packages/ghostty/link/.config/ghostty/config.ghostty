@@ -8,8 +8,8 @@
 # font-family = JuliaMono
 # font-family = CommitMono Nerd Font
 font-family = MesloLGS Nerd Font Mono
-font-size = 20
-font-thicken = true
+font-size = 18
+# font-thicken = true
 
 # Appearance
 background-blur = 10
