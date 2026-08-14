@@ -48,3 +48,8 @@ desktop-notifications = false
 # Shell
 shell-integration = zsh
 shell-integration-features = no-cursor
+
+# Local overrides — not tracked in git;
+# holds the currently active theme
+# so switching themes doesn't dirty this file
+config-file = ?config.local.ghostty
