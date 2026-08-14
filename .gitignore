@@ -1,4 +1,4 @@
 *.swp
 .DS_Store
-config.local
+config.local*
 settings.local.json
