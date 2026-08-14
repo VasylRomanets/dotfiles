@@ -10,6 +10,10 @@
   fsmonitor = true
   untrackedCache = true
 
+[credential]
+  helper =
+  helper = /usr/local/share/gcm-core/git-credential-manager
+
 [interactive]
   diffFilter = delta --color-only
 
