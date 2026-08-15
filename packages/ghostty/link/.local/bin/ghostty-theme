@@ -30,9 +30,13 @@ favorite_builtin_themes=(
   "TokyoNight" "TokyoNight Day" "TokyoNight Moon" "TokyoNight Storm" "Vague"
 )
 
+# local theme files are named "<name>.ghostty"; display the clean name in
+# the picker but keep the real filename around to write into the config
 local_themes=()
+local_theme_files=()
 while IFS= read -r f; do
-  local_themes+=("$f")
+  local_theme_files+=("$f")
+  local_themes+=("${f%.ghostty}")
 done < <(command ls "$themes_dir")
 
 themes=("${favorite_builtin_themes[@]}" "${local_themes[@]}")
@@ -47,10 +51,20 @@ fi
 
 [[ -z "$theme" ]] && exit 0
 
+# resolve a local theme's display name back to its actual "<name>.ghostty"
+# filename; built-in themes are referenced by name as-is
+value="$theme"
+for i in "${!local_themes[@]}"; do
+  if [[ "${local_themes[$i]}" == "$theme" ]]; then
+    value="${local_theme_files[$i]}"
+    break
+  fi
+done
+
 if grep -q '^theme = ' "$config"; then
-  perl -i -pe "s/^theme = .*/theme = \"$theme\"/" "$config"
+  perl -i -pe "s/^theme = .*/theme = \"$value\"/" "$config"
 else
-  printf 'theme = "%s"\n' "$theme" >> "$config"
+  printf 'theme = "%s"\n' "$value" >> "$config"
 fi
 
 killall -USR2 ghostty

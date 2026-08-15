@@ -18,7 +18,7 @@ cursor-opacity = 0.8
 cursor-style = block_hollow
 cursor-style-blink = false
 # custom-shader = shaders/cursor_smear.glsl
-theme = everforest-dark-hard
+theme = everforest-dark-hard.ghostty
 
 # Window
 confirm-close-surface = true
