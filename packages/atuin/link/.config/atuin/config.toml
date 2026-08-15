@@ -3,6 +3,7 @@
 update_check = false
 enter_accept = false
 search_mode = "daemon-fuzzy"
+style = "auto"
 
 [daemon]
 enabled = true
