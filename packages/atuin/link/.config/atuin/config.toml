@@ -4,6 +4,7 @@ update_check = false
 enter_accept = false
 search_mode = "daemon-fuzzy"
 style = "auto"
+inline_height = 0
 
 [daemon]
 enabled = true
