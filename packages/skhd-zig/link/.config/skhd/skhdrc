@@ -6,6 +6,7 @@
 alt - b : @launch("Google Chrome")
 alt - f : @launch("Finder")
 alt - g : @launch("Fork")
+alt - h : open raycast://extensions/raycast/clipboard-history/clipboard-history
 alt - s : @launch("Spotify")
 alt - t : @launch("Todoist")
 alt - w : @launch("Ghostty")
