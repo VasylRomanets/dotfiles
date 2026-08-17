@@ -19,6 +19,7 @@ cursor-opacity = 0.8
 cursor-style = block_hollow
 cursor-style-blink = false
 # custom-shader = shaders/cursor_smear.glsl
+minimum-contrast = 1.3
 theme = everforest-dark-hard.ghostty
 
 # Window
