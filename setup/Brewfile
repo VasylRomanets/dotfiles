@@ -40,6 +40,7 @@ brew "faker"         # fake data generator
 brew "grex"          # generate regex from provided examples
 brew "jrnl"          # journal and note taker
 brew "mole"          # system cleaner and optimizer (like CleanMyMac but CLI)
+brew "navi"          # interactive cheatsheets for CLI commands
 brew "shellcheck"    # static analysis tool for shell scripts
 brew "stow"          # symlink farm manager
 brew "taplo"         # TOML toolkit
