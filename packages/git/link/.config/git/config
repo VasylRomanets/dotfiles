@@ -35,6 +35,7 @@
 
 [diff]
   colorMoved = default
+  algorithm = histogram
 
 [gpg]
   format = ssh
