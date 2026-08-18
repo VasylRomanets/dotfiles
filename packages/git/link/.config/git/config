@@ -37,6 +37,9 @@
   colorMoved = default
   algorithm = histogram
 
+[column]
+  ui = auto
+
 [gpg]
   format = ssh
 
