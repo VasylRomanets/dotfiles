@@ -50,6 +50,9 @@
   enabled = true
   autoupdate = true
 
+[rebase]
+  autoStash = true
+
 [gpg]
   format = ssh
 
