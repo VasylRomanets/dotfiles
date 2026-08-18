@@ -40,6 +40,9 @@
 [column]
   ui = auto
 
+[branch]
+  sort = -committerdate
+
 [gpg]
   format = ssh
 
