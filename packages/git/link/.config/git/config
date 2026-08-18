@@ -46,6 +46,10 @@
 [tag]
   sort = version:refname
 
+[rerere]
+  enabled = true
+  autoupdate = true
+
 [gpg]
   format = ssh
 
