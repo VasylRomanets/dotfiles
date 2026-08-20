@@ -133,6 +133,9 @@ defaults write NSGlobalDomain "com.apple.swipescrolldirection" -bool true
 # Finder                                                                      #
 ###############################################################################
 
+# disable window open/close and Get Info animations
+defaults write com.apple.finder DisableAllAnimations -bool true
+
 # show all file extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
