@@ -75,7 +75,7 @@ cask "font-meslo-lg-nerd-font" # terminal and editor font (MesloLGS NF)
 
 # ── Cask: Apps ────────────────────────────────────────────────────────────────
 cask "blackhole-2ch"          # virtual audio driver for routing audio between apps
-cask "claude-code"            # AI coding assistant
+cask "claude-code@latest"     # AI coding assistant
 cask "cleanmymac"             # system cleaner and optimizer
 cask "discord"                # voice, video, and text chat
 cask "fork"                   # git client
