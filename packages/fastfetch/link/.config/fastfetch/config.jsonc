@@ -10,85 +10,100 @@
       "4": "cyan",
       "5": "red",
     },
+    "padding": {
+        "top": 1
+    },
   },
   "display": {
-    "separator": " • ",
+    "separator": " ",
   },
   "modules": [
     {
+      "key": "╭────────────╮",
       "type": "custom",
-      "format": "\u001b[1;33m❯ git log --author \"Vasyl Romanets\"",
-    },
-    "break",
-    {
-      "type": "custom",
-      "key": " github",
-      "keyColor": "magenta",
-      "format": "https://github.com/vasylromanets",
     },
     {
+      "key": "│ {#red} user     {#keys}│",
+      "type": "title",
+      "format": "{user-name}"
+    },
+    {
+      "key": "│ {#green}󰍹 hname    {#keys}│",
       "type": "host",
-      "key": "󰍹 host",
-      "keyColor": "magenta"
     },
     {
+      "key": "│ {#yellow} os       {#keys}│",
       "type": "os",
-      "key": " os",
-      "keyColor": "magenta",
-      "format": "{2} {10} {8}"
+      "format": "{2} {10} {8}",
     },
     {
+      "key": "│ {#blue} age      {#keys}│",
+      "type": "disk",
+      "folders": "/System/Volumes/VM",
+      "format": "{create-time:10} [{days} days]",
+    },
+    {
+      "key": "│ {#magenta} uptime   {#keys}│",
       "type": "uptime",
-      "key": " uptime",
-      "keyColor": "magenta",
     },
     {
-      "type": "memory",
-      "key": " memory",
-      "keyColor": "magenta",
+      "key": "│ {#cyan}󰏖 pkgs     {#keys}│",
+      "type": "packages",
     },
     {
+      "key": "│ {#red} shell    {#keys}│",
       "type": "shell",
-      "key": " shell",
-      "keyColor": "magenta",
     },
     {
+      "key": "│ {#green} term     {#keys}│",
       "type": "terminal",
-      "key": "󰆍 terminal",
-      "keyColor": "magenta",
     },
     {
+      "key": "│ {#yellow} font     {#keys}│",
       "type": "terminalfont",
-      "key": " font",
-      "keyColor": "magenta",
     },
     {
+      "key": "│ {#blue} memory   {#keys}│",
+      "type": "memory",
+    },
+    {
+      "key": "│ {#magenta}󰓡 swap     {#keys}│",
+      "type": "swap",
+    },
+    {
+      "key": "│ {#cyan} date     {#keys}│",
       "type": "datetime",
-      "key": " date",
-      "keyColor": "magenta",
       "format": "{day-pretty}.{month-pretty}.{year} ({weekday})",
     },
     {
+      "key": "│ {#red}󰍒 location {#keys}│",
       "type": "custom",
-      "key": " location",
-      "keyColor": "magenta",
       "format": "Kyiv, Ukraine",
     },
     {
+      "key": "│ {#green}󰖨 weather  {#keys}│",
       "type": "weather",
       "location": "Kyiv",
-      "key": " weather",
-      "keyColor": "magenta",
       "outputFormat": "%t,+%C",
       "timeout": 2000,
     },
     {
+      "key": "│ {#blue}󰉼 theme    {#keys}│",
       "type": "command",
-      "key": " theme",
-      "keyColor": "magenta",
-      "text": "grep '^theme' $HOME/.config/ghostty/config.local.ghostty | awk '{print $3}' | tr -d '\"' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
+      "text": "grep '^theme' $HOME/.config/ghostty/config.local.ghostty | sed -E 's/^theme = \"(.*)\"$/\\1/' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
     },
-    "break",
-    "colors",
+    {
+      "key": "├────────────┤",
+      "type": "custom",
+    },
+    {
+      "key": "│ {#magenta} colors   {#keys}│",
+      "type": "colors",
+      "symbol": "circle",
+    },
+    {
+      "key": "╰────────────╯",
+      "type": "custom",
+    },
   ],
 }
