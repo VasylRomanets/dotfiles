@@ -11,6 +11,9 @@
       "5": "red",
     },
   },
+  "display": {
+    "separator": " • ",
+  },
   "modules": [
     {
       "type": "custom",
@@ -19,58 +22,71 @@
     "break",
     {
       "type": "custom",
-      "key": "URL",
+      "key": " github",
       "keyColor": "magenta",
       "format": "https://github.com/vasylromanets",
     },
     {
+      "type": "host",
+      "key": "󰍹 host",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "os",
+      "key": " os",
+      "keyColor": "magenta",
+      "format": "{2} {10} {8}"
+    },
+    {
+      "type": "uptime",
+      "key": " uptime",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "memory",
+      "key": "󰍛 memory",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "shell",
+      "key": " shell",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "terminal",
+      "key": "󰆍 terminal",
+      "keyColor": "magenta",
+    },
+    {
+      "type": "terminalfont",
+      "key": " font",
+      "keyColor": "magenta",
+    },
+    {
       "type": "datetime",
-      "key": "Date",
+      "key": " date",
       "keyColor": "magenta",
       "format": "{day-pretty}.{month-pretty}.{year} ({weekday})",
     },
     {
       "type": "custom",
-      "key": "Location",
+      "key": " location",
       "keyColor": "magenta",
       "format": "Kyiv, Ukraine",
     },
     {
       "type": "weather",
       "location": "Kyiv",
+      "key": " weather",
       "keyColor": "magenta",
       "outputFormat": "%t,+%C",
       "timeout": 2000,
     },
     {
-      // {2} = name, {10} = version, {8} = build
-      "type": "os",
-      "keyColor": "magenta",
-      "format": "{2} {10} {8}",
-    },
-    {
-      // {1} = name, {4} = version
-      "type": "shell",
-      "keyColor": "magenta",
-      "format": "{1} v{4}",
-    },
-    {
-      "type": "terminal",
-      "keyColor": "magenta",
-    },
-    {
-      "type": "terminalfont",
-      "keyColor": "magenta",
-    },
-    {
-      "type": "uptime",
-      "keyColor": "magenta",
-    },
-    {
       "type": "command",
-      "key": "Theme",
+      "key": " theme",
       "keyColor": "magenta",
-      "text": "grep '^theme' $HOME/.config/ghostty/config | awk '{print $3}' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
+      "text": "grep '^theme' $HOME/.config/ghostty/config.local.ghostty | awk '{print $3}' | tr -d '\"' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
     },
     "break",
     "colors",
