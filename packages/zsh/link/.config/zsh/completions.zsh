@@ -1,6 +1,10 @@
 # initialize the completion system
 autoload -Uz compinit
 
+# required for the list-colors zstyle below and for menu-select (menu select)
+# to actually do anything - neither is auto-loaded by compinit
+zmodload zsh/complist
+
 # only rebuild completion cache once per day for faster shell startup
 # on macOS, stat uses -f '%Sm' -t '%j' instead of GNU's date -r
 ZSH_COMP_DUMP_PATH="$XDG_CACHE_HOME/zsh/zcompdump"
