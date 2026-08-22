@@ -41,6 +41,7 @@ brew "grex"          # generate regex from provided examples
 brew "jrnl"          # journal and note taker
 brew "mole"          # system cleaner and optimizer (like CleanMyMac but CLI)
 brew "navi"          # interactive cheatsheets for CLI commands
+brew "rust"          # Rust compiler and toolchain (includes cargo - Rust's package manager)
 brew "shellcheck"    # static analysis tool for shell scripts
 brew "stow"          # symlink farm manager
 brew "taplo"         # TOML toolkit
