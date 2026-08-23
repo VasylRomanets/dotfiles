@@ -21,7 +21,13 @@ prune_orphaned_symlinks() {
   # recursion depth (no package nests anywhere near this deep), not a scope
   # restriction; it stops `find` wastefully descending into huge trees like
   # ~/Library's app-support caches.
-  for dest in "${(@f)$(find "$HOME" -maxdepth 8 -type l -lname "$DOTFILES/*" 2>/dev/null)}"; do
+  # Trash contents are already user-deleted; scanning in there would mean silently
+  # rm -f'ing things inside the OS trash, bypassing its normal empty-trash flow.
+  for dest in "${(@f)$(find "$HOME" -maxdepth 8 -type l \
+    -lname "$DOTFILES/*" \
+    -not -path "$HOME/.Trash/*" \
+    -not -path "$HOME/.local/share/Trash/*" \
+    2>/dev/null)}"; do
     [[ -n "$dest" ]] || continue
     # still broken? (leave alone e.g. links into a currently-unmounted drive)
     if [[ ! -e "$dest" ]]; then
