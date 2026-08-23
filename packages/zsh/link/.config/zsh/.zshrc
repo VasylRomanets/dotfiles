@@ -1,6 +1,3 @@
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # Config
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/settings.zsh"
