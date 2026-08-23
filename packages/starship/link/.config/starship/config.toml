@@ -4,7 +4,7 @@
 # ╰─❯
 
 # some cool icons and symbols, kept for reference:
-#  󰉋 󰌾  󱦟 󰜥                  ╭─ ╰─
+#  󰉋 󰌾  󱦟  󰜥                  ╭─ ╰─
 
 format = """
 [╭─](dimmed white)\
@@ -77,7 +77,7 @@ $stashed\
 [cmd_duration]
 min_time = 3000
 style = "dimmed white"
-format = "[ 󰪢 $duration]($style)"
+format = "[  $duration]($style)"
 
 [time]
 disabled = false
