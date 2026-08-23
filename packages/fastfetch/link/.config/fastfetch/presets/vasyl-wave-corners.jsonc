@@ -1,0 +1,89 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "$HOME/.config/fastfetch/ascii/wave-off-berdiansk-cornered.txt",
+    "color": {
+      "1": "reset_blue",
+      "2": "dim_white",
+      "3": "reset_blue"
+    },
+    "padding": {
+      "left": 3,
+      "right": 2,
+      "top": 1,
+    },
+  },
+  "display": {
+    "separator": " ",
+  },
+  "modules": [
+    "break",
+    {
+      "type": "title",
+      "keyWidth": 10,
+      "format": "{#dim_white}「{#reset_magenta}{user-name}@{host-name}{#dim_white}」{#keys}",
+    },
+    "break",
+    {
+      "key": "{#dim_white}「{#reset_green}󰍹{#dim_white}」{#keys}",
+      "type": "host",
+    },
+    {
+      "key": "{#dim_white}「{#reset_yellow}{#dim_white}」{#keys}",
+      "type": "os",
+      "format": "{2} {10} {8}",
+    },
+    {
+      "key": "{#dim_white}「{#reset_blue}{#dim_white}」{#keys}",
+      "type": "uptime",
+    },
+    {
+      "key": "{#dim_white}「{#reset_magenta}{#dim_white}」{#keys}",
+      "type": "shell",
+    },
+    {
+      "key": "{#dim_white}「{#reset_red}{#dim_white}」{#keys}",
+      "type": "terminal",
+    },
+    {
+      "key": "{#dim_white}「{#reset_green}{#dim_white}」{#keys}",
+      "type": "terminalfont",
+    },
+    {
+      "key": "{#dim_white}「{#reset_yellow}{#dim_white}」{#keys}",
+      "type": "memory",
+    },
+    {
+      "key": "{#dim_white}「{#reset_blue}󰓡{#dim_white}」{#keys}",
+      "type": "swap",
+    },
+    {
+      "key": "{#dim_white}「{#reset_magenta}{#dim_white}」{#keys}",
+      "type": "datetime",
+      "format": "{day-pretty}.{month-pretty}.{year} ({weekday})",
+    },
+    {
+      "key": "{#dim_white}「{#reset_cyan}󰍒{#dim_white}」{#keys}",
+      "type": "custom",
+      "format": "Kyiv, Ukraine",
+    },
+    {
+      "key": "{#dim_white}「{#reset_red}󰖨{#dim_white}」{#keys}",
+      "type": "weather",
+      "location": "Kyiv",
+      "outputFormat": "%t,+%C",
+      "timeout": 2000,
+    },
+    {
+      "key": "{#dim_white}「{#reset_green}󰉼{#dim_white}」{#keys}",
+      "type": "command",
+      "text": "grep '^theme' $HOME/.config/ghostty/config.local.ghostty | sed -E 's/^theme = \"(.*)\"$/\\1/' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
+    },
+    {
+      "key": "{#dim_white}「{#reset_blue}{#dim_white}」{#keys}",
+      "type": "colors",
+      "symbol": "square",
+    },
+  ],
+}

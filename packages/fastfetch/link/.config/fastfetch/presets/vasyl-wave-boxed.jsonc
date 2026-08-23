@@ -1,0 +1,107 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "$HOME/.config/fastfetch/ascii/wave-off-berdiansk.txt",
+    "color": {
+      "1": "blue"
+    },
+    "padding": {
+      "left": 3,
+      "top": 1,
+    },
+  },
+  "display": {
+    "separator": " ",
+  },
+  "modules": [
+    {
+      "type": "title",
+      "keyWidth": 10,
+      "color": {
+        "user": "magenta",
+        "at": "magenta",
+        "host": "magenta",
+      },
+    },
+    "break",
+    {
+      "key": "╭────────────╮",
+      "type": "custom",
+    },
+    {
+      "key": "│ {#green}󰍹 machine  {#keys}│",
+      "type": "host",
+    },
+    {
+      "key": "│ {#yellow} os       {#keys}│",
+      "type": "os",
+      "format": "{2} {10} {8}",
+    },
+    {
+      "key": "│ {#blue} age      {#keys}│",
+      "type": "disk",
+      "folders": "/System/Volumes/VM",
+      "format": "{create-time:10} [{days} days]",
+    },
+    {
+      "key": "│ {#magenta} uptime   {#keys}│",
+      "type": "uptime",
+    },
+    {
+      "key": "│ {#red} shell    {#keys}│",
+      "type": "shell",
+    },
+    {
+      "key": "│ {#green} term     {#keys}│",
+      "type": "terminal",
+    },
+    {
+      "key": "│ {#yellow} font     {#keys}│",
+      "type": "terminalfont",
+    },
+    {
+      "key": "│ {#blue} memory   {#keys}│",
+      "type": "memory",
+    },
+    {
+      "key": "│ {#magenta}󰓡 swap     {#keys}│",
+      "type": "swap",
+    },
+    {
+      "key": "│ {#cyan} date     {#keys}│",
+      "type": "datetime",
+      "format": "{day-pretty}.{month-pretty}.{year} ({weekday})",
+    },
+    {
+      "key": "│ {#red}󰍒 location {#keys}│",
+      "type": "custom",
+      "format": "Kyiv, Ukraine",
+    },
+    {
+      "key": "│ {#green}󰖨 weather  {#keys}│",
+      "type": "weather",
+      "location": "Kyiv",
+      "outputFormat": "%t,+%C",
+      "timeout": 2000,
+    },
+    {
+      "key": "│ {#blue}󰉼 theme    {#keys}│",
+      "type": "command",
+      "text": "grep '^theme' $HOME/.config/ghostty/config.local.ghostty | sed -E 's/^theme = \"(.*)\"$/\\1/' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
+    },
+    {
+      "key": "├────────────┤",
+      "type": "custom",
+    },
+    {
+      "key": "│ {#magenta} colors   {#keys}│",
+      "type": "colors",
+      "symbol": "circle",
+    },
+    {
+      "key": "╰────────────╯",
+      "type": "custom",
+    },
+  ],
+}
