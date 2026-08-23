@@ -7,12 +7,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # tell Zsh where to find .zshrc
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-# prepend ~/.local/bin so user-installed binaries take priority
-export PATH="$HOME/.local/bin:$PATH"
-
-# 'cargo install'-ed binaries land in ~/.cargo/bin
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # nano has odd shortcuts, vim has odd everything, micro is just right
 export EDITOR="micro"
 export VISUAL="$EDITOR"

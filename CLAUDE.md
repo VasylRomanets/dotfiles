@@ -54,7 +54,7 @@ Committed config files `include`/reference a sibling `*.local` file that is giti
 
 ### Shell startup chain
 
-`.zshenv` (`packages/zsh/link/.zshenv`) sets XDG_* dirs and `ZDOTDIR`, and is sourced for *every* zsh invocation (interactive, scripts, subshells) — keep it limited to genuinely global env vars. `.zshrc` sources the core config files, then `zsh-autosuggestions`/`zsh-syntax-highlighting`, then every `$ZDOTDIR/source/*.zsh` file — which is how each package's own `source/*.zsh` actually gets loaded into a real shell session.
+`.zshenv` (`packages/zsh/link/.zshenv`) sets XDG_* dirs and `ZDOTDIR`, and is sourced for *every* zsh invocation (interactive, scripts, subshells) — keep it limited to genuinely global env vars. `.zprofile` (`packages/zsh/link/.zprofile`) loads next, for login shells only, and is where `PATH` is set instead of `.zshenv` — macOS's `path_helper` runs between the two, re-prepending system dirs ahead of anything `.zshenv` already exported, so a `PATH` entry only actually ends up in front of the system dirs if it's set in `.zprofile`. `.zshrc` sources the core config files, then `zsh-autosuggestions`/`zsh-syntax-highlighting`, then every `$ZDOTDIR/source/*.zsh` file — which is how each package's own `source/*.zsh` actually gets loaded into a real shell session.
 
 ## Conventions
 
