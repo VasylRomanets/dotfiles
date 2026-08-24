@@ -29,7 +29,7 @@ prune_orphaned_symlinks() {
     -not -path "$HOME/.local/share/Trash/*" \
     2>/dev/null)}"; do
     [[ -n "$dest" ]] || continue
-    # still broken? (leave alone e.g. links into a currently-unmounted drive)
+    # Still broken? (leave alone e.g. links into a currently-unmounted drive).
     if [[ ! -e "$dest" ]]; then
       warning "Removing orphaned symlink: $dest"
       rm -f "$dest"

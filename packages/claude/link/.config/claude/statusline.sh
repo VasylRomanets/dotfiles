@@ -1,4 +1,5 @@
 #!/bin/sh
+
 # Claude Code statusline — reads JSON from stdin and prints a dim one-line summary.
 # Fields: context usage %, session cost, session duration, lines added/removed, model, effort level.
 # Invoked automatically by Claude Code after each turn via settings.json statusLine.command.

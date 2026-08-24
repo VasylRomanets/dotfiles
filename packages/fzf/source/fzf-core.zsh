@@ -3,7 +3,7 @@ if (( $+commands[fd] )); then
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="fd --type=d --hidden --follow --strip-cwd-prefix --exclude .git"
 
-  # let fzf's tab-completion (**<Tab>) use fd too, instead of its default walker
+  # Let fzf's tab-completion (**<Tab>) use fd too, instead of its default walker.
   _fzf_compgen_path() {
     fd --hidden --follow --exclude .git . "$1"
   }
@@ -33,7 +33,7 @@ fzf_preview="if [ -d {} ]; then $fzf_tree_preview; else $fzf_file_preview; fi"
 export FZF_CTRL_T_OPTS="--preview '$fzf_preview'"
 export FZF_ALT_C_OPTS="--preview '$fzf_tree_preview'"
 
-# customize previews for fzf-tab-completion (**<Tab>) per command
+# Customize previews for fzf-tab-completion (**<Tab>) per command.
 _fzf_comprun() {
   local command=$1
   shift
@@ -46,7 +46,7 @@ _fzf_comprun() {
   esac
 }
 
-# let atuin own CTRL-R for history search instead of fzf
+# Let atuin own CTRL-R for history search instead of fzf.
 (( $+commands[atuin] )) && export FZF_CTRL_R_COMMAND=""
 
 source <(fzf --zsh)

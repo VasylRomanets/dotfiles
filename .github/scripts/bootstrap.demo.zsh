@@ -46,8 +46,8 @@ fake_starship_prompt() {
   local cols
   cols=$(tput cols 2>/dev/null || echo 100)
 
-  # visible left: "╭─ <folder> dotfiles on <branch> main " ≈ 24 cols
-  # visible right: " <clock> 12:34" ≈ 8 cols
+  # Visible left: "╭─ <folder> dotfiles on <branch> main " ≈ 24 cols.
+  # Visible right: " <clock> 12:34" ≈ 8 cols.
   local fill_len=$(( cols - 24 - 8 ))
   (( fill_len < 1 )) && fill_len=1
   local fill=""

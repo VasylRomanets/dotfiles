@@ -4,7 +4,7 @@
 
 EZA_COLORS=""
 
-# reset defaults first
+# Reset defaults first.
 EZA_COLORS+="reset:"
 
 # file types
@@ -26,7 +26,7 @@ EZA_COLORS+=".*=90:"    # hidden files — grey
 # timestamps
 EZA_COLORS+="da=36:" # dates — teal
 
-# permissions — keep minimal, no noise
+# Permissions — keep minimal, no noise.
 EZA_COLORS+="ur=0:uw=0:ux=0:ue=0:" # user permissions
 EZA_COLORS+="gr=0:gw=0:gx=0:"      # group permissions
 EZA_COLORS+="tr=0:tw=0:tx=0:"      # other permissions

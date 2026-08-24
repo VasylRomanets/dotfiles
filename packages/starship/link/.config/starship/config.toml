@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# ╭─ dotfiles on  main ⇣1⇡2 +1 !2 ······················ 󰪢 3s  12:34
+# ╭─ dotfiles on  main ⇣1⇡2 +1 !2 ······················  3s  12:34
 # ╰─❯
 
 # some cool icons and symbols, kept for reference:
@@ -28,8 +28,7 @@ error_symbol = "[❯](red)"
 style = "dimmed white"
 symbol = "·"
 
-# ─────────────────────────────── Left ────────────────────────────────
-
+# --- Left ---------------------------------------------------------------------
 [directory]
 style = "cyan"
 truncation_length = 4
@@ -72,8 +71,7 @@ $stashed\
 )\
 """
 
-# ─────────────────────────────── Right ───────────────────────────────
-
+# --- Right --------------------------------------------------------------------
 [cmd_duration]
 min_time = 3000
 style = "dimmed white"

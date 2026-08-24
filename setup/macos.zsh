@@ -9,225 +9,201 @@ SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 source "$SETUP_PATH/_lib.zsh"
 require_macos
 
-# prompt for a password once upfront, rather than mid-script
+# Prompt for a password once upfront, rather than mid-script.
 warning "A few settings require admin access — you may be prompted for your password."
 sudo -v
 
 echo "Applying macOS defaults..."
 
-###############################################################################
-# General                                                                     #
-###############################################################################
-
-# enable full keyboard access for all controls
+# --- General ------------------------------------------------------------------
+# Enable full keyboard access for all controls.
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# expand the save panel by default
+# Expand the save panel by default.
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-# expand the print panel by default
+# Expand the print panel by default.
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
-# always open documents in tabs instead of new windows
+# Always open documents in tabs instead of new windows.
 defaults write -g AppleWindowTabbingMode -string always
 
-# save new documents locally by default, rather than to iCloud
+# Save new documents locally by default, rather than to iCloud.
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# reopen an app's windows when relaunching it, rather than starting clean
+# Reopen an app's windows when relaunching it, rather than starting clean.
 defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool true
 
-# show a crash reporter notification instead of a dialog
+# Show a crash reporter notification instead of a dialog.
 defaults write com.apple.CrashReporter DialogType -string "notification"
 
-###############################################################################
-# Language & Region                                                           #
-###############################################################################
-
-# preferred language order and regional formatting (dates, numbers, etc.)
+# --- Language & Region --------------------------------------------------------
+# Preferred language order and regional formatting (dates, numbers, etc.).
 defaults write NSGlobalDomain AppleLanguages -array "en-UA" "uk-UA"
 defaults write NSGlobalDomain AppleLocale -string "en_UA"
 
-###############################################################################
-# Text Input                                                                  #
-###############################################################################
-
-# disable auto-correct
+# --- Text Input ---------------------------------------------------------------
+# Disable auto-correct.
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-# disable automatic text completion
+# Disable automatic text completion.
 defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
 
-# disable automatic capitalization
+# Disable automatic capitalization.
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
-# disable smart dashes
+# Disable smart dashes.
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-# disable smart quotes
+# Disable smart quotes.
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
-# disable automatic period substitution
+# Disable automatic period substitution.
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
-# enable inline predictive text (unlike the above, this only suggests — it
-# doesn't silently rewrite what you type)
+# Enable inline predictive text (unlike the above, this only suggests — it
+# doesn't silently rewrite what you type).
 defaults write NSGlobalDomain NSAutomaticInlinePredictionEnabled -bool true
 
-###############################################################################
-# Appearance                                                                  #
-###############################################################################
-
-# replace app open/close animations with a simple fade effect;
-# requires full disk access for Terminal
+# --- Appearance ---------------------------------------------------------------
+# Replace app open/close animations with a simple fade effect;
+# requires full disk access for Terminal.
 defaults write com.apple.universalaccess reduceMotion -bool true
 
-# set the accent color (5 = purple)
+# Set the accent color (5 = purple).
 defaults write -g AppleAccentColor -int 5
 
-# always show scrollbars, rather than only while scrolling
+# Always show scrollbars, rather than only while scrolling.
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
-# switch between Light and Dark mode automatically with time of day
+# Switch between Light and Dark mode automatically with time of day.
 defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
 
-# open Quick Look previews instantly, without the zoom animation
+# Open Quick Look previews instantly, without the zoom animation.
 defaults write NSGlobalDomain QLPanelAnimationDuration -float 0
 
-###############################################################################
-# Keyboard                                                                    #
-###############################################################################
-
-# disable press-and-hold (enables key repeat in all apps)
+# --- Keyboard -----------------------------------------------------------------
+# Disable press-and-hold (enables key repeat in all apps).
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# set a fast key repeat rate
+# Set a fast key repeat rate.
 defaults write NSGlobalDomain KeyRepeat -int 2
 
-# shorten the delay before key repeat kicks in
+# Shorten the delay before key repeat kicks in.
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-# use F1, F2, etc. as standard function keys, rather than their media/feature shortcuts
+# Use F1, F2, etc. as standard function keys, rather than their media/feature shortcuts.
 # defaults write NSGlobalDomain "com.apple.keyboard.fnState" -bool true
 
-###############################################################################
-# Trackpad & Mouse                                                            #
-###############################################################################
-
-# enable natural scrolling direction
+# --- Trackpad & Mouse ---------------------------------------------------------
+# Enable natural scrolling direction.
 defaults write NSGlobalDomain "com.apple.swipescrolldirection" -bool true
 
-# enable tap to click
+# Enable tap to click.
 # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 # defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 # defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# enable three-finger drag
+# Enable three-finger drag.
 # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
 # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
-###############################################################################
-# Finder                                                                      #
-###############################################################################
-
-# disable window open/close and Get Info animations
+# --- Finder -------------------------------------------------------------------
+# Disable window open/close and Get Info animations.
 defaults write com.apple.finder DisableAllAnimations -bool true
 
-# show all file extensions
+# Show all file extensions.
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# show hidden files by default
+# Show hidden files by default.
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
-# open new Finder windows to the home folder
+# Open new Finder windows to the home folder.
 defaults write com.apple.finder NewWindowTarget -string PfHm
 defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
 
-# hide the status bar
+# Hide the status bar.
 defaults write com.apple.finder ShowStatusBar -bool false
 
-# show the path bar
+# Show the path bar.
 defaults write com.apple.finder ShowPathbar -bool true
 
-# display the full POSIX path as the Finder window title
+# Display the full POSIX path as the Finder window title.
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-# keep folders on top when sorting by name
+# Keep folders on top when sorting by name.
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
-# search the current folder by default
+# Search the current folder by default.
 # defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-# disable the warning when changing a file extension
+# Disable the warning when changing a file extension.
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# spring-load folders and the Dock: dragging a file over one for a moment
-# opens it automatically, so you can drill into subfolders mid-drag
+# Spring-load folders and the Dock: dragging a file over one for a moment
+# opens it automatically, so you can drill into subfolders mid-drag.
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 defaults write NSGlobalDomain com.apple.springing.delay -float 0
 
-# avoid creating .DS_Store files on network or USB volumes
+# Avoid creating .DS_Store files on network or USB volumes.
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# use list view in all Finder windows by default
+# Use list view in all Finder windows by default.
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# remove items from Trash after 30 days
+# Remove items from Trash after 30 days.
 # defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 
-# keep the desktop clean by hiding disk icons
+# Keep the desktop clean by hiding disk icons.
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 
-###############################################################################
-# Dock                                                                        #
-###############################################################################
-
-# remove all persistent (pinned) apps from the Dock
+# --- Dock ---------------------------------------------------------------------
+# Remove all persistent (pinned) apps from the Dock.
 defaults write com.apple.dock persistent-apps -array ""
 
-# show only currently running apps in the Dock
+# Show only currently running apps in the Dock.
 defaults write com.apple.dock static-only -bool true
 
-# set the icon size and magnification
+# Set the icon size and magnification.
 defaults write com.apple.dock tilesize -int 60
 defaults write com.apple.dock largesize -int 70
 defaults write com.apple.dock magnification -bool true
 
-# minimize windows into their application's icon
+# Minimize windows into their application's icon.
 defaults write com.apple.dock minimize-to-application -bool true
 
-# disable the bouncy animation when launching an app
+# Disable the bouncy animation when launching an app.
 # defaults write com.apple.dock launchanim -bool false
 
-# group windows by application in Mission Control
+# Group windows by application in Mission Control.
 defaults write com.apple.dock expose-group-apps -bool true
 
-# speed up Mission Control's animations
+# Speed up Mission Control's animations.
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
-# don't automatically rearrange Spaces based on most recent use
+# Don't automatically rearrange Spaces based on most recent use.
 # defaults write com.apple.dock mru-spaces -bool false
 
-# don't show recent apps in the Dock
+# Don't show recent apps in the Dock.
 defaults write com.apple.dock show-recents -bool false
 
-# automatically hide and show the Dock
+# Automatically hide and show the Dock.
 defaults write com.apple.dock autohide -bool true
 
-# remove the auto-hiding Dock delay
+# Remove the auto-hiding Dock delay.
 # defaults write com.apple.dock autohide-delay -float 0
 
-# speed up the animation when hiding/showing the Dock
+# Speed up the animation when hiding/showing the Dock.
 defaults write com.apple.dock autohide-time-modifier -float 0.5
 
-# disable hot corners
+# Disable hot corners.
 defaults write com.apple.dock wvous-tl-corner -int 1
 defaults write com.apple.dock wvous-tr-corner -int 1
 defaults write com.apple.dock wvous-bl-corner -int 1
@@ -237,141 +213,111 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 defaults write com.apple.dock wvous-bl-modifier -int 0
 defaults write com.apple.dock wvous-br-modifier -int 0
 
-###############################################################################
-# Menu Bar                                                                    #
-###############################################################################
-
-# hide AM/PM, use 24-hour format, show the day of week and date
+# --- Menu Bar -----------------------------------------------------------------
+# Hide AM/PM, use 24-hour format, show the day of week and date.
 defaults write com.apple.menuextra.clock ShowAMPM -bool false
 defaults write com.apple.menuextra.clock Show24Hour -bool true
 defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 defaults write com.apple.menuextra.clock ShowDate -int 1
 
-# show the battery percentage
+# Show the battery percentage.
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 
-# remove Siri from the menu bar
+# Remove Siri from the menu bar.
 defaults write com.apple.Siri StatusMenuVisible -bool false
 
-# disable "Hey Siri" voice activation
+# Disable "Hey Siri" voice activation.
 defaults write com.apple.Siri VoiceTriggerUserEnabled -bool false
 
-###############################################################################
-# Stage Manager                                                               #
-###############################################################################
-
-# enable Stage Manager
+# --- Stage Manager ------------------------------------------------------------
+# Enable Stage Manager.
 defaults write com.apple.WindowManager GloballyEnabled -bool true
 
-# auto-hide recent apps
+# Auto-hide recent apps.
 defaults write com.apple.WindowManager AutoHide -bool true
 
-# the left-edge hover-to-reveal trigger for recent apps can't be disabled,
-# but it can be delayed
+# The left-edge hover-to-reveal trigger for recent apps can't be disabled,
+# but it can be delayed.
 defaults write com.apple.WindowManager AutoHideDelay -float 3.0
 
-# remove the left/right inset Stage Manager adds when reopening a
-# previously maximized window, so it fills the screen width again
+# Remove the left/right inset Stage Manager adds when reopening a
+# previously maximized window, so it fills the screen width again.
 defaults write com.apple.WindowManager StageFrameMinimumHorizontalInset -int 0
 
-# hide widgets on the desktop
+# Hide widgets on the desktop.
 defaults write com.apple.WindowManager StandardHideWidgets -bool true
 defaults write com.apple.WindowManager StageManagerHideWidgets -bool true
 
-# always allow clicking the wallpaper to reveal the desktop, not just in Stage Manager
+# Always allow clicking the wallpaper to reveal the desktop, not just in Stage Manager.
 defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool true
 
-# group all of an app's windows together, rather than one at a time
+# Group all of an app's windows together, rather than one at a time.
 defaults write com.apple.WindowManager AppWindowGroupingBehavior -bool true
 
-###############################################################################
-# Privacy & Security                                                          #
-###############################################################################
-
-# disable Apple's ad personalization and tracking
+# --- Privacy & Security -------------------------------------------------------
+# Disable Apple's ad personalization and tracking.
 defaults write com.apple.AdLib forceLimitAdTracking -bool true
 defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
 defaults write com.apple.AdLib allowIdentifierForAdvertising -bool false
 
-# show a custom message on the login window / lock screen
+# Show a custom message on the login window / lock screen.
 sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText \
     -string "Contact romanets.vasyl@gmail.com if you found this MacBook"
 
-# disable the Guest User account
+# Disable the Guest User account.
 sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
 
-# start the screen saver after 2 minutes of inactivity
+# Start the screen saver after 2 minutes of inactivity.
 defaults -currentHost write com.apple.screensaver idleTime -int 120
 
-# require a password immediately after sleep or the screen saver starts
+# Require a password immediately after sleep or the screen saver starts.
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-###############################################################################
-# Screenshots                                                                 #
-###############################################################################
-
-# save screenshots to ~/Pictures/Screenshots
+# --- Screenshots --------------------------------------------------------------
+# Save screenshots to ~/Pictures/Screenshots.
 defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
 
-# save screenshots in PNG format
+# Save screenshots in PNG format.
 # defaults write com.apple.screencapture type -string "png"
 
-# disable the shadow in screenshots
+# Disable the shadow in screenshots.
 # defaults write com.apple.screencapture disable-shadow -bool true
 
-###############################################################################
-# Software Updates                                                            #
-###############################################################################
-
-# check for updates daily
+# --- Software Updates ---------------------------------------------------------
+# Check for updates daily.
 # defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-# download updates in the background
+# Download updates in the background.
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
-# install security updates automatically
+# Install security updates automatically.
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
-###############################################################################
-# Sound                                                                       #
-###############################################################################
-
-# mute the feedback sound when changing the system volume
+# --- Sound --------------------------------------------------------------------
+# Mute the feedback sound when changing the system volume.
 defaults write NSGlobalDomain "com.apple.sound.beep.feedback" -int 0
 
-###############################################################################
-# Calendar                                                                    #
-###############################################################################
-
-# start the week on Monday
+# --- Calendar -----------------------------------------------------------------
+# Start the week on Monday.
 defaults write com.apple.iCal "first day of week" -int 2
 
-###############################################################################
-# TextEdit                                                                    #
-###############################################################################
-
-# use plain text mode for new documents
+# --- TextEdit -----------------------------------------------------------------
+# Use plain text mode for new documents.
 defaults write com.apple.TextEdit RichText -int 0
 
-# open and save files as UTF-8
+# Open and save files as UTF-8.
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
-###############################################################################
-# Touch ID                                                                    #
-###############################################################################
-
-# enable Touch ID for sudo (persists across macOS updates via sudo_local)
+# --- Touch ID -----------------------------------------------------------------
+# Enable Touch ID for sudo (persists across macOS updates via sudo_local).
 if [[ ! -f /etc/pam.d/sudo_local ]]; then
   sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
   sudo sed -i '' 's/#auth/auth/' /etc/pam.d/sudo_local
 fi
 
-###############################################################################
-# Kill affected apps                                                          #
-###############################################################################
-
+# --- Kill affected apps -------------------------------------------------------
 for app in "Finder" "Dock" "SystemUIServer" "ControlCenter"; do
   killall "${app}" &>/dev/null
 done

@@ -1,11 +1,11 @@
-# ── Tap ───────────────────────────────────────────────────────────────────────
+# --- Tap ----------------------------------------------------------------------
 tap "code-hex/tap", trusted: true      # required for neo-cowsay
 tap "jackielii/tap", trusted: true     # required for skhd-zig
 tap "rose-pine/tap", trusted: true     # required for bloom
 tap "vasylromanets/tap", trusted: true # required for spinpacks
 tap "veirt/veirt", trusted: true       # required for weathr
 
-# ── Brew: Must-have ───────────────────────────────────────────────────────────
+# --- Brew: Must-have ----------------------------------------------------------
 brew "atuin"                   # fuzzy-search shell history and sync it across machines
 brew "bat"                     # print syntax-highlighted file contents (better cat)
 brew "eza"                     # list files (better ls)
@@ -30,7 +30,7 @@ brew "zsh"                     # the Z shell itself
 brew "zsh-autosuggestions"     # fish-like command suggestions from history
 brew "zsh-syntax-highlighting" # highlight commands as you type
 
-# ── Brew: Nice-to-have ────────────────────────────────────────────────────────
+# --- Brew: Nice-to-have -------------------------------------------------------
 brew "asciinema"     # record and share terminal sessions
 brew "bloom"         # Rosé Pine themes generator
 brew "btop"          # resource and process monitor (better htop)
@@ -54,7 +54,7 @@ brew "watch"         # run commands periodically
 brew "wifi-password" # show password for connected Wi-Fi network
 brew "xdg-ninja"     # check $HOME for unwanted files and directories
 
-# ── Brew: Fun & Rice ──────────────────────────────────────────────────────────
+# --- Brew: Fun & Rice ---------------------------------------------------------
 brew "asciiquarium" # aquarium animation
 brew "cava"         # bar spectrum audio visualizer
 brew "cbonsai"      # grow bonsai trees
@@ -71,10 +71,10 @@ brew "spinpacks"    # themed spinner verb packs for Claude Code
 brew "stormy"       # minimal neofetch-like weather CLI
 brew "weathr"       # real-time weather with ASCII animations
 
-# ── Cask: Fonts ───────────────────────────────────────────────────────────────
+# --- Cask: Fonts --------------------------------------------------------------
 cask "font-meslo-lg-nerd-font" # terminal and editor font (MesloLGS NF)
 
-# ── Cask: Apps ────────────────────────────────────────────────────────────────
+# --- Cask: Apps ---------------------------------------------------------------
 cask "blackhole-2ch"          # virtual audio driver for routing audio between apps
 cask "claude-code@latest"     # AI coding assistant
 cask "cleanmymac"             # system cleaner and optimizer
@@ -103,7 +103,7 @@ cask "visual-studio-code"     # code editor
 cask "zed"                    # fast code editor
 cask "zoom"                   # video conferencing
 
-# ── App Store ─────────────────────────────────────────────────────────────────
+# --- App Store ----------------------------------------------------------------
 mas "Bitwarden", id: 1352778147     # password manager
 mas "ClearVPN", id: 1531601984      # VPN client
 mas "CotEditor", id: 1024640650     # plain-text and code editor
@@ -113,7 +113,7 @@ mas "Today", id: 6443714928         # today’s schedule in the menu bar
 mas "Todoist", id: 585829637        # to-do list
 mas "WhatsApp", id: 310633997       # encrypted messaging
 
-# ── VS Code ───────────────────────────────────────────────────────────────────
+# --- VS Code ------------------------------------------------------------------
 vscode "catppuccin.catppuccin-vsc"            # catppuccin pastel color theme
 vscode "catppuccin.catppuccin-vsc-icons"      # catppuccin file icon theme
 vscode "editorconfig.editorconfig"            # editorconfig support
