@@ -1,4 +1,10 @@
 {
+  "model": "sonnet",
+  "effortLevel": "high",
+  "editorMode": "normal",
+  "tui": "fullscreen",
+  "theme": "dark",
+  "terminalProgressBarEnabled": true,
   "env": {
     "DISABLE_AUTOUPDATER": "1",
     "USE_BUILTIN_RIPGREP": "0"
@@ -21,15 +27,9 @@
       "Bash(gh repo view *)",
       "Bash(gh run list *)",
       "Bash(gh run view *)",
-      "Bash(gh run watch *)",
-      "Bash(/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-idle.sh)",
-      "Bash(/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-permission-request.sh)",
-      "Bash(/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-stop.sh)",
-      "Bash(/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/atuin-record-history.sh)",
-      "WebFetch",
-      "WebSearch"
+      "Bash(gh run watch *)"
     ],
-    "deny": []
+    "defaultMode": "default"
   },
   "hooks": {
     "PreToolUse": [
@@ -321,11 +321,5 @@
       "Surviving the Moroccan Christmas intervention",
       "Giving everyone the same Dundie award"
     ]
-  },
-  "effortLevel": "high",
-  "tui": "fullscreen",
-  "theme": "dark",
-  "editorMode": "normal",
-  "terminalProgressBarEnabled": true,
-  "mcpServers": {}
+  }
 }
