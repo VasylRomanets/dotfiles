@@ -4,7 +4,7 @@
 
 # app shortcuts
 alt - b : @launch("Google Chrome")
-alt - f : @launch("Finder")
+alt - f : ~/.local/bin/finder-focus
 alt - g : @launch("Fork")
 alt - h : open raycast://extensions/raycast/clipboard-history/clipboard-history
 alt - s : @launch("Spotify")
