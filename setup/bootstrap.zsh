@@ -151,6 +151,10 @@ install_homebrew_packages() {
   echo
   echo
 
+  # Some casks run privileged installers; authenticate now so brew bundle
+  # doesn't stop to prompt partway through.
+  request_sudo
+
   TMP_BREWFILE="$(mktemp /private/tmp/Brewfile.XXXXXX)"
   grep -E '^(tap |brew |cask |vscode )' "$SETUP_PATH/Brewfile" >> "$TMP_BREWFILE" || true
 

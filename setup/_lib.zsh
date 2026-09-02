@@ -34,6 +34,18 @@ require_macos() {
   }
 }
 
+# Prompt for the admin password up front so later privileged steps don't
+# stop to ask mid-run. Returns quietly if a sudo session is already active.
+request_sudo() {
+  sudo -n -v 2>/dev/null && return
+
+  warning "Some steps need admin access — you may be prompted for your password."
+  sudo -v || {
+    error "Could not obtain admin access."
+    exit 1
+  }
+}
+
 _exists() {
   command -v "$1" &>/dev/null
 }
