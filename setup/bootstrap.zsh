@@ -110,7 +110,7 @@ install_homebrew() {
   echo
   echo
   echo "Checking Homebrew..."
-  if ! _exists brew; then
+  if ! command_exists brew; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     success "Homebrew installed."
@@ -133,7 +133,7 @@ install_homebrew_packages() {
   info "Step 3 - Install Homebrew packages"
   echo
 
-  if ! _exists brew; then
+  if ! command_exists brew; then
     echo "Homebrew not installed — skipping."
     echo
     return
@@ -170,7 +170,7 @@ install_mas_apps() {
   info "Step 4 - Install App Store apps"
   echo
 
-  if ! _exists brew; then
+  if ! command_exists brew; then
     echo "Homebrew not installed — skipping."
     echo
     return
@@ -182,7 +182,7 @@ install_mas_apps() {
     return
   fi
 
-  if ! _exists mas; then
+  if ! command_exists mas; then
     echo "mas not installed — skipping."
     echo
     return
