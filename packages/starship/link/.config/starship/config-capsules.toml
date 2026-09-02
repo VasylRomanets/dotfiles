@@ -1,0 +1,35 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = """
+$cmd_duration $directory$git_branch
+  $character"""
+
+[cmd_duration]
+min_time = 2000
+format = '[](bold fg:252)[󰪢 $duration](bold bg:252 fg:235)[](bold fg:252)'
+
+[directory]
+home_symbol = " "
+read_only = "  "
+truncation_length = 2
+truncation_symbol = ".../"
+format = '[](bold fg:255)[󰉋 → $path](bg:255 fg:240)[](bold fg:255)'
+
+[git_branch]
+truncation_length = 12
+truncation_symbol = ""
+format = " [](bold fg:252)[󰘬 $branch(:$remote_branch)](fg:235 bg:252)[](bold fg:252)"
+
+[character]
+success_symbol = "[ ](bold fg:243)"
+error_symbol = "[ ](bold fg:244)"
+
+[directory.substitutions]
+"Desktop" = "  "
+"Documents" = "  "
+"Downloads" = "  "
+"Music" = " 󰎈 "
+"Pictures" = "  "
+"Videos" = "  "
