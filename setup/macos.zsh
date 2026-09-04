@@ -231,16 +231,12 @@ defaults write com.apple.Siri VoiceTriggerUserEnabled -bool false
 # Enable Stage Manager.
 defaults write com.apple.WindowManager GloballyEnabled -bool true
 
-# Auto-hide recent apps.
-defaults write com.apple.WindowManager AutoHide -bool true
-
-# The left-edge hover-to-reveal trigger for recent apps can't be disabled,
-# but it can be delayed.
-defaults write com.apple.WindowManager AutoHideDelay -float 3.0
-
 # Remove the left/right inset Stage Manager adds when reopening a
 # previously maximized window, so it fills the screen width again.
 defaults write com.apple.WindowManager StageFrameMinimumHorizontalInset -int 0
+
+# Disable recent apps.
+defaults write com.apple.WindowManager LeftStripMaximumRowCount -int 0
 
 # Hide widgets on the desktop.
 defaults write com.apple.WindowManager StandardHideWidgets -bool true
