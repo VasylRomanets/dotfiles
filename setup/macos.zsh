@@ -235,8 +235,12 @@ defaults write com.apple.WindowManager GloballyEnabled -bool true
 # previously maximized window, so it fills the screen width again.
 defaults write com.apple.WindowManager StageFrameMinimumHorizontalInset -int 0
 
-# Disable recent apps.
+# Hide the recent-apps thumbnail strip. Zero rows means nothing renders, but
+# the strip's edge zone is still reserved unless it's also allowed to
+# auto-hide, so without this a reopened maximized window still indents away
+# from the left edge instead of filling the screen width.
 defaults write com.apple.WindowManager LeftStripMaximumRowCount -int 0
+defaults write com.apple.WindowManager AutoHide -bool true
 
 # Hide widgets on the desktop.
 defaults write com.apple.WindowManager StandardHideWidgets -bool true
