@@ -58,6 +58,7 @@ brew "xdg-ninja"     # check $HOME for unwanted files and directories
 brew "asciiquarium" # aquarium animation
 brew "cava"         # bar spectrum audio visualizer
 brew "cbonsai"      # grow bonsai trees
+brew "cliamp"       # retro terminal music player inspired by Winamp 2.x
 brew "clock-rs"     # digital clock for the terminal
 brew "cmatrix"      # matrix rain animation
 brew "fastfetch"    # print ASCII art and system info (better neofetch)
