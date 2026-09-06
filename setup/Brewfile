@@ -21,6 +21,7 @@ brew "lazygit"                 # TUI git client
 brew "mas"                     # CLI for the Mac App Store
 brew "micro"                   # text editor (better nano)
 brew "ripgrep"                 # search within files (better grep)
+brew "rust"                    # Rust compiler and toolchain (includes cargo - Rust's package manager)
 brew "starship"                # cross-shell prompt manager
 brew "toml2json"               # TOML to JSON converter
 brew "yazi"                    # file manager
@@ -41,7 +42,6 @@ brew "grex"          # generate regex from provided examples
 brew "jrnl"          # journal and note taker
 brew "mole"          # system cleaner and optimizer (like CleanMyMac but CLI)
 brew "navi"          # interactive cheatsheets for CLI commands
-brew "rust"          # Rust compiler and toolchain (includes cargo - Rust's package manager)
 brew "shellcheck"    # static analysis tool for shell scripts
 brew "stow"          # symlink farm manager
 brew "taplo"         # TOML toolkit
@@ -102,6 +102,10 @@ cask "unity-hub"              # launcher for Unity editor
 cask "visual-studio-code"     # code editor
 cask "zed"                    # fast code editor
 cask "zoom"                   # video conferencing
+
+# --- Cargo --------------------------------------------------------------------
+cargo "cargo-update" # update installed crates
+cargo "pokeget"      # print pokemon sprites
 
 # --- App Store ----------------------------------------------------------------
 mas "Bitwarden", id: 1352778147     # password manager
