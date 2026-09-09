@@ -1,0 +1,11 @@
+# https://github.com/topgrade-rs/topgrade/blob/main/config.example.toml
+
+[misc]
+disable = ["atuin", "claude_code", "system"]
+first = ["git_repos"]
+
+[brew]
+greedy_cask = true
+
+[git]
+repos = ["~/dev/projects/*"]

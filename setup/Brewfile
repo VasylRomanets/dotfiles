@@ -24,6 +24,7 @@ brew "ripgrep"                 # search within files (better grep)
 brew "rust"                    # Rust compiler and toolchain (includes cargo - Rust's package manager)
 brew "starship"                # cross-shell prompt manager
 brew "toml2json"               # TOML to JSON converter
+brew "topgrade"                # update everything in one command - brew, cargo crates, mas apps, and more
 brew "yazi"                    # file manager
 brew "yq"                      # YAML processor (like jq for YAML)
 brew "zoxide"                  # auto-learning navigation (better cd)
