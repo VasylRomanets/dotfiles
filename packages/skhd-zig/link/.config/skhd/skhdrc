@@ -12,6 +12,9 @@ alt - t : @launch("Todoist")
 alt - w : @launch("Ghostty")
 alt - z : @launch("zoom.us")
 
+# espanso search bar
+alt + shift - space : command -v espanso >/dev/null 2>&1 && espanso cmd search
+
 # window management (Rectangle)
 alt - 1 : @resize("maximize")
 alt - 2 : @resize("center")

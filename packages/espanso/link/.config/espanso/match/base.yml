@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+# Docs: https://espanso.org/docs/
+
+matches:
+  - triggers: [";e", "@@"]
+    replace: "romanets.vasyl@gmail.com"
+    label: "Personal email"
+
+  - trigger: ";fliptable"
+    replace: "(╯°□°）╯︵ ┻━━┻"
+    label: "Flipping table"
+
+  - trigger: ";gomad"
+    replace: "(╮°-°)╮┳━━┳ (╯°□°)╯ ┻━━┻"
+    label: "Taking table and going mad"
+
+  - trigger: ";fixtable"
+    replace: "┬─┬ノ( º _ ºノ)"
+    label: "Putting table back"
+
+  - trigger: ";shrug"
+    replace: "¯\\_(ツ)_/¯"
+    label: "Shrugging"

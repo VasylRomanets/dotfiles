@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/config.schema.json
+# Docs: https://espanso.org/docs/
+
+search_shortcut: off
+show_icon: false
+show_notifications: false
+
+stats:
+  enabled: true

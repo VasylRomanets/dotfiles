@@ -82,6 +82,7 @@ cask "blackhole-2ch"          # virtual audio driver for routing audio between a
 cask "claude-code@latest"     # AI coding assistant
 cask "cleanmymac"             # system cleaner and optimizer
 cask "discord"                # voice, video, and text chat
+cask "espanso"                # text expander
 cask "fork"                   # git client
 cask "ghostty"                # terminal emulator
 cask "git-credential-manager" # git credential storage (supports OAuth, unlike osxkeychain)
