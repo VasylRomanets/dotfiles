@@ -1,6 +1,6 @@
 # dotfiles
 
-> My personal macOS dotfiles crafted with love - version-controlled, Everforest-themed, XDG-compliant where possible.
+My personal macOS dotfiles crafted with love.
 
 <p align="center">
   <img src=".github/assets/rice-terminal.png" width="100%" alt="Riced Terminal Workspace">
@@ -92,11 +92,6 @@ target = "~/Library/..."
 `[requires]` accepts `command`, `app`, or both. `[link]` is rarely needed since `~` is the default. `[copy]` is only used by packages that can't be symlinked because of macOS sandboxing (e.g. any app installed from the Mac App Store).
 
 A package can also define `hooks/pre-setup.zsh` and/or `hooks/post-setup.zsh` for setup steps beyond symlinking/copying (e.g. resolving plugin dependencies). Both are optional and run only for packages that pass `[requires]`.
-
-## Appearance
-
-* **Theme:** Most tools are themed with [Everforest Dark Hard](https://github.com/sainnhe/everforest) for a warm, low-fatigue aesthetic.
-* **Font:** The terminal and editors use [Meslo LG Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo).
 
 ## Credits
 
