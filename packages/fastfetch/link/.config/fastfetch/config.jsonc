@@ -78,7 +78,7 @@
     {
       "key": "{#dim_white}「{#reset_green}󰉼{#dim_white}」{#keys}",
       "type": "command",
-      "text": "grep '^theme' $HOME/.config/ghostty/config.local.ghostty | sed -E 's/^theme = \"(.*)\"$/\\1/' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
+      "text": "grep '^theme' $HOME/.config/ghostty/config.local.ghostty | sed -E 's/^theme = \"(.*)\"$/\\1/' | sed -E 's/\\.ghostty$//' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
     },
     {
       "key": "{#dim_white}「{#reset_blue}{#dim_white}」{#keys}",
