@@ -51,6 +51,9 @@ desktop-notifications = false
 shell-integration = zsh
 shell-integration-features = no-cursor
 
+# Updates
+auto-update-channel = tip
+
 # Local overrides — not tracked in git;
 # holds the currently active theme
 # so switching themes doesn't dirty this file
