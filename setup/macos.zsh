@@ -82,6 +82,12 @@ defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool tru
 # Open Quick Look previews instantly, without the zoom animation.
 defaults write NSGlobalDomain QLPanelAnimationDuration -float 0
 
+# Disable window open/close animations app-wide.
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
+# Speed up window resizing for Cocoa apps.
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
 # --- Keyboard -----------------------------------------------------------------
 # Disable press-and-hold (enables key repeat in all apps).
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
