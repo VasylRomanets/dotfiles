@@ -29,7 +29,7 @@
       "Bash(gh run view *)",
       "Bash(gh run watch *)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "hooks": {
     "PreToolUse": [
