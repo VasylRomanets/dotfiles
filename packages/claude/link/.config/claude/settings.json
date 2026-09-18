@@ -3,7 +3,7 @@
   "effortLevel": "high",
   "editorMode": "normal",
   "tui": "fullscreen",
-  "theme": "dark",
+  "theme": "auto",
   "terminalProgressBarEnabled": true,
   "env": {
     "DISABLE_AUTOUPDATER": "1",
