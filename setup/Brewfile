@@ -89,6 +89,7 @@ cask "gitcomet"               # FOSS git client
 cask "google-chrome"          # web browser
 cask "hammerspoon"            # Lua-driven macOS automation and scripting
 cask "handbrake"              # video transcoder
+cask "hiddenbar"              # hide clutter from the menu bar
 cask "iina"                   # media player
 cask "keka"                   # file archiver
 cask "markdown-preview"       # Markdown previewer with bundled Quick Look extension
@@ -114,7 +115,6 @@ cargo "pokeget"      # print pokemon sprites
 mas "Bitwarden", id: 1352778147     # password manager
 mas "ClearVPN", id: 1531601984      # VPN client
 mas "CotEditor", id: 1024640650     # plain-text and code editor
-mas "Hidden Bar", id: 1452453066    # hide clutter from the menu bar
 mas "Spark Desktop", id: 6445813049 # email client
 mas "Today", id: 6443714928         # today’s schedule in the menu bar
 mas "Todoist", id: 585829637        # to-do list
