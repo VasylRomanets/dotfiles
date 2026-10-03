@@ -1,0 +1,7 @@
+[delta]
+  syntax-theme = "Kanso Mist"
+  # The theme's red/green accents blended over its base background at 15%/30%.
+  minus-style = syntax "#3b3237"
+  minus-emph-style = syntax "#533d40"
+  plus-style = syntax "#323739"
+  plus-emph-style = syntax "#424944"

@@ -1,5 +1,6 @@
 [include]
   path = ~/.config/git/config.local
+  path = ~/.local/state/theme/generated/delta.gitconfig
 
 [init]
   defaultBranch = main

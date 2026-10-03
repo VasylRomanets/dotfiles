@@ -1,0 +1,8 @@
+[delta]
+  syntax-theme = "kanagawa-lotus"
+  # Kanagawa Lotus's own diff colors (themes.lua's diff.delete/diff.add),
+  # with an emph variant blended further toward its diagnostic error/ok accents.
+  minus-style = syntax "#d9a594"
+  minus-emph-style = syntax "#df7167"
+  plus-style = syntax "#b7d0ae"
+  plus-emph-style = syntax "#9ab488"

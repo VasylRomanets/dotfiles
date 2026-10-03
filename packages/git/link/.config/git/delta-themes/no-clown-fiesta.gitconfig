@@ -1,0 +1,7 @@
+[delta]
+  syntax-theme = "No Clown Fiesta"
+  # The theme's red/green accents blended over its base background at 15%/30%.
+  minus-style = syntax "#291d1b"
+  minus-emph-style = syntax "#412b26"
+  plus-style = syntax "#23271b"
+  plus-emph-style = syntax "#363e26"

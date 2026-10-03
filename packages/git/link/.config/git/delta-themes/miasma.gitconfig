@@ -1,0 +1,8 @@
+[delta]
+  syntax-theme = "miasma"
+  # Miasma's own error/keyword accents blended low-opacity over its base
+  # background (#222222), same tinting technique as the other variants.
+  minus-style = syntax "#392e27"
+  minus-emph-style = syntax "#4e382c"
+  plus-style = syntax "#2c322c"
+  plus-emph-style = syntax "#344034"

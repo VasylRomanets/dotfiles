@@ -1,0 +1,8 @@
+[delta]
+  syntax-theme = "Catppuccin Frappe"
+  # Catppuccin's own red/green accents blended low-opacity over its base
+  # background, same tinting technique as the other variants.
+  minus-style = syntax "#4d4050"
+  minus-emph-style = syntax "#674b59"
+  plus-style = syntax "#434d51"
+  plus-emph-style = syntax "#53635a"

@@ -1,0 +1,8 @@
+[delta]
+  syntax-theme = "kanagawa-dragon"
+  # Kanagawa Dragon's own diff colors (themes.lua's diff.delete/diff.add),
+  # with an emph variant blended further toward its diagnostic error/ok accents.
+  minus-style = syntax "#43242b"
+  minus-emph-style = syntax "#852428"
+  plus-style = syntax "#2b3328"
+  plus-emph-style = syntax "#576943"

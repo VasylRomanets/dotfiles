@@ -1,0 +1,7 @@
+[delta]
+  syntax-theme = "Tundra Jungle"
+  # The theme's red/green accents blended over its base background at 15%/30%.
+  minus-style = syntax "#3e3232"
+  minus-emph-style = syntax "#604848"
+  plus-style = syntax "#323832"
+  plus-emph-style = syntax "#485448"

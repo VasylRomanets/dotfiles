@@ -1,0 +1,8 @@
+[delta]
+  syntax-theme = "Nord"
+  # Nord's own red/green accents (nord11/nord14) blended low-opacity over its
+  # base background (nord0), same tinting technique as the Rose Pine variants.
+  minus-style = syntax "#453b47"
+  minus-emph-style = syntax "#5a424d"
+  plus-style = syntax "#414a4c"
+  plus-emph-style = syntax "#515d57"

@@ -1,0 +1,29 @@
+# Only the UI elements LS_COLORS can't express. Colors are ANSI names, so they
+# follow the terminal palette; file-type colors come from LS_COLORS, which the
+# vivid package generates per theme.
+
+# Dates and punctuation
+date: {foreground: Cyan}
+punctuation: {foreground: DarkGray, is_bold: false}
+
+# Permissions are kept minimal, without per-bit colors.
+perms:
+  user_read: {foreground: Default, is_bold: false}
+  user_write: {foreground: Default, is_bold: false}
+  user_execute_file: {foreground: Default, is_bold: false}
+  user_execute_other: {foreground: Default, is_bold: false}
+  group_read: {foreground: Default, is_bold: false}
+  group_write: {foreground: Default, is_bold: false}
+  group_execute: {foreground: Default, is_bold: false}
+  other_read: {foreground: Default, is_bold: false}
+  other_write: {foreground: Default, is_bold: false}
+  other_execute: {foreground: Default, is_bold: false}
+  attribute: {foreground: Default, is_bold: false}
+
+# File sizes fade from grey to bright white as they grow.
+size:
+  number_byte: {foreground: DarkGray, is_bold: false}
+  number_kilo: {foreground: DarkGray, is_bold: false}
+  number_mega: {foreground: White, is_bold: false}
+  number_giga: {foreground: LightGray, is_bold: false}
+  number_huge: {foreground: LightGray, is_bold: false}

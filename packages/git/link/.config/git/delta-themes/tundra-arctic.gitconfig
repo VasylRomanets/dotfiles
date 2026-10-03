@@ -1,0 +1,7 @@
+[delta]
+  syntax-theme = "Tundra Arctic"
+  # The theme's red/green accents blended over its base background at 15%/30%.
+  minus-style = syntax "#342d3a"
+  minus-emph-style = syntax "#58424d"
+  plus-style = syntax "#2a373c"
+  plus-emph-style = syntax "#425650"

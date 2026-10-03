@@ -1,0 +1,8 @@
+[delta]
+  syntax-theme = "ember"
+  # Ember's own delete/add accents (rose/olive) blended over its base
+  # background using the same 15%/30% ratio as its own util.blend() calls.
+  minus-style = syntax "#322927"
+  minus-emph-style = syntax "#483736"
+  plus-style = syntax "#2c2e25"
+  plus-emph-style = syntax "#3d4031"

@@ -1,0 +1,9 @@
+[delta]
+  syntax-theme = "rose-pine-moon"
+  # Rose Pine has no true green, so added/removed lines are tinted with its
+  # closest accents (Pine, Love) blended low-opacity over the theme's base
+  # background — the "auto" default ignores the syntax-theme's palette.
+  minus-style = syntax "#3f2738"
+  minus-emph-style = syntax "#63364b"
+  plus-style = syntax "#202d3d"
+  plus-emph-style = syntax "#264155"

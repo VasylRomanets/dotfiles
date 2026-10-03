@@ -1,0 +1,7 @@
+[delta]
+  syntax-theme = "Tomorrow Night Eighties"
+  # The theme's red/green accents blended over its base background at 15%/30%.
+  minus-style = syntax "#4b3839"
+  minus-emph-style = syntax "#684344"
+  plus-style = syntax "#3d453d"
+  plus-emph-style = syntax "#4d5d4d"

@@ -109,6 +109,13 @@ sync_packages() {
       pkg_linked=1
     fi
 
+    if [[ -f "$pkg_dir/hooks/theme-changed.zsh" ]]; then
+      theme_hooks_dir="${XDG_DATA_HOME:-$HOME/.local/share}/theme/hooks.d"
+      mkdir -p "$theme_hooks_dir"
+      symlink "$DOTFILES/$pkg_dir/hooks/theme-changed.zsh" "$theme_hooks_dir/$pkg.zsh"
+      pkg_linked=1
+    fi
+
     if (( pkg_linked )); then
       success "Linked $pkg"
     fi
@@ -131,6 +138,22 @@ sync_packages() {
   done
 }
 
+ensure_default_theme() {
+  # Guarantees a real theme is applied at least once — e.g. micro's
+  # settings.json points at "current", a symlink theme-set manages, so
+  # without this a fresh machine would show an undefined colorscheme until
+  # theme-set is run by hand. Runs after sync_packages (not as a per-package
+  # post-setup hook) so every package's hooks.d entry already exists —
+  # package processing order is alphabetical, and "theme" sorts before
+  # several packages (e.g. yazi) that theme-set needs to have reacted.
+  # Idempotent: only acts if no theme has ever been chosen.
+  local state_file="${XDG_STATE_HOME:-$HOME/.local/state}/theme/current-theme.txt"
+  local theme_set="$HOME/.local/bin/theme-set"
+  [[ -s "$state_file" ]] && return
+  [[ -x "$theme_set" ]] || return
+  PATH="$HOME/.local/bin:$PATH" "$theme_set" rose-pine-moon
+}
+
 on_finish() {
   echo
   success "Done — $linked symlinks, $copied files copied, $skipped packages skipped, $failed conflicts."
@@ -139,6 +162,7 @@ on_finish() {
 main() {
   on_start
   sync_packages
+  ensure_default_theme
   on_finish
 }
 

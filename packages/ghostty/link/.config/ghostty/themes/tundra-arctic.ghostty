@@ -1,0 +1,29 @@
+# Tundra Arctic
+# https://github.com/sam4llis/nvim-tundra (extras/kitty/tundra.conf)
+
+background = #111827
+foreground = #D1D5DB
+cursor-color = #D1D5DB
+cursor-text = #111827
+selection-background = #374151
+selection-foreground = #D1D5DB
+
+# Normal colors
+palette = 0=#6B7280
+palette = 1=#FCA5A5
+palette = 2=#B1E3AD
+palette = 3=#FBC19D
+palette = 4=#BAE6FD
+palette = 5=#957FB8
+palette = 6=#DDD6FE
+palette = 7=#A5F3FC
+
+# Bright colors
+palette = 8=#6B7280
+palette = 9=#FCA5A5
+palette = 10=#B1E3AD
+palette = 11=#FBC19D
+palette = 12=#BAE6FD
+palette = 13=#938AA9
+palette = 14=#DDD6FE
+palette = 15=#A5F3FC

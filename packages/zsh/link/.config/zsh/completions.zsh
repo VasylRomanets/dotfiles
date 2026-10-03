@@ -35,8 +35,9 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-# Colored output for file completions (uses EZA_COLORS via LS_COLORS fallback).
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# Colored output for file completions. Evaluated on each completion (-e) rather
+# than once here, since LS_COLORS is only set later by the vivid package.
+zstyle -e ':completion:*:default' list-colors 'reply=(${(s.:.)LS_COLORS})'
 
 # Colored messages for completion states.
 zstyle ':completion:*:*:*:*:corrections'  format '%F{yellow}!- %d (errors: %e) -!%f'

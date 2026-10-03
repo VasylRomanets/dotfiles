@@ -1,0 +1,32 @@
+# Tundra Jungle
+# Palette continued from https://github.com/sam4llis/nvim-tundra's own
+# lua/nvim-tundra/palette/jungle.lua — the repo ships a terminal export
+# (kitty/iTerm/alacritty) for Arctic only, not Jungle, so these values were
+# derived by applying that same kitty.conf role mapping to Jungle's palette.
+
+background = #1C1C1C
+foreground = #D1D5DB
+cursor-color = #E4E4EC
+cursor-text = #1C1C1C
+selection-background = #444444
+selection-foreground = #D1D5DB
+
+# Normal colors
+palette = 0=#767676
+palette = 1=#FFAFAF
+palette = 2=#AFD7AF
+palette = 3=#F5CFA9
+palette = 4=#ACD5FC
+palette = 5=#B5B5FF
+palette = 6=#D7D7FF
+palette = 7=#E4E4EC
+
+# Bright colors
+palette = 8=#767676
+palette = 9=#FFAFAF
+palette = 10=#AFD7AF
+palette = 11=#F5CFA9
+palette = 12=#ACD5FC
+palette = 13=#B5B5FF
+palette = 14=#D7D7FF
+palette = 15=#E4E4EC

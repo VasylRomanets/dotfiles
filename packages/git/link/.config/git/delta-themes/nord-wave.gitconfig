@@ -1,0 +1,7 @@
+[delta]
+  syntax-theme = "nord-wave"
+  # The theme's red/green accents blended over its base background at 15%/30%.
+  minus-style = syntax "#392b2c"
+  minus-emph-style = syntax "#503437"
+  plus-style = syntax "#343931"
+  plus-emph-style = syntax "#485041"

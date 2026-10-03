@@ -1,0 +1,7 @@
+[delta]
+  syntax-theme = "noctis-lux"
+  # The theme's red/green accents blended over its base background at 15%/30%.
+  minus-style = syntax "#fadecd"
+  minus-emph-style = syntax "#f6c5ae"
+  plus-style = syntax "#d8eed8"
+  plus-emph-style = syntax "#b2e3c4"

@@ -1,0 +1,8 @@
+[delta]
+  syntax-theme = "rose-pine-dawn"
+  # Same reasoning as rose-pine-moon.gitconfig, tinted with Dawn's own Love and
+  # Pine accents over Dawn's own (light) base background instead.
+  minus-style = syntax "#efdddb"
+  minus-emph-style = syntax "#e5c8ca"
+  plus-style = syntax "#d8dedc"
+  plus-emph-style = syntax "#bbcacd"

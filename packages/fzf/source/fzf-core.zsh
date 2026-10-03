@@ -49,4 +49,7 @@ _fzf_comprun() {
 # Let atuin own CTRL-R for history search instead of fzf.
 (( $+commands[atuin] )) && export FZF_CTRL_R_COMMAND=""
 
+# fzf reads its colors from this file on every invocation.
+export FZF_DEFAULT_OPTS_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/theme/generated/fzf.conf"
+
 source <(fzf --zsh)

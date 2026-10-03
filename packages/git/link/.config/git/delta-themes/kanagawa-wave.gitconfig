@@ -1,0 +1,8 @@
+[delta]
+  syntax-theme = "kanagawa-wave"
+  # Kanagawa's own red/green accents blended low-opacity over its base
+  # background, same tinting technique as the Rose Pine variants.
+  minus-style = syntax "#39242c"
+  minus-emph-style = syntax "#502930"
+  plus-style = syntax "#2d3233"
+  plus-emph-style = syntax "#39423c"

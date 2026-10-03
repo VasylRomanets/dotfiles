@@ -1,0 +1,7 @@
+[delta]
+  syntax-theme = "noctis-hibernus"
+  # The theme's red/green accents blended over its base background at 15%/30%.
+  minus-style = syntax "#f1ddd5"
+  minus-emph-style = syntax "#efc4b5"
+  plus-style = syntax "#cfece1"
+  plus-emph-style = syntax "#abe2cb"
