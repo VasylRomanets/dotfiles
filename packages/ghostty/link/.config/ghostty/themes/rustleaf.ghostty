@@ -1,0 +1,26 @@
+# Rustleaf
+# Source: https://github.com/tahfizhabib/omarchy-rustleaf-theme/blob/main/alacritty.toml
+
+background = #221F20
+foreground = #bcb7b0
+cursor-color = #bcb7b0
+cursor-text = #221F20
+selection-background = #bcb7b0
+selection-foreground = #221F20
+
+palette = 0=#221F20
+palette = 1=#b27575
+palette = 2=#80b780
+palette = 3=#bdbd89
+palette = 4=#9393c3
+palette = 5=#ae6fae
+palette = 6=#7cb6b6
+palette = 7=#D3B580
+palette = 8=#5f5448
+palette = 9=#d5aeae
+palette = 10=#b9dab9
+palette = 11=#dfdfc3
+palette = 12=#cdcde5
+palette = 13=#c482c4
+palette = 14=#90cbcb
+palette = 15=#bcb7b0

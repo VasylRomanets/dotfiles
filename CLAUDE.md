@@ -63,7 +63,7 @@ For each `packages/*/`: check `[requires]` (skip package entirely if command/app
 
 **`keep.txt`** in a package lists files (globs relative to the package) that `make themes` must leave alone because they are maintained by hand: `packages/bat/keep.txt` holds upstream `.tmTheme` files (Catppuccin, Tokyo Night, Nord, Noctis) with far more scopes than Tinted8's 105 syntax keys, and `packages/yazi/keep.txt` the flavors their authors wrote. Delete a path from the list to hand that theme back to the schemes.
 
-**Adding a theme:** write `packages/theme/schemes/<slug>.yaml` (copy a similar one, or `packages/theme/tools/tmtheme-to-scheme.py <slug> <file.tmTheme> <ghostty-theme-file>` to extract one), run `make themes`, `make sync` and `bat cache --build`. Ghostty is separate: a built-in theme named like the title-cased slug works as is (Nightfox, Rose Pine Moon, ...); otherwise add `packages/ghostty/link/.config/ghostty/themes/<slug>.ghostty` and list the slug in `packages/ghostty/hooks/theme-changed.zsh`.
+**Adding a theme:** write `packages/theme/schemes/<slug>.yaml` (copy a similar one, or `packages/theme/tools/tmtheme-to-scheme.py <slug> <file.tmTheme> <ghostty-theme-file>` to extract one), run `make themes`, `make sync` and `bat cache --build`. Ghostty is separate: a built-in theme named like the title-cased slug works as is (Nightfox, Rose Pine Moon, ...); otherwise add `packages/ghostty/link/.config/ghostty/themes/<slug>.ghostty` — a local file named after the slug is picked up by the hook automatically (and wins over a built-in of the same name). A built-in whose name isn't the title-cased slug (TokyoNight) needs a line in `packages/ghostty/hooks/theme-changed.zsh`.
 
 ### Local-override pattern for secrets/machine-specific values
 

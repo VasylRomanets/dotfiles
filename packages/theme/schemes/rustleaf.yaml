@@ -1,0 +1,89 @@
+# Palette from the theme's Alacritty config; syntax colors follow the gruvbox-hard scheme its Neovim config selects (upstream ships no tmTheme).
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/tahfizhabib/omarchy-rustleaf-theme"
+  name: "Rustleaf"
+  slug: "rustleaf"
+variant: "dark"
+palette:
+  black: "#221f20"
+  white: "#bcb7b0"
+  red: "#b27575"
+  red-bright: "#d5aeae"
+  green: "#80b780"
+  green-bright: "#b9dab9"
+  yellow: "#bdbd89"
+  yellow-bright: "#dfdfc3"
+  blue: "#9393c3"
+  blue-bright: "#cdcde5"
+  magenta: "#ae6fae"
+  magenta-bright: "#c482c4"
+  cyan: "#7cb6b6"
+  cyan-bright: "#90cbcb"
+  gray: "#928374"
+syntax:
+  comment: "#928374"
+  invalid: "#d5aeae"
+  string: "#80b780"
+  string.regexp: "#7cb6b6"
+  constant: "#ae6fae"
+  constant.character.escape: "#7cb6b6"
+  entity: "#bcb7b0"
+  entity.name.class: "#d3b580"
+  entity.name.function: "#bdbd89"
+  entity.name.tag: "#b27575"
+  entity.name.type: "#d3b580"
+  entity.name.namespace: "#d3b580"
+  entity.name.section: "#bdbd89"
+  entity.other.attribute-name: "#bdbd89"
+  entity.other.inherited-class: "#d3b580"
+  keyword: "#b27575"
+  keyword.operator: "#bcb7b0"
+  storage: "#b27575"
+  storage.type: "#d3b580"
+  support: "#7cb6b6"
+  support.function: "#bdbd89"
+  support.class: "#d3b580"
+  support.type: "#d3b580"
+  variable: "#bcb7b0"
+  variable.parameter: "#9393c3"
+  variable.language: "#7cb6b6"
+  punctuation: "#bcb7b0"
+  markup: "#bcb7b0"
+  markup.bold: "#b27575"
+  markup.italic: "#b27575"
+  markup.quote: "#928374"
+  markup.heading: "#bdbd89"
+  markup.link: "#9393c3"
+  markup.inserted: "#80b780"
+  markup.changed: "#bdbd89"
+  markup.deleted: "#b27575"
+  source: "#bcb7b0"
+  text: "#bcb7b0"
+  meta: "#bcb7b0"
+  meta.preprocessor: "#b27575"
+ui:
+  accent:
+    normal: "#9393c3"
+  selection:
+    background: "#5f5448"
+  highlight:
+    line:
+      background: "#2c2829"
+  cursor:
+    normal:
+      background: "#bcb7b0"
+  border:
+    normal: "#444040"
+  gutter:
+    foreground: "#928374"
+  chrome:
+    background:
+      normal: "#2b2829"
+      dark: "#181616"
+    foreground:
+      dark: "#86827e"

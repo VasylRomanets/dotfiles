@@ -2,7 +2,8 @@
 
 # Reacts to theme (see setup/sync.zsh): resolves the slug to Ghostty's
 # own display name and applies it. Most slugs match Title Case exactly;
-# only the irregular ones need an override.
+# only the irregular ones need an override, and a local .ghostty file named
+# after the slug takes precedence over all of that.
 theme=$1
 
 pretty_name() {
@@ -21,21 +22,16 @@ case "$theme" in
   tokyonight-storm) name="TokyoNight Storm" ;;
   tokyonight-moon) name="TokyoNight Moon" ;;
   tokyonight-day) name="TokyoNight Day" ;;
-  # Local .ghostty files, referenced by their lowercase filename stem.
-  # These local files diverge from a same-named Ghostty built-in (upstream
-  # revised the palette after Ghostty vendored it), so the slug itself
-  # (which the local filename matches) must be passed, not pretty_name's
-  # title-cased guess, or Ghostty would load the built-in.
-  kanso-ink | kanso-mist | kanso-pearl | kanso-zen) name="$theme" ;;
-  ember | ember-soft | ember-light | everforest-dark-hard | sora | tundra-arctic | tundra-jungle) name="$theme" ;;
   *) name="$(pretty_name "$theme")" ;;
 esac
 
 ghostty_dir="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty"
 
-# Local themes are files named "<name>.ghostty"; built-in ones are referenced
-# by name as is.
-[[ -e "$ghostty_dir/themes/$name.ghostty" ]] && name="$name.ghostty"
+# A local theme is a file named "<slug>.ghostty" and wins over a built-in of the
+# same title-cased name: several of them diverge from it (upstream revised the
+# palette after Ghostty vendored it) or have no built-in at all. Built-in themes
+# are referenced by name as is.
+[[ -e "$ghostty_dir/themes/$theme.ghostty" ]] && name="$theme.ghostty"
 
 # The untracked override file config.ghostty includes, which keeps frequent
 # theme switches out of git. Resolved first so the in-place edit below doesn't
