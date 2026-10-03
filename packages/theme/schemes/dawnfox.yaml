@@ -1,0 +1,90 @@
+# Converted from dawnfox.tmTheme and Ghostty theme Dawnfox.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/EdenEast/nightfox.nvim"
+  name: "Dawnfox"
+  slug: "dawnfox"
+variant: "light"
+palette:
+  black: "#575279"
+  white: "#faf4ed"
+  red: "#b4637a"
+  red-bright: "#c26d85"
+  green: "#618774"
+  green-bright: "#629f81"
+  yellow: "#ea9d34"
+  yellow-bright: "#eea846"
+  blue: "#286983"
+  blue-bright: "#2d81a3"
+  magenta: "#907aa9"
+  magenta-bright: "#9a80b9"
+  cyan: "#56949f"
+  cyan-bright: "#5ca7b4"
+  gray: "#bdbfc9"
+  orange: "#ea9d34"
+syntax:
+  comment: "#bdbfc9"
+  invalid: "#4c4769"
+  string: "#618774"
+  constant: "#4c4769"
+  constant.numeric: "#ea9d34"
+  constant.language: "#b4637a"
+  constant.character.escape: "#625c87"
+  entity: "#4c4769"
+  entity.name.class: "#ea9d34"
+  entity.name.function: "#295e73"
+  entity.name.tag: "#295e73"
+  entity.name.type: "#ea9d34"
+  entity.name.namespace: "#ea9d34"
+  entity.other.attribute-name: "#ea9d34"
+  entity.other.inherited-class: "#ea9d34"
+  keyword: "#907aa9"
+  keyword.operator: "#56949f"
+  storage: "#4c4769"
+  storage.type: "#907aa9"
+  storage.modifier: "#907aa9"
+  support: "#4c4769"
+  support.function: "#295e73"
+  support.function.builtin: "#b4637a"
+  support.class: "#ea9d34"
+  support.type: "#ea9d34"
+  variable: "#4c4769"
+  variable.parameter: "#c9709e"
+  variable.other.constant: "#ea9d34"
+  punctuation: "#4c4769"
+  punctuation.definition.string: "#618774"
+  punctuation.definition.comment: "#bdbfc9"
+  markup: "#4c4769"
+  markup.bold: "#b4637a"
+  markup.italic: "#b4637a"
+  markup.quote: "#625c87"
+  markup.link: "#b7bdf8"
+  source: "#4c4769"
+  text: "#4c4769"
+  meta: "#4c4769"
+  meta.type: "#ea9d34"
+ui:
+  accent:
+    normal: "#56949f"
+  selection:
+    background: "#4c4769"
+  highlight:
+    line:
+      background: "#ebe0df"
+  cursor:
+    normal:
+      background: "#a8a3b3"
+  border:
+    normal: "#d6d0d3"
+  gutter:
+    foreground: "#bdbfc9"
+  chrome:
+    background:
+      normal: "#f0eae6"
+      dark: "#eae4e1"
+    foreground:
+      dark: "#908ba2"

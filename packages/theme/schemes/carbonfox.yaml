@@ -1,0 +1,89 @@
+# Converted from carbonfox.tmTheme and Ghostty theme Carbonfox.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/EdenEast/nightfox.nvim"
+  name: "Carbonfox"
+  slug: "carbonfox"
+variant: "dark"
+palette:
+  black: "#161616"
+  white: "#f2f4f8"
+  red: "#ee5396"
+  red-bright: "#f16da6"
+  green: "#25be6a"
+  green-bright: "#46c880"
+  yellow: "#08bdba"
+  yellow-bright: "#2dc7c4"
+  blue: "#78a9ff"
+  blue-bright: "#8cb6ff"
+  magenta: "#be95ff"
+  magenta-bright: "#c8a5ff"
+  cyan: "#33b1ff"
+  cyan-bright: "#52bdff"
+  gray: "#535353"
+syntax:
+  comment: "#535353"
+  invalid: "#f9fbff"
+  string: "#25be6a"
+  constant: "#f9fbff"
+  constant.numeric: "#08bdba"
+  constant.language: "#ee5396"
+  constant.character.escape: "#b6b8bb"
+  entity: "#f9fbff"
+  entity.name.class: "#08bdba"
+  entity.name.function: "#6690d9"
+  entity.name.tag: "#6690d9"
+  entity.name.type: "#08bdba"
+  entity.name.namespace: "#08bdba"
+  entity.other.attribute-name: "#08bdba"
+  entity.other.inherited-class: "#08bdba"
+  keyword: "#be95ff"
+  keyword.operator: "#33b1ff"
+  storage: "#f9fbff"
+  storage.type: "#be95ff"
+  storage.modifier: "#be95ff"
+  support: "#f9fbff"
+  support.function: "#6690d9"
+  support.function.builtin: "#ee5396"
+  support.class: "#08bdba"
+  support.type: "#08bdba"
+  variable: "#f9fbff"
+  variable.parameter: "#d96b9b"
+  variable.other.constant: "#08bdba"
+  punctuation: "#f9fbff"
+  punctuation.definition.string: "#25be6a"
+  punctuation.definition.comment: "#535353"
+  markup: "#f9fbff"
+  markup.bold: "#ee5396"
+  markup.italic: "#ee5396"
+  markup.quote: "#b6b8bb"
+  markup.link: "#b7bdf8"
+  source: "#f9fbff"
+  text: "#f9fbff"
+  meta: "#f9fbff"
+  meta.type: "#08bdba"
+ui:
+  accent:
+    normal: "#33b1ff"
+  selection:
+    background: "#f9fbff"
+  highlight:
+    line:
+      background: "#252525"
+  cursor:
+    normal:
+      background: "#7b7c7e"
+  border:
+    normal: "#464748"
+  gutter:
+    foreground: "#535353"
+  chrome:
+    background:
+      normal: "#232324"
+      dark: "#0f0f0f"
+    foreground:
+      dark: "#a5a6a9"

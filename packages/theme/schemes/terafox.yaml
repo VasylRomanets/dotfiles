@@ -1,0 +1,90 @@
+# Converted from terafox.tmTheme and Ghostty theme Terafox.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/EdenEast/nightfox.nvim"
+  name: "Terafox"
+  slug: "terafox"
+variant: "dark"
+palette:
+  black: "#152528"
+  white: "#e6eaea"
+  red: "#e85c51"
+  red-bright: "#eb746b"
+  green: "#7aa4a1"
+  green-bright: "#8eb2af"
+  yellow: "#fda47f"
+  yellow-bright: "#fdb292"
+  blue: "#5a93aa"
+  blue-bright: "#73a3b7"
+  magenta: "#ad5c7c"
+  magenta-bright: "#b97490"
+  cyan: "#a1cdd8"
+  cyan-bright: "#afd4de"
+  gray: "#2d4f56"
+  orange: "#fda47f"
+syntax:
+  comment: "#2d4f56"
+  invalid: "#eaeeee"
+  string: "#7aa4a1"
+  constant: "#eaeeee"
+  constant.numeric: "#fda47f"
+  constant.language: "#e85c51"
+  constant.character.escape: "#cbd9d8"
+  entity: "#eaeeee"
+  entity.name.class: "#fda47f"
+  entity.name.function: "#4d7d90"
+  entity.name.tag: "#4d7d90"
+  entity.name.type: "#fda47f"
+  entity.name.namespace: "#fda47f"
+  entity.other.attribute-name: "#fda47f"
+  entity.other.inherited-class: "#fda47f"
+  keyword: "#ad5c7c"
+  keyword.operator: "#a1cdd8"
+  storage: "#eaeeee"
+  storage.type: "#ad5c7c"
+  storage.modifier: "#ad5c7c"
+  support: "#eaeeee"
+  support.function: "#4d7d90"
+  support.function.builtin: "#e85c51"
+  support.class: "#fda47f"
+  support.type: "#fda47f"
+  variable: "#eaeeee"
+  variable.parameter: "#ad6771"
+  variable.other.constant: "#fda47f"
+  punctuation: "#eaeeee"
+  punctuation.definition.string: "#7aa4a1"
+  punctuation.definition.comment: "#2d4f56"
+  markup: "#eaeeee"
+  markup.bold: "#e85c51"
+  markup.italic: "#e85c51"
+  markup.quote: "#cbd9d8"
+  markup.link: "#b7bdf8"
+  source: "#eaeeee"
+  text: "#eaeeee"
+  meta: "#eaeeee"
+  meta.type: "#fda47f"
+ui:
+  accent:
+    normal: "#a1cdd8"
+  selection:
+    background: "#eaeeee"
+  highlight:
+    line:
+      background: "#1d3337"
+  cursor:
+    normal:
+      background: "#587b7b"
+  border:
+    normal: "#435053"
+  gutter:
+    foreground: "#2d4f56"
+  chrome:
+    background:
+      normal: "#223134"
+      dark: "#0f1a1c"
+    foreground:
+      dark: "#9da5a6"

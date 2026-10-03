@@ -1,0 +1,90 @@
+# Converted from nordfox.tmTheme and Ghostty theme Nordfox.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/EdenEast/nightfox.nvim"
+  name: "Nordfox"
+  slug: "nordfox"
+variant: "dark"
+palette:
+  black: "#2e3440"
+  white: "#cdcecf"
+  red: "#bf616a"
+  red-bright: "#d06f79"
+  green: "#a3be8c"
+  green-bright: "#b1d196"
+  yellow: "#ebcb8b"
+  yellow-bright: "#f0d399"
+  blue: "#81a1c1"
+  blue-bright: "#8cafd2"
+  magenta: "#b48ead"
+  magenta-bright: "#c895bf"
+  cyan: "#88c0d0"
+  cyan-bright: "#93ccdc"
+  gray: "#5a657d"
+  orange: "#ebcb8b"
+syntax:
+  comment: "#5a657d"
+  invalid: "#c7cdd9"
+  string: "#a3be8c"
+  constant: "#c7cdd9"
+  constant.numeric: "#ebcb8b"
+  constant.language: "#bf616a"
+  constant.character.escape: "#abb1bb"
+  entity: "#c7cdd9"
+  entity.name.class: "#ebcb8b"
+  entity.name.function: "#668aab"
+  entity.name.tag: "#668aab"
+  entity.name.type: "#ebcb8b"
+  entity.name.namespace: "#ebcb8b"
+  entity.other.attribute-name: "#ebcb8b"
+  entity.other.inherited-class: "#ebcb8b"
+  keyword: "#b48ead"
+  keyword.operator: "#88c0d0"
+  storage: "#c7cdd9"
+  storage.type: "#b48ead"
+  storage.modifier: "#b48ead"
+  support: "#c7cdd9"
+  support.function: "#668aab"
+  support.function.builtin: "#bf616a"
+  support.class: "#ebcb8b"
+  support.type: "#ebcb8b"
+  variable: "#c7cdd9"
+  variable.parameter: "#a96ca5"
+  variable.other.constant: "#ebcb8b"
+  punctuation: "#c7cdd9"
+  punctuation.definition.string: "#a3be8c"
+  punctuation.definition.comment: "#5a657d"
+  markup: "#c7cdd9"
+  markup.bold: "#bf616a"
+  markup.italic: "#bf616a"
+  markup.quote: "#abb1bb"
+  markup.link: "#b7bdf8"
+  source: "#c7cdd9"
+  text: "#c7cdd9"
+  meta: "#c7cdd9"
+  meta.type: "#ebcb8b"
+ui:
+  accent:
+    normal: "#88c0d0"
+  selection:
+    background: "#c7cdd9"
+  highlight:
+    line:
+      background: "#39404f"
+  cursor:
+    normal:
+      background: "#7e8188"
+  border:
+    normal: "#51565f"
+  gutter:
+    foreground: "#5a657d"
+  chrome:
+    background:
+      normal: "#383d49"
+      dark: "#20242d"
+    foreground:
+      dark: "#95989d"
