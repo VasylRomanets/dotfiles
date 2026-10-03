@@ -1,7 +1,0 @@
-[delta]
-  syntax-theme = "Kanso Pearl"
-  # The theme's red/green accents blended over its base background at 15%/30%.
-  minus-style = syntax "#ecd6d8"
-  minus-emph-style = syntax "#e5bcc0"
-  plus-style = syntax "#dee1d7"
-  plus-emph-style = syntax "#cbd2bf"

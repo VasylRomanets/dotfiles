@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Reacts to theme-set (see setup/sync.zsh): repoints the "current" colorscheme
+# Reacts to theme (see setup/sync.zsh): repoints the "current" colorscheme
 # symlink that settings.json always references, so every micro invocation
 # resolves correctly regardless of how micro was launched.
 theme=$1

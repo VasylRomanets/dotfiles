@@ -140,18 +140,18 @@ sync_packages() {
 
 ensure_default_theme() {
   # Guarantees a real theme is applied at least once — e.g. micro's
-  # settings.json points at "current", a symlink theme-set manages, so
+  # settings.json points at "current", a symlink the theme command manages, so
   # without this a fresh machine would show an undefined colorscheme until
-  # theme-set is run by hand. Runs after sync_packages (not as a per-package
+  # the theme command is run by hand. Runs after sync_packages (not as a per-package
   # post-setup hook) so every package's hooks.d entry already exists —
   # package processing order is alphabetical, and "theme" sorts before
-  # several packages (e.g. yazi) that theme-set needs to have reacted.
+  # several packages (e.g. yazi) that it needs to have reacted.
   # Idempotent: only acts if no theme has ever been chosen.
   local state_file="${XDG_STATE_HOME:-$HOME/.local/state}/theme/current-theme.txt"
-  local theme_set="$HOME/.local/bin/theme-set"
+  local theme_cmd="$HOME/.local/bin/theme"
   [[ -s "$state_file" ]] && return
-  [[ -x "$theme_set" ]] || return
-  PATH="$HOME/.local/bin:$PATH" "$theme_set" rose-pine-moon
+  [[ -x "$theme_cmd" ]] || return
+  PATH="$HOME/.local/bin:$PATH" "$theme_cmd" rose-pine-moon
 }
 
 on_finish() {

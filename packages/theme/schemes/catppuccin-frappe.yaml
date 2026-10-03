@@ -1,0 +1,90 @@
+# Converted from catppuccin-frappe.tmTheme and Ghostty theme Catppuccin Frappe.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/catppuccin/catppuccin"
+  name: "Catppuccin Frappe"
+  slug: "catppuccin-frappe"
+variant: "dark"
+palette:
+  black: "#303446"
+  white: "#c6d0f5"
+  red: "#e78284"
+  red-bright: "#eda0a2"
+  green: "#a6d189"
+  green-bright: "#b9dba2"
+  yellow: "#e5c890"
+  yellow-bright: "#ecd7ae"
+  blue: "#8caaee"
+  blue-bright: "#adc2f3"
+  magenta: "#f4b8e4"
+  magenta-bright: "#f38ed8"
+  cyan: "#81c8be"
+  cyan-bright: "#98d2ca"
+  gray: "#949cbb"
+  orange: "#ef9f76"
+syntax:
+  comment: "#949cbb"
+  invalid: "#c6d0f5"
+  string: "#a6d189"
+  constant: "#c6d0f5"
+  constant.numeric: "#ef9f76"
+  constant.language: "#e78284"
+  constant.character.escape: "#f4b8e4"
+  entity: "#c6d0f5"
+  entity.name: "#81c8be"
+  entity.name.class: "#e5c890"
+  entity.name.function: "#8caaee"
+  entity.name.tag: "#8caaee"
+  entity.name.type: "#e5c890"
+  entity.name.namespace: "#e5c890"
+  entity.other.attribute-name: "#e5c890"
+  entity.other.inherited-class: "#e5c890"
+  keyword: "#ca9ee6"
+  keyword.operator: "#81c8be"
+  storage: "#c6d0f5"
+  storage.type: "#ca9ee6"
+  storage.modifier: "#ca9ee6"
+  support: "#c6d0f5"
+  support.function: "#8caaee"
+  support.function.builtin: "#e78284"
+  support.class: "#e5c890"
+  support.type: "#e5c890"
+  variable: "#c6d0f5"
+  variable.parameter: "#ea999c"
+  variable.other.constant: "#ef9f76"
+  punctuation: "#949cbb"
+  punctuation.definition.string: "#a6d189"
+  markup: "#c6d0f5"
+  markup.bold: "#e78284"
+  markup.italic: "#e78284"
+  markup.quote: "#f4b8e4"
+  markup.link: "#babbf1"
+  source: "#c6d0f5"
+  text: "#c6d0f5"
+  meta: "#c6d0f5"
+  meta.type: "#e5c890"
+ui:
+  accent:
+    normal: "#8caaee"
+  selection:
+    background: "#494e63"
+  highlight:
+    line:
+      background: "#414559"
+  cursor:
+    normal:
+      background: "#f2d5cf"
+  border:
+    normal: "#51566c"
+  gutter:
+    foreground: "#949cbb"
+  chrome:
+    background:
+      normal: "#393d50"
+      dark: "#222431"
+    foreground:
+      dark: "#9299b8"

@@ -1,0 +1,52 @@
+# Counterparts for "theme light" and "theme dark": each line names two themes
+# (slugs) that stand in for each other. A theme may appear on several lines;
+# the first line whose other side has the wanted variant wins, so list the
+# preferred counterpart first. Themes without a line have no counterpart.
+
+# Catppuccin.
+catppuccin-mocha      catppuccin-latte
+catppuccin-macchiato  catppuccin-latte
+catppuccin-frappe     catppuccin-latte
+
+# Rose Pine.
+rose-pine-moon        rose-pine-dawn
+rose-pine             rose-pine-dawn
+
+# Tokyo Night.
+tokyonight-night      tokyonight-day
+tokyonight-storm      tokyonight-day
+tokyonight-moon       tokyonight-day
+
+# Kanagawa.
+kanagawa-wave         kanagawa-lotus
+kanagawa-dragon       kanagawa-lotus
+
+# Kanso.
+kanso-ink             kanso-pearl
+kanso-zen             kanso-pearl
+kanso-mist            kanso-pearl
+
+# Ember.
+ember                 ember-light
+ember-soft            ember-light
+
+# Nightfox.
+nightfox              dayfox
+carbonfox             dayfox
+terafox               dayfox
+duskfox               dawnfox
+nordfox               dawnfox
+
+# Tomorrow.
+tomorrow-night        tomorrow
+tomorrow-night-blue   tomorrow
+tomorrow-night-bright tomorrow
+tomorrow-night-eighties tomorrow
+
+# No Clown Fiesta.
+no-clown-fiesta       no-clown-fiesta-light
+
+# Noctis.
+noctis                noctis-lux
+noctis-viola          noctis-lilac
+noctis-azureus        noctis-hibernus

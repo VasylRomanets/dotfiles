@@ -1,0 +1,85 @@
+# Converted from tomorrow.tmTheme and Ghostty theme Tomorrow.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/chriskempson/tomorrow-theme"
+  name: "Tomorrow"
+  slug: "tomorrow"
+variant: "light"
+palette:
+  black: "#4d4d4c"
+  white: "#ffffff"
+  red: "#c82829"
+  red-bright: "#c82829"
+  green: "#718c00"
+  green-bright: "#718c00"
+  yellow: "#eab700"
+  yellow-bright: "#eab700"
+  blue: "#4271ae"
+  blue-bright: "#4271ae"
+  magenta: "#8959a8"
+  magenta-bright: "#8959a8"
+  cyan: "#3e999f"
+  cyan-bright: "#3e999f"
+  gray: "#8e908c"
+  orange: "#f5871f"
+syntax:
+  comment: "#8e908c"
+  invalid: "#ffffff"
+  string: "#718c00"
+  string.regexp: "#c82829"
+  constant: "#4d4d4c"
+  constant.numeric: "#f5871f"
+  constant.language: "#f5871f"
+  constant.character: "#f5871f"
+  constant.other: "#666969"
+  entity: "#4d4d4c"
+  entity.name.class: "#c99e00"
+  entity.name.function: "#4271ae"
+  entity.name.tag: "#c82829"
+  entity.name.type.class: "#c99e00"
+  entity.other.attribute-name: "#c82829"
+  entity.other.inherited-class: "#718c00"
+  keyword: "#8959a8"
+  keyword.operator: "#3e999f"
+  storage: "#8959a8"
+  support: "#4d4d4c"
+  support.function: "#4271ae"
+  support.class: "#c99e00"
+  support.type: "#c99e00"
+  support.constant: "#f5871f"
+  variable: "#c82829"
+  variable.parameter: "#f5871f"
+  punctuation: "#4d4d4c"
+  punctuation.definition.string: "#718c00"
+  punctuation.definition.comment: "#8e908c"
+  markup: "#4d4d4c"
+  markup.heading: "#718c00"
+  source: "#4d4d4c"
+  text: "#4d4d4c"
+  meta: "#4d4d4c"
+  meta.tag: "#c82829"
+ui:
+  accent:
+    normal: "#3e999f"
+  selection:
+    background: "#d6d6d6"
+  highlight:
+    line:
+      background: "#efefef"
+  cursor:
+    normal:
+      background: "#aeafad"
+  border:
+    normal: "#d8d8d8"
+  gutter:
+    foreground: "#8e908c"
+  chrome:
+    background:
+      normal: "#f4f4f4"
+      dark: "#ededed"
+    foreground:
+      dark: "#8b8b8b"

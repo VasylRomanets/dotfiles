@@ -1,0 +1,90 @@
+# Converted from catppuccin-mocha.tmTheme and Ghostty theme Catppuccin Mocha.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/catppuccin/catppuccin"
+  name: "Catppuccin Mocha"
+  slug: "catppuccin-mocha"
+variant: "dark"
+palette:
+  black: "#1e1e2e"
+  white: "#cdd6f4"
+  red: "#f38ba8"
+  red-bright: "#f7aec2"
+  green: "#a6e3a1"
+  green-bright: "#c2ecbf"
+  yellow: "#f9e2af"
+  yellow-bright: "#fcd682"
+  blue: "#89b4fa"
+  blue-bright: "#aeccfc"
+  magenta: "#f5c2e7"
+  magenta-bright: "#f398da"
+  cyan: "#94e2d5"
+  cyan-bright: "#b1eae1"
+  gray: "#9399b2"
+  orange: "#fab387"
+syntax:
+  comment: "#9399b2"
+  invalid: "#cdd6f4"
+  string: "#a6e3a1"
+  constant: "#cdd6f4"
+  constant.numeric: "#fab387"
+  constant.language: "#f38ba8"
+  constant.character.escape: "#f5c2e7"
+  entity: "#cdd6f4"
+  entity.name: "#94e2d5"
+  entity.name.class: "#f9e2af"
+  entity.name.function: "#89b4fa"
+  entity.name.tag: "#89b4fa"
+  entity.name.type: "#f9e2af"
+  entity.name.namespace: "#f9e2af"
+  entity.other.attribute-name: "#f9e2af"
+  entity.other.inherited-class: "#f9e2af"
+  keyword: "#cba6f7"
+  keyword.operator: "#94e2d5"
+  storage: "#cdd6f4"
+  storage.type: "#cba6f7"
+  storage.modifier: "#cba6f7"
+  support: "#cdd6f4"
+  support.function: "#89b4fa"
+  support.function.builtin: "#f38ba8"
+  support.class: "#f9e2af"
+  support.type: "#f9e2af"
+  variable: "#cdd6f4"
+  variable.parameter: "#eba0ac"
+  variable.other.constant: "#fab387"
+  punctuation: "#9399b2"
+  punctuation.definition.string: "#a6e3a1"
+  markup: "#cdd6f4"
+  markup.bold: "#f38ba8"
+  markup.italic: "#f38ba8"
+  markup.quote: "#f5c2e7"
+  markup.link: "#b4befe"
+  source: "#cdd6f4"
+  text: "#cdd6f4"
+  meta: "#cdd6f4"
+  meta.type: "#f9e2af"
+ui:
+  accent:
+    normal: "#89b4fa"
+  selection:
+    background: "#3b3d4f"
+  highlight:
+    line:
+      background: "#313244"
+  cursor:
+    normal:
+      background: "#f5e0dc"
+  border:
+    normal: "#44465a"
+  gutter:
+    foreground: "#9399b2"
+  chrome:
+    background:
+      normal: "#28293a"
+      dark: "#151520"
+    foreground:
+      dark: "#9096af"

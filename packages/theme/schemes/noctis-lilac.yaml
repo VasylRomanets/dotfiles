@@ -1,0 +1,90 @@
+# Converted from noctis-lilac.tmTheme and Ghostty theme Noctis Lilac.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/liviuschera/noctis"
+  name: "Noctis Lilac"
+  slug: "noctis-lilac"
+variant: "light"
+palette:
+  black: "#0c006b"
+  white: "#f2f1f8"
+  red: "#e34e1c"
+  red-bright: "#ff4000"
+  green: "#00b368"
+  green-bright: "#00d17a"
+  yellow: "#f49725"
+  yellow-bright: "#ff8c00"
+  blue: "#0094f0"
+  blue-bright: "#0fa3ff"
+  magenta: "#ff5792"
+  magenta-bright: "#ff6b9f"
+  cyan: "#00bdd6"
+  cyan-bright: "#00cbe6"
+  gray: "#9995b7"
+syntax:
+  comment: "#9995b7"
+  invalid: "#ff530f"
+  string: "#00b368"
+  string.template: "#009456"
+  constant: "#a88c00"
+  constant.numeric: "#5842ff"
+  constant.language: "#5842ff"
+  constant.character: "#0c006b"
+  constant.character.escape: "#0094f0"
+  constant.character.entity: "#a88c00"
+  entity: "#0c006b"
+  entity.name: "#00bdd6"
+  entity.name.function: "#0095a8"
+  entity.name.tag: "#e64100"
+  entity.name.type: "#b3694d"
+  entity.name.type.class: "#0094f0"
+  entity.name.section: "#ff5792"
+  entity.other: "#00bdd6"
+  keyword: "#ff5792"
+  storage: "#0c006b"
+  storage.type: "#e64100"
+  storage.modifier: "#ff5792"
+  support: "#fa8900"
+  support.function: "#00bdd6"
+  support.class: "#0094f0"
+  support.type: "#00bdd6"
+  support.constant: "#a88c00"
+  variable: "#fa8900"
+  variable.language: "#e64100"
+  variable.other.constant: "#a88c00"
+  punctuation: "#0c006b"
+  punctuation.definition.string: "#00b368"
+  punctuation.definition.comment: "#9995b7"
+  markup: "#0c006b"
+  markup.quote: "#a88c00"
+  markup.underline: "#00bdd6"
+  markup.heading: "#ff5792"
+  markup.link: "#0095a8"
+  source: "#0c006b"
+  text: "#0c006b"
+  meta: "#0c006b"
+ui:
+  accent:
+    normal: "#00bdd6"
+  selection:
+    background: "#d5d3e5"
+  highlight:
+    line:
+      background: "#d5d2ef"
+  cursor:
+    normal:
+      background: "#5c49e9"
+  border:
+    normal: "#bfbcd9"
+  gutter:
+    foreground: "#9995b7"
+  chrome:
+    background:
+      normal: "#e4e3f0"
+      dark: "#dbd9ea"
+    foreground:
+      dark: "#5c549c"

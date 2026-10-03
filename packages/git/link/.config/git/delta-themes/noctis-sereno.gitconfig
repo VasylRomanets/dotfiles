@@ -1,7 +1,0 @@
-[delta]
-  syntax-theme = "noctis-sereno"
-  # The theme's red/green accents blended over its base background at 15%/30%.
-  minus-style = syntax "#283632"
-  minus-emph-style = syntax "#493e32"
-  plus-style = syntax "#104a43"
-  plus-emph-style = syntax "#1a6655"

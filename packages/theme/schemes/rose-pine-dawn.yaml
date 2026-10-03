@@ -1,0 +1,82 @@
+# Converted from rose-pine-dawn.tmTheme and Ghostty theme Rose Pine Dawn.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/rose-pine/rose-pine-theme"
+  name: "Rose Pine Dawn"
+  slug: "rose-pine-dawn"
+variant: "light"
+palette:
+  black: "#575279"
+  white: "#faf4ed"
+  red: "#b4637a"
+  red-bright: "#b4637a"
+  green: "#286983"
+  green-bright: "#286983"
+  yellow: "#ea9d34"
+  yellow-bright: "#ea9d34"
+  blue: "#56949f"
+  blue-bright: "#56949f"
+  magenta: "#907aa9"
+  magenta-bright: "#907aa9"
+  cyan: "#d7827e"
+  cyan-bright: "#d7827e"
+  gray: "#9893a5"
+syntax:
+  comment: "#9893a5"
+  invalid: "#b4637a"
+  string: "#ea9d34"
+  constant: "#d7827e"
+  constant.numeric: "#56949f"
+  constant.language: "#56949f"
+  entity: "#464261"
+  entity.name.class: "#56949f"
+  entity.name.function: "#d7827e"
+  entity.name.tag: "#907aa9"
+  entity.name.type: "#56949f"
+  entity.name.section: "#b4637a"
+  entity.other.attribute-name: "#907aa9"
+  entity.other.inherited-class: "#56949f"
+  keyword: "#286983"
+  keyword.operator: "#797593"
+  storage: "#464261"
+  storage.type: "#286983"
+  storage.modifier: "#286983"
+  support: "#464261"
+  support.function: "#d7827e"
+  support.type: "#56949f"
+  variable: "#464261"
+  punctuation: "#464261"
+  punctuation.separator: "#797593"
+  punctuation.definition.string: "#ea9d34"
+  punctuation.definition.comment: "#9893a5"
+  markup: "#464261"
+  markup.bold: "#907aa9"
+  markup.heading: "#b4637a"
+  source: "#464261"
+  text: "#464261"
+  meta: "#464261"
+ui:
+  accent:
+    normal: "#286983"
+  selection:
+    background: "#dfdad9"
+  highlight:
+    line:
+      background: "#fffaf3"
+  cursor:
+    normal:
+      background: "#464261"
+  border:
+    normal: "#d6d0d3"
+  gutter:
+    foreground: "#9893a5"
+  chrome:
+    background:
+      normal: "#f0eae6"
+      dark: "#eae4e1"
+    foreground:
+      dark: "#908ba2"

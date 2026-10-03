@@ -1,0 +1,90 @@
+# Converted from catppuccin-macchiato.tmTheme and Ghostty theme Catppuccin Macchiato.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/catppuccin/catppuccin"
+  name: "Catppuccin Macchiato"
+  slug: "catppuccin-macchiato"
+variant: "dark"
+palette:
+  black: "#24273a"
+  white: "#cad3f5"
+  red: "#ed8796"
+  red-bright: "#f2a7b2"
+  green: "#a6da95"
+  green-bright: "#bde3b0"
+  yellow: "#eed49f"
+  yellow-bright: "#f4e3c1"
+  blue: "#8aadf4"
+  blue-bright: "#adc5f7"
+  magenta: "#f5bde6"
+  magenta-bright: "#f493da"
+  cyan: "#8bd5ca"
+  cyan-bright: "#a5ded6"
+  gray: "#939ab7"
+  orange: "#f5a97f"
+syntax:
+  comment: "#939ab7"
+  invalid: "#cad3f5"
+  string: "#a6da95"
+  constant: "#cad3f5"
+  constant.numeric: "#f5a97f"
+  constant.language: "#ed8796"
+  constant.character.escape: "#f5bde6"
+  entity: "#cad3f5"
+  entity.name: "#8bd5ca"
+  entity.name.class: "#eed49f"
+  entity.name.function: "#8aadf4"
+  entity.name.tag: "#8aadf4"
+  entity.name.type: "#eed49f"
+  entity.name.namespace: "#eed49f"
+  entity.other.attribute-name: "#eed49f"
+  entity.other.inherited-class: "#eed49f"
+  keyword: "#c6a0f6"
+  keyword.operator: "#8bd5ca"
+  storage: "#cad3f5"
+  storage.type: "#c6a0f6"
+  storage.modifier: "#c6a0f6"
+  support: "#cad3f5"
+  support.function: "#8aadf4"
+  support.function.builtin: "#ed8796"
+  support.class: "#eed49f"
+  support.type: "#eed49f"
+  variable: "#cad3f5"
+  variable.parameter: "#ee99a0"
+  variable.other.constant: "#f5a97f"
+  punctuation: "#939ab7"
+  punctuation.definition.string: "#a6da95"
+  markup: "#cad3f5"
+  markup.bold: "#ed8796"
+  markup.italic: "#ed8796"
+  markup.quote: "#f5bde6"
+  markup.link: "#b7bdf8"
+  source: "#cad3f5"
+  text: "#cad3f5"
+  meta: "#cad3f5"
+  meta.type: "#eed49f"
+ui:
+  accent:
+    normal: "#8aadf4"
+  selection:
+    background: "#404459"
+  highlight:
+    line:
+      background: "#363a4f"
+  cursor:
+    normal:
+      background: "#f4dbd6"
+  border:
+    normal: "#494d63"
+  gutter:
+    foreground: "#939ab7"
+  chrome:
+    background:
+      normal: "#2e3145"
+      dark: "#191b29"
+    foreground:
+      dark: "#9097b4"

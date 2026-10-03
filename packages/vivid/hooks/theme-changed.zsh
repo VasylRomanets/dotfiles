@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Reacts to theme-set (see setup/sync.zsh): renders LS_COLORS for the new theme
+# Reacts to theme (see setup/sync.zsh): renders LS_COLORS for the new theme
 # into the file vivid.zsh reads at shell startup, so shells never have to run
 # vivid themselves.
 theme=$1

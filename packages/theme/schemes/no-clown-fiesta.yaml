@@ -1,0 +1,75 @@
+# Converted from no-clown-fiesta.tmTheme and Ghostty theme No Clown Fiesta.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/mbadolato/iTerm2-Color-Schemes"
+  name: "No Clown Fiesta"
+  slug: "no-clown-fiesta"
+variant: "dark"
+palette:
+  black: "#101010"
+  white: "#e0e1e4"
+  red: "#b46958"
+  red-bright: "#7e97ab"
+  green: "#90a959"
+  green-bright: "#90a959"
+  yellow: "#f4bf75"
+  yellow-bright: "#f4bf75"
+  blue: "#bad7ff"
+  blue-bright: "#bad7ff"
+  magenta: "#aa759f"
+  magenta-bright: "#aa759f"
+  cyan: "#88afa2"
+  cyan-bright: "#88afa2"
+  gray: "#727272"
+  orange: "#f4bf75"
+syntax:
+  comment: "#727272"
+  invalid: "#e0e1e4"
+  invalid.illegal: "#b46958"
+  string: "#90a959"
+  constant: "#e0e1e4"
+  constant.numeric: "#f4bf75"
+  entity: "#e0e1e4"
+  entity.name.function: "#bad7ff"
+  entity.name.tag: "#f4bf75"
+  keyword: "#aa759f"
+  storage: "#e0e1e4"
+  storage.type: "#88afa2"
+  support: "#e0e1e4"
+  support.function: "#bad7ff"
+  support.class: "#88afa2"
+  support.type: "#88afa2"
+  variable: "#e0e1e4"
+  punctuation: "#e0e1e4"
+  punctuation.definition.string: "#90a959"
+  punctuation.definition.comment: "#727272"
+  markup: "#e0e1e4"
+  source: "#e0e1e4"
+  text: "#e0e1e4"
+  meta: "#e0e1e4"
+  meta.preprocessor: "#aa759f"
+ui:
+  accent:
+    normal: "#88afa2"
+  selection:
+    background: "#696d79"
+  highlight:
+    line:
+      background: "#1c1d1d"
+  cursor:
+    normal:
+      background: "#f4bf75"
+  border:
+    normal: "#3e3e3f"
+  gutter:
+    foreground: "#727272"
+  chrome:
+    background:
+      normal: "#1c1d1d"
+      dark: "#0b0b0b"
+    foreground:
+      dark: "#97989a"

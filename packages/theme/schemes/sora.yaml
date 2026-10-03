@@ -1,0 +1,97 @@
+# Converted from sora.tmTheme and Ghostty theme sora.ghostty.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/Aejkatappaja/sora"
+  name: "Sora"
+  slug: "sora"
+variant: "dark"
+palette:
+  black: "#0e1018"
+  white: "#c8d0e0"
+  red: "#c46c78"
+  red-bright: "#d88898"
+  green: "#90c8a0"
+  green-bright: "#a8d8b4"
+  yellow: "#d4b878"
+  yellow-bright: "#e0c888"
+  blue: "#80c8e0"
+  blue-bright: "#98d8f0"
+  magenta: "#b0a0d8"
+  magenta-bright: "#c4b4e8"
+  cyan: "#78b8b0"
+  cyan-bright: "#90d0c8"
+  gray: "#586478"
+  orange: "#d4b878"
+syntax:
+  comment: "#586478"
+  invalid: "#c46c78"
+  invalid.deprecated: "#d0909c"
+  string: "#90c8a0"
+  string.regexp: "#78b8b0"
+  constant: "#d4b878"
+  constant.character.escape: "#78b8b0"
+  entity: "#c8d0e0"
+  entity.name.class: "#d0a888"
+  entity.name.function: "#80c8e0"
+  entity.name.function.constructor: "#d0a888"
+  entity.name.label: "#78b8b0"
+  entity.name.tag: "#78b8b0"
+  entity.name.type: "#d0a888"
+  entity.name.namespace: "#9aa4b8"
+  entity.other.attribute-name: "#d0a888"
+  keyword: "#b0a0d8"
+  keyword.operator: "#8898b8"
+  storage: "#b0a0d8"
+  support: "#c8d0e0"
+  support.function: "#80c8e0"
+  support.class: "#d0a888"
+  support.type: "#d0a888"
+  variable: "#b4bcd0"
+  variable.parameter: "#d0a888"
+  variable.language: "#d0909c"
+  variable.other.property: "#8898b8"
+  punctuation: "#c8d0e0"
+  punctuation.separator: "#9aa4b8"
+  punctuation.definition.string: "#90c8a0"
+  punctuation.definition.comment: "#586478"
+  punctuation.section: "#9aa4b8"
+  markup: "#c8d0e0"
+  markup.bold: "#dce4f0"
+  markup.italic: "#dce4f0"
+  markup.quote: "#9aa4b8"
+  markup.heading: "#80c8e0"
+  markup.list: "#8898b8"
+  markup.raw: "#90c8a0"
+  markup.inserted: "#68b080"
+  markup.changed: "#6898b8"
+  markup.deleted: "#b86068"
+  source: "#c8d0e0"
+  text: "#c8d0e0"
+  meta: "#c8d0e0"
+  meta.preprocessor: "#b0a0d8"
+  meta.annotation: "#d0a888"
+ui:
+  accent:
+    normal: "#80c8e0"
+  selection:
+    background: "#1e2430"
+  highlight:
+    line:
+      background: "#171a24"
+  cursor:
+    normal:
+      background: "#80c8e0"
+  border:
+    normal: "#373a44"
+  gutter:
+    foreground: "#586478"
+  chrome:
+    background:
+      normal: "#191c24"
+      dark: "#0a0b11"
+    foreground:
+      dark: "#878d9a"

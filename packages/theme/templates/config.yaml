@@ -1,0 +1,11 @@
+# Built by setup/build-themes.zsh from the Tinted8 schemes in
+# packages/theme/schemes. In these templates a syntax key with children is read
+# as `.default.hex`, a leaf as `.hex`, and every `ui` key as `.hex` (see
+# CLAUDE.md).
+
+colors:
+  filename: "link/.local/share/theme/colors/{{scheme.slug}}.env"
+  supported-systems: [tinted8]
+  supports:
+    tinted8-styling: "~0.2.0"
+    tinted8-builder: "~0.2.0"

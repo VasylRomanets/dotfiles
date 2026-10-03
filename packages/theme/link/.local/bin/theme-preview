@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 # Print a sample file highlighted in a theme's colors, on the theme's own
-# background. Used as the fzf preview in theme-set's picker.
+# background. Used as the fzf preview in theme's picker.
 #
-# bat only emits foreground colors, so the background is read from the
-# theme's .tmTheme and painted here: re-applied after every reset bat emits,
-# then extended to the pane's edges and bottom with erase-to-end-of-line.
+# bat only emits foreground colors, so the background (exported per theme in
+# the colors directory, see packages/theme/templates) is painted here:
+# re-applied after every reset bat emits, then extended to the pane's edges
+# and bottom with erase-to-end-of-line.
 #
 # REQUIRES: bat (brew install bat)
 #
@@ -13,32 +14,24 @@
 
 data_dir="${XDG_DATA_HOME:-$HOME/.local/share}/theme"
 sample="$data_dir/the-office.py"
-themes_dir="${XDG_CONFIG_HOME:-$HOME/.config}/bat/themes"
 esc=$'\033'
 
 slug=$1
 
-# Most slugs match a bat theme filename directly; this one doesn't (see
-# packages/bat/hooks/theme-changed.zsh).
-case "$slug" in
-  everforest-dark-hard) name="everforest-dark" ;;
-  *) name="$slug" ;;
-esac
-
-# The first <key>background</key> in a .tmTheme is the global one.
-hex=$(grep -A1 '<key>background</key>' "$themes_dir/$name.tmTheme" 2>/dev/null |
-  grep -o '#[0-9A-Fa-f]\{6\}' | head -1)
+# Defines BG, the theme's background as hex digits.
+# shellcheck source=/dev/null
+source "$data_dir/colors/$slug.env" 2>/dev/null
 
 output=$(bat --color=always --paging=never --terminal-width="${FZF_PREVIEW_COLUMNS:-100}" \
-  --theme="$name" -- "$sample" 2>&1)
+  --theme="$slug" -- "$sample" 2>&1)
 
 # Without a background to paint, show bat's output as is.
-if [[ -z "$hex" ]]; then
+if [[ -z "$BG" ]]; then
   printf '%s\n' "$output"
   exit 0
 fi
 
-bg="${esc}[48;2;$((16#${hex:1:2}));$((16#${hex:3:2}));$((16#${hex:5:2}))m"
+bg="${esc}[48;2;$((16#${BG:0:2}));$((16#${BG:2:2}));$((16#${BG:4:2}))m"
 
 printf '%s\n' "$output" | sed "s/${esc}\[0m/&${bg}/g; s/^/${bg}/; s/\$/${esc}[K/"
 

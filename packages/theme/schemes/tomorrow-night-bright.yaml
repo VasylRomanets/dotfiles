@@ -1,0 +1,85 @@
+# Converted from tomorrow-night-bright.tmTheme and Ghostty theme Tomorrow Night Bright.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/chriskempson/tomorrow-theme"
+  name: "Tomorrow Night Bright"
+  slug: "tomorrow-night-bright"
+variant: "dark"
+palette:
+  black: "#000000"
+  white: "#eaeaea"
+  red: "#d54e53"
+  red-bright: "#d54e53"
+  green: "#b9ca4a"
+  green-bright: "#b9ca4a"
+  yellow: "#e7c547"
+  yellow-bright: "#e7c547"
+  blue: "#7aa6da"
+  blue-bright: "#7aa6da"
+  magenta: "#c397d8"
+  magenta-bright: "#c397d8"
+  cyan: "#70c0b1"
+  cyan-bright: "#70c0b1"
+  gray: "#969896"
+  orange: "#e78c45"
+syntax:
+  comment: "#969896"
+  invalid: "#ced2cf"
+  string: "#b9ca4a"
+  string.regexp: "#d54e53"
+  constant: "#dedede"
+  constant.numeric: "#e78c45"
+  constant.language: "#e78c45"
+  constant.character: "#e78c45"
+  constant.other: "#eeeeee"
+  entity: "#dedede"
+  entity.name.class: "#e7c547"
+  entity.name.function: "#7aa6da"
+  entity.name.tag: "#d54e53"
+  entity.name.type.class: "#e7c547"
+  entity.other.attribute-name: "#d54e53"
+  entity.other.inherited-class: "#b9ca4a"
+  keyword: "#c397d8"
+  keyword.operator: "#70c0b1"
+  storage: "#c397d8"
+  support: "#dedede"
+  support.function: "#7aa6da"
+  support.class: "#e7c547"
+  support.type: "#e7c547"
+  support.constant: "#e78c45"
+  variable: "#d54e53"
+  variable.parameter: "#e78c45"
+  punctuation: "#dedede"
+  punctuation.definition.string: "#b9ca4a"
+  punctuation.definition.comment: "#969896"
+  markup: "#dedede"
+  markup.heading: "#b9ca4a"
+  source: "#dedede"
+  text: "#dedede"
+  meta: "#dedede"
+  meta.tag: "#d54e53"
+ui:
+  accent:
+    normal: "#70c0b1"
+  selection:
+    background: "#424242"
+  highlight:
+    line:
+      background: "#2a2a2a"
+  cursor:
+    normal:
+      background: "#9f9f9f"
+  border:
+    normal: "#333333"
+  gutter:
+    foreground: "#969896"
+  chrome:
+    background:
+      normal: "#0e0e0e"
+      dark: "#000000"
+    foreground:
+      dark: "#989898"

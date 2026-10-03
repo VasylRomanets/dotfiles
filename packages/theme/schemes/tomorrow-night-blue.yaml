@@ -1,0 +1,84 @@
+# Converted from tomorrow-night-blue.tmTheme and Ghostty theme Tomorrow Night Blue.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/chriskempson/tomorrow-theme"
+  name: "Tomorrow Night Blue"
+  slug: "tomorrow-night-blue"
+variant: "dark"
+palette:
+  black: "#002451"
+  white: "#ffffff"
+  red: "#ff9da4"
+  red-bright: "#ff9da4"
+  green: "#d1f1a9"
+  green-bright: "#d1f1a9"
+  yellow: "#ffeead"
+  yellow-bright: "#ffeead"
+  blue: "#bbdaff"
+  blue-bright: "#bbdaff"
+  magenta: "#ebbbff"
+  magenta-bright: "#ebbbff"
+  cyan: "#99ffff"
+  cyan-bright: "#99ffff"
+  gray: "#7285b7"
+  orange: "#ffc58f"
+syntax:
+  comment: "#7285b7"
+  invalid: "#ffffff"
+  string: "#d1f1a9"
+  string.regexp: "#ff9da4"
+  constant: "#ffffff"
+  constant.numeric: "#ffc58f"
+  constant.language: "#ffc58f"
+  constant.character: "#ffc58f"
+  entity: "#ffffff"
+  entity.name.class: "#ffeead"
+  entity.name.function: "#bbdaff"
+  entity.name.tag: "#ff9da4"
+  entity.name.type.class: "#ffeead"
+  entity.other.attribute-name: "#ff9da4"
+  entity.other.inherited-class: "#d1f1a9"
+  keyword: "#ebbbff"
+  keyword.operator: "#99ffff"
+  storage: "#ebbbff"
+  support: "#ffffff"
+  support.function: "#bbdaff"
+  support.class: "#ffeead"
+  support.type: "#ffeead"
+  support.constant: "#ffc58f"
+  variable: "#ff9da4"
+  variable.parameter: "#ffc58f"
+  punctuation: "#ffffff"
+  punctuation.definition.string: "#d1f1a9"
+  punctuation.definition.comment: "#7285b7"
+  markup: "#ffffff"
+  markup.heading: "#d1f1a9"
+  source: "#ffffff"
+  text: "#ffffff"
+  meta: "#ffffff"
+  meta.tag: "#ff9da4"
+ui:
+  accent:
+    normal: "#99ffff"
+  selection:
+    background: "#003f8e"
+  highlight:
+    line:
+      background: "#00346e"
+  cursor:
+    normal:
+      background: "#ffffff"
+  border:
+    normal: "#385477"
+  gutter:
+    foreground: "#7285b7"
+  chrome:
+    background:
+      normal: "#0f315b"
+      dark: "#001939"
+    foreground:
+      dark: "#a6b2c2"

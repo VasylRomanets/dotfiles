@@ -1,7 +1,0 @@
-[delta]
-  syntax-theme = "noctis-azureus"
-  # The theme's red/green accents blended over its base background at 15%/30%.
-  minus-style = syntax "#28303a"
-  minus-emph-style = syntax "#4a3a39"
-  plus-style = syntax "#11444b"
-  plus-emph-style = syntax "#1b615b"

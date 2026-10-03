@@ -1,7 +1,0 @@
-[delta]
-  syntax-theme = "Kanso Zen"
-  # The theme's red/green accents blended over its base background at 15%/30%.
-  minus-style = syntax "#251d21"
-  minus-emph-style = syntax "#412d2e"
-  plus-style = syntax "#1c2323"
-  plus-emph-style = syntax "#303832"

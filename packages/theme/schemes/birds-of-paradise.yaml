@@ -1,0 +1,76 @@
+# Converted from birds-of-paradise.tmTheme and Ghostty theme Birds Of Paradise.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/mbadolato/iTerm2-Color-Schemes"
+  name: "Birds Of Paradise"
+  slug: "birds-of-paradise"
+variant: "dark"
+palette:
+  black: "#2a1f1d"
+  white: "#e0dbb7"
+  red: "#be2d26"
+  red-bright: "#e84627"
+  green: "#6ba18a"
+  green-bright: "#95d8ba"
+  yellow: "#e99d2a"
+  yellow-bright: "#d0d150"
+  blue: "#5a86ad"
+  blue-bright: "#b8d3ed"
+  magenta: "#ac80a6"
+  magenta-bright: "#d19ecb"
+  cyan: "#74a6ad"
+  cyan-bright: "#93cfd7"
+  gray: "#9b6c4a"
+  orange: "#e99d2a"
+syntax:
+  comment: "#9b6c4a"
+  invalid: "#e0dbb7"
+  invalid.illegal: "#be2d26"
+  string: "#6ba18a"
+  constant: "#e0dbb7"
+  constant.numeric: "#e99d2a"
+  entity: "#e0dbb7"
+  entity.name.function: "#5a86ad"
+  entity.name.tag: "#e99d2a"
+  keyword: "#ac80a6"
+  keyword.control.import: "#d19ecb"
+  storage: "#e0dbb7"
+  storage.type: "#93cfd7"
+  support: "#e0dbb7"
+  support.function: "#5a86ad"
+  support.class: "#93cfd7"
+  support.type: "#93cfd7"
+  variable: "#e0dbb7"
+  punctuation: "#e0dbb7"
+  punctuation.definition.string: "#6ba18a"
+  punctuation.definition.comment: "#9b6c4a"
+  markup: "#e0dbb7"
+  source: "#e0dbb7"
+  text: "#e0dbb7"
+  meta: "#e0dbb7"
+  meta.preprocessor: "#d19ecb"
+ui:
+  accent:
+    normal: "#74a6ad"
+  selection:
+    background: "#563c27"
+  highlight:
+    line:
+      background: "#241a19"
+  cursor:
+    normal:
+      background: "#e99d2a"
+  border:
+    normal: "#52483f"
+  gutter:
+    foreground: "#9b6c4a"
+  chrome:
+    background:
+      normal: "#352a26"
+      dark: "#1d1614"
+    foreground:
+      dark: "#a09981"

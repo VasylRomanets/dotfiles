@@ -1,0 +1,90 @@
+# Converted from noctis-uva.tmTheme and Ghostty theme Noctis Uva.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/liviuschera/noctis"
+  name: "Noctis Uva"
+  slug: "noctis-uva"
+variant: "dark"
+palette:
+  black: "#292640"
+  white: "#c5c2d6"
+  red: "#e66533"
+  red-bright: "#e97749"
+  green: "#49e9a6"
+  green-bright: "#60ebb1"
+  yellow: "#e4b781"
+  yellow-bright: "#e69533"
+  blue: "#49ace9"
+  blue-bright: "#60b6eb"
+  magenta: "#df769b"
+  magenta-bright: "#e798b3"
+  cyan: "#49d6e9"
+  cyan-bright: "#60dbeb"
+  gray: "#716c93"
+syntax:
+  comment: "#716c93"
+  invalid: "#e3541c"
+  string: "#49e9a6"
+  string.template: "#16b673"
+  constant: "#d5971a"
+  constant.numeric: "#7060eb"
+  constant.language: "#7060eb"
+  constant.character: "#c5c2d6"
+  constant.character.escape: "#49ace9"
+  constant.character.entity: "#d5971a"
+  entity: "#c5c2d6"
+  entity.name: "#49d6e9"
+  entity.name.function: "#16a3b6"
+  entity.name.tag: "#e66533"
+  entity.name.type: "#d67e5c"
+  entity.name.type.class: "#49ace9"
+  entity.name.section: "#df769b"
+  entity.other: "#49d6e9"
+  keyword: "#df769b"
+  storage: "#c5c2d6"
+  storage.type: "#e66533"
+  storage.modifier: "#df769b"
+  support: "#e4b781"
+  support.function: "#49d6e9"
+  support.class: "#49ace9"
+  support.type: "#49d6e9"
+  support.constant: "#d5971a"
+  variable: "#e4b781"
+  variable.language: "#e66533"
+  variable.other.constant: "#d5971a"
+  punctuation: "#c5c2d6"
+  punctuation.definition.string: "#49e9a6"
+  punctuation.definition.comment: "#716c93"
+  markup: "#c5c2d6"
+  markup.quote: "#d5971a"
+  markup.underline: "#49d6e9"
+  markup.heading: "#df769b"
+  markup.link: "#16a3b6"
+  source: "#c5c2d6"
+  text: "#c5c2d6"
+  meta: "#c5c2d6"
+ui:
+  accent:
+    normal: "#49d6e9"
+  selection:
+    background: "#35325a"
+  highlight:
+    line:
+      background: "#35305a"
+  cursor:
+    normal:
+      background: "#bbb3ff"
+  border:
+    normal: "#4b4861"
+  gutter:
+    foreground: "#716c93"
+  chrome:
+    background:
+      normal: "#322f49"
+      dark: "#1d1b2d"
+    foreground:
+      dark: "#8e8ba2"

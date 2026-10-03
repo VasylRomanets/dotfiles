@@ -1,0 +1,85 @@
+# Converted from vesper.tmTheme and Ghostty theme Vesper.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/raunofreiberg/vesper"
+  name: "Vesper"
+  slug: "vesper"
+variant: "dark"
+palette:
+  black: "#101010"
+  white: "#ffffff"
+  red: "#f5a191"
+  red-bright: "#ff8080"
+  green: "#90b99f"
+  green-bright: "#99ffe4"
+  yellow: "#e6b99d"
+  yellow-bright: "#ffc799"
+  blue: "#aca1cf"
+  blue-bright: "#b9aeda"
+  magenta: "#e29eca"
+  magenta-bright: "#ecaad6"
+  cyan: "#ea83a5"
+  cyan-bright: "#f591b2"
+  gray: "#8b8b8b"
+  orange: "#ffc799"
+syntax:
+  comment: "#8b8b8b"
+  invalid: "#ff8080"
+  string: "#99ffe4"
+  string.regexp: "#a0a0a0"
+  constant: "#ffffff"
+  constant.numeric: "#ffc799"
+  constant.character: "#ffc799"
+  constant.character.escape: "#a0a0a0"
+  entity: "#ffffff"
+  entity.name: "#ffc799"
+  entity.other.attribute-name: "#a0a0a0"
+  keyword: "#a0a0a0"
+  keyword.other: "#ffc799"
+  storage: "#ffffff"
+  storage.type: "#a0a0a0"
+  storage.modifier: "#a0a0a0"
+  support: "#ffffff"
+  support.function: "#ffc799"
+  support.class: "#ffc799"
+  support.type: "#ffc799"
+  support.constant: "#ffc799"
+  variable: "#ffffff"
+  variable.language: "#a0a0a0"
+  punctuation: "#ffffff"
+  punctuation.definition.string: "#99ffe4"
+  punctuation.definition.comment: "#8b8b8b"
+  markup: "#ffffff"
+  markup.underline: "#ffc799"
+  markup.heading: "#ffc799"
+  markup.inserted: "#99ffe4"
+  markup.changed: "#a0a0a0"
+  markup.deleted: "#ff8080"
+  source: "#ffffff"
+  text: "#ffffff"
+  meta: "#ffffff"
+ui:
+  accent:
+    normal: "#ea83a5"
+  selection:
+    background: "#313131"
+  highlight:
+    line:
+      background: "#1e1e1e"
+  cursor:
+    normal:
+      background: "#ffffff"
+  border:
+    normal: "#454545"
+  gutter:
+    foreground: "#8b8b8b"
+  chrome:
+    background:
+      normal: "#1e1e1e"
+      dark: "#0b0b0b"
+    foreground:
+      dark: "#ababab"

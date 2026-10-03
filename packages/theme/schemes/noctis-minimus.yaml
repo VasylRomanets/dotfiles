@@ -1,0 +1,90 @@
+# Converted from noctis-minimus.tmTheme and Ghostty theme Noctis Minimus.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/liviuschera/noctis"
+  name: "Noctis Minimus"
+  slug: "noctis-minimus"
+variant: "dark"
+palette:
+  black: "#1b2932"
+  white: "#c5cdd3"
+  red: "#c08872"
+  red-bright: "#ca8468"
+  green: "#72c09f"
+  green-bright: "#84c8ab"
+  yellow: "#c8a984"
+  yellow-bright: "#d1aa7b"
+  blue: "#6196b8"
+  blue-bright: "#68a4ca"
+  magenta: "#c28097"
+  magenta-bright: "#c88da2"
+  cyan: "#72b7c0"
+  cyan-bright: "#84c0c8"
+  gray: "#5e7887"
+syntax:
+  comment: "#5e7887"
+  invalid: "#b16a4e"
+  string: "#72c09f"
+  string.template: "#3f8d6c"
+  constant: "#a88c00"
+  constant.numeric: "#7068b1"
+  constant.language: "#7068b1"
+  constant.character: "#c5cdd3"
+  constant.character.escape: "#5998c0"
+  constant.character.entity: "#a88c00"
+  entity: "#c5cdd3"
+  entity.name: "#72b7c0"
+  entity.name.function: "#3f848d"
+  entity.name.tag: "#c37455"
+  entity.name.type: "#be856f"
+  entity.name.type.class: "#5998c0"
+  entity.name.section: "#c88da2"
+  entity.other: "#72b7c0"
+  keyword: "#c88da2"
+  storage: "#c5cdd3"
+  storage.type: "#c37455"
+  storage.modifier: "#c88da2"
+  support: "#d3b692"
+  support.function: "#72b7c0"
+  support.class: "#5998c0"
+  support.type: "#72b7c0"
+  support.constant: "#a88c00"
+  variable: "#d3b692"
+  variable.language: "#c37455"
+  variable.other.constant: "#a88c00"
+  punctuation: "#c5cdd3"
+  punctuation.definition.string: "#72c09f"
+  punctuation.definition.comment: "#5e7887"
+  markup: "#c5cdd3"
+  markup.quote: "#a88c00"
+  markup.underline: "#72b7c0"
+  markup.heading: "#c88da2"
+  markup.link: "#3f848d"
+  source: "#c5cdd3"
+  text: "#c5cdd3"
+  meta: "#c5cdd3"
+ui:
+  accent:
+    normal: "#72b7c0"
+  selection:
+    background: "#263c4a"
+  highlight:
+    line:
+      background: "#1d3544"
+  cursor:
+    normal:
+      background: "#b3d2e6"
+  border:
+    normal: "#404d55"
+  gutter:
+    foreground: "#5e7887"
+  chrome:
+    background:
+      normal: "#25333c"
+      dark: "#131d23"
+    foreground:
+      dark: "#8a949b"

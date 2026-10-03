@@ -1,0 +1,255 @@
+#!/usr/bin/env bash
+
+# Switch the active theme — fuzzy pick, direct select, or randomize — or
+# query the current one and the available ones.
+#
+# This script only resolves the chosen slug and writes it to the state file.
+# Every theme-aware package (bat, fzf, vivid, Ghostty, Yazi, git/delta, micro)
+# reacts independently via its own hooks/theme-changed.zsh, symlinked into
+# hooks.d/ by setup/sync.zsh — this script doesn't know they exist. The themes
+# on offer are the schemes in packages/theme/schemes, built into per-tool files
+# by setup/build-themes.zsh.
+#
+# REQUIRES: fzf (brew install fzf)
+#
+# USAGE: theme [command | name] — run "theme help" for the full list
+#
+# Author:  Vasyl Romanets
+# GitHub:  https://github.com/vasylromanets
+# Created: 2026-09-13
+# License: MIT
+
+usage() {
+  cat <<'EOF'
+Switch the active theme across all tools
+
+Usage:
+  theme [COMMAND | NAME]
+
+Without arguments, opens a picker with a live preview.
+
+Commands:
+  random      Apply a random theme
+  light       Switch to the light counterpart of the current theme
+  dark        Switch to the dark counterpart of the current theme
+  reload      Re-apply the current theme
+  current     Print the current theme's name
+  list, ls    Print every available theme's name
+  help        Print this message
+
+Arguments:
+  [NAME]  Theme slug to apply; if it matches nothing, the picker opens
+          with it as the query
+
+Options:
+  --slug         With current or list, print slugs instead of names
+  -v, --verbose  Print each hook's result when applying a theme
+  -h, --help     Print help
+EOF
+}
+
+# Options may appear anywhere; what's left is the command or theme name.
+verbose=0
+slug_only=0
+args=()
+for arg in "$@"; do
+  case "$arg" in
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    -v | --verbose) verbose=1 ;;
+    --slug) slug_only=1 ;;
+    -*)
+      echo "theme: unknown option '$arg'" >&2
+      usage >&2
+      exit 1
+      ;;
+    *) args+=("$arg") ;;
+  esac
+done
+set -- "${args[@]}"
+
+if [[ "$1" == "help" ]]; then
+  usage
+  exit 0
+fi
+
+# The picker below must work even when the generated fzf theme file doesn't
+# exist yet (fzf errors out on a missing FZF_DEFAULT_OPTS_FILE) — this script
+# is what creates it.
+unset FZF_DEFAULT_OPTS_FILE
+
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/theme"
+state_file="$state_dir/current-theme.txt"
+data_dir="${XDG_DATA_HOME:-$HOME/.local/share}/theme"
+hooks_dir="$data_dir/hooks.d"
+mkdir -p "$state_dir"
+touch "$state_file"
+
+# Converts a slug to its display name, e.g. rose-pine-moon -> Rose Pine Moon.
+pretty_name() {
+  local slug=$1 word result=""
+  for word in ${slug//-/ }; do
+    result="$result${result:+ }$(tr '[:lower:]' '[:upper:]' <<<"${word:0:1}")${word:1}"
+  done
+  printf '%s' "$result"
+}
+
+# Prints a theme's variant, dark or light, from its exported colors.
+variant_of() {
+  (
+    # shellcheck source=/dev/null
+    source "$data_dir/colors/$1.env" 2>/dev/null
+    printf '%s' "$SCHEME_VARIANT"
+  )
+}
+
+if [[ "$1" == "current" ]]; then
+  if [[ ! -s "$state_file" ]]; then
+    echo "No theme applied yet." >&2
+    exit 1
+  fi
+  if [[ $slug_only -eq 1 ]]; then
+    cat "$state_file"
+  else
+    pretty_name "$(cat "$state_file")"
+    echo
+  fi
+  exit 0
+fi
+
+# One <slug>.env per theme, generated from packages/theme/schemes (see
+# setup/build-themes.zsh).
+themes=()
+for colors_file in "$data_dir/colors/"*.env; do
+  [[ -e "$colors_file" ]] && themes+=("$(basename "$colors_file" .env)")
+done
+if [[ ${#themes[@]} -eq 0 ]]; then
+  echo "No themes found in $data_dir/colors — run make sync (and make themes)." >&2
+  exit 1
+fi
+
+if [[ "$1" == "list" || "$1" == "ls" ]]; then
+  if [[ $slug_only -eq 1 ]]; then
+    printf '%s\n' "${themes[@]}"
+  else
+    for t in "${themes[@]}"; do
+      pretty_name "$t"
+      echo
+    done
+  fi
+  exit 0
+elif [[ "$1" == "random" ]]; then
+  theme="${themes[RANDOM % ${#themes[@]}]}"
+elif [[ "$1" == "light" || "$1" == "dark" ]]; then
+  want=$1
+  current=$(<"$state_file")
+  if [[ -z "$current" ]]; then
+    echo "No theme applied yet." >&2
+    exit 1
+  fi
+  if [[ "$(variant_of "$current")" == "$want" ]]; then
+    echo "$(pretty_name "$current") is already a $want theme."
+    exit 0
+  fi
+  # The mapping file pairs themes in either direction (see pairs.txt).
+  pairs_file="$data_dir/pairs.txt"
+  theme=""
+  if [[ -r "$pairs_file" ]]; then
+    while read -r a b _; do
+      [[ -z "$a" || "$a" == \#* ]] && continue
+      if [[ "$a" == "$current" ]]; then other=$b
+      elif [[ "$b" == "$current" ]]; then other=$a
+      else continue
+      fi
+      if [[ -e "$data_dir/colors/$other.env" && "$(variant_of "$other")" == "$want" ]]; then
+        theme=$other
+        break
+      fi
+    done <"$pairs_file"
+  fi
+  if [[ -z "$theme" ]]; then
+    echo "$(pretty_name "$current") has no $want counterpart — see $pairs_file." >&2
+    exit 1
+  fi
+elif [[ "$1" == "reload" ]]; then
+  theme=$(<"$state_file")
+  if [[ -z "$theme" ]]; then
+    echo "No theme applied yet." >&2
+    exit 1
+  fi
+  if ! printf '%s\n' "${themes[@]}" | grep -qxF "$theme"; then
+    echo "Current theme '$theme' no longer exists — pick another one." >&2
+    exit 1
+  fi
+elif [[ -n "$1" ]] && printf '%s\n' "${themes[@]}" | grep -qxF "$1"; then
+  theme="$1"
+else
+  # Show pretty names in the picker; the slug rides along as a hidden first
+  # field so it's what actually comes back on selection, and so the preview
+  # can render it with theme-preview. bat already has every theme pre-built
+  # in its cache, so no rebuild is needed just to preview one.
+  theme=$(
+    for t in "${themes[@]}"; do
+      printf '%s\t%s\n' "$t" "$(pretty_name "$t")"
+    done | fzf --no-sort --delimiter='\t' --with-nth=2 --query="$1" \
+      --no-scrollbar --preview-window='right:65%,border-none' \
+      --preview="$(dirname "${BASH_SOURCE[0]}")/theme-preview {1}" \
+      | cut -f1
+  )
+fi
+
+[[ -z "$theme" ]] && exit 0
+
+# Two overlapping runs (a held-down keybinding, say) would interleave their
+# hooks and could leave a tool on a mix of themes, or bat's cache half-built,
+# so the second one stops instead of waiting. mkdir is atomic, so it serves as
+# the lock; a lock whose owner is gone (a killed run) is taken over.
+lock_dir="$state_dir/lock"
+if ! mkdir "$lock_dir" 2>/dev/null; then
+  owner=$(cat "$lock_dir/pid" 2>/dev/null)
+  if [[ -n "$owner" ]] && ! kill -0 "$owner" 2>/dev/null; then
+    rm -rf "$lock_dir"
+  fi
+  if ! mkdir "$lock_dir" 2>/dev/null; then
+    echo "Another theme change is still running." >&2
+    exit 1
+  fi
+fi
+echo $$ >"$lock_dir/pid"
+trap 'rm -rf "$lock_dir"' EXIT
+
+echo "$theme" >"$state_file"
+
+# Fan out to every installed package's own reaction (see setup/sync.zsh for
+# how hooks.d gets populated — a package without a theme-changed.zsh hook
+# just isn't represented here). The hooks don't depend on each other, so they
+# run side by side — bat's cache rebuild alone takes about half a second. Each
+# one's output is held back and shown in order, so it can't interleave.
+out_dir=$(mktemp -d)
+trap 'rm -rf "$lock_dir" "$out_dir"' EXIT
+hook_names=()
+hook_pids=()
+for hook in "$hooks_dir"/*.zsh; do
+  [[ -e "$hook" ]] || continue
+  name=$(basename "$hook" .zsh)
+  zsh "$hook" "$theme" >"$out_dir/$name" 2>&1 &
+  hook_names+=("$name")
+  hook_pids+=("$!")
+done
+
+failed=0
+for i in "${!hook_pids[@]}"; do
+  name=${hook_names[$i]}
+  if wait "${hook_pids[$i]}"; then
+    [[ $verbose -eq 1 ]] && echo "  $name ✓"
+  else
+    echo "theme: the $name hook failed." >&2
+    failed=1
+  fi
+  [[ -s "$out_dir/$name" ]] && cat "$out_dir/$name" >&2
+done
+
+echo "$(pretty_name "$theme") theme is applied."
+[[ $failed -eq 0 ]] || exit 1

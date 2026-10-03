@@ -1,0 +1,75 @@
+# Converted from kanso-pearl.tmTheme and Ghostty theme kanso-pearl.ghostty.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/webhooked/kanso.nvim"
+  name: "Kanso Pearl"
+  slug: "kanso-pearl"
+variant: "light"
+palette:
+  black: "#22262d"
+  white: "#f2f1ef"
+  red: "#c84053"
+  red-bright: "#d7474b"
+  green: "#6f894e"
+  green-bright: "#6e915f"
+  yellow: "#77713f"
+  yellow-bright: "#836f4a"
+  blue: "#4d699b"
+  blue-bright: "#6693bf"
+  magenta: "#b35b79"
+  magenta-bright: "#624c83"
+  cyan: "#597b75"
+  cyan-bright: "#5e857a"
+  gray: "#5c6066"
+syntax:
+  comment: "#5c6066"
+  invalid: "#22262d"
+  invalid.illegal: "#c84053"
+  string: "#6f894e"
+  constant: "#22262d"
+  constant.numeric: "#77713f"
+  entity: "#22262d"
+  entity.name.function: "#4d699b"
+  entity.name.tag: "#77713f"
+  keyword: "#b35b79"
+  keyword.control.import: "#624c83"
+  storage: "#22262d"
+  storage.type: "#5e857a"
+  support: "#22262d"
+  support.function: "#4d699b"
+  support.class: "#5e857a"
+  support.type: "#5e857a"
+  variable: "#22262d"
+  punctuation: "#22262d"
+  punctuation.definition.string: "#6f894e"
+  punctuation.definition.comment: "#5c6066"
+  markup: "#22262d"
+  source: "#22262d"
+  text: "#22262d"
+  meta: "#22262d"
+  meta.preprocessor: "#624c83"
+ui:
+  accent:
+    normal: "#597b75"
+  selection:
+    background: "#e2e1df"
+  highlight:
+    line:
+      background: "#e6e5e3"
+  cursor:
+    normal:
+      background: "#77713f"
+  border:
+    normal: "#c4c4c4"
+  gutter:
+    foreground: "#5c6066"
+  chrome:
+    background:
+      normal: "#e6e5e3"
+      dark: "#dddddc"
+    foreground:
+      dark: "#6b6d71"

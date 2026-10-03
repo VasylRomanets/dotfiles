@@ -1,8 +1,0 @@
-[delta]
-  syntax-theme = "tokyonight-day"
-  # From TokyoNight's own official delta export (tokyonight.nvim/extras/delta),
-  # trimmed to this repo's four-key convention.
-  minus-style = syntax "#dababe"
-  minus-emph-style = syntax "#d59a9d"
-  plus-style = syntax "#b7ced5"
-  plus-emph-style = syntax "#95bec7"

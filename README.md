@@ -15,13 +15,15 @@ dotfiles/
 │       ├── link/          # files to symlink (mirrored structure, optional)
 │       ├── source/        # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
 │       ├── copy/          # files to copy (optional)
-│       ├── hooks/         # pre-setup.zsh / post-setup.zsh run by sync.zsh (optional)
+│       ├── hooks/         # pre-setup.zsh / post-setup.zsh run by sync.zsh, theme-changed.zsh run by theme (optional)
+│       ├── templates/     # Mustache templates make themes renders per scheme (optional)
 │       └── setup.toml     # install conditions and copy/link target (optional)
 └── setup/
     ├── _lib.zsh           # shared utilities (colors, logging)
     ├── Brewfile           # Homebrew formulae, casks, cargo crates, mas apps, and vscode extensions
     ├── bootstrap.zsh      # full machine setup
     ├── sync.zsh           # symlinks package files and copies assets
+    ├── build-themes.zsh   # renders every theme's per-tool files from packages/theme/schemes
     ├── prune-symlinks.zsh # removes orphaned symlinks left by renamed/removed package files
     └── macos.zsh          # sensible macOS defaults
 ```
@@ -92,6 +94,10 @@ target = "~/Library/..."
 `[requires]` accepts `command`, `app`, or both. `[link]` is rarely needed since `~` is the default. `[copy]` is only used by packages that can't be symlinked because of macOS sandboxing (e.g. any app installed from the Mac App Store).
 
 A package can also define `hooks/pre-setup.zsh` and/or `hooks/post-setup.zsh` for setup steps beyond symlinking/copying (e.g. resolving plugin dependencies). Both are optional and run only for packages that pass `[requires]`.
+
+## Themes
+
+`theme` switches the theme across Ghostty, bat, delta, fzf, micro, vivid, yazi and `ls`/eza colors. Each theme is one [Tinted8](https://github.com/tinted-theming/home/tree/main/specs/tinted8) scheme in `packages/theme/schemes`; `make themes` renders the per-tool files from it (needs [`tinted-builder-rust`](https://github.com/tinted-theming/tinted-builder-rust) 0.21.x) and the results are committed, so a normal `make sync` doesn't need the builder.
 
 ## Credits
 

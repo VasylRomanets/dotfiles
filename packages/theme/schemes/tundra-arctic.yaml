@@ -1,0 +1,76 @@
+# Converted from tundra-arctic.tmTheme and Ghostty theme tundra-arctic.ghostty.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/sam4llis/nvim-tundra"
+  name: "Tundra Arctic"
+  slug: "tundra-arctic"
+variant: "dark"
+palette:
+  black: "#111827"
+  white: "#d1d5db"
+  red: "#fca5a5"
+  red-bright: "#fca5a5"
+  green: "#b1e3ad"
+  green-bright: "#b1e3ad"
+  yellow: "#fbc19d"
+  yellow-bright: "#fbc19d"
+  blue: "#bae6fd"
+  blue-bright: "#bae6fd"
+  magenta: "#957fb8"
+  magenta-bright: "#938aa9"
+  cyan: "#ddd6fe"
+  cyan-bright: "#ddd6fe"
+  gray: "#6b7280"
+  orange: "#fbc19d"
+syntax:
+  comment: "#6b7280"
+  invalid: "#d1d5db"
+  invalid.illegal: "#fca5a5"
+  string: "#b5e8b0"
+  constant: "#d1d5db"
+  constant.numeric: "#fbc19d"
+  entity: "#d1d5db"
+  entity.name.function: "#bae6fd"
+  entity.name.tag: "#ddd6fe"
+  keyword: "#fca5a5"
+  keyword.control.import: "#ddd6fe"
+  storage: "#d1d5db"
+  storage.type: "#fecdd3"
+  support: "#d1d5db"
+  support.function: "#bae6fd"
+  support.class: "#fecdd3"
+  support.type: "#fecdd3"
+  variable: "#d1d5db"
+  punctuation: "#d1d5db"
+  punctuation.definition.string: "#b5e8b0"
+  punctuation.definition.comment: "#6b7280"
+  markup: "#d1d5db"
+  source: "#d1d5db"
+  text: "#d1d5db"
+  meta: "#d1d5db"
+  meta.preprocessor: "#ddd6fe"
+ui:
+  accent:
+    normal: "#bae6fd"
+  selection:
+    background: "#374151"
+  highlight:
+    line:
+      background: "#1d2332"
+  cursor:
+    normal:
+      background: "#d1d5db"
+  border:
+    normal: "#3b424f"
+  gutter:
+    foreground: "#6b7280"
+  chrome:
+    background:
+      normal: "#1d2332"
+      dark: "#0c111b"
+    foreground:
+      dark: "#8e939c"

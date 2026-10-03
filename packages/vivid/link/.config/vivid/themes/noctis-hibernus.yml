@@ -1,16 +1,16 @@
 colors:
-  base: "F4F6F6"
-  surface: "E8EEEF"
-  overlay: "BED3D5"
-  muted: "8CA6A6"
-  subtle: "558E95"
+  base: "f4f6f6"
+  surface: "e5eced"
+  overlay: "bed3d5"
+  muted: "8ca6a6"
+  subtle: "558e95"
   text: "005661"
-  love: "E34E1C"
-  gold: "F49725"
-  rose: "FF6B9F"
-  pine: "0094F0"
-  foam: "00BDD6"
-  iris: "FF5792"
+  love: "e34e1c"
+  gold: "f49725"
+  rose: "ff6b9f"
+  pine: "0094f0"
+  foam: "00bdd6"
+  iris: "ff5792"
 
 core:
   normal_text: {}

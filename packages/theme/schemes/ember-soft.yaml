@@ -1,0 +1,83 @@
+# Converted from ember-soft.tmTheme and Ghostty theme ember-soft.ghostty.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/ember-theme/ember"
+  name: "Ember Soft"
+  slug: "ember-soft"
+variant: "dark"
+palette:
+  black: "#242320"
+  white: "#d8d0c0"
+  red: "#e08060"
+  red-bright: "#e08060"
+  green: "#8a9868"
+  green-bright: "#8a9868"
+  yellow: "#c8b468"
+  yellow-bright: "#c8b468"
+  blue: "#7890a0"
+  blue-bright: "#7890a0"
+  magenta: "#b07878"
+  magenta-bright: "#b07878"
+  cyan: "#80a090"
+  cyan-bright: "#80a090"
+  gray: "#706c61"
+  orange: "#c09058"
+syntax:
+  comment: "#706c61"
+  invalid: "#b07878"
+  invalid.deprecated: "#706c61"
+  string: "#8a9868"
+  string.regexp: "#988090"
+  constant: "#d8d0c0"
+  constant.numeric: "#c09058"
+  constant.language: "#e08060"
+  constant.character: "#c09058"
+  constant.character.escape: "#b07878"
+  constant.other: "#c09058"
+  entity: "#d8d0c0"
+  entity.name.class: "#c8b468"
+  entity.name.function: "#c8b468"
+  entity.name.tag: "#80a090"
+  entity.other.attribute-name: "#c09058"
+  entity.other.inherited-class: "#c8b468"
+  keyword: "#e08060"
+  storage: "#c8b468"
+  support: "#d8d0c0"
+  support.function: "#c8b468"
+  support.class: "#c8b468"
+  support.type: "#c8b468"
+  support.constant: "#c09058"
+  variable: "#d8d0c0"
+  variable.parameter: "#b0a898"
+  punctuation: "#d8d0c0"
+  punctuation.definition.string: "#8a9868"
+  punctuation.definition.comment: "#706c61"
+  markup: "#d8d0c0"
+  source: "#d8d0c0"
+  text: "#d8d0c0"
+  meta: "#d8d0c0"
+ui:
+  accent:
+    normal: "#c8b468"
+  selection:
+    background: "#444240"
+  highlight:
+    line:
+      background: "#2a2927"
+  cursor:
+    normal:
+      background: "#e08060"
+  border:
+    normal: "#4c4943"
+  gutter:
+    foreground: "#706c61"
+  chrome:
+    background:
+      normal: "#2f2d2a"
+      dark: "#191816"
+    foreground:
+      dark: "#999388"

@@ -1,7 +1,0 @@
-[delta]
-  syntax-theme = "Birds Of Paradise"
-  # The theme's red/green accents blended over its base background at 15%/30%.
-  minus-style = syntax "#40211e"
-  minus-emph-style = syntax "#562320"
-  plus-style = syntax "#34322d"
-  plus-emph-style = syntax "#3e463e"

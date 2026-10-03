@@ -1,16 +1,16 @@
 colors:
-  base: "F2F1EF"
-  surface: "E8E7E5"
-  overlay: "C4C4C4"
-  muted: "5C6066"
-  subtle: "6B6D71"
-  text: "22262D"
-  love: "C84053"
-  gold: "77713F"
-  rose: "624C83"
-  pine: "4D699B"
-  foam: "597B75"
-  iris: "B35B79"
+  base: "f2f1ef"
+  surface: "e6e5e3"
+  overlay: "c4c4c4"
+  muted: "5c6066"
+  subtle: "6b6d71"
+  text: "22262d"
+  love: "c84053"
+  gold: "77713f"
+  rose: "624c83"
+  pine: "4d699b"
+  foam: "597b75"
+  iris: "b35b79"
 
 core:
   normal_text: {}

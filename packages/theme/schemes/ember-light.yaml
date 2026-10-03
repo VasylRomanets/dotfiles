@@ -1,0 +1,83 @@
+# Converted from ember-light.tmTheme and Ghostty theme ember-light.ghostty.
+
+scheme:
+  system: "tinted8"
+  supports:
+    styling-spec: "0.2.0"
+  author: "Vasyl Romanets"
+  theme-author: "https://github.com/ember-theme/ember"
+  name: "Ember Light"
+  slug: "ember-light"
+variant: "light"
+palette:
+  black: "#282418"
+  white: "#e6dac4"
+  red: "#b84c30"
+  red-bright: "#b84c30"
+  green: "#4a6830"
+  green-bright: "#4a6830"
+  yellow: "#7a6820"
+  yellow-bright: "#7a6820"
+  blue: "#3a6080"
+  blue-bright: "#3a6080"
+  magenta: "#905050"
+  magenta-bright: "#905050"
+  cyan: "#386858"
+  cyan-bright: "#386858"
+  gray: "#787060"
+  orange: "#946030"
+syntax:
+  comment: "#787060"
+  invalid: "#905050"
+  invalid.deprecated: "#787060"
+  string: "#4a6830"
+  string.regexp: "#706070"
+  constant: "#282418"
+  constant.numeric: "#946030"
+  constant.language: "#b84c30"
+  constant.character: "#946030"
+  constant.character.escape: "#905050"
+  constant.other: "#946030"
+  entity: "#282418"
+  entity.name.class: "#7a6820"
+  entity.name.function: "#7a6820"
+  entity.name.tag: "#386858"
+  entity.other.attribute-name: "#946030"
+  entity.other.inherited-class: "#7a6820"
+  keyword: "#b84c30"
+  storage: "#7a6820"
+  support: "#282418"
+  support.function: "#7a6820"
+  support.class: "#7a6820"
+  support.type: "#7a6820"
+  support.constant: "#946030"
+  variable: "#282418"
+  variable.parameter: "#585040"
+  punctuation: "#282418"
+  punctuation.definition.string: "#4a6830"
+  punctuation.definition.comment: "#787060"
+  markup: "#282418"
+  source: "#282418"
+  text: "#282418"
+  meta: "#282418"
+ui:
+  accent:
+    normal: "#7a6820"
+  selection:
+    background: "#b8ac96"
+  highlight:
+    line:
+      background: "#ddd0b8"
+  cursor:
+    normal:
+      background: "#b84c30"
+  border:
+    normal: "#bcb29e"
+  gutter:
+    foreground: "#787060"
+  chrome:
+    background:
+      normal: "#dbcfba"
+      dark: "#d3c8b3"
+    foreground:
+      dark: "#6a6454"

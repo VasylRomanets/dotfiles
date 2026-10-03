@@ -12,4 +12,7 @@ prune-symlinks:
 macos:
 	./setup/macos.zsh
 
-.PHONY: bootstrap sync prune-symlinks macos
+themes:
+	./setup/build-themes.zsh
+
+.PHONY: bootstrap sync prune-symlinks macos themes

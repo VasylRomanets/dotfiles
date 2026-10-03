@@ -1,8 +1,0 @@
-[delta]
-  syntax-theme = "duskfox"
-  # Duskfox's own red/green accents blended low-opacity over its base
-  # background (#232136), same tinting technique as the other variants.
-  minus-style = syntax "#432e45"
-  minus-emph-style = syntax "#5f3852"
-  plus-style = syntax "#383a44"
-  plus-emph-style = syntax "#495050"

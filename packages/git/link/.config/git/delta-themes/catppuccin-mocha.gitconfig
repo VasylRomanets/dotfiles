@@ -1,8 +1,0 @@
-[delta]
-  syntax-theme = "Catppuccin Mocha"
-  # Catppuccin's own red/green accents blended low-opacity over its base
-  # background, same tinting technique as the other variants.
-  minus-style = syntax "#402f42"
-  minus-emph-style = syntax "#5e3f53"
-  plus-style = syntax "#343e40"
-  plus-emph-style = syntax "#475950"

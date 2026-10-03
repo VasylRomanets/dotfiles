@@ -1,16 +1,16 @@
 colors:
-  base: "07273B"
-  surface: "102F43"
-  overlay: "2F4C5E"
-  muted: "5988A6"
-  subtle: "7E94A2"
-  text: "BECFDA"
-  love: "E66533"
-  gold: "E4B781"
-  rose: "E798B3"
-  pine: "49ACE9"
-  foam: "49D6E9"
-  iris: "DF769B"
+  base: "07273b"
+  surface: "123145"
+  overlay: "2f4c5e"
+  muted: "5988a6"
+  subtle: "7e94a2"
+  text: "becfda"
+  love: "e66533"
+  gold: "e4b781"
+  rose: "e798b3"
+  pine: "49ace9"
+  foam: "49d6e9"
+  iris: "df769b"
 
 core:
   normal_text: {}
