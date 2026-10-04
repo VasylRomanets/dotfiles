@@ -29,13 +29,14 @@ Usage:
 Without arguments, opens a picker with a live preview.
 
 Commands:
-  random      Apply a random theme
-  light       Switch to the light counterpart of the current theme
-  dark        Switch to the dark counterpart of the current theme
-  reload      Re-apply the current theme
-  current     Print the current theme's name
-  list, ls    Print every available theme's name
-  help        Print this message
+  random [dark|light]  Apply a random theme, optionally a dark or light one
+  light                Switch to the light counterpart of the current theme
+  dark                 Switch to the dark counterpart of the current theme
+  toggle               Switch to the counterpart of the other kind, light or dark
+  reload               Re-apply the current theme
+  current              Print the current theme's name
+  list, ls             Print every available theme's name
+  help                 Print this message
 
 Arguments:
   [NAME]  Theme slug to apply; if it matches nothing, the picker opens
@@ -141,13 +142,32 @@ if [[ "$1" == "list" || "$1" == "ls" ]]; then
   fi
   exit 0
 elif [[ "$1" == "random" ]]; then
-  theme="${themes[RANDOM % ${#themes[@]}]}"
-elif [[ "$1" == "light" || "$1" == "dark" ]]; then
+  kind=$2
+  if [[ -n "$kind" && "$kind" != "dark" && "$kind" != "light" ]]; then
+    echo "theme: random takes dark or light, not '$kind'." >&2
+    exit 1
+  fi
+  # Never the theme already applied, so the command always changes something.
+  current=$(<"$state_file")
+  candidates=()
+  for t in "${themes[@]}"; do
+    [[ "$t" == "$current" ]] && continue
+    [[ -z "$kind" || "$(variant_of "$t")" == "$kind" ]] && candidates+=("$t")
+  done
+  if [[ ${#candidates[@]} -eq 0 ]]; then
+    echo "No other ${kind:+$kind }theme to pick." >&2
+    exit 1
+  fi
+  theme="${candidates[RANDOM % ${#candidates[@]}]}"
+elif [[ "$1" == "light" || "$1" == "dark" || "$1" == "toggle" ]]; then
   want=$1
   current=$(<"$state_file")
   if [[ -z "$current" ]]; then
     echo "No theme applied yet." >&2
     exit 1
+  fi
+  if [[ "$want" == "toggle" ]]; then
+    [[ "$(variant_of "$current")" == "dark" ]] && want=light || want=dark
   fi
   if [[ "$(variant_of "$current")" == "$want" ]]; then
     echo "$(pretty_name "$current") is already a $want theme."
