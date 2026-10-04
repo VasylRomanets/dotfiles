@@ -20,7 +20,7 @@ make macos           # ./setup/macos.zsh — apply macOS `defaults write` settin
 make themes          # ./setup/build-themes.zsh — regenerate every per-theme file from the Tinted8 schemes (needs `tinted-builder-rust` 0.21.x; see Theming)
 ```
 
-`sync.zsh` is idempotent and safe to re-run repeatedly — it processes every package each time (there's no "sync just one package" flag). It requires `toml2json` and `jq` (installed by `bootstrap.zsh`); it exits early with an error if they're missing.
+`sync.zsh` prints one section per package and hides a hook's output unless it fails; run `./setup/sync.zsh -v` to see it. It is idempotent and safe to re-run repeatedly — it processes every package each time (there's no "sync just one package" flag). It requires `toml2json` and `jq` (installed by `bootstrap.zsh`); it exits early with an error if they're missing.
 
 ## Architecture
 

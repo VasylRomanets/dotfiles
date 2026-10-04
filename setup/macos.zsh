@@ -326,4 +326,5 @@ for app in "Finder" "Dock" "SystemUIServer" "ControlCenter"; do
   killall "${app}" &>/dev/null
 done
 
+echo
 success "Done — some settings may require a logout or restart to take effect."

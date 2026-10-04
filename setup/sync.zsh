@@ -1,6 +1,8 @@
 #!/bin/zsh
 
 # Syncs dotfiles — symlinks packages, sources shell files, copies assets.
+#
+# USAGE: sync.zsh [-v]    — -v also prints the output of successful hooks
 
 SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES="$(dirname "$SETUP_PATH")"
@@ -11,6 +13,10 @@ linked=0
 skipped=0
 failed=0
 copied=0
+verbose=0
+warnings=()
+
+[[ "$1" == "-v" || "$1" == "--verbose" ]] && verbose=1
 
 check_deps() {
   for cmd in toml2json jq; do
@@ -24,7 +30,13 @@ check_deps() {
 on_start() {
   require_macos
   check_deps
-  echo "Creating symlinks and copying files..."
+  echo "Syncing dotfiles..."
+}
+
+# Prints a warning and remembers it for the summary at the end.
+warn() {
+  warning "$*"
+  warnings+=("${pkg:+$pkg: }$*")
 }
 
 toml_get() {
@@ -33,30 +45,36 @@ toml_get() {
   toml2json "$file" | jq -r "$query // empty"
 }
 
+# Counts toward the package's "Linked N of M files." line (pkg_link_ok and
+# pkg_link_total, reset for each package) and the totals for the final summary.
 symlink() {
   local src="$1" dest="$2"
+  (( ++pkg_link_total ))
   if [[ -e "$dest" && ! -L "$dest" ]]; then
-    warning "$dest exists and is not a symlink — skipping"
+    warn "Skipped ${dest/#$HOME/~} — already exists and is not a symlink."
     (( ++failed ))
     return
   fi
   mkdir -p "$(dirname "$dest")"
   if ln -sf "$src" "$dest"; then
-    (( ++linked ))
+    (( ++linked, ++pkg_link_ok ))
   else
-    warning "Failed to symlink $dest"
+    warn "Failed to symlink ${dest/#$HOME/~}."
     (( ++failed ))
   fi
 }
 
+# A hook's output is hidden unless it fails (or -v is given), so one noisy
+# hook doesn't drown out the rest.
 run_hook() {
-  local hook="$1" pkg="$2" label="$3"
+  local hook="$1" label="$2" output
   [[ -f "$hook" ]] || return
-  echo "Running $label hook for $pkg..."
-  if zsh "$hook"; then
-    success "Ran $label hook for $pkg"
+  if output="$(zsh "$hook" 2>&1)"; then
+    (( verbose )) && [[ -n "$output" ]] && echo "$output"
+    echo "Ran $label hook."
   else
-    warning "$label hook failed for $pkg"
+    [[ -n "$output" ]] && echo "$output"
+    warn "The $label hook failed."
     (( ++failed ))
   fi
 }
@@ -67,12 +85,14 @@ sync_packages() {
   for pkg_dir in packages/*/; do
     pkg="$(basename "$pkg_dir")"
     setup="$pkg_dir/setup.toml"
+    echo
+    echo "Syncing $pkg..."
 
     req_command="$(toml_get "$setup" '.requires.command')"
     req_app="$(toml_get "$setup" '.requires.app')"
 
     if [[ -n "$req_command" ]] && ! command_exists "$req_command"; then
-      warning "Skipping $pkg — $req_command not found"
+      warn "Skipped — $req_command not found."
       (( ++skipped ))
       continue
     fi
@@ -80,14 +100,15 @@ sync_packages() {
     if [[ -n "$req_app" ]] && \
        [[ ! -d "/Applications/$req_app.app" ]] && \
        [[ ! -d "$HOME/Applications/$req_app.app" ]]; then
-      warning "Skipping $pkg — $req_app not installed"
+      warn "Skipped — $req_app not installed."
       (( ++skipped ))
       continue
     fi
 
-    run_hook "$pkg_dir/hooks/pre-setup.zsh" "$pkg" "pre-setup"
+    run_hook "$pkg_dir/hooks/pre-setup.zsh" "pre-setup"
 
-    local pkg_linked=0
+    pkg_link_ok=0
+    pkg_link_total=0
 
     if [[ -d "$pkg_dir/link" ]]; then
       link_target="$(toml_get "$setup" '.link.target')"
@@ -97,7 +118,6 @@ sync_packages() {
         rel="${src#$pkg_dir/link/}"
         symlink "$DOTFILES/$src" "$link_target/$rel"
       done
-      pkg_linked=1
     fi
 
     if [[ -d "$pkg_dir/source" ]]; then
@@ -106,35 +126,37 @@ sync_packages() {
       for src in "$pkg_dir/source/"*.zsh(N); do
         symlink "$DOTFILES/$src" "$source_dir/${src:t}"
       done
-      pkg_linked=1
     fi
 
     if [[ -f "$pkg_dir/hooks/theme-changed.zsh" ]]; then
       theme_hooks_dir="${XDG_DATA_HOME:-$HOME/.local/share}/theme/hooks.d"
       mkdir -p "$theme_hooks_dir"
       symlink "$DOTFILES/$pkg_dir/hooks/theme-changed.zsh" "$theme_hooks_dir/$pkg.zsh"
-      pkg_linked=1
     fi
 
-    if (( pkg_linked )); then
-      success "Linked $pkg"
-    fi
+    (( pkg_link_total )) && echo "Linked $pkg_link_ok of $pkg_link_total files."
 
     if [[ -d "$pkg_dir/copy" ]]; then
       copy_target="$(toml_get "$setup" '.copy.target')"
       copy_target="${copy_target/#\~/$HOME}"
       if [[ -n "$copy_target" ]]; then
         mkdir -p "$copy_target"
+        local pkg_copy_ok=0 pkg_copy_total=0
         for f in "$pkg_dir/copy/"**/*(.N); do
           [[ "${f:t}" == ".DS_Store" ]] && continue
-          cp -f "$f" "$copy_target/"
-          (( ++copied ))
+          (( ++pkg_copy_total ))
+          if cp -f "$f" "$copy_target/"; then
+            (( ++copied, ++pkg_copy_ok ))
+          else
+            warn "Failed to copy $f."
+            (( ++failed ))
+          fi
         done
-        success "Copied $pkg"
+        (( pkg_copy_total )) && echo "Copied $pkg_copy_ok of $pkg_copy_total files."
       fi
     fi
 
-    run_hook "$pkg_dir/hooks/post-setup.zsh" "$pkg" "post-setup"
+    run_hook "$pkg_dir/hooks/post-setup.zsh" "post-setup"
   done
 }
 
@@ -155,8 +177,16 @@ ensure_default_theme() {
 }
 
 on_finish() {
+  local summary="Done — symlinks: $linked, files copied: $copied, packages skipped: $skipped, problems: $failed."
   echo
-  success "Done — $linked symlinks, $copied files copied, $skipped packages skipped, $failed conflicts."
+  if (( ${#warnings} )); then
+    warning "$summary"
+    echo
+    warning "Warnings:"
+    printf '  %s\n' "${warnings[@]}"
+  else
+    success "$summary"
+  fi
 }
 
 main() {

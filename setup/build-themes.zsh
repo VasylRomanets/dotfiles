@@ -34,9 +34,8 @@ build_packages() {
   local config pkg_dir
   for config in "$DOTFILES"/packages/*/templates/config.yaml(N); do
     pkg_dir="${config:h:h}"
-    info "Building ${pkg_dir:t}..."
     tinted-builder-rust build "$pkg_dir" --schemes-dir "$SCHEMES_DIR" --quiet || {
-      error "Building ${pkg_dir:t} failed"
+      error "Building themes for ${pkg_dir:t} failed."
       exit 1
     }
   done
@@ -90,6 +89,8 @@ main() {
   check_deps
   [[ -d "$SCHEMES_DIR" ]] || { error "No schemes at $SCHEMES_DIR"; exit 1; }
 
+  echo "Building themes..."
+
   local marker
   marker="$(mktemp)"
   KEPT_DIR="$(mktemp -d)"
@@ -101,7 +102,8 @@ main() {
   mirror_bat_themes_to_yazi
   restore_kept_files
 
-  success "Built themes from $(ls "$SCHEMES_DIR" | wc -l | tr -d ' ') scheme(s)."
+  echo
+  success "Done — built themes from $(ls "$SCHEMES_DIR" | wc -l | tr -d ' ') scheme(s)."
 }
 
 main
