@@ -54,16 +54,16 @@ check_output() {
   exit 1
 }
 
-# Files a package lists in keep.txt (globs relative to the package) are
-# maintained by hand, typically upstream themes that beat what a scheme can
-# express. The builder would overwrite them, so they are saved before the build
-# and put back at the end.
+# Files a package lists in templates/keep-themes.txt (globs relative to the
+# package) are maintained by hand, typically upstream themes that beat what a
+# scheme can express. The builder would overwrite them, so they are saved before
+# the build and put back at the end.
 save_kept_files() {
   local keep pattern file
-  for keep in "$DOTFILES"/packages/*/keep.txt(N); do
+  for keep in "$DOTFILES"/packages/*/templates/keep-themes.txt(N); do
     while IFS= read -r pattern; do
       [[ -z "$pattern" || "$pattern" == \#* ]] && continue
-      for file in "${keep:h}"/${~pattern}(N.); do
+      for file in "${keep:h:h}"/${~pattern}(N.); do
         mkdir -p "$KEPT_DIR/${${file#$DOTFILES/}:h}"
         cp -p "$file" "$KEPT_DIR/${file#$DOTFILES/}"
       done

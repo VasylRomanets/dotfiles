@@ -35,7 +35,7 @@ Each `packages/<pkg>/` directory is independent and can contain any of:
 - `copy/` — files copied (not symlinked) into `[copy].target`. Only used when symlinking is impossible, e.g. a macOS-sandboxed Mac App Store app that resolves symlinks outside its container.
 - `hooks/pre-setup.zsh` / `hooks/post-setup.zsh` — arbitrary setup steps beyond linking/copying (e.g. `yazi`'s `post-setup.zsh` runs `ya pkg install` to resolve plugins). Both run inside `sync.zsh`, only for packages that pass `[requires]`.
 - `hooks/theme-changed.zsh` — the package's reaction to `theme`; `sync.zsh` symlinks it to `~/.local/share/theme/hooks.d/<pkg>.zsh` (see Theming).
-- `templates/`, `keep.txt` — inputs to `dots build-themes` (see Theming); `sync.zsh` ignores them.
+- `templates/` — inputs to `dots build-themes` (see Theming): the Mustache templates, their `config.yaml` and `keep-themes.txt`; `sync.zsh` ignores it.
 - `setup.toml` — optional. Packages without one are always processed. Schema:
   ```toml
   [requires]
@@ -63,7 +63,7 @@ For each `packages/*/`: check `[requires]` (skip package entirely if command/app
 
 **What a scheme can't express** is handled outside it, in templates and hooks: delta's added/removed tints are blended in `packages/git/hooks/theme-changed.zsh`, file-type colors are chosen in the vivid template, and bold/italic/underline are fixed in the bat template.
 
-**`keep.txt`** in a package lists files (globs relative to the package) that `dots build-themes` must leave alone because they are maintained by hand: `packages/bat/keep.txt` holds upstream `.tmTheme` files (Catppuccin, Tokyo Night, Nord, Noctis) with far more scopes than Tinted8's 105 syntax keys, and `packages/yazi/keep.txt` the flavors their authors wrote. Delete a path from the list to hand that theme back to the schemes.
+**`templates/keep-themes.txt`** in a package lists files (globs relative to the package) that `dots build-themes` must leave alone because they are maintained by hand: `packages/bat/templates/keep-themes.txt` holds upstream `.tmTheme` files (Catppuccin, Tokyo Night, Nord, Noctis) with far more scopes than Tinted8's 105 syntax keys, and `packages/yazi/keep.txt` the flavors their authors wrote. Delete a path from the list to hand that theme back to the schemes.
 
 **Adding a theme:** write `packages/theme/schemes/<slug>.yaml` (copy a similar one, or `packages/theme/tools/tmtheme-to-scheme.py <slug> <file.tmTheme> <ghostty-theme-file>` to extract one), run `dots build-themes`, `dots sync` and `bat cache --build`. Ghostty is separate: a built-in theme named like the title-cased slug works as is (Nightfox, Rose Pine Moon, ...); otherwise add `packages/ghostty/link/.config/ghostty/themes/<slug>.ghostty` — a local file named after the slug is picked up by the hook automatically (and wins over a built-in of the same name). A built-in whose name isn't the title-cased slug (TokyoNight) needs a line in `packages/ghostty/hooks/theme-changed.zsh`.
 
