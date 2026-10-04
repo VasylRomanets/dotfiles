@@ -8,6 +8,8 @@ DOTFILES="$(dirname "$SETUP_PATH")"
 source "$SETUP_PATH/_lib.zsh"
 
 SCHEMES_DIR="$DOTFILES/packages/theme/schemes"
+SYNTAX_DIR="$DOTFILES/packages/theme/syntax"
+YAZI_FLAVORS="$DOTFILES/packages/yazi/link/.config/yazi/flavors"
 
 # The template variable names this repo's templates use are those of
 # tinted-builder 0.21 (they differ from newer drafts of the Tinted8 spec).
@@ -54,33 +56,38 @@ check_output() {
   exit 1
 }
 
-# Files a package lists in templates/keep-themes.txt (globs relative to the
-# package) are maintained by hand, typically upstream themes that beat what a
-# scheme can express. The builder would overwrite them, so they are saved before
-# the build and put back at the end.
-save_kept_files() {
-  local keep pattern file
-  for keep in "$DOTFILES"/packages/*/templates/keep-themes.txt(N); do
-    while IFS= read -r pattern; do
-      [[ -z "$pattern" || "$pattern" == \#* ]] && continue
-      for file in "${keep:h:h}"/${~pattern}(N.); do
-        mkdir -p "$KEPT_DIR/${${file#$DOTFILES/}:h}"
-        cp -p "$file" "$KEPT_DIR/${file#$DOTFILES/}"
-      done
-    done <"$keep"
+# A theme can bring its own TextMate theme in packages/theme/syntax, for syntax
+# colors a scheme can't match: a .tmTheme names any scope, a scheme only about
+# 105 keys. It replaces the one generated for bat, and must run before the
+# mirror below so yazi's previews use it too.
+apply_syntax_themes() {
+  local file
+  for file in "$SYNTAX_DIR"/*.tmTheme(N); do
+    if [[ ! -f "$SCHEMES_DIR/${${file:t}%.tmTheme}.yaml" ]]; then
+      warning "No scheme for syntax/${file:t}."
+      continue
+    fi
+    cp "$file" "$DOTFILES/packages/bat/link/.config/bat/themes/${file:t}"
   done
 }
 
-restore_kept_files() {
-  cp -Rp "$KEPT_DIR/." "$DOTFILES/"
+# yazi flavors are generated into <slug>-generated.yazi, next to any flavor a
+# theme's author wrote, which is named <slug>.yazi and wins (see the yazi hook).
+# A generated copy such a flavor shadows would never be used, so it is dropped.
+prune_shadowed_flavors() {
+  local dir
+  for dir in "$YAZI_FLAVORS"/*-generated.yazi(N/); do
+    [[ -d "$YAZI_FLAVORS/${${dir:t}%-generated.yazi}.yazi" ]] && rm -rf "$dir"
+  done
 }
 
 # yazi highlights previews with the same TextMate theme bat uses, but only
-# looks for it inside the flavor directory.
+# looks for it inside the flavor directory. Flavors written by hand carry their
+# own.
 mirror_bat_themes_to_yazi() {
   local theme flavor_dir
   for theme in "$DOTFILES"/packages/bat/link/.config/bat/themes/*.tmTheme(N); do
-    flavor_dir="$DOTFILES/packages/yazi/link/.config/yazi/flavors/${${theme:t}%.tmTheme}.yazi"
+    flavor_dir="$YAZI_FLAVORS/${${theme:t}%.tmTheme}-generated.yazi"
     [[ -d "$flavor_dir" ]] && cp "$theme" "$flavor_dir/tmtheme.xml"
   done
 }
@@ -93,14 +100,13 @@ main() {
 
   local marker
   marker="$(mktemp)"
-  KEPT_DIR="$(mktemp -d)"
-  trap 'rm -rf "$marker" "$KEPT_DIR"' EXIT
+  trap 'rm -f "$marker"' EXIT
 
-  save_kept_files
   build_packages
   check_output "$marker"
+  apply_syntax_themes
+  prune_shadowed_flavors
   mirror_bat_themes_to_yazi
-  restore_kept_files
 
   echo
   success "Done — built themes from $(ls "$SCHEMES_DIR" | wc -l | tr -d ' ') scheme(s)."

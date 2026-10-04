@@ -4,7 +4,7 @@
 # CLAUDE.md).
 
 flavor:
-  filename: "link/.config/yazi/flavors/{{scheme.slug}}.yazi/flavor.toml"
+  filename: "link/.config/yazi/flavors/{{scheme.slug}}-generated.yazi/flavor.toml"
   supported-systems: [tinted8]
   supports:
     tinted8-styling: "~0.2.0"
