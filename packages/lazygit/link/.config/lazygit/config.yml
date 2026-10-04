@@ -1,2 +1,5 @@
 gui:
   mouseEvents: false
+git:
+  diffRenderers:
+    - command: delta --paging=never
