@@ -29,14 +29,14 @@ Usage:
 Without arguments, opens a picker with a live preview.
 
 Commands:
-  random [dark|light]  Apply a random theme, optionally a dark or light one
-  light                Switch to the light counterpart of the current theme
-  dark                 Switch to the dark counterpart of the current theme
-  toggle               Switch to the counterpart of the other kind, light or dark
-  reload               Re-apply the current theme
-  current              Print the current theme's name
-  list, ls             Print every available theme's name
-  help                 Print this message
+  random [dark|light]    Apply a random theme, optionally a dark or light one
+  light                  Switch to the light counterpart of the current theme
+  dark                   Switch to the dark counterpart of the current theme
+  toggle                 Switch to the counterpart of the other kind, light or dark
+  reload                 Re-apply the current theme
+  current                Print the current theme's name
+  list, ls [dark|light]  Print every available theme's name, optionally of one kind
+  help                   Print this message
 
 Arguments:
   [NAME]  Theme slug to apply; if it matches nothing, the picker opens
@@ -132,14 +132,20 @@ if [[ ${#themes[@]} -eq 0 ]]; then
 fi
 
 if [[ "$1" == "list" || "$1" == "ls" ]]; then
-  if [[ $slug_only -eq 1 ]]; then
-    printf '%s\n' "${themes[@]}"
-  else
-    for t in "${themes[@]}"; do
+  kind=$2
+  if [[ -n "$kind" && "$kind" != "dark" && "$kind" != "light" ]]; then
+    echo "theme: $1 takes dark or light, not '$kind'." >&2
+    exit 1
+  fi
+  for t in "${themes[@]}"; do
+    [[ -z "$kind" || "$(variant_of "$t")" == "$kind" ]] || continue
+    if [[ $slug_only -eq 1 ]]; then
+      echo "$t"
+    else
       pretty_name "$t"
       echo
-    done
-  fi
+    fi
+  done
   exit 0
 elif [[ "$1" == "random" ]]; then
   kind=$2
