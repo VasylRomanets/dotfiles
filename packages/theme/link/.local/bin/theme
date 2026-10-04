@@ -126,7 +126,7 @@ for colors_file in "$data_dir/colors/"*.env; do
   [[ -e "$colors_file" ]] && themes+=("$(basename "$colors_file" .env)")
 done
 if [[ ${#themes[@]} -eq 0 ]]; then
-  echo "No themes found in $data_dir/colors — run make sync (and make themes)." >&2
+  echo "No themes found in $data_dir/colors — run dots sync (and dots build-themes)." >&2
   exit 1
 fi
 

@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# Run the setup scripts of the dotfiles repo from anywhere.
+#
+# The repo is found through $DOTFILES (set in .zshenv). When that isn't set,
+# for instance outside a zsh session, it falls back to this script's own
+# symlink back into the repo. Everything after the command is passed on to the
+# script, e.g. "dots sync -v".
+#
+# USAGE: dots <command> [args]    — run "dots help" for the full list
+#
+# Author:  Vasyl Romanets
+# GitHub:  https://github.com/vasylromanets
+# Created: 2026-10-04
+# License: MIT
+
+usage() {
+  cat <<'USAGE'
+dots
+Run the setup scripts of the dotfiles repo
+
+Usage:
+  dots <COMMAND> [ARGS]
+
+Commands:
+  bootstrap       Set up a fresh Mac from scratch (interactive)
+  sync            Symlink and copy every package into place
+  setup-macos     Apply the macOS defaults
+  prune-symlinks  Remove symlinks left behind by renamed or removed files
+  build-themes    Regenerate the per-theme files from the Tinted8 schemes
+  help            Print this message
+
+Arguments:
+  [ARGS]  Passed on to the command, e.g. dots sync -v
+
+Options:
+  -h, --help  Print help
+USAGE
+}
+
+if [[ -z "$DOTFILES" ]]; then
+  self="${BASH_SOURCE[0]}"
+  [[ -L "$self" ]] && self="$(readlink "$self")"
+  # This file is packages/bin/link/.local/bin/dots, five levels below the repo.
+  DOTFILES="$(cd "$(dirname "$self")/../../../../.." && pwd)"
+fi
+
+command=$1
+shift
+
+case "$command" in
+  "" | help | -h | --help)
+    usage
+    ;;
+  setup-macos)
+    exec "$DOTFILES/setup/macos.zsh" "$@"
+    ;;
+  bootstrap | sync | prune-symlinks | build-themes)
+    exec "$DOTFILES/setup/$command.zsh" "$@"
+    ;;
+  *)
+    echo "dots: unknown command '$command'" >&2
+    usage >&2
+    exit 1
+    ;;
+esac

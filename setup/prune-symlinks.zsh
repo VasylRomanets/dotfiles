@@ -3,7 +3,7 @@
 # Finds and removes symlinks anywhere under $HOME that point into this dotfiles repo
 # but are now broken — e.g. after a file was renamed or removed.
 #
-# Not part of `make sync`: a full $HOME scan is unnecessary overhead on every sync,
+# Not part of `dots sync`: a full $HOME scan is unnecessary overhead on every sync,
 # so run this occasionally instead, whenever you suspect stale symlinks.
 
 SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"

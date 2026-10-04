@@ -4,6 +4,9 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+# The dotfiles repo, found through this file's own symlink into it.
+export DOTFILES="${${(%):-%x}:A:h:h:h:h}"
+
 # Tell Zsh where to find .zshrc.
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 

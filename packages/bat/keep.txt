@@ -1,6 +1,6 @@
-# Upstream themes with far more scopes than Tinted8 has syntax keys. make
-# themes leaves these files alone instead of regenerating them from the
-# schemes.
+# Upstream themes with far more scopes than Tinted8 has syntax keys.
+# dots build-themes leaves these files alone instead of regenerating them from
+# the schemes.
 link/.config/bat/themes/catppuccin-frappe.tmTheme
 link/.config/bat/themes/catppuccin-latte.tmTheme
 link/.config/bat/themes/catppuccin-macchiato.tmTheme

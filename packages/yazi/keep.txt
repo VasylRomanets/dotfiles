@@ -1,5 +1,5 @@
 # Flavors from the themes' own authors, which style the whole interface with
-# more care than the shared template. make themes leaves these files alone
+# more care than the shared template. dots build-themes leaves these files alone
 # instead of regenerating them from the schemes.
 link/.config/yazi/flavors/catppuccin-*.yazi/*
 link/.config/yazi/flavors/duskfox.yazi/*

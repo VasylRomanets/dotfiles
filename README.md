@@ -16,7 +16,7 @@ dotfiles/
 │       ├── source/        # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
 │       ├── copy/          # files to copy (optional)
 │       ├── hooks/         # pre-setup.zsh / post-setup.zsh run by sync.zsh, theme-changed.zsh run by theme (optional)
-│       ├── templates/     # Mustache templates make themes renders per scheme (optional)
+│       ├── templates/     # Mustache templates dots build-themes renders per scheme (optional)
 │       └── setup.toml     # install conditions and copy/link target (optional)
 └── setup/
     ├── _lib.zsh           # shared utilities (colors, logging)
@@ -41,7 +41,6 @@ git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
 2. Run the bootstrap script:
 ```zsh
 ~/.dotfiles/setup/bootstrap.zsh
-# or: cd ~/.dotfiles && make bootstrap
 ```
 
 <p align="center">
@@ -60,17 +59,12 @@ You'll be prompted before each step.
 
 ## Updating
 
-After adding or modifying package files, re-run `sync.zsh` to apply them:
+Once the bootstrap has run, everything is available through the `dots` command (`dots help` lists it). After adding or modifying package files, apply them with:
 ```zsh
-~/.dotfiles/setup/sync.zsh
-# or: cd ~/.dotfiles && make sync
+dots sync
 ```
 
-Renaming or removing a package file can leave a stale symlink behind. Run `prune-symlinks.zsh` occasionally to clean those up:
-```zsh
-~/.dotfiles/setup/prune-symlinks.zsh
-# or: cd ~/.dotfiles && make prune-symlinks
-```
+Renaming or removing a package file can leave a stale symlink behind. Run `dots prune-symlinks` occasionally to clean those up.
 
 ## Package Setup
 
@@ -97,7 +91,7 @@ A package can also define `hooks/pre-setup.zsh` and/or `hooks/post-setup.zsh` fo
 
 ## Themes
 
-`theme` switches the theme across Ghostty, bat, delta, fzf, micro, vivid, yazi and `ls`/eza colors. Each theme is one [Tinted8](https://github.com/tinted-theming/home/tree/main/specs/tinted8) scheme in `packages/theme/schemes`; `make themes` renders the per-tool files from it (needs [`tinted-builder-rust`](https://github.com/tinted-theming/tinted-builder-rust) 0.21.x) and the results are committed, so a normal `make sync` doesn't need the builder.
+`theme` switches the theme across Ghostty, bat, delta, fzf, micro, vivid, yazi and `ls`/eza colors. Each theme is one [Tinted8](https://github.com/tinted-theming/home/tree/main/specs/tinted8) scheme in `packages/theme/schemes`; `dots build-themes` renders the per-tool files from it (needs [`tinted-builder-rust`](https://github.com/tinted-theming/tinted-builder-rust) 0.21.x) and the results are committed, so a normal `dots sync` doesn't need the builder.
 
 ## Credits
 
