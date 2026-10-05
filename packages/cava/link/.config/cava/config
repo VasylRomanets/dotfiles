@@ -15,7 +15,7 @@ method = noncurses
 channels = stereo
 
 [color]
-theme = 'everforest'
+theme = 'current'
 
 [smoothing]
 monstercat = 1

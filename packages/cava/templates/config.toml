@@ -1,0 +1,6 @@
+# Rendered by dots build-themes (packages/theme/tools/render-themes.py) from the
+# schemes in packages/theme/schemes. A section names a template in this folder;
+# output is where each theme's file goes, relative to the package.
+
+[gradient]
+output = "link/.config/cava/themes/{{slug}}"

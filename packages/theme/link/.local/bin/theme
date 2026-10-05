@@ -4,7 +4,7 @@
 # query the current one and the available ones.
 #
 # This script only resolves the chosen slug and writes it to the state file.
-# Every theme-aware package (bat, fzf, vivid, Ghostty, Yazi, git/delta, micro)
+# Every theme-aware package (bat, cava, fzf, vivid, Ghostty, Yazi, git/delta, micro)
 # reacts independently via its own hooks/theme-changed.zsh, symlinked into
 # hooks.d/ by setup/sync.zsh — this script doesn't know they exist. The themes
 # on offer are the schemes in packages/theme/schemes, built into per-tool files
