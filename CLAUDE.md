@@ -13,16 +13,16 @@ The owner intends to try a Linux distro at some undetermined future point, and i
 No build, lint, or test suite exists in this repo — there's nothing to "run tests" for. The relevant commands apply configuration to the actual machine:
 
 ```zsh
-dots bootstrap       # ./setup/bootstrap.zsh — full fresh-machine setup (interactive, prompts before each step)
-dots sync            # ./setup/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes
-dots prune-symlinks  # ./setup/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync; occasional manual cleanup)
-dots setup-macos     # ./setup/macos.zsh — apply macOS `defaults write` settings only (bootstrap runs it too)
-dots build-themes    # ./setup/build-themes.zsh — regenerate every per-theme file from the schemes (needs only `python3`; see Theming)
+dots bootstrap          # ./setup/bootstrap.zsh — full fresh-machine setup (interactive, prompts before each step)
+dots sync [package...]  # ./setup/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes. Names limit it to those packages
+dots prune-symlinks     # ./setup/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync; occasional manual cleanup)
+dots setup-macos        # ./setup/macos.zsh — apply macOS `defaults write` settings only (bootstrap runs it too)
+dots build-themes       # ./setup/build-themes.zsh — regenerate every per-theme file from the schemes (needs only `python3`; see Theming)
 ```
 
 `dots` (`packages/bin/link/.local/bin/dots`) runs these scripts from any directory. It finds the repo through `$DOTFILES`, which `.zshenv` derives from its own symlink into the repo, and passes extra arguments on (`dots sync -v`). On a fresh machine `dots` doesn't exist until the first sync, so the first run is `./setup/bootstrap.zsh`.
 
-`sync.zsh` prints one section per package and hides a hook's output unless it fails; run `./setup/sync.zsh -v` to see it. It is idempotent and safe to re-run repeatedly — it processes every package each time (there's no "sync just one package" flag). It requires `toml2json` and `jq` (installed by `bootstrap.zsh`); it exits early with an error if they're missing.
+`sync.zsh` prints one section per package and hides a hook's output unless it fails; run `dots sync -v` to see it. `dots sync atuin bat` syncs only those (named packages ignore the config file below). An optional per-machine `~/.config/dots/sync.toml` (not in the repo) can hold `allow = ["atuin", "bat"]` (sync only these) and `deny = ["ghostty"]` (never sync these; deny wins over allow); a name that isn't a package is reported as a warning. It is idempotent and safe to re-run repeatedly — it processes every package each time (there's no "sync just one package" flag). It requires `toml2json` and `jq` (installed by `bootstrap.zsh`); it exits early with an error if they're missing.
 
 ## Architecture
 

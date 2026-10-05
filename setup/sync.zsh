@@ -2,7 +2,10 @@
 
 # Syncs dotfiles — symlinks packages, sources shell files, copies assets.
 #
-# USAGE: sync.zsh [-v]    — -v also prints the output of successful hooks
+# With package names, only those are synced. Without, every package is, except
+# what the optional config file leaves out (see select_packages).
+#
+# USAGE: sync.zsh [-v] [package...]    — -v also prints the output of successful hooks
 
 SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES="$(dirname "$SETUP_PATH")"
@@ -15,8 +18,23 @@ failed=0
 copied=0
 verbose=0
 warnings=()
+only=()
+selected=()
+denied_but_named=()
+typeset -A skip_reason
 
-[[ "$1" == "-v" || "$1" == "--verbose" ]] && verbose=1
+sync_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/sync.toml"
+
+for arg in "$@"; do
+  case "$arg" in
+    -v | --verbose) verbose=1 ;;
+    -*)
+      error "sync: unknown option '$arg'"
+      exit 1
+      ;;
+    *) only+=("$arg") ;;
+  esac
+done
 
 check_deps() {
   for cmd in toml2json jq; do
@@ -79,14 +97,70 @@ run_hook() {
   fi
 }
 
+# Fills `selected` with the packages to go through, in alphabetical order (a
+# theme hook may depend on another package having been linked first). A package
+# the config file leaves out stays in the list with a `skip_reason`, so it still
+# gets a section saying so.
+#
+# Names on the command line win: they are synced even if the config file leaves
+# them out. Otherwise ~/.config/dots/sync.toml may hold lists of package names,
+# like the permission lists in Claude Code's settings:
+#
+#   allow = ["atuin", "bat"]   # sync only these; leave it out to sync all
+#   deny = ["ghostty"]         # never sync these; wins over allow
+select_packages() {
+  local all=("$DOTFILES"/packages/*(/:t)) allow=() deny=() has_allow=false json name
+  local forced=()
+
+  for name in "${only[@]}"; do
+    (( ${all[(Ie)$name]} )) || {
+      error "No package named '$name'. Available: ${(j:, :)all}"
+      exit 1
+    }
+  done
+
+  if [[ -f "$sync_config" ]]; then
+    json="$(toml2json "$sync_config" 2>&1)" || {
+      error "Can't read ${sync_config/#$HOME/~}: $json"
+      exit 1
+    }
+    has_allow="$(jq 'has("allow")' <<<"$json")"
+    allow=(${(f)"$(jq -r '(.allow // [])[]' <<<"$json")"})
+    deny=(${(f)"$(jq -r '(.deny // [])[]' <<<"$json")"})
+    for name in "${allow[@]}" "${deny[@]}"; do
+      (( ${all[(Ie)$name]} )) || warn "${sync_config/#$HOME/~} lists '$name', which is not a package."
+    done
+  fi
+
+  for name in "${all[@]}"; do
+    if (( ${#only} )); then
+      (( ${only[(Ie)$name]} )) || continue
+      (( ${deny[(Ie)$name]} )) && forced+=("$name")
+    elif (( ${deny[(Ie)$name]} )); then
+      skip_reason[$name]="denied in ${sync_config/#$HOME/~}."
+    elif [[ "$has_allow" == true ]] && (( ! ${allow[(Ie)$name]} )); then
+      skip_reason[$name]="not in the allow list of ${sync_config/#$HOME/~}."
+    fi
+    selected+=("$name")
+  done
+
+  denied_but_named=("${forced[@]}")
+}
+
 sync_packages() {
   cd "$DOTFILES"
 
-  for pkg_dir in packages/*/; do
-    pkg="$(basename "$pkg_dir")"
+  for pkg in "${selected[@]}"; do
+    pkg_dir="packages/$pkg/"
     setup="$pkg_dir/setup.toml"
     echo
     echo "Syncing $pkg..."
+    (( ${denied_but_named[(Ie)$pkg]} )) && echo "Denied in ${sync_config/#$HOME/~}, but named here."
+    if [[ -n "${skip_reason[$pkg]}" ]]; then
+      echo "Skipped — ${skip_reason[$pkg]}"
+      (( ++skipped ))
+      continue
+    fi
 
     req_command="$(toml_get "$setup" '.requires.command')"
     req_app="$(toml_get "$setup" '.requires.app')"
@@ -173,6 +247,8 @@ ensure_default_theme() {
   local theme_cmd="$HOME/.local/bin/theme"
   [[ -s "$state_file" ]] && return
   [[ -x "$theme_cmd" ]] || return
+  # A sync of some packages leaves the theme alone unless it includes the theme.
+  (( ${#only} && ! ${only[(Ie)theme]} )) && return
   PATH="$HOME/.local/bin:$PATH" "$theme_cmd" rose-pine-moon
 }
 
@@ -191,6 +267,7 @@ on_finish() {
 
 main() {
   on_start
+  select_packages
   sync_packages
   ensure_default_theme
   on_finish

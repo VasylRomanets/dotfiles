@@ -61,7 +61,14 @@ You'll be prompted before each step.
 
 Once the bootstrap has run, everything is available through the `dots` command (`dots help` lists it). After adding or modifying package files, apply them with:
 ```zsh
-dots sync
+dots sync            # every package
+dots sync atuin bat  # only these
+```
+
+To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (it isn't part of the repo):
+```toml
+deny = ["ghostty"]           # never sync these
+allow = ["atuin", "bat"]     # or: sync only these (deny wins over allow)
 ```
 
 Renaming or removing a package file can leave a stale symlink behind. Run `dots prune-symlinks` occasionally to clean those up.
