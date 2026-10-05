@@ -1,124 +1,124 @@
-# {{{scheme.name}}}
+# {{name}}
 
 [mgr]
-cwd = { fg = "#{{ui.accent.normal.hex}}" }
-find_keyword = { fg = "#{{palette.yellow.normal.hex}}", bold = true }
-find_position = { fg = "#{{ui.accent.normal.hex}}", italic = true }
-symlink_target = { fg = "#{{syntax.comment.default.hex}}", italic = true }
-marker_copied = { fg = "#{{palette.green.normal.hex}}", bg = "#{{palette.green.normal.hex}}" }
-marker_cut = { fg = "#{{palette.red.normal.hex}}", bg = "#{{palette.red.normal.hex}}" }
-marker_marked = { fg = "#{{palette.magenta.normal.hex}}", bg = "#{{palette.magenta.normal.hex}}" }
-marker_selected = { fg = "#{{ui.accent.normal.hex}}", bg = "#{{ui.accent.normal.hex}}" }
-count_copied = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{palette.green.normal.hex}}" }
-count_cut = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{palette.red.normal.hex}}" }
-count_selected = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{ui.accent.normal.hex}}" }
-border_style = { fg = "#{{ui.border.normal.hex}}" }
+cwd = { fg = "{{ui.accent}}" }
+find_keyword = { fg = "{{ansi.yellow}}", bold = true }
+find_position = { fg = "{{ui.accent}}", italic = true }
+symlink_target = { fg = "{{syntax.comment}}", italic = true }
+marker_copied = { fg = "{{ansi.green}}", bg = "{{ansi.green}}" }
+marker_cut = { fg = "{{ansi.red}}", bg = "{{ansi.red}}" }
+marker_marked = { fg = "{{ansi.magenta}}", bg = "{{ansi.magenta}}" }
+marker_selected = { fg = "{{ui.accent}}", bg = "{{ui.accent}}" }
+count_copied = { fg = "{{ui.background}}", bg = "{{ansi.green}}" }
+count_cut = { fg = "{{ui.background}}", bg = "{{ansi.red}}" }
+count_selected = { fg = "{{ui.background}}", bg = "{{ui.accent}}" }
+border_style = { fg = "{{ui.border}}" }
 
 [tabs]
-active = { fg = "#{{ui.global.foreground.normal.hex}}", bg = "#{{ui.chrome.background.normal.hex}}" }
-inactive = { fg = "#{{syntax.comment.default.hex}}", bg = "#{{ui.chrome.background.dark.hex}}" }
+active = { fg = "{{ui.foreground}}", bg = "{{ui.chrome-bg}}" }
+inactive = { fg = "{{syntax.comment}}", bg = "{{ui.chrome-bg-dark}}" }
 
 [mode]
-normal_main = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{ui.accent.normal.hex}}", bold = true }
-normal_alt = { fg = "#{{ui.accent.normal.hex}}", bg = "#{{ui.chrome.background.normal.hex}}" }
-select_main = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{palette.magenta.normal.hex}}", bold = true }
-select_alt = { fg = "#{{palette.magenta.normal.hex}}", bg = "#{{ui.chrome.background.normal.hex}}" }
-unset_main = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{palette.magenta.bright.hex}}", bold = true }
-unset_alt = { fg = "#{{palette.magenta.bright.hex}}", bg = "#{{ui.chrome.background.normal.hex}}" }
+normal_main = { fg = "{{ui.background}}", bg = "{{ui.accent}}", bold = true }
+normal_alt = { fg = "{{ui.accent}}", bg = "{{ui.chrome-bg}}" }
+select_main = { fg = "{{ui.background}}", bg = "{{ansi.magenta}}", bold = true }
+select_alt = { fg = "{{ansi.magenta}}", bg = "{{ui.chrome-bg}}" }
+unset_main = { fg = "{{ui.background}}", bg = "{{ansi.bright-magenta}}", bold = true }
+unset_alt = { fg = "{{ansi.bright-magenta}}", bg = "{{ui.chrome-bg}}" }
 
 [indicator]
-parent = { bg = "#{{ui.chrome.background.normal.hex}}" }
-current = { bg = "#{{ui.selection.background.hex}}" }
-preview = { bg = "#{{ui.chrome.background.normal.hex}}" }
+parent = { bg = "{{ui.chrome-bg}}" }
+current = { bg = "{{ui.selection-bg}}" }
+preview = { bg = "{{ui.chrome-bg}}" }
 
 [status]
-overall = { fg = "#{{ui.global.foreground.normal.hex}}", bg = "#{{ui.chrome.background.normal.hex}}" }
-perm_sep = { fg = "#{{ui.border.normal.hex}}" }
-perm_type = { fg = "#{{palette.cyan.bright.hex}}" }
-perm_read = { fg = "#{{palette.yellow.normal.hex}}" }
-perm_write = { fg = "#{{palette.magenta.bright.hex}}" }
-perm_exec = { fg = "#{{palette.green.normal.hex}}" }
-progress_label = { fg = "#{{ui.global.foreground.normal.hex}}", bold = true }
-progress_normal = { fg = "#{{ui.accent.normal.hex}}", bg = "#{{ui.chrome.background.normal.hex}}" }
-progress_error = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{palette.red.normal.hex}}" }
+overall = { fg = "{{ui.foreground}}", bg = "{{ui.chrome-bg}}" }
+perm_sep = { fg = "{{ui.border}}" }
+perm_type = { fg = "{{ansi.bright-cyan}}" }
+perm_read = { fg = "{{ansi.yellow}}" }
+perm_write = { fg = "{{ansi.bright-magenta}}" }
+perm_exec = { fg = "{{ansi.green}}" }
+progress_label = { fg = "{{ui.foreground}}", bold = true }
+progress_normal = { fg = "{{ui.accent}}", bg = "{{ui.chrome-bg}}" }
+progress_error = { fg = "{{ui.background}}", bg = "{{ansi.red}}" }
 
 [which]
-mask = { bg = "#{{ui.chrome.background.dark.hex}}" }
-cand = { fg = "#{{ui.accent.normal.hex}}" }
-rest = { fg = "#{{syntax.comment.default.hex}}" }
-desc = { fg = "#{{ui.chrome.foreground.dark.hex}}" }
-separator_style = { fg = "#{{ui.border.normal.hex}}" }
+mask = { bg = "{{ui.chrome-bg-dark}}" }
+cand = { fg = "{{ui.accent}}" }
+rest = { fg = "{{syntax.comment}}" }
+desc = { fg = "{{ui.chrome-fg-dark}}" }
+separator_style = { fg = "{{ui.border}}" }
 
 [confirm]
-border = { fg = "#{{ui.accent.normal.hex}}" }
-title = { fg = "#{{ui.accent.normal.hex}}" }
-body = { fg = "#{{ui.global.foreground.normal.hex}}" }
-list = { fg = "#{{ui.chrome.foreground.dark.hex}}" }
-btn_yes = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{ui.accent.normal.hex}}", bold = true }
-btn_no = { fg = "#{{ui.chrome.foreground.dark.hex}}" }
+border = { fg = "{{ui.accent}}" }
+title = { fg = "{{ui.accent}}" }
+body = { fg = "{{ui.foreground}}" }
+list = { fg = "{{ui.chrome-fg-dark}}" }
+btn_yes = { fg = "{{ui.background}}", bg = "{{ui.accent}}", bold = true }
+btn_no = { fg = "{{ui.chrome-fg-dark}}" }
 
 [spot]
-border = { fg = "#{{ui.accent.normal.hex}}" }
-title = { fg = "#{{ui.accent.normal.hex}}" }
-tbl_col = { fg = "#{{palette.cyan.bright.hex}}" }
-tbl_cell = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{ui.accent.normal.hex}}" }
+border = { fg = "{{ui.accent}}" }
+title = { fg = "{{ui.accent}}" }
+tbl_col = { fg = "{{ansi.bright-cyan}}" }
+tbl_cell = { fg = "{{ui.background}}", bg = "{{ui.accent}}" }
 
 [notify]
-title_info = { fg = "#{{palette.blue.normal.hex}}" }
-title_warn = { fg = "#{{palette.yellow.normal.hex}}" }
-title_error = { fg = "#{{palette.red.normal.hex}}" }
+title_info = { fg = "{{ansi.blue}}" }
+title_warn = { fg = "{{ansi.yellow}}" }
+title_error = { fg = "{{ansi.red}}" }
 
 [pick]
-border = { fg = "#{{ui.accent.normal.hex}}" }
-active = { fg = "#{{ui.accent.normal.hex}}", bold = true }
-inactive = { fg = "#{{ui.chrome.foreground.dark.hex}}" }
+border = { fg = "{{ui.accent}}" }
+active = { fg = "{{ui.accent}}", bold = true }
+inactive = { fg = "{{ui.chrome-fg-dark}}" }
 
 [input]
-border = { fg = "#{{ui.accent.normal.hex}}" }
-title = { fg = "#{{ui.accent.normal.hex}}" }
-value = { fg = "#{{ui.global.foreground.normal.hex}}" }
-selected = { bg = "#{{ui.selection.background.hex}}" }
+border = { fg = "{{ui.accent}}" }
+title = { fg = "{{ui.accent}}" }
+value = { fg = "{{ui.foreground}}" }
+selected = { bg = "{{ui.selection-bg}}" }
 
 [cmp]
-border = { fg = "#{{ui.accent.normal.hex}}" }
-active = { fg = "#{{ui.global.background.normal.hex}}", bg = "#{{ui.accent.normal.hex}}" }
-inactive = { fg = "#{{ui.chrome.foreground.dark.hex}}" }
+border = { fg = "{{ui.accent}}" }
+active = { fg = "{{ui.background}}", bg = "{{ui.accent}}" }
+inactive = { fg = "{{ui.chrome-fg-dark}}" }
 
 [tasks]
-border = { fg = "#{{ui.accent.normal.hex}}" }
-title = { fg = "#{{ui.accent.normal.hex}}" }
-hovered = { fg = "#{{ui.accent.normal.hex}}", bold = true }
+border = { fg = "{{ui.accent}}" }
+title = { fg = "{{ui.accent}}" }
+hovered = { fg = "{{ui.accent}}", bold = true }
 
 [help]
-on = { fg = "#{{ui.accent.normal.hex}}" }
-run = { fg = "#{{ui.chrome.foreground.dark.hex}}" }
-desc = { fg = "#{{syntax.comment.default.hex}}" }
-hovered = { bg = "#{{ui.selection.background.hex}}", bold = true }
-footer = { fg = "#{{syntax.comment.default.hex}}", bg = "#{{ui.chrome.background.dark.hex}}" }
+on = { fg = "{{ui.accent}}" }
+run = { fg = "{{ui.chrome-fg-dark}}" }
+desc = { fg = "{{syntax.comment}}" }
+hovered = { bg = "{{ui.selection-bg}}", bold = true }
+footer = { fg = "{{syntax.comment}}", bg = "{{ui.chrome-bg-dark}}" }
 
 [filetype]
 rules = [
-  { url = "*/", fg = "#{{ui.accent.normal.hex}}", bold = true },
-  { mime = "image/*", fg = "#{{palette.yellow.bright.hex}}" },
-  { mime = "video/*", fg = "#{{palette.yellow.normal.hex}}" },
-  { mime = "audio/*", fg = "#{{palette.yellow.normal.hex}}" },
-  { mime = "application/zip", fg = "#{{palette.magenta.normal.hex}}" },
-  { mime = "application/gzip", fg = "#{{palette.magenta.normal.hex}}" },
-  { mime = "application/x-tar", fg = "#{{palette.magenta.normal.hex}}" },
-  { mime = "application/x-bzip2", fg = "#{{palette.magenta.normal.hex}}" },
-  { mime = "application/x-7z-compressed", fg = "#{{palette.magenta.normal.hex}}" },
-  { mime = "application/x-rar", fg = "#{{palette.magenta.normal.hex}}" },
-  { url = "*.rs", fg = "#{{palette.yellow.bright.hex}}" },
-  { url = "*.lua", fg = "#{{ui.accent.normal.hex}}" },
-  { url = "*.ts", fg = "#{{ui.accent.normal.hex}}" },
-  { url = "*.js", fg = "#{{palette.yellow.normal.hex}}" },
-  { url = "*.py", fg = "#{{palette.green.normal.hex}}" },
-  { url = "*.go", fg = "#{{palette.cyan.bright.hex}}" },
-  { url = "*.md", fg = "#{{ui.chrome.foreground.dark.hex}}" },
-  { url = "*.json", fg = "#{{palette.yellow.normal.hex}}" },
-  { url = "*.toml", fg = "#{{palette.yellow.bright.hex}}" },
-  { url = "*.yaml", fg = "#{{palette.magenta.bright.hex}}" },
-  { url = "*.yml", fg = "#{{palette.magenta.bright.hex}}" },
+  { url = "*/", fg = "{{ui.accent}}", bold = true },
+  { mime = "image/*", fg = "{{ansi.bright-yellow}}" },
+  { mime = "video/*", fg = "{{ansi.yellow}}" },
+  { mime = "audio/*", fg = "{{ansi.yellow}}" },
+  { mime = "application/zip", fg = "{{ansi.magenta}}" },
+  { mime = "application/gzip", fg = "{{ansi.magenta}}" },
+  { mime = "application/x-tar", fg = "{{ansi.magenta}}" },
+  { mime = "application/x-bzip2", fg = "{{ansi.magenta}}" },
+  { mime = "application/x-7z-compressed", fg = "{{ansi.magenta}}" },
+  { mime = "application/x-rar", fg = "{{ansi.magenta}}" },
+  { url = "*.rs", fg = "{{ansi.bright-yellow}}" },
+  { url = "*.lua", fg = "{{ui.accent}}" },
+  { url = "*.ts", fg = "{{ui.accent}}" },
+  { url = "*.js", fg = "{{ansi.yellow}}" },
+  { url = "*.py", fg = "{{ansi.green}}" },
+  { url = "*.go", fg = "{{ansi.bright-cyan}}" },
+  { url = "*.md", fg = "{{ui.chrome-fg-dark}}" },
+  { url = "*.json", fg = "{{ansi.yellow}}" },
+  { url = "*.toml", fg = "{{ansi.bright-yellow}}" },
+  { url = "*.yaml", fg = "{{ansi.bright-magenta}}" },
+  { url = "*.yml", fg = "{{ansi.bright-magenta}}" },
 ]
 
 
@@ -128,20 +128,20 @@ rules = [
 
 globs = []
 dirs = [
-	{ name = ".config", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = ".git", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = ".github", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = ".npm", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Desktop", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Development", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Documents", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Downloads", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Library", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Movies", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Music", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Pictures", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Public", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ name = "Videos", text = "", fg = "#{{ui.accent.normal.hex}}" },
+	{ name = ".config", text = "", fg = "{{ui.accent}}" },
+	{ name = ".git", text = "", fg = "{{ui.accent}}" },
+	{ name = ".github", text = "", fg = "{{ui.accent}}" },
+	{ name = ".npm", text = "", fg = "{{ui.accent}}" },
+	{ name = "Desktop", text = "", fg = "{{ui.accent}}" },
+	{ name = "Development", text = "", fg = "{{ui.accent}}" },
+	{ name = "Documents", text = "", fg = "{{ui.accent}}" },
+	{ name = "Downloads", text = "", fg = "{{ui.accent}}" },
+	{ name = "Library", text = "", fg = "{{ui.accent}}" },
+	{ name = "Movies", text = "", fg = "{{ui.accent}}" },
+	{ name = "Music", text = "", fg = "{{ui.accent}}" },
+	{ name = "Pictures", text = "", fg = "{{ui.accent}}" },
+	{ name = "Public", text = "", fg = "{{ui.accent}}" },
+	{ name = "Videos", text = "", fg = "{{ui.accent}}" },
 ]
 files = [
 	{ name = ".babelrc", text = "", fg = "yellow" },
@@ -858,8 +858,8 @@ conds = [
 	{ if = "dummy", text = "", fg = "red" },
 
 	# Fallback
-	{ if = "dir & hovered", text = "", fg = "#{{ui.accent.normal.hex}}" },
-	{ if = "dir", text = "", fg = "#{{ui.accent.normal.hex}}" },
+	{ if = "dir & hovered", text = "", fg = "{{ui.accent}}" },
+	{ if = "dir", text = "", fg = "{{ui.accent}}" },
 	{ if = "exec", text = "", fg = "green" },
 	{ if = "!dir", text = "", fg = "reset" },
 ]

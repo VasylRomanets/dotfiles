@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 
-"""Converts a bat (TextMate) .tmTheme plus a Ghostty theme into a Tinted8 scheme.
+"""Converts a bat (TextMate) .tmTheme plus a Ghostty theme into a scheme.
 
 The scheme is printed to stdout, ready to save as
-packages/theme/schemes/<slug>.yaml. The palette and terminal colors come from
-the Ghostty theme, the syntax colors from the .tmTheme: every Tinted8 syntax
-key gets the color the .tmTheme gives a token with that exact scope.
+packages/theme/schemes/<slug>.toml. The 16 terminal colors come from the
+Ghostty theme, the syntax colors from the .tmTheme: every syntax key gets the
+color the .tmTheme gives a token with that exact scope. The UI colors are
+taken from the .tmTheme and Ghostty where they define them, and blended from
+the background and foreground where they don't.
 
 REQUIRES: python3 (standard library only)
 
 USAGE: tmtheme-to-scheme.py <slug> <theme.tmTheme> <ghostty-theme-file>
            [--name NAME] [--credit URL] [--accent '#rrggbb']
 
-Check the result by hand: the values are an extraction, and Tinted8 has fewer
+Check the result by hand: the values are an extraction, and a scheme has fewer
 keys than a rich .tmTheme has scopes.
 """
 
@@ -22,8 +24,8 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 
-# The syntax keys tinted-builder 0.21.0 accepts (Tinted8 styling 0.2.0), with
-# parents listed before their children.
+# The syntax keys a scheme holds, parents listed before their children. The
+# templates read these, so every scheme lists all of them.
 SYNTAX_KEYS = [
     "comment", "comment.line", "comment.block", "comment.documentation",
     "invalid", "invalid.deprecated", "invalid.illegal", "string",
@@ -62,8 +64,7 @@ SYNTAX_KEYS = [
 ]
 
 # Delimiters sit inside the scope they delimit, so without a rule of their own
-# they take that scope's color (TextMate semantics). Tinted8's inheritance only
-# follows a key's own prefix, so this has to be spelled out in the scheme.
+# they take that scope's color (TextMate semantics).
 CONTAINERS = {
     "punctuation.definition.string": "string",
     "punctuation.definition.comment": "comment",
@@ -112,6 +113,14 @@ def hue_saturation(color):
     r, g, b = (c / 255 for c in rgb(color))
     hue, _, saturation = colorsys.rgb_to_hls(r, g, b)
     return hue * 360, saturation
+
+
+def shift_lightness(color, amount):
+    """Returns `color` with its HSL lightness moved by `amount`, clamped."""
+    r, g, b = (c / 255 for c in rgb(color))
+    hue, lightness, saturation = colorsys.rgb_to_hls(r, g, b)
+    r, g, b = colorsys.hls_to_rgb(hue, min(1.0, max(0.0, lightness + amount)), saturation)
+    return "#%02x%02x%02x" % (round(r * 255), round(g * 255), round(b * 255))
 
 
 # --- tmTheme ------------------------------------------------------------------
@@ -199,34 +208,18 @@ def convert(tmtheme_path, ghostty_path, accent=None):
     editor_bg = parse_color(settings.get("background"), bg) or bg
     editor_fg = parse_color(settings.get("foreground"), editor_bg) or fg
 
-    # Only keys whose color differs from what they would inherit are written.
-    syntax, resolved = {}, {}
+    syntax = {}
     for key in SYNTAX_KEYS:
         value = scope_color(key, rules, editor_bg)
         if value is None and key in CONTAINERS:
-            value = resolved[CONTAINERS[key]]
-        if value is None:
-            value = editor_fg
-        resolved[key] = value
-        ancestor = key.rsplit(".", 1)[0] if "." in key else None
-        while ancestor and ancestor not in syntax:
-            ancestor = ancestor.rsplit(".", 1)[0] if "." in ancestor else None
-        if ancestor is None or syntax[ancestor] != value:
-            syntax[key] = value
+            value = syntax[CONTAINERS[key]]
+        syntax[key] = value or editor_fg
 
-    comment = resolved["comment"]
-    number = resolved["constant.numeric"]
-    hue, saturation = hue_saturation(number)
+    comment = syntax["comment"]
 
-    # The black and white palette entries are the dark and light anchors:
-    # background and text in a dark scheme, swapped in a light one.
-    colors = {"black": bg, "white": fg} if dark else {"black": fg, "white": bg}
-    for name, index in (("red", 1), ("green", 2), ("yellow", 3), ("blue", 4), ("magenta", 5), ("cyan", 6)):
-        colors[name] = palette[index]
-        colors[name + "-bright"] = palette[index + 8]
-    colors["gray"] = comment
-    if 12 <= hue <= 48 and saturation > 0.25:
-        colors["orange"] = number
+    names = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"]
+    ansi = {name: palette[index] for index, name in enumerate(names)}
+    ansi.update({"bright-" + name: palette[index + 8] for index, name in enumerate(names)})
 
     selection = (
         parse_color(settings.get("selection"), editor_bg)
@@ -234,66 +227,40 @@ def convert(tmtheme_path, ghostty_path, accent=None):
         or blend(bg, fg, 0.15)
     )
     ui = {
-        "accent.normal": accent or palette[6],
-        "selection.background": selection,
-        "highlight.line.background": parse_color(settings.get("lineHighlight"), editor_bg) or blend(bg, fg, 0.06),
-        "cursor.normal.background": parse_color(settings.get("caret"), editor_bg)
-        or parse_color(options.get("cursor-color"))
-        or fg,
-        "border.normal": blend(bg, fg, 0.22),
-        "gutter.foreground": comment,
-        "chrome.background.normal": blend(bg, fg, 0.06),
-        "chrome.background.dark": blend(bg, "#000000", 0.30) if dark else blend(bg, fg, 0.10),
-        "chrome.foreground.dark": blend(bg, fg, 0.65),
+        "background": bg,
+        "foreground": fg,
+        "foreground-light": shift_lightness(fg, 0.12 if dark else -0.12),
+        "accent": accent or palette[6],
+        "selection-bg": selection,
+        "selection-fg": fg,
+        "line-highlight": parse_color(settings.get("lineHighlight"), editor_bg) or blend(bg, fg, 0.06),
+        "cursor": parse_color(settings.get("caret"), editor_bg) or parse_color(options.get("cursor-color")) or fg,
+        "border": blend(bg, fg, 0.22),
+        "gutter-bg": bg,
+        "gutter-fg": comment,
+        "chrome-bg": blend(bg, fg, 0.06),
+        "chrome-bg-dark": blend(bg, "#000000", 0.30) if dark else blend(bg, fg, 0.10),
+        "chrome-fg-dark": blend(bg, fg, 0.65),
+        "whitespace": comment,
+        "error": ansi["red"],
+        "warning": ansi["yellow"],
+        "success": ansi["green"],
     }
-    return dark, colors, syntax, ui
+    return dark, ansi, ui, syntax
 
 
-def nest(flat):
-    """{'a.b': v, 'a.c': w} -> {'a': {'b': v, 'c': w}}."""
-    tree = {}
-    for key, value in flat.items():
-        node = tree
-        *parents, leaf = key.split(".")
-        for part in parents:
-            node = node.setdefault(part, {})
-        node[leaf] = value
-    return tree
-
-
-def emit_tree(lines, tree, depth):
-    for key, value in tree.items():
-        pad = "  " * depth
-        if isinstance(value, dict):
-            lines.append(f"{pad}{key}:")
-            emit_tree(lines, value, depth + 1)
-        else:
-            lines.append(f'{pad}{key}: "{value}"')
-
-
-def render(slug, name, credit, tmtheme_name, ghostty_name, dark, colors, syntax, ui):
+def render(slug, name, credit, tmtheme_name, ghostty_name, dark, ansi, ui, syntax):
     lines = [
         f"# Converted from {tmtheme_name} and Ghostty theme {ghostty_name}.",
         "",
-        "scheme:",
-        '  system: "tinted8"',
-        "  supports:",
-        '    styling-spec: "0.2.0"',
-        '  author: "Vasyl Romanets"',
+        f'name = "{name}"',
+        f'variant = "{"dark" if dark else "light"}"',
     ]
     if credit:
-        lines.append(f'  theme-author: "{credit}"')
-    lines += [
-        f'  name: "{name}"',
-        f'  slug: "{slug}"',
-        f'variant: "{"dark" if dark else "light"}"',
-        "palette:",
-    ]
-    lines += [f'  {key}: "{value}"' for key, value in colors.items()]
-    lines.append("syntax:")
-    lines += [f'  {key}: "{value}"' for key, value in syntax.items()]
-    lines.append("ui:")
-    emit_tree(lines, nest(ui), 1)
+        lines.append(f'url = "{credit}"')
+    lines += ["", "[ansi]"] + [f'{key} = "{value}"' for key, value in ansi.items()]
+    lines += ["", "[ui]"] + [f'{key} = "{value}"' for key, value in ui.items()]
+    lines += ["", "[syntax]"] + [f'"{key}" = "{value}"' for key, value in syntax.items()]
     return "\n".join(lines) + "\n"
 
 
@@ -308,12 +275,12 @@ def main():
     args = parser.parse_args()
 
     name = args.name or " ".join(word.capitalize() for word in args.slug.split("-"))
-    dark, colors, syntax, ui = convert(args.tmtheme, args.ghostty, args.accent)
+    dark, ansi, ui, syntax = convert(args.tmtheme, args.ghostty, args.accent)
     sys.stdout.write(
         render(
             args.slug, name, args.credit,
             args.tmtheme.rsplit("/", 1)[-1], args.ghostty.rsplit("/", 1)[-1],
-            dark, colors, syntax, ui,
+            dark, ansi, ui, syntax,
         )
     )
 

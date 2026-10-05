@@ -27,7 +27,7 @@ Commands:
   sync            Symlink and copy every package into place
   setup-macos     Apply the macOS defaults
   prune-symlinks  Remove symlinks left behind by renamed or removed files
-  build-themes    Regenerate the per-theme files from the Tinted8 schemes
+  build-themes    Regenerate the per-theme files from the schemes
   help            Print this message
 
 Arguments:

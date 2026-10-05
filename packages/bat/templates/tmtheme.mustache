@@ -3,28 +3,28 @@
 <plist version="1.0">
 <dict>
   <key>name</key>
-  <string>{{{scheme.name}}}</string>
+  <string>{{name}}</string>
   <key>settings</key>
   <array>
     <dict>
       <key>settings</key>
       <dict>
         <key>background</key>
-        <string>#{{ui.global.background.normal.hex}}</string>
+        <string>{{ui.background}}</string>
         <key>foreground</key>
-        <string>#{{ui.global.foreground.normal.hex}}</string>
+        <string>{{ui.foreground}}</string>
         <key>caret</key>
-        <string>#{{ui.cursor.normal.background.hex}}</string>
+        <string>{{ui.cursor}}</string>
         <key>selection</key>
-        <string>#{{ui.selection.background.hex}}</string>
+        <string>{{ui.selection-bg}}</string>
         <key>lineHighlight</key>
-        <string>#{{ui.highlight.line.background.hex}}</string>
+        <string>{{ui.line-highlight}}</string>
         <key>invisibles</key>
-        <string>#{{ui.whitespace.foreground.hex}}</string>
+        <string>{{ui.whitespace}}</string>
         <key>gutter</key>
-        <string>#{{ui.gutter.background.hex}}</string>
+        <string>{{ui.gutter-bg}}</string>
         <key>gutterForeground</key>
-        <string>#{{ui.gutter.foreground.hex}}</string>
+        <string>{{ui.gutter-fg}}</string>
       </dict>
     </dict>
     <dict>
@@ -35,7 +35,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.comment.default.hex}}</string>
+        <string>{{syntax.comment}}</string>
       </dict>
     </dict>
     <dict>
@@ -46,7 +46,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.comment.line.hex}}</string>
+        <string>{{syntax.comment.line}}</string>
       </dict>
     </dict>
     <dict>
@@ -57,7 +57,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.comment.block.hex}}</string>
+        <string>{{syntax.comment.block}}</string>
       </dict>
     </dict>
     <dict>
@@ -68,7 +68,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.comment.documentation.hex}}</string>
+        <string>{{syntax.comment.documentation}}</string>
       </dict>
     </dict>
     <dict>
@@ -79,7 +79,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.invalid.default.hex}}</string>
+        <string>{{syntax.invalid}}</string>
       </dict>
     </dict>
     <dict>
@@ -90,7 +90,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.invalid.deprecated.hex}}</string>
+        <string>{{syntax.invalid.deprecated}}</string>
       </dict>
     </dict>
     <dict>
@@ -101,7 +101,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.invalid.illegal.hex}}</string>
+        <string>{{syntax.invalid.illegal}}</string>
       </dict>
     </dict>
     <dict>
@@ -112,7 +112,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.string.default.hex}}</string>
+        <string>{{syntax.string}}</string>
       </dict>
     </dict>
     <dict>
@@ -123,7 +123,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.string.quoted.default.hex}}</string>
+        <string>{{syntax.string.quoted}}</string>
       </dict>
     </dict>
     <dict>
@@ -134,7 +134,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.string.quoted.single.hex}}</string>
+        <string>{{syntax.string.quoted.single}}</string>
       </dict>
     </dict>
     <dict>
@@ -145,7 +145,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.string.quoted.double.hex}}</string>
+        <string>{{syntax.string.quoted.double}}</string>
       </dict>
     </dict>
     <dict>
@@ -156,7 +156,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.string.regexp.hex}}</string>
+        <string>{{syntax.string.regexp}}</string>
       </dict>
     </dict>
     <dict>
@@ -167,7 +167,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.string.template.hex}}</string>
+        <string>{{syntax.string.template}}</string>
       </dict>
     </dict>
     <dict>
@@ -178,7 +178,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.string.interpolated.hex}}</string>
+        <string>{{syntax.string.interpolated}}</string>
       </dict>
     </dict>
     <dict>
@@ -189,7 +189,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.string.unquoted.hex}}</string>
+        <string>{{syntax.string.unquoted}}</string>
       </dict>
     </dict>
     <dict>
@@ -200,7 +200,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.string.other.hex}}</string>
+        <string>{{syntax.string.other}}</string>
       </dict>
     </dict>
     <dict>
@@ -211,7 +211,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.default.hex}}</string>
+        <string>{{syntax.constant}}</string>
       </dict>
     </dict>
     <dict>
@@ -222,7 +222,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.numeric.default.hex}}</string>
+        <string>{{syntax.constant.numeric}}</string>
       </dict>
     </dict>
     <dict>
@@ -233,7 +233,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.numeric.integer.hex}}</string>
+        <string>{{syntax.constant.numeric.integer}}</string>
       </dict>
     </dict>
     <dict>
@@ -244,7 +244,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.numeric.float.hex}}</string>
+        <string>{{syntax.constant.numeric.float}}</string>
       </dict>
     </dict>
     <dict>
@@ -255,7 +255,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.numeric.hex.hex}}</string>
+        <string>{{syntax.constant.numeric.hex}}</string>
       </dict>
     </dict>
     <dict>
@@ -266,7 +266,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.language.hex}}</string>
+        <string>{{syntax.constant.language}}</string>
       </dict>
     </dict>
     <dict>
@@ -277,7 +277,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.character.default.hex}}</string>
+        <string>{{syntax.constant.character}}</string>
       </dict>
     </dict>
     <dict>
@@ -288,7 +288,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.character.escape.hex}}</string>
+        <string>{{syntax.constant.character.escape}}</string>
       </dict>
     </dict>
     <dict>
@@ -299,7 +299,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.character.entity.hex}}</string>
+        <string>{{syntax.constant.character.entity}}</string>
       </dict>
     </dict>
     <dict>
@@ -310,7 +310,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.other.hex}}</string>
+        <string>{{syntax.constant.other}}</string>
       </dict>
     </dict>
     <dict>
@@ -321,7 +321,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.default.hex}}</string>
+        <string>{{syntax.entity}}</string>
       </dict>
     </dict>
     <dict>
@@ -332,7 +332,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.default.hex}}</string>
+        <string>{{syntax.entity.name}}</string>
       </dict>
     </dict>
     <dict>
@@ -343,7 +343,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.class.hex}}</string>
+        <string>{{syntax.entity.name.class}}</string>
       </dict>
     </dict>
     <dict>
@@ -354,7 +354,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.function.default.hex}}</string>
+        <string>{{syntax.entity.name.function}}</string>
       </dict>
     </dict>
     <dict>
@@ -365,7 +365,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.function.constructor.hex}}</string>
+        <string>{{syntax.entity.name.function.constructor}}</string>
       </dict>
     </dict>
     <dict>
@@ -376,7 +376,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.label.hex}}</string>
+        <string>{{syntax.entity.name.label}}</string>
       </dict>
     </dict>
     <dict>
@@ -387,7 +387,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.tag.hex}}</string>
+        <string>{{syntax.entity.name.tag}}</string>
       </dict>
     </dict>
     <dict>
@@ -398,7 +398,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.type.default.hex}}</string>
+        <string>{{syntax.entity.name.type}}</string>
       </dict>
     </dict>
     <dict>
@@ -409,7 +409,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.type.class.hex}}</string>
+        <string>{{syntax.entity.name.type.class}}</string>
       </dict>
     </dict>
     <dict>
@@ -420,7 +420,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.type.enum.hex}}</string>
+        <string>{{syntax.entity.name.type.enum}}</string>
       </dict>
     </dict>
     <dict>
@@ -431,7 +431,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.type.struct.hex}}</string>
+        <string>{{syntax.entity.name.type.struct}}</string>
       </dict>
     </dict>
     <dict>
@@ -442,7 +442,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.namespace.hex}}</string>
+        <string>{{syntax.entity.name.namespace}}</string>
       </dict>
     </dict>
     <dict>
@@ -453,7 +453,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.section.hex}}</string>
+        <string>{{syntax.entity.name.section}}</string>
       </dict>
     </dict>
     <dict>
@@ -464,7 +464,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.other.default.hex}}</string>
+        <string>{{syntax.entity.other}}</string>
       </dict>
     </dict>
     <dict>
@@ -475,7 +475,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.other.attribute-name.hex}}</string>
+        <string>{{syntax.entity.other.attribute-name}}</string>
       </dict>
     </dict>
     <dict>
@@ -486,7 +486,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.other.inherited-class.hex}}</string>
+        <string>{{syntax.entity.other.inherited-class}}</string>
       </dict>
     </dict>
     <dict>
@@ -497,7 +497,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.default.hex}}</string>
+        <string>{{syntax.keyword}}</string>
       </dict>
     </dict>
     <dict>
@@ -508,7 +508,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.control.default.hex}}</string>
+        <string>{{syntax.keyword.control}}</string>
       </dict>
     </dict>
     <dict>
@@ -519,7 +519,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.control.import.hex}}</string>
+        <string>{{syntax.keyword.control.import}}</string>
       </dict>
     </dict>
     <dict>
@@ -530,7 +530,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.control.flow.hex}}</string>
+        <string>{{syntax.keyword.control.flow}}</string>
       </dict>
     </dict>
     <dict>
@@ -541,7 +541,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.declaration.hex}}</string>
+        <string>{{syntax.keyword.declaration}}</string>
       </dict>
     </dict>
     <dict>
@@ -552,7 +552,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.operator.hex}}</string>
+        <string>{{syntax.keyword.operator}}</string>
       </dict>
     </dict>
     <dict>
@@ -563,7 +563,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.other.hex}}</string>
+        <string>{{syntax.keyword.other}}</string>
       </dict>
     </dict>
     <dict>
@@ -574,7 +574,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.storage.default.hex}}</string>
+        <string>{{syntax.storage}}</string>
       </dict>
     </dict>
     <dict>
@@ -585,7 +585,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.storage.type.hex}}</string>
+        <string>{{syntax.storage.type}}</string>
       </dict>
     </dict>
     <dict>
@@ -596,7 +596,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.storage.modifier.hex}}</string>
+        <string>{{syntax.storage.modifier}}</string>
       </dict>
     </dict>
     <dict>
@@ -607,7 +607,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.support.default.hex}}</string>
+        <string>{{syntax.support}}</string>
       </dict>
     </dict>
     <dict>
@@ -618,7 +618,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.support.function.default.hex}}</string>
+        <string>{{syntax.support.function}}</string>
       </dict>
     </dict>
     <dict>
@@ -629,7 +629,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.support.function.builtin.hex}}</string>
+        <string>{{syntax.support.function.builtin}}</string>
       </dict>
     </dict>
     <dict>
@@ -640,7 +640,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.support.class.hex}}</string>
+        <string>{{syntax.support.class}}</string>
       </dict>
     </dict>
     <dict>
@@ -651,7 +651,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.support.type.hex}}</string>
+        <string>{{syntax.support.type}}</string>
       </dict>
     </dict>
     <dict>
@@ -662,7 +662,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.support.constant.hex}}</string>
+        <string>{{syntax.support.constant}}</string>
       </dict>
     </dict>
     <dict>
@@ -673,7 +673,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.support.variable.hex}}</string>
+        <string>{{syntax.support.variable}}</string>
       </dict>
     </dict>
     <dict>
@@ -684,7 +684,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.support.other.hex}}</string>
+        <string>{{syntax.support.other}}</string>
       </dict>
     </dict>
     <dict>
@@ -695,7 +695,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.variable.default.hex}}</string>
+        <string>{{syntax.variable}}</string>
       </dict>
     </dict>
     <dict>
@@ -706,7 +706,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.variable.parameter.hex}}</string>
+        <string>{{syntax.variable.parameter}}</string>
       </dict>
     </dict>
     <dict>
@@ -717,7 +717,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.variable.language.hex}}</string>
+        <string>{{syntax.variable.language}}</string>
       </dict>
     </dict>
     <dict>
@@ -728,7 +728,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.variable.other.default.hex}}</string>
+        <string>{{syntax.variable.other}}</string>
       </dict>
     </dict>
     <dict>
@@ -739,7 +739,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.variable.other.constant.hex}}</string>
+        <string>{{syntax.variable.other.constant}}</string>
       </dict>
     </dict>
     <dict>
@@ -750,7 +750,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.variable.other.property.hex}}</string>
+        <string>{{syntax.variable.other.property}}</string>
       </dict>
     </dict>
     <dict>
@@ -761,7 +761,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.variable.other.object.hex}}</string>
+        <string>{{syntax.variable.other.object}}</string>
       </dict>
     </dict>
     <dict>
@@ -772,7 +772,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.default.hex}}</string>
+        <string>{{syntax.punctuation}}</string>
       </dict>
     </dict>
     <dict>
@@ -783,7 +783,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.separator.hex}}</string>
+        <string>{{syntax.punctuation.separator}}</string>
       </dict>
     </dict>
     <dict>
@@ -794,7 +794,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.definition.default.hex}}</string>
+        <string>{{syntax.punctuation.definition}}</string>
       </dict>
     </dict>
     <dict>
@@ -805,7 +805,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.definition.string.hex}}</string>
+        <string>{{syntax.punctuation.definition.string}}</string>
       </dict>
     </dict>
     <dict>
@@ -816,7 +816,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.definition.comment.hex}}</string>
+        <string>{{syntax.punctuation.definition.comment}}</string>
       </dict>
     </dict>
     <dict>
@@ -827,7 +827,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.section.hex}}</string>
+        <string>{{syntax.punctuation.section}}</string>
       </dict>
     </dict>
     <dict>
@@ -838,7 +838,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.brackets.default.hex}}</string>
+        <string>{{syntax.punctuation.brackets}}</string>
       </dict>
     </dict>
     <dict>
@@ -849,7 +849,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.brackets.angle.hex}}</string>
+        <string>{{syntax.punctuation.brackets.angle}}</string>
       </dict>
     </dict>
     <dict>
@@ -860,7 +860,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.brackets.curly.hex}}</string>
+        <string>{{syntax.punctuation.brackets.curly}}</string>
       </dict>
     </dict>
     <dict>
@@ -871,7 +871,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.brackets.round.hex}}</string>
+        <string>{{syntax.punctuation.brackets.round}}</string>
       </dict>
     </dict>
     <dict>
@@ -882,7 +882,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.brackets.square.hex}}</string>
+        <string>{{syntax.punctuation.brackets.square}}</string>
       </dict>
     </dict>
     <dict>
@@ -893,7 +893,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.default.hex}}</string>
+        <string>{{syntax.markup}}</string>
       </dict>
     </dict>
     <dict>
@@ -904,7 +904,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.bold.hex}}</string>
+        <string>{{syntax.markup.bold}}</string>
         <key>fontStyle</key>
         <string>bold</string>
       </dict>
@@ -917,7 +917,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.italic.hex}}</string>
+        <string>{{syntax.markup.italic}}</string>
         <key>fontStyle</key>
         <string>italic</string>
       </dict>
@@ -930,7 +930,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.quote.hex}}</string>
+        <string>{{syntax.markup.quote}}</string>
       </dict>
     </dict>
     <dict>
@@ -941,7 +941,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.underline.hex}}</string>
+        <string>{{syntax.markup.underline}}</string>
         <key>fontStyle</key>
         <string>underline</string>
       </dict>
@@ -954,7 +954,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.heading.hex}}</string>
+        <string>{{syntax.markup.heading}}</string>
         <key>fontStyle</key>
         <string>bold</string>
       </dict>
@@ -967,7 +967,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.list.default.hex}}</string>
+        <string>{{syntax.markup.list}}</string>
       </dict>
     </dict>
     <dict>
@@ -978,7 +978,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.list.numbered.hex}}</string>
+        <string>{{syntax.markup.list.numbered}}</string>
       </dict>
     </dict>
     <dict>
@@ -989,7 +989,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.list.unnumbered.hex}}</string>
+        <string>{{syntax.markup.list.unnumbered}}</string>
       </dict>
     </dict>
     <dict>
@@ -1000,7 +1000,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.link.hex}}</string>
+        <string>{{syntax.markup.link}}</string>
         <key>fontStyle</key>
         <string>underline</string>
       </dict>
@@ -1013,7 +1013,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.raw.hex}}</string>
+        <string>{{syntax.markup.raw}}</string>
       </dict>
     </dict>
     <dict>
@@ -1024,7 +1024,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.inserted.hex}}</string>
+        <string>{{syntax.markup.inserted}}</string>
       </dict>
     </dict>
     <dict>
@@ -1035,7 +1035,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.changed.hex}}</string>
+        <string>{{syntax.markup.changed}}</string>
       </dict>
     </dict>
     <dict>
@@ -1046,7 +1046,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.markup.deleted.hex}}</string>
+        <string>{{syntax.markup.deleted}}</string>
       </dict>
     </dict>
     <dict>
@@ -1057,7 +1057,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.source.hex}}</string>
+        <string>{{syntax.source}}</string>
       </dict>
     </dict>
     <dict>
@@ -1068,7 +1068,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.text.hex}}</string>
+        <string>{{syntax.text}}</string>
       </dict>
     </dict>
     <dict>
@@ -1079,7 +1079,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.default.hex}}</string>
+        <string>{{syntax.meta}}</string>
       </dict>
     </dict>
     <dict>
@@ -1090,7 +1090,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.function.hex}}</string>
+        <string>{{syntax.meta.function}}</string>
       </dict>
     </dict>
     <dict>
@@ -1101,7 +1101,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.class.hex}}</string>
+        <string>{{syntax.meta.class}}</string>
       </dict>
     </dict>
     <dict>
@@ -1112,7 +1112,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.block.hex}}</string>
+        <string>{{syntax.meta.block}}</string>
       </dict>
     </dict>
     <dict>
@@ -1123,7 +1123,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.tag.hex}}</string>
+        <string>{{syntax.meta.tag}}</string>
       </dict>
     </dict>
     <dict>
@@ -1134,7 +1134,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.type.hex}}</string>
+        <string>{{syntax.meta.type}}</string>
       </dict>
     </dict>
     <dict>
@@ -1145,7 +1145,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.import.hex}}</string>
+        <string>{{syntax.meta.import}}</string>
       </dict>
     </dict>
     <dict>
@@ -1156,7 +1156,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.preprocessor.hex}}</string>
+        <string>{{syntax.meta.preprocessor}}</string>
       </dict>
     </dict>
     <dict>
@@ -1167,7 +1167,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.embedded.hex}}</string>
+        <string>{{syntax.meta.embedded}}</string>
       </dict>
     </dict>
     <dict>
@@ -1178,7 +1178,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.object.hex}}</string>
+        <string>{{syntax.meta.object}}</string>
       </dict>
     </dict>
     <dict>
@@ -1189,7 +1189,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.meta.annotation.hex}}</string>
+        <string>{{syntax.meta.annotation}}</string>
       </dict>
     </dict>
     <dict>
@@ -1200,7 +1200,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.character.default.hex}}</string>
+        <string>{{syntax.constant.character}}</string>
       </dict>
     </dict>
     <dict>
@@ -1211,7 +1211,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.character.escape.hex}}</string>
+        <string>{{syntax.constant.character.escape}}</string>
       </dict>
     </dict>
     <dict>
@@ -1222,7 +1222,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.constant.numeric.default.hex}}</string>
+        <string>{{syntax.constant.numeric}}</string>
       </dict>
     </dict>
     <dict>
@@ -1233,7 +1233,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.class.hex}}</string>
+        <string>{{syntax.entity.name.class}}</string>
       </dict>
     </dict>
     <dict>
@@ -1244,7 +1244,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.entity.name.function.default.hex}}</string>
+        <string>{{syntax.entity.name.function}}</string>
       </dict>
     </dict>
     <dict>
@@ -1255,7 +1255,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.control.default.hex}}</string>
+        <string>{{syntax.keyword.control}}</string>
       </dict>
     </dict>
     <dict>
@@ -1266,7 +1266,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.operator.hex}}</string>
+        <string>{{syntax.keyword.operator}}</string>
       </dict>
     </dict>
     <dict>
@@ -1277,7 +1277,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.keyword.other.hex}}</string>
+        <string>{{syntax.keyword.other}}</string>
       </dict>
     </dict>
     <dict>
@@ -1288,7 +1288,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.punctuation.separator.hex}}</string>
+        <string>{{syntax.punctuation.separator}}</string>
       </dict>
     </dict>
     <dict>
@@ -1299,7 +1299,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.support.function.default.hex}}</string>
+        <string>{{syntax.support.function}}</string>
       </dict>
     </dict>
     <dict>
@@ -1310,7 +1310,7 @@
       <key>settings</key>
       <dict>
         <key>foreground</key>
-        <string>#{{syntax.variable.other.property.hex}}</string>
+        <string>{{syntax.variable.other.property}}</string>
       </dict>
     </dict>
   </array>

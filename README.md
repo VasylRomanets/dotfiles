@@ -91,7 +91,7 @@ A package can also define `hooks/pre-setup.zsh` and/or `hooks/post-setup.zsh` fo
 
 ## Themes
 
-`theme` switches the theme across Ghostty, bat, delta, fzf, micro, vivid, yazi and `ls`/eza colors. Each theme is one [Tinted8](https://github.com/tinted-theming/home/tree/main/specs/tinted8) scheme in `packages/theme/schemes`; `dots build-themes` renders the per-tool files from it (needs [`tinted-builder-rust`](https://github.com/tinted-theming/tinted-builder-rust) 0.21.x) and the results are committed, so a normal `dots sync` doesn't need the builder.
+`theme` switches the theme across Ghostty, bat, delta, fzf, micro, vivid, yazi and `ls`/eza colors. Each theme is one scheme in `packages/theme/schemes` (its 16 terminal colors, UI colors and syntax colors in a small TOML file); `dots build-themes` renders the per-tool files from it and the results are committed, so a normal `dots sync` doesn't need to build anything.
 
 ## Credits
 

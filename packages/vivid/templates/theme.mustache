@@ -1,16 +1,16 @@
 colors:
-  base: "{{ui.global.background.normal.hex}}"
-  surface: "{{ui.chrome.background.normal.hex}}"
-  overlay: "{{ui.border.normal.hex}}"
-  muted: "{{syntax.comment.default.hex}}"
-  subtle: "{{ui.chrome.foreground.dark.hex}}"
-  text: "{{ui.global.foreground.normal.hex}}"
-  love: "{{palette.red.normal.hex}}"
-  gold: "{{palette.yellow.normal.hex}}"
-  rose: "{{palette.magenta.bright.hex}}"
-  pine: "{{palette.blue.normal.hex}}"
-  foam: "{{ui.accent.normal.hex}}"
-  iris: "{{palette.magenta.normal.hex}}"
+  base: "{{ui.background|nohash}}"
+  surface: "{{ui.chrome-bg|nohash}}"
+  overlay: "{{ui.border|nohash}}"
+  muted: "{{syntax.comment|nohash}}"
+  subtle: "{{ui.chrome-fg-dark|nohash}}"
+  text: "{{ui.foreground|nohash}}"
+  love: "{{ansi.red|nohash}}"
+  gold: "{{ansi.yellow|nohash}}"
+  rose: "{{ansi.bright-magenta|nohash}}"
+  pine: "{{ansi.blue|nohash}}"
+  foam: "{{ui.accent|nohash}}"
+  iris: "{{ansi.magenta|nohash}}"
 
 core:
   normal_text: {}

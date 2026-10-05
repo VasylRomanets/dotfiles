@@ -1,10 +1,9 @@
 # --- Tap ----------------------------------------------------------------------
-tap "code-hex/tap", trusted: true          # required for neo-cowsay
-tap "jackielii/tap", trusted: true         # required for skhd-zig
-tap "rose-pine/tap", trusted: true         # required for bloom
-tap "tinted-theming/tinted", trusted: true # required for tinted-builder-rust
-tap "vasylromanets/tap", trusted: true     # required for spinpacks
-tap "veirt/veirt", trusted: true           # required for weathr
+tap "code-hex/tap", trusted: true      # required for neo-cowsay
+tap "jackielii/tap", trusted: true     # required for skhd-zig
+tap "rose-pine/tap", trusted: true     # required for bloom
+tap "vasylromanets/tap", trusted: true # required for spinpacks
+tap "veirt/veirt", trusted: true       # required for weathr
 
 # --- Brew: Must-have ----------------------------------------------------------
 brew "atuin"                   # fuzzy-search shell history and sync it across machines
@@ -34,28 +33,27 @@ brew "zsh-autosuggestions"     # fish-like command suggestions from history
 brew "zsh-syntax-highlighting" # highlight commands as you type
 
 # --- Brew: Nice-to-have -------------------------------------------------------
-brew "asciinema"           # record and share terminal sessions
-brew "bloom"               # Rosé Pine themes generator
-brew "btop"                # resource and process monitor (better htop)
-brew "croc"                # encrypted peer-to-peer file transfer
-brew "duf"                 # mounted disk usage overview (better df)
-brew "faker"               # fake data generator
-brew "grex"                # generate regex from provided examples
-brew "jrnl"                # journal and note taker
-brew "mole"                # system cleaner and optimizer (like CleanMyMac but CLI)
-brew "navi"                # interactive cheatsheets for CLI commands
-brew "shellcheck"          # static analysis tool for shell scripts
-brew "stow"                # symlink farm manager
-brew "taplo"               # TOML toolkit
-brew "tealdeer"            # simplified man pages (tldr command)
-brew "thefuck"             # auto-correct mistyped commands
-brew "tinted-builder-rust" # build per-theme files from Tinted8 schemes
-brew "tokei"               # count lines of code by language (better cloc)
-brew "trash-cli"           # move files to trash instead of permanently deleting (safer rm)
-brew "vivid"               # LS_COLORS theme generator (colorizes output of eza, fd, etc)
-brew "watch"               # run commands periodically
-brew "wifi-password"       # show password for connected Wi-Fi network
-brew "xdg-ninja"           # check $HOME for unwanted files and directories
+brew "asciinema"     # record and share terminal sessions
+brew "bloom"         # Rosé Pine themes generator
+brew "btop"          # resource and process monitor (better htop)
+brew "croc"          # encrypted peer-to-peer file transfer
+brew "duf"           # mounted disk usage overview (better df)
+brew "faker"         # fake data generator
+brew "grex"          # generate regex from provided examples
+brew "jrnl"          # journal and note taker
+brew "mole"          # system cleaner and optimizer (like CleanMyMac but CLI)
+brew "navi"          # interactive cheatsheets for CLI commands
+brew "shellcheck"    # static analysis tool for shell scripts
+brew "stow"          # symlink farm manager
+brew "taplo"         # TOML toolkit
+brew "tealdeer"      # simplified man pages (tldr command)
+brew "thefuck"       # auto-correct mistyped commands
+brew "tokei"         # count lines of code by language (better cloc)
+brew "trash-cli"     # move files to trash instead of permanently deleting (safer rm)
+brew "vivid"         # LS_COLORS theme generator (colorizes output of eza, fd, etc)
+brew "watch"         # run commands periodically
+brew "wifi-password" # show password for connected Wi-Fi network
+brew "xdg-ninja"     # check $HOME for unwanted files and directories
 
 # --- Brew: Fun & Rice ---------------------------------------------------------
 brew "asciiquarium" # aquarium animation
