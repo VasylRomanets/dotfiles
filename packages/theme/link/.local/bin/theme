@@ -35,6 +35,7 @@ Commands:
   toggle                 Switch to the counterpart of the other kind, light or dark
   reload                 Re-apply the current theme
   current                Print the current theme's name
+  palette [name]         Print the theme's 16 terminal colors, the current theme's by default
   list, ls [dark|light]  Print every available theme's name, optionally of one kind
   help                   Print this message
 
@@ -146,6 +147,34 @@ if [[ "$1" == "list" || "$1" == "ls" ]]; then
       echo
     fi
   done
+  exit 0
+elif [[ "$1" == "palette" ]]; then
+  name=${2:-$(<"$state_file")}
+  if [[ -z "$name" ]]; then
+    echo "No theme applied yet." >&2
+    exit 1
+  fi
+  if ! printf '%s\n' "${themes[@]}" | grep -qxF "$name"; then
+    echo "theme: no theme named '$name'." >&2
+    exit 1
+  fi
+  # Defines ANSI_0 to ANSI_15 as hex digits.
+  # shellcheck source=/dev/null
+  source "$data_dir/colors/$name.env"
+  pretty_name "$name"
+  echo
+  # Two rows like a terminal's color chart: the 8 normal colors, then the 8
+  # bright ones.
+  for row in 0 8; do
+    for ((i = row; i < row + 8; i++)); do
+      hex=ANSI_$i
+      hex=${!hex}
+      printf '\033[48;2;%d;%d;%dm   \033[0m ' "$((16#${hex:0:2}))" "$((16#${hex:2:2}))" "$((16#${hex:4:2}))"
+    done
+    echo
+  done
+  printf '%-4s' blk red grn ylw blu mag cyn wht
+  echo
   exit 0
 elif [[ "$1" == "random" ]]; then
   kind=$2
