@@ -114,6 +114,7 @@ select_packages() {
 
   for name in "${only[@]}"; do
     (( ${all[(Ie)$name]} )) || {
+      echo
       error "No package named '$name'. Available: ${(j:, :)all}"
       exit 1
     }
