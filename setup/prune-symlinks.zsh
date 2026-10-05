@@ -31,7 +31,7 @@ prune_orphaned_symlinks() {
     [[ -n "$dest" ]] || continue
     # Still broken? (leave alone e.g. links into a currently-unmounted drive).
     if [[ ! -e "$dest" ]]; then
-      warning "Removing orphaned symlink: $dest"
+      echo "Removing orphaned symlink: $dest"
       rm -f "$dest"
       (( ++pruned ))
     fi
