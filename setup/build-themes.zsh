@@ -8,7 +8,7 @@ DOTFILES="$(dirname "$SETUP_PATH")"
 source "$SETUP_PATH/_lib.zsh"
 
 SCHEMES_DIR="$DOTFILES/packages/theme/schemes"
-SYNTAX_DIR="$DOTFILES/packages/theme/syntax"
+BAT_THEMES="$DOTFILES/packages/bat/link/.config/bat/themes"
 YAZI_FLAVORS="$DOTFILES/packages/yazi/link/.config/yazi/flavors"
 
 check_deps() {
@@ -28,28 +28,14 @@ build_packages() {
   }
 }
 
-# A theme can bring its own TextMate theme in packages/theme/syntax, for syntax
-# colors a scheme can't match: a .tmTheme names any scope, a scheme only about
-# 105 keys. It replaces the one generated for bat, and must run before the
-# mirror below so yazi's previews use it too.
-apply_syntax_themes() {
-  local file
-  for file in "$SYNTAX_DIR"/*.tmTheme(N); do
-    if [[ ! -f "$SCHEMES_DIR/${${file:t}%.tmTheme}.toml" ]]; then
-      warning "No scheme for syntax/${file:t}."
-      continue
-    fi
-    cp "$file" "$DOTFILES/packages/bat/link/.config/bat/themes/${file:t}"
-  done
-}
-
-# yazi flavors are generated into <slug>-generated.yazi, next to any flavor a
-# theme's author wrote, which is named <slug>.yazi and wins (see the yazi hook).
-# A generated copy such a flavor shadows would never be used, so it is dropped.
-prune_shadowed_flavors() {
-  local dir
-  for dir in "$YAZI_FLAVORS"/*-generated.yazi(N/); do
-    [[ -d "$YAZI_FLAVORS/${${dir:t}%-generated.yazi}.yazi" ]] && rm -rf "$dir"
+# Themes are generated as <slug>-generated, next to anything a person supplied
+# as <slug>: an upstream .tmTheme for bat, a flavor a theme's author wrote for
+# yazi. The supplied one wins (see the bat and yazi hooks), so a generated copy
+# it shadows would never be used, and is dropped.
+prune_shadowed() {
+  local dir=$1 extension=$2 generated
+  for generated in "$dir"/*-generated.$extension(N); do
+    [[ -e "${generated%-generated.$extension}.$extension" ]] && rm -rf "$generated"
   done
 }
 
@@ -57,10 +43,12 @@ prune_shadowed_flavors() {
 # looks for it inside the flavor directory. Flavors written by hand carry their
 # own.
 mirror_bat_themes_to_yazi() {
-  local theme flavor_dir
-  for theme in "$DOTFILES"/packages/bat/link/.config/bat/themes/*.tmTheme(N); do
-    flavor_dir="$YAZI_FLAVORS/${${theme:t}%.tmTheme}-generated.yazi"
-    [[ -d "$flavor_dir" ]] && cp "$theme" "$flavor_dir/tmtheme.xml"
+  local flavor_dir slug theme
+  for flavor_dir in "$YAZI_FLAVORS"/*-generated.yazi(N/); do
+    slug="${${flavor_dir:t}%-generated.yazi}"
+    theme="$BAT_THEMES/$slug.tmTheme"
+    [[ -f "$theme" ]] || theme="$BAT_THEMES/$slug-generated.tmTheme"
+    cp "$theme" "$flavor_dir/tmtheme.xml"
   done
 }
 
@@ -71,8 +59,8 @@ main() {
   echo "Building themes..."
 
   build_packages
-  apply_syntax_themes
-  prune_shadowed_flavors
+  prune_shadowed "$BAT_THEMES" tmTheme
+  prune_shadowed "$YAZI_FLAVORS" yazi
   mirror_bat_themes_to_yazi
 
   echo

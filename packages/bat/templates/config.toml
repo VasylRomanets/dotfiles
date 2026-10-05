@@ -3,4 +3,4 @@
 # output is where each theme's file goes, relative to the package.
 
 [tmtheme]
-output = "link/.config/bat/themes/{{slug}}.tmTheme"
+output = "link/.config/bat/themes/{{slug}}-generated.tmTheme"

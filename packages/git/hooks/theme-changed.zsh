@@ -4,7 +4,7 @@
 # theme into the file the tracked git config includes — git re-reads config on
 # every invocation, so nothing else needs to happen here.
 #
-# delta's syntax-theme is the bat theme of the same name. The tint behind added
+# delta's syntax-theme is the bat theme of that slug, <slug> or <slug>-generated. The tint behind added
 # and removed lines is the theme's green or red blended into its background,
 # which a Mustache template can't compute, so it's worked out here from the
 # colors packages/theme/templates exports.
@@ -26,11 +26,14 @@ blend() {
   print -r -- "$out"
 }
 
+bat_theme=$theme
+[[ -e "${XDG_CONFIG_HOME:-$HOME/.config}/bat/themes/$theme.tmTheme" ]] || bat_theme="$theme-generated"
+
 git_delta_include="${XDG_STATE_HOME:-$HOME/.local/state}/theme/generated/delta.gitconfig"
 mkdir -p "${git_delta_include:h}"
 cat >"$git_delta_include" <<EOF
 [delta]
-  syntax-theme = "$theme"
+  syntax-theme = "$bat_theme"
   minus-style = syntax "#$(blend $BG $RED 15)"
   minus-emph-style = syntax "#$(blend $BG $RED 30)"
   plus-style = syntax "#$(blend $BG $GREEN 15)"

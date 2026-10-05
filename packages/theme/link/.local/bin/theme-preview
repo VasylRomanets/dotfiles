@@ -22,8 +22,12 @@ slug=$1
 # shellcheck source=/dev/null
 source "$data_dir/colors/$slug.env" 2>/dev/null
 
+# bat's theme for a slug is the supplied one, else the generated one.
+bat_theme=$slug
+[[ -e "${XDG_CONFIG_HOME:-$HOME/.config}/bat/themes/$slug.tmTheme" ]] || bat_theme="$slug-generated"
+
 output=$(bat --color=always --paging=never --terminal-width="${FZF_PREVIEW_COLUMNS:-100}" \
-  --theme="$slug" -- "$sample" 2>&1)
+  --theme="$bat_theme" -- "$sample" 2>&1)
 
 # Without a background to paint, show bat's output as is.
 if [[ -z "$BG" ]]; then
