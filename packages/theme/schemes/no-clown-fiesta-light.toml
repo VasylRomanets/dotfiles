@@ -3,6 +3,7 @@
 name = "No Clown Fiesta Light"
 variant = "light"
 url = "https://github.com/no-clown-fiesta/no-clown-fiesta.nvim"
+description = "The light version of No Clown Fiesta, which avoids looking like a clown fiesta."
 
 [ansi]
 black = "#d6d6d6"

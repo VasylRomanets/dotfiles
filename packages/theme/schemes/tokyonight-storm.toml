@@ -3,6 +3,7 @@
 name = "Tokyonight Storm"
 variant = "dark"
 url = "https://github.com/folke/tokyonight.nvim"
+description = "The Storm variant of Tokyo Night, with a lighter blue-grey background."
 
 [ansi]
 black = "#1d202f"

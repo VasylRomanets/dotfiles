@@ -13,7 +13,8 @@ A template is plain text with {{key}} placeholders, replaced by the value of
 that key in the scheme (packages/theme/schemes/<slug>.toml). A key is a section
 and a name, like {{ui.accent}}; the top-level keys are {{name}}, {{variant}}
 and {{url}}, and {{slug}} is the scheme's file name. Colors are "#rrggbb"; the
-filter {{ui.accent|nohash}} drops the "#". A key that doesn't exist is an
+filter {{ui.accent|nohash}} drops the "#", and {{description|shell}} escapes single
+quotes for a value inside '...' in a shell file. A key that doesn't exist is an
 error, so a typo can't ship an empty color.
 
 Schemes and configs use a small subset of TOML: [section] headers and
@@ -67,6 +68,8 @@ def render(text, values, where):
         value = values[key]
         if filter_ == "nohash":
             return value.lstrip("#")
+        if filter_ == "shell":
+            return value.replace("'", "'\\''")
         if filter_:
             sys.exit(f"{where}: unknown filter '{filter_}'")
         return value

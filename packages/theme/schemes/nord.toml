@@ -3,6 +3,7 @@
 name = "Nord"
 variant = "dark"
 url = "https://github.com/nordtheme/nord"
+description = "An arctic, north-bluish color palette."
 
 [ansi]
 black = "#3b4252"

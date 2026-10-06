@@ -3,6 +3,7 @@
 name = "Birds Of Paradise"
 variant = "dark"
 url = "https://github.com/textmate/Birds-of-Paradise-for-TextMate"
+description = "A brown-based, light-on-dark theme inspired by Birds of Paradise for Coda."
 
 [ansi]
 black = "#573d26"

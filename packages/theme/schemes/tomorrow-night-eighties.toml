@@ -3,6 +3,7 @@
 name = "Tomorrow Night Eighties"
 variant = "dark"
 url = "https://github.com/chriskempson/tomorrow-theme"
+description = "A clean color scheme family with one light and four night variants."
 
 [ansi]
 black = "#000000"

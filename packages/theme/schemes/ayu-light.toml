@@ -3,6 +3,7 @@
 name = "Ayu Light"
 variant = "light"
 url = "https://github.com/dempfi/ayu"
+description = "Modern, bright color theme on a clean light background."
 
 [ansi]
 black = "#000000"

@@ -118,6 +118,15 @@ url_of() {
   )
 }
 
+# Prints a theme's one-line description from its exported colors.
+description_of() {
+  (
+    # shellcheck source=/dev/null
+    source "$data_dir/colors/$1.env" 2>/dev/null
+    printf '%s' "$SCHEME_DESCRIPTION"
+  )
+}
+
 # Prints the theme named by the argument, or the current one when there is none.
 # Fails with a message if there is no such theme.
 named_theme() {
@@ -224,6 +233,7 @@ elif [[ "$1" == "info" ]]; then
   [[ "$variant" == "dark" ]] && other=light || other=dark
   counterpart=$(counterpart_of "$name" "$other")
   url=$(url_of "$name")
+  description=$(description_of "$name")
   config_dir="${XDG_CONFIG_HOME:-$HOME/.config}"
   # Which tools use a file somebody supplied, and which one a generated file.
   [[ -e "$config_dir/bat/themes/$name.tmTheme" ]] && bat=hand-written || bat=generated
@@ -231,6 +241,10 @@ elif [[ "$1" == "info" ]]; then
   [[ -e "$config_dir/ghostty/themes/$name.ghostty" ]] && ghostty="theme file in the repo" || ghostty="built-in theme"
   pretty_name "$name"
   echo
+  if [[ -n "$description" ]]; then
+    printf '%s\n' "$description" | fold -s -w 74 | sed 's/ *$//; s/^/  /'
+    echo
+  fi
   printf '  %-12s %s\n' "Variant" "$variant"
   printf '  %-12s %s\n' "Home" "${url:-none}"
   if [[ -n "$counterpart" ]]; then

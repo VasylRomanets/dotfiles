@@ -3,6 +3,7 @@
 name = "Rustleaf"
 variant = "dark"
 url = "https://github.com/tahfizhabib/omarchy-rustleaf-theme"
+description = "A stylish, modern theme inspired by Gruvbox, combining warm tones with clean design."
 
 [ansi]
 black = "#221f20"

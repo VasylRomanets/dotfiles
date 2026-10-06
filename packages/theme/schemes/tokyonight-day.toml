@@ -3,6 +3,7 @@
 name = "Tokyonight Day"
 variant = "light"
 url = "https://github.com/folke/tokyonight.nvim"
+description = "The light variant of Tokyo Night."
 
 [ansi]
 black = "#e9e9ed"

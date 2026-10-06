@@ -3,6 +3,7 @@
 name = "Noctis Lilac"
 variant = "light"
 url = "https://github.com/liviuschera/noctis"
+description = "A collection of light and dark themes with a well balanced blend of warm and cold colors."
 
 [ansi]
 black = "#0c006b"

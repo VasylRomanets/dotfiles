@@ -3,6 +3,7 @@
 name = "Kanagawa Dragon"
 variant = "dark"
 url = "https://github.com/rebelot/kanagawa.nvim"
+description = "A darker, more muted variant of Kanagawa for low-light work."
 
 [ansi]
 black = "#0d0c0c"

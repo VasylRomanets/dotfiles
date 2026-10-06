@@ -3,6 +3,7 @@
 name = "Catppuccin Macchiato"
 variant = "dark"
 url = "https://github.com/catppuccin/catppuccin"
+description = "Soothing pastel theme for the high-spirited!"
 
 [ansi]
 black = "#494d64"

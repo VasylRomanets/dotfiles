@@ -3,6 +3,7 @@
 name = "No Clown Fiesta"
 variant = "dark"
 url = "https://github.com/no-clown-fiesta/no-clown-fiesta.nvim"
+description = "A dark theme that avoids looking like a clown fiesta."
 
 [ansi]
 black = "#151515"

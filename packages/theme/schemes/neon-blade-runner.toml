@@ -3,6 +3,7 @@
 name = "Neon Blade Runner"
 variant = "dark"
 url = "https://github.com/bjarneo/cliamp/blob/main/theme/themes/neon-blade-runner.toml"
+description = "Neon noir from Blade Runner (1982): hot pink signs, cyan rain and amber readouts."
 
 [ansi]
 black = "#121212"

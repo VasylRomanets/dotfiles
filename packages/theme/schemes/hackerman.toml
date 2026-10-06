@@ -3,6 +3,7 @@
 name = "Hackerman"
 variant = "dark"
 url = "https://github.com/bjarneo/hackerman-vscode"
+description = "A dark, green-on-navy theme with a hacker-terminal feel."
 
 [ansi]
 black = "#0b0c16"

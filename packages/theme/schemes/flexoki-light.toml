@@ -3,6 +3,7 @@
 name = "Flexoki Light"
 variant = "light"
 url = "https://stephango.com/flexoki"
+description = "An inky color scheme for prose and code, inspired by analog printing inks and warm paper."
 
 [ansi]
 black = "#100f0f"

@@ -3,6 +3,7 @@
 name = "Tundra Jungle"
 variant = "dark"
 url = "https://github.com/sam4llis/nvim-tundra"
+description = "A dark theme in jungle greens, a variant of Tundra."
 
 [ansi]
 black = "#767676"

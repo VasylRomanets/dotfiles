@@ -3,6 +3,7 @@
 name = "Miasma"
 variant = "dark"
 url = "https://github.com/xero/miasma.nvim"
+description = "A fog descends upon your editor: a dark color scheme inspired by the woods."
 
 [ansi]
 black = "#000000"

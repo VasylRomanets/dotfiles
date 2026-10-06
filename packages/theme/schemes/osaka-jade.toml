@@ -3,6 +3,7 @@
 name = "Osaka Jade"
 variant = "dark"
 url = "https://github.com/Justikun/omarchy-osaka-jade-theme"
+description = "A deep green dark theme with warm sand text, from the Omarchy collection."
 
 [ansi]
 black = "#23372b"

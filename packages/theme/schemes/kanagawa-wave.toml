@@ -3,6 +3,7 @@
 name = "Kanagawa Wave"
 variant = "dark"
 url = "https://github.com/rebelot/kanagawa.nvim"
+description = "Dark colors inspired by Hokusai's famous painting, The Great Wave off Kanagawa."
 
 [ansi]
 black = "#090618"

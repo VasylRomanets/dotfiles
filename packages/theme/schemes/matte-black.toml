@@ -3,6 +3,7 @@
 name = "Matte Black"
 variant = "dark"
 url = "https://github.com/tahayvr/matte-black-theme"
+description = "A low distraction dark theme."
 
 [ansi]
 black = "#333333"

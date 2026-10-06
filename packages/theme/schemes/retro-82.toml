@@ -3,6 +3,7 @@
 name = "Retro 82"
 variant = "dark"
 url = "https://github.com/OldJobobo/omarchy-retro-82-theme"
+description = "A retro teal and amber sci-fi theme with deep navy surfaces."
 
 [ansi]
 black = "#00172e"

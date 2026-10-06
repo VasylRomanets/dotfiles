@@ -3,6 +3,7 @@
 name = "Coppernight"
 variant = "dark"
 url = "https://github.com/hembramnishant50-glitch/omarchy-coppernight-theme"
+description = "A deep indigo dark theme with copper accents, made for Omarchy."
 
 [ansi]
 black = "#11111b"

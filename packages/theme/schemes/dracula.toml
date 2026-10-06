@@ -3,6 +3,7 @@
 name = "Dracula"
 variant = "dark"
 url = "https://draculatheme.com/spec"
+description = "A dark theme with vivid pink, purple and green on a gothic indigo background."
 
 [ansi]
 black = "#21222c"

@@ -3,6 +3,7 @@
 name = "Ayu Mirage"
 variant = "dark"
 url = "https://github.com/dempfi/ayu"
+description = "Modern, bright color theme with a softer, blue-grey background."
 
 [ansi]
 black = "#171b24"

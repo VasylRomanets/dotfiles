@@ -3,6 +3,7 @@
 name = "Nord Wave"
 variant = "dark"
 url = "https://github.com/dimitrisnl/nord-wave"
+description = "A darker version of Nord."
 
 [ansi]
 black = "#3b4252"

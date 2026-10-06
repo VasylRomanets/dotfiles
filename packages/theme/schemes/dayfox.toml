@@ -3,6 +3,7 @@
 name = "Dayfox"
 variant = "light"
 url = "https://github.com/EdenEast/nightfox.nvim"
+description = "A fox-inspired theme family with five dark and two light variants."
 
 [ansi]
 black = "#352c24"

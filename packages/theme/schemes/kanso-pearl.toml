@@ -3,6 +3,7 @@
 name = "Kanso Pearl"
 variant = "light"
 url = "https://github.com/webhooked/kanso.nvim"
+description = "The light variant of Kansō, an elegant evolution of the Kanagawa theme."
 
 [ansi]
 black = "#22262d"

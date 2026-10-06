@@ -3,6 +3,7 @@
 name = "Alucard"
 variant = "light"
 url = "https://draculatheme.com/spec"
+description = "Dracula's light counterpart: the same vivid accents on a warm cream background."
 
 [ansi]
 black = "#fffbeb"

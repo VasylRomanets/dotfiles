@@ -3,6 +3,7 @@
 name = "Ember Light"
 variant = "light"
 url = "https://github.com/ember-theme/ember"
+description = "A warm, monochrome color theme. One vivid coral spark in a sea of warm graphite."
 
 [ansi]
 black = "#282418"

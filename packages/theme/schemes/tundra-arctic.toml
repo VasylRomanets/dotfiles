@@ -3,6 +3,7 @@
 name = "Tundra Arctic"
 variant = "dark"
 url = "https://github.com/sam4llis/nvim-tundra"
+description = "A dark theme in cool arctic blues and greys."
 
 [ansi]
 black = "#6b7280"

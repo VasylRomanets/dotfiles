@@ -3,6 +3,7 @@
 name = "Ethereal"
 variant = "dark"
 url = "https://github.com/bjarneo/ethereal-vscode"
+description = "An ethereal dark theme: deep navy with warm peach text and soft lilac accents."
 
 [ansi]
 black = "#060b1e"

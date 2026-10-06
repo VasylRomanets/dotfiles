@@ -3,6 +3,7 @@
 name = "Kanagawa Lotus"
 variant = "light"
 url = "https://github.com/rebelot/kanagawa.nvim"
+description = "The light variant of Kanagawa, in warm paper tones."
 
 [ansi]
 black = "#1f1f28"

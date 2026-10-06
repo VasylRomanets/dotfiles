@@ -3,6 +3,7 @@
 name = "Ristretto"
 variant = "dark"
 url = "https://omarchythemes.com/themes/ristretto"
+description = "A warm, dark brown theme in the style of Monokai Pro Ristretto."
 
 [ansi]
 black = "#2c2525"

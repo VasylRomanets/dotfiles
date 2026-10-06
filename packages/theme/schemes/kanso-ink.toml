@@ -3,6 +3,7 @@
 name = "Kanso Ink"
 variant = "dark"
 url = "https://github.com/webhooked/kanso.nvim"
+description = "An elegant evolution of the Kanagawa theme: a dark theme that invites focus, not attention."
 
 [ansi]
 black = "#14171d"

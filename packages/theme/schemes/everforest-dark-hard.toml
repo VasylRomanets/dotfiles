@@ -3,6 +3,7 @@
 name = "Everforest Dark Hard"
 variant = "dark"
 url = "https://github.com/sainnhe/everforest"
+description = "A comfortable, pleasant green forest palette, in its hard-contrast dark form."
 
 [ansi]
 black = "#7a8478"

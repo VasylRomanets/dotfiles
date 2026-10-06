@@ -3,6 +3,7 @@
 name = "Sora"
 variant = "dark"
 url = "https://github.com/Aejkatappaja/sora"
+description = "A deep colorscheme: ethereal cyan, muted accents, near-black canvas."
 
 [ansi]
 black = "#0e1018"
