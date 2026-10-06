@@ -22,6 +22,7 @@ case "$theme" in
   tokyonight-storm) name="TokyoNight Storm" ;;
   tokyonight-moon) name="TokyoNight Moon" ;;
   tokyonight-day) name="TokyoNight Day" ;;
+  ayu-dark) name="Ayu" ;;
   *) name="$(pretty_name "$theme")" ;;
 esac
 

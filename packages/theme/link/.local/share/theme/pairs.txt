@@ -56,3 +56,7 @@ flexoki-dark          flexoki-light
 
 # Dracula.
 dracula               alucard
+
+# Ayu.
+ayu-mirage            ayu-light
+ayu-dark              ayu-light
