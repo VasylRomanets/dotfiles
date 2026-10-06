@@ -1,0 +1,114 @@
+colors:
+  base: "00172e"
+  surface: "0f2336"
+  overlay: "36424a"
+  muted: "134e5a"
+  subtle: "a09780"
+  text: "f6dcac"
+  love: "f85525"
+  gold: "e97b3c"
+  rose: "65a5a1"
+  pine: "faa968"
+  foam: "faa968"
+  iris: "3f8f8a"
+
+core:
+  normal_text: {}
+  regular_file: {}
+  reset_to_normal: {}
+
+  directory:
+    foreground: foam
+
+  symlink:
+    foreground: love
+
+  multi_hard_link: {}
+
+  fifo:
+    foreground: text
+    background: pine
+
+  socket:
+    foreground: text
+    background: rose
+
+  door:
+    foreground: text
+    background: rose
+
+  block_device:
+    foreground: iris
+    background: surface
+
+  character_device:
+    foreground: rose
+    background: surface
+
+  broken_symlink:
+    foreground: text
+    background: rose
+
+  missing_symlink_target:
+    foreground: text
+    background: rose
+
+  setuid: {}
+
+  setgid: {}
+
+  file_with_capability: {}
+
+  sticky_other_writable: {}
+
+  other_writable: {}
+
+  sticky: {}
+
+  executable_file:
+    foreground: rose
+    font-style: bold
+
+text:
+  special:
+    foreground: base
+    background: gold
+
+  todo:
+    font-style: bold
+
+  licenses:
+    foreground: muted
+
+  configuration:
+    foreground: gold
+
+  other:
+    foreground: gold
+
+markup:
+  foreground: gold
+
+programming:
+  source:
+    foreground: pine
+
+  tooling:
+    foreground: foam
+
+media:
+  foreground: love
+
+office:
+  foreground: iris
+
+archives:
+  foreground: foam
+  font-style: underline
+
+executable:
+  foreground: rose
+  font-style: bold
+
+unimportant:
+  foreground: overlay
