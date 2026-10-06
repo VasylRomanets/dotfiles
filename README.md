@@ -65,7 +65,7 @@ dots sync            # every package
 dots sync atuin bat  # only these
 ```
 
-To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (it isn't part of the repo):
+To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (it isn't part of the repo), then remove any links they already have with `dots unsync <package>` (add `--keep` to leave a copy of each file):
 ```toml
 deny = ["ghostty"]           # never sync these
 allow = ["atuin", "bat"]     # or: sync only these (deny wins over allow)

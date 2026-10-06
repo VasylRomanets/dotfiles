@@ -23,12 +23,13 @@ Usage:
   dots <COMMAND> [ARGS]
 
 Commands:
-  bootstrap          Set up a fresh Mac from scratch (interactive)
-  sync [package...]  Symlink and copy every package, or the named ones, into place
-  setup-macos        Apply the macOS defaults
-  prune-symlinks     Remove symlinks left behind by renamed or removed files
-  build-themes       Regenerate the per-theme files from the schemes
-  help               Print this message
+  bootstrap                     Set up a fresh Mac from scratch (interactive)
+  sync [package...]             Symlink and copy every package, or the named ones, into place
+  unsync [--keep] <package>...  Remove the named packages' symlinks, or replace them with copies
+  setup-macos                   Apply the macOS defaults
+  prune-symlinks                Remove symlinks left behind by renamed or removed files
+  build-themes                  Regenerate the per-theme files from the schemes
+  help                          Print this message
 
 Arguments:
   [ARGS]  Passed on to the command, e.g. dots sync -v atuin bat
@@ -55,7 +56,7 @@ case "$command" in
   setup-macos)
     exec "$DOTFILES/setup/macos.zsh" "$@"
     ;;
-  bootstrap | sync | prune-symlinks | build-themes)
+  bootstrap | sync | unsync | prune-symlinks | build-themes)
     exec "$DOTFILES/setup/$command.zsh" "$@"
     ;;
   *)

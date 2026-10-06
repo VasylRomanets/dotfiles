@@ -57,12 +57,6 @@ warn() {
   warnings+=("${pkg:+$pkg: }$*")
 }
 
-toml_get() {
-  local file="$1" query="$2"
-  [[ -f "$file" ]] || return
-  toml2json "$file" | jq -r "$query // empty"
-}
-
 # Counts toward the package's "Linked N of M files." line (pkg_link_ok and
 # pkg_link_total, reset for each package) and the totals for the final summary.
 symlink() {
@@ -159,6 +153,11 @@ sync_packages() {
     (( ${denied_but_named[(Ie)$pkg]} )) && echo "Denied in ${sync_config/#$HOME/~}, but named here."
     if [[ -n "${skip_reason[$pkg]}" ]]; then
       echo "Skipped — ${skip_reason[$pkg]}"
+      still_linked=0
+      while IFS=$'\t' read -r src dest; do
+        [[ -L "$dest" && "${dest:A}" == "${src:A}" ]] && (( ++still_linked ))
+      done < <(package_links "$pkg")
+      (( still_linked )) && echo "Its $still_linked link(s) from before are still in place; dots unsync $pkg removes them."
       (( ++skipped ))
       continue
     fi
@@ -185,29 +184,9 @@ sync_packages() {
     pkg_link_ok=0
     pkg_link_total=0
 
-    if [[ -d "$pkg_dir/link" ]]; then
-      link_target="$(toml_get "$setup" '.link.target')"
-      link_target="${${link_target/#\~/$HOME}:-$HOME}"
-      for src in "$pkg_dir/link/"**/*(.DN); do
-        [[ "${src:t}" == ".DS_Store" ]] && continue
-        rel="${src#$pkg_dir/link/}"
-        symlink "$DOTFILES/$src" "$link_target/$rel"
-      done
-    fi
-
-    if [[ -d "$pkg_dir/source" ]]; then
-      source_dir="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/source"
-      mkdir -p "$source_dir"
-      for src in "$pkg_dir/source/"*.zsh(N); do
-        symlink "$DOTFILES/$src" "$source_dir/${src:t}"
-      done
-    fi
-
-    if [[ -f "$pkg_dir/hooks/theme-changed.zsh" ]]; then
-      theme_hooks_dir="${XDG_DATA_HOME:-$HOME/.local/share}/theme/hooks.d"
-      mkdir -p "$theme_hooks_dir"
-      symlink "$DOTFILES/$pkg_dir/hooks/theme-changed.zsh" "$theme_hooks_dir/$pkg.zsh"
-    fi
+    while IFS=$'\t' read -r src dest; do
+      symlink "$src" "$dest"
+    done < <(package_links "$pkg")
 
     (( pkg_link_total )) && echo "Linked $pkg_link_ok of $pkg_link_total files."
 
