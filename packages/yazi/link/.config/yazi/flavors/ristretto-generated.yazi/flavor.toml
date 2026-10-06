@@ -46,16 +46,16 @@ progress_error = { fg = "#2c2525", bg = "#fd6883" }
 mask = { bg = "#1f1a1a" }
 cand = { fg = "#f38d70" }
 rest = { fg = "#72696a" }
-desc = { fg = "#a59a9b" }
+desc = { fg = "#9a9091" }
 separator_style = { fg = "#554d4d" }
 
 [confirm]
 border = { fg = "#f38d70" }
 title = { fg = "#f38d70" }
 body = { fg = "#e6d9db" }
-list = { fg = "#a59a9b" }
+list = { fg = "#9a9091" }
 btn_yes = { fg = "#2c2525", bg = "#f38d70", bold = true }
-btn_no = { fg = "#a59a9b" }
+btn_no = { fg = "#9a9091" }
 
 [spot]
 border = { fg = "#f38d70" }
@@ -71,7 +71,7 @@ title_error = { fg = "#fd6883" }
 [pick]
 border = { fg = "#f38d70" }
 active = { fg = "#f38d70", bold = true }
-inactive = { fg = "#a59a9b" }
+inactive = { fg = "#9a9091" }
 
 [input]
 border = { fg = "#f38d70" }
@@ -82,7 +82,7 @@ selected = { bg = "#403e41" }
 [cmp]
 border = { fg = "#f38d70" }
 active = { fg = "#2c2525", bg = "#f38d70" }
-inactive = { fg = "#a59a9b" }
+inactive = { fg = "#9a9091" }
 
 [tasks]
 border = { fg = "#f38d70" }
@@ -91,7 +91,7 @@ hovered = { fg = "#f38d70", bold = true }
 
 [help]
 on = { fg = "#f38d70" }
-run = { fg = "#a59a9b" }
+run = { fg = "#9a9091" }
 desc = { fg = "#72696a" }
 hovered = { bg = "#403e41", bold = true }
 footer = { fg = "#72696a", bg = "#1f1a1a" }
@@ -114,7 +114,7 @@ rules = [
   { url = "*.js", fg = "#f9cc6c" },
   { url = "*.py", fg = "#adda78" },
   { url = "*.go", fg = "#9bf1e1" },
-  { url = "*.md", fg = "#a59a9b" },
+  { url = "*.md", fg = "#9a9091" },
   { url = "*.json", fg = "#f9cc6c" },
   { url = "*.toml", fg = "#fcd675" },
   { url = "*.yaml", fg = "#bebffd" },
