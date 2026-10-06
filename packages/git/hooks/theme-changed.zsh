@@ -4,10 +4,11 @@
 # theme into the file the tracked git config includes — git re-reads config on
 # every invocation, so nothing else needs to happen here.
 #
-# delta's syntax-theme is the bat theme of that slug, <slug> or <slug>-generated. The tint behind added
-# and removed lines is the theme's green or red blended into its background,
-# which a Mustache template can't compute, so it's worked out here from the
-# colors packages/theme/templates exports.
+# delta's syntax-theme is the bat theme of that slug, <slug> or <slug>-generated.
+# The tint behind added and removed lines is the theme's diff-added or
+# diff-removed color (its green and red unless the scheme says otherwise)
+# blended into its background, which a Mustache template can't compute, so it's
+# worked out here from the colors packages/theme/templates exports.
 theme=$1
 
 colors_file="${XDG_DATA_HOME:-$HOME/.local/share}/theme/colors/$theme.env"
@@ -34,8 +35,8 @@ mkdir -p "${git_delta_include:h}"
 cat >"$git_delta_include" <<EOF
 [delta]
   syntax-theme = "$bat_theme"
-  minus-style = syntax "#$(blend $BG $RED 15)"
-  minus-emph-style = syntax "#$(blend $BG $RED 30)"
-  plus-style = syntax "#$(blend $BG $GREEN 15)"
-  plus-emph-style = syntax "#$(blend $BG $GREEN 30)"
+  minus-style = syntax "#$(blend $BG $DIFF_REMOVED 15)"
+  minus-emph-style = syntax "#$(blend $BG $DIFF_REMOVED 30)"
+  plus-style = syntax "#$(blend $BG $DIFF_ADDED 15)"
+  plus-emph-style = syntax "#$(blend $BG $DIFF_ADDED 30)"
 EOF

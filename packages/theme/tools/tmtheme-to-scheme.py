@@ -245,6 +245,8 @@ def convert(tmtheme_path, ghostty_path, accent=None):
         "error": ansi["red"],
         "warning": ansi["yellow"],
         "success": ansi["green"],
+        "diff-added": ansi["green"],
+        "diff-removed": ansi["red"],
     }
     return dark, ansi, ui, syntax
 

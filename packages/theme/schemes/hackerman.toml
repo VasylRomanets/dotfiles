@@ -41,6 +41,8 @@ whitespace = "#6a6e95"
 error = "#50f872"
 warning = "#50f7d4"
 success = "#4fe88f"
+diff-added = "#4fe88f"
+diff-removed = "#ff5f78"
 
 [syntax]
 "comment" = "#6a6e95"
