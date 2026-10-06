@@ -12,7 +12,7 @@ the background and foreground where they don't.
 REQUIRES: python3 (standard library only)
 
 USAGE: tmtheme-to-scheme.py <slug> <theme.tmTheme> <ghostty-theme-file>
-           [--name NAME] [--credit URL] [--accent '#rrggbb']
+           --credit URL [--name NAME] [--accent '#rrggbb']
 
 Check the result by hand: the values are an extraction, and a scheme has fewer
 keys than a rich .tmTheme has scopes.
@@ -256,8 +256,7 @@ def render(slug, name, credit, tmtheme_name, ghostty_name, dark, ansi, ui, synta
         f'name = "{name}"',
         f'variant = "{"dark" if dark else "light"}"',
     ]
-    if credit:
-        lines.append(f'url = "{credit}"')
+    lines.append(f'url = "{credit}"')
     lines += ["", "[ansi]"] + [f'{key} = "{value}"' for key, value in ansi.items()]
     lines += ["", "[ui]"] + [f'{key} = "{value}"' for key, value in ui.items()]
     lines += ["", "[syntax]"] + [f'"{key}" = "{value}"' for key, value in syntax.items()]
@@ -270,7 +269,7 @@ def main():
     parser.add_argument("tmtheme")
     parser.add_argument("ghostty")
     parser.add_argument("--name", help="display name (default: title-cased slug)")
-    parser.add_argument("--credit", default="", help="URL of the original theme")
+    parser.add_argument("--credit", required=True, help="URL of the original theme")
     parser.add_argument("--accent", help="accent color, e.g. '#89b4fa' (default: ANSI cyan)")
     args = parser.parse_args()
 

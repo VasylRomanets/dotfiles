@@ -2,7 +2,7 @@
 
 name = "Birds Of Paradise"
 variant = "dark"
-url = "https://github.com/mbadolato/iTerm2-Color-Schemes"
+url = "https://github.com/textmate/Birds-of-Paradise-for-TextMate"
 
 [ansi]
 black = "#573d26"

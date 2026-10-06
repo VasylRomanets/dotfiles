@@ -35,6 +35,8 @@ Commands:
   toggle                 Switch to the counterpart of the other kind, light or dark
   reload                 Re-apply the current theme
   current                Print the current theme's name
+  info [name]            Print a theme's details and 16 colors, the current theme's by default
+  home [name]            Open a theme's homepage in the browser, the current theme's by default
   palette [name]         Print the theme's 16 terminal colors, the current theme's by default
   list, ls [dark|light]  Print every available theme's name, optionally of one kind
   help                   Print this message
@@ -107,6 +109,68 @@ variant_of() {
   )
 }
 
+# Prints a theme's homepage from its exported colors.
+url_of() {
+  (
+    # shellcheck source=/dev/null
+    source "$data_dir/colors/$1.env" 2>/dev/null
+    printf '%s' "$SCHEME_URL"
+  )
+}
+
+# Prints the theme named by the argument, or the current one when there is none.
+# Fails with a message if there is no such theme.
+named_theme() {
+  local name=${1:-$(<"$state_file")}
+  if [[ -z "$name" ]]; then
+    echo "No theme applied yet." >&2
+    return 1
+  fi
+  if ! printf '%s\n' "${themes[@]}" | grep -qxF "$name"; then
+    echo "theme: no theme named '$name'." >&2
+    return 1
+  fi
+  printf '%s' "$name"
+}
+
+# Prints the theme that stands in for $1 with the variant $2 (light or dark), if
+# pairs.txt lists one. The file pairs themes in either direction.
+counterpart_of() {
+  local current=$1 want=$2 a b other
+  [[ -r "$data_dir/pairs.txt" ]] || return 0
+  while read -r a b _; do
+    [[ -z "$a" || "$a" == \#* ]] && continue
+    if [[ "$a" == "$current" ]]; then other=$b
+    elif [[ "$b" == "$current" ]]; then other=$a
+    else continue
+    fi
+    if [[ -e "$data_dir/colors/$other.env" && "$(variant_of "$other")" == "$want" ]]; then
+      printf '%s' "$other"
+      return 0
+    fi
+  done <"$data_dir/pairs.txt"
+}
+
+# Prints a theme's 16 terminal colors as two rows of swatches like a terminal's
+# color chart: the 8 normal colors, then the 8 bright ones.
+print_palette() {
+  (
+    # Defines ANSI_0 to ANSI_15 as hex digits.
+    # shellcheck source=/dev/null
+    source "$data_dir/colors/$1.env"
+    for row in 0 8; do
+      for ((i = row; i < row + 8; i++)); do
+        hex=ANSI_$i
+        hex=${!hex}
+        printf '\033[48;2;%d;%d;%dm   \033[0m ' "$((16#${hex:0:2}))" "$((16#${hex:2:2}))" "$((16#${hex:4:2}))"
+      done
+      echo
+    done
+    printf '%-4s' blk red grn ylw blu mag cyn wht
+    echo
+  )
+}
+
 if [[ "$1" == "current" ]]; then
   if [[ ! -s "$state_file" ]]; then
     echo "No theme applied yet." >&2
@@ -149,32 +213,46 @@ if [[ "$1" == "list" || "$1" == "ls" ]]; then
   done
   exit 0
 elif [[ "$1" == "palette" ]]; then
-  name=${2:-$(<"$state_file")}
-  if [[ -z "$name" ]]; then
-    echo "No theme applied yet." >&2
-    exit 1
-  fi
-  if ! printf '%s\n' "${themes[@]}" | grep -qxF "$name"; then
-    echo "theme: no theme named '$name'." >&2
-    exit 1
-  fi
-  # Defines ANSI_0 to ANSI_15 as hex digits.
-  # shellcheck source=/dev/null
-  source "$data_dir/colors/$name.env"
+  name=$(named_theme "$2") || exit 1
   pretty_name "$name"
   echo
-  # Two rows like a terminal's color chart: the 8 normal colors, then the 8
-  # bright ones.
-  for row in 0 8; do
-    for ((i = row; i < row + 8; i++)); do
-      hex=ANSI_$i
-      hex=${!hex}
-      printf '\033[48;2;%d;%d;%dm   \033[0m ' "$((16#${hex:0:2}))" "$((16#${hex:2:2}))" "$((16#${hex:4:2}))"
-    done
-    echo
-  done
-  printf '%-4s' blk red grn ylw blu mag cyn wht
+  print_palette "$name"
+  exit 0
+elif [[ "$1" == "info" ]]; then
+  name=$(named_theme "$2") || exit 1
+  variant=$(variant_of "$name")
+  [[ "$variant" == "dark" ]] && other=light || other=dark
+  counterpart=$(counterpart_of "$name" "$other")
+  url=$(url_of "$name")
+  config_dir="${XDG_CONFIG_HOME:-$HOME/.config}"
+  # Which tools use a file somebody supplied, and which one a generated file.
+  [[ -e "$config_dir/bat/themes/$name.tmTheme" ]] && bat=hand-written || bat=generated
+  [[ -f "$config_dir/yazi/flavors/$name.yazi/flavor.toml" ]] && yazi=hand-written || yazi=generated
+  [[ -e "$config_dir/ghostty/themes/$name.ghostty" ]] && ghostty="theme file in the repo" || ghostty="built-in theme"
+  pretty_name "$name"
   echo
+  printf '  %-12s %s\n' "Variant" "$variant"
+  printf '  %-12s %s\n' "Home" "${url:-none}"
+  if [[ -n "$counterpart" ]]; then
+    printf '  %-12s %s (%s)\n' "Counterpart" "$(pretty_name "$counterpart")" "$other"
+  else
+    printf '  %-12s %s\n' "Counterpart" "none"
+  fi
+  printf '  %-12s %s\n' "bat" "$bat"
+  printf '  %-12s %s\n' "yazi" "$yazi"
+  printf '  %-12s %s\n' "Ghostty" "$ghostty"
+  echo
+  print_palette "$name"
+  exit 0
+elif [[ "$1" == "home" ]]; then
+  name=$(named_theme "$2") || exit 1
+  url=$(url_of "$name")
+  if [[ -z "$url" ]]; then
+    echo "$(pretty_name "$name") has no homepage." >&2
+    exit 1
+  fi
+  echo "$url"
+  open "$url"
   exit 0
 elif [[ "$1" == "random" ]]; then
   kind=$2
@@ -208,24 +286,9 @@ elif [[ "$1" == "light" || "$1" == "dark" || "$1" == "toggle" ]]; then
     echo "$(pretty_name "$current") is already a $want theme."
     exit 0
   fi
-  # The mapping file pairs themes in either direction (see pairs.txt).
-  pairs_file="$data_dir/pairs.txt"
-  theme=""
-  if [[ -r "$pairs_file" ]]; then
-    while read -r a b _; do
-      [[ -z "$a" || "$a" == \#* ]] && continue
-      if [[ "$a" == "$current" ]]; then other=$b
-      elif [[ "$b" == "$current" ]]; then other=$a
-      else continue
-      fi
-      if [[ -e "$data_dir/colors/$other.env" && "$(variant_of "$other")" == "$want" ]]; then
-        theme=$other
-        break
-      fi
-    done <"$pairs_file"
-  fi
+  theme=$(counterpart_of "$current" "$want")
   if [[ -z "$theme" ]]; then
-    echo "$(pretty_name "$current") has no $want counterpart — see $pairs_file." >&2
+    echo "$(pretty_name "$current") has no $want counterpart — see $data_dir/pairs.txt." >&2
     exit 1
   fi
 elif [[ "$1" == "reload" ]]; then
