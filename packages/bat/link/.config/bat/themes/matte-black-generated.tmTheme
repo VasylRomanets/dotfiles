@@ -1073,17 +1073,6 @@
     </dict>
     <dict>
       <key>name</key>
-      <string>meta</string>
-      <key>scope</key>
-      <string>meta</string>
-      <key>settings</key>
-      <dict>
-        <key>foreground</key>
-        <string>#eaeaea</string>
-      </dict>
-    </dict>
-    <dict>
-      <key>name</key>
       <string>meta.function</string>
       <key>scope</key>
       <string>meta.function</string>
