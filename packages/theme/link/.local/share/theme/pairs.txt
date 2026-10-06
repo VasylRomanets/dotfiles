@@ -50,3 +50,6 @@ no-clown-fiesta       no-clown-fiesta-light
 noctis                noctis-lux
 noctis-viola          noctis-lilac
 noctis-azureus        noctis-hibernus
+
+# Flexoki.
+flexoki-dark          flexoki-light
