@@ -18,6 +18,8 @@ DOTFILES="$(dirname "$SETUP_PATH")"
 source "$SETUP_PATH/_lib.zsh"
 
 linked=0
+link_changes=0
+copy_changes=0
 skipped=0
 failed=0
 copied=0
@@ -97,7 +99,7 @@ symlink() {
       return
     }
   fi
-  (( ++linked, ++pkg_link_ok, ++pkg_link_changed ))
+  (( ++linked, ++pkg_link_ok, ++pkg_link_changed, ++link_changes ))
   echo "  $mark $shown ($state)"
 }
 
@@ -122,8 +124,30 @@ copy_file() {
       return
     }
   fi
-  (( ++copied, ++pkg_copy_ok, ++pkg_copy_changed ))
+  (( ++copied, ++pkg_copy_ok, ++pkg_copy_changed, ++copy_changes ))
   echo "  $mark $shown ($state)"
+}
+
+# Prints a package's "Linked N of M files." line, where $1 is link or copy, $2
+# the files that went fine, $3 those that changed and $4 all of them. A dry run
+# counts only the changes, since nothing else would happen.
+report_count() {
+  local verb="$1" ok="$2" changed="$3" total="$4"
+  local past suffix="" noun="files"
+  [[ "$verb" == link ]] && past="Linked" || past="Copied"
+  (( total == 1 )) && noun="file"
+  if (( dry_run )); then
+    if (( changed )); then
+      echo "Would $verb $changed of $total $noun."
+    elif (( total == 1 )); then
+      echo "Nothing to $verb, the $noun is in place."
+    else
+      echo "Nothing to $verb, all $total $noun are in place."
+    fi
+    return
+  fi
+  (( changed )) && suffix=" ($changed changed)"
+  echo "$past $ok of $total $noun$suffix."
 }
 
 # A hook's output is hidden unless it fails (or -v is given), so one noisy
@@ -199,8 +223,6 @@ select_packages() {
 sync_packages() {
   cd "$DOTFILES"
 
-  local link_verb="Linked" copy_verb="Copied"
-  (( dry_run )) && link_verb="Would link" copy_verb="Would copy"
 
   for pkg in "${selected[@]}"; do
     pkg_dir="packages/$pkg/"
@@ -246,9 +268,7 @@ sync_packages() {
       symlink "$src" "$dest"
     done < <(package_links "$pkg")
 
-    if (( pkg_link_total )); then
-      echo "${link_verb} $pkg_link_ok of $pkg_link_total files$( (( pkg_link_changed )) && echo " ($pkg_link_changed changed)")."
-    fi
+    (( pkg_link_total )) && report_count "link" "$pkg_link_ok" "$pkg_link_changed" "$pkg_link_total"
 
     if [[ -d "$pkg_dir/copy" ]]; then
       copy_target="$(toml_get "$setup" '.copy.target')"
@@ -260,9 +280,7 @@ sync_packages() {
           [[ "${f:t}" == ".DS_Store" ]] && continue
           copy_file "$f" "$copy_target/${f:t}"
         done
-        if (( pkg_copy_total )); then
-          echo "${copy_verb} $pkg_copy_ok of $pkg_copy_total files$( (( pkg_copy_changed )) && echo " ($pkg_copy_changed changed)")."
-        fi
+        (( pkg_copy_total )) && report_count "copy" "$pkg_copy_ok" "$pkg_copy_changed" "$pkg_copy_total"
       fi
     fi
 
@@ -291,7 +309,7 @@ ensure_default_theme() {
 
 on_finish() {
   local summary="Done — symlinks: $linked, files copied: $copied, packages skipped: $skipped, problems: $failed."
-  (( dry_run )) && summary="Dry run, nothing changed — symlinks: $linked, files copied: $copied, packages skipped: $skipped, problems: $failed."
+  (( dry_run )) && summary="Dry run, nothing changed — symlinks to make: $link_changes, files to copy: $copy_changes, packages skipped: $skipped, problems: $failed."
   echo
   if (( ${#warnings} )); then
     warning "$summary"

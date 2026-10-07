@@ -9,8 +9,9 @@
 # Files a package copies (copy/) are not links and stay as they are, and so do
 # the links hooks make at runtime, like bat's current.tmTheme.
 #
-# USAGE: unsync.zsh [--keep] [-n] <package>...
+# USAGE: unsync.zsh [--keep] [-v] [-n] <package>...
 #        --keep          replace each link with a copy of the file
+#        -v              also list the links that aren't in place
 #        -n, --dry-run   only print what would change
 
 SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
@@ -19,6 +20,7 @@ DOTFILES="$(dirname "$SETUP_PATH")"
 source "$SETUP_PATH/_lib.zsh"
 
 keep=0
+verbose=0
 dry_run=0
 packages=()
 unlinked=0
@@ -29,6 +31,7 @@ sync_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/sync.toml"
 for arg in "$@"; do
   case "$arg" in
     --keep) keep=1 ;;
+    -v | --verbose) verbose=1 ;;
     -n | --dry-run) dry_run=1 ;;
     -*)
       error "unsync: unknown option '$arg'"
@@ -66,24 +69,29 @@ check_packages() {
 unlink_one() {
   local src="$1" dest="$2" shown="${2/#$HOME/~}"
   if [[ ! -e "$dest" && ! -L "$dest" ]]; then
+    (( verbose )) && echo "  = $shown (not linked)"
     return
   fi
   if [[ ! -L "$dest" || "${dest:A}" != "${src:A}" ]]; then
-    echo "Left $shown, it isn't a link to the repo."
+    echo "  ! $shown (left, not a link to the repo)"
     (( ++left ))
     return
   fi
-  if (( dry_run )); then
-    (( keep )) && echo "Would replace $shown with a copy." || echo "Would remove $shown."
-  elif (( keep )); then
+  if (( ! dry_run && keep )); then
     # Copy beside the link, then rename over it, so a failed copy never leaves
     # the file missing.
     cp -p "$src" "$dest.unsync" && mv -f "$dest.unsync" "$dest"
-  else
+  elif (( ! dry_run )); then
     rm "$dest"
   fi
   (( ++pkg_changed ))
-  (( keep )) && (( ++kept )) || (( ++unlinked ))
+  if (( keep )); then
+    (( ++kept ))
+    echo "  ~ $shown (replaced with a copy)"
+  else
+    (( ++unlinked ))
+    echo "  - $shown (removed)"
+  fi
 }
 
 # Tells the user how to stop dots sync from linking the package again.
@@ -97,34 +105,42 @@ main() {
   require_macos
   check_deps
   check_packages
-  echo "Unsyncing dotfiles..."
+  if (( dry_run )); then
+    echo "Checking what unsyncing dotfiles would change..."
+  else
+    echo "Unsyncing dotfiles..."
+  fi
 
   local pkg src dest
   for pkg in "${packages[@]}"; do
     echo
     echo "Unsyncing $pkg..."
     pkg_changed=0
+    pkg_total=0
+    noun="links"
     while IFS=$'\t' read -r src dest; do
+      (( ++pkg_total ))
       unlink_one "$src" "$dest"
     done < <(package_links "$pkg")
+    (( pkg_total == 1 )) && noun="link"
     if (( pkg_changed == 0 )); then
       echo "Nothing of it is linked."
+    elif (( dry_run && keep )); then
+      echo "Would replace $pkg_changed of $pkg_total $noun with copies."
     elif (( dry_run )); then
-      echo "$pkg_changed link(s) would change."
+      echo "Would remove $pkg_changed of $pkg_total $noun."
     elif (( keep )); then
-      echo "Replaced $pkg_changed link(s) with copies."
+      echo "Replaced $pkg_changed of $pkg_total $noun with copies."
     else
-      echo "Removed $pkg_changed link(s)."
+      echo "Removed $pkg_changed of $pkg_total $noun."
     fi
     (( dry_run )) || remind_deny "$pkg"
   done
 
+  local summary="Done — links removed: $unlinked, copies kept: $kept, files left alone: $left."
+  (( dry_run )) && summary="Dry run, nothing changed — links removed: $unlinked, copies kept: $kept, files left alone: $left."
   echo
-  if (( dry_run )); then
-    success "Dry run — nothing changed."
-  else
-    success "Done — links removed: $unlinked, copies kept: $kept, files left alone: $left."
-  fi
+  success "$summary"
 }
 
 main

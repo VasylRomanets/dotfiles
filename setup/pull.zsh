@@ -50,7 +50,7 @@ main() {
     exit 1
   fi
 
-  info "Fetching..."
+  echo "Checking the remote for changes..."
   git_repo fetch --quiet || {
     error "Could not fetch from the remote."
     exit 1
@@ -61,6 +61,7 @@ main() {
   new="$(git_repo rev-parse '@{u}')"
 
   if [[ "$old" == "$new" ]] || git_repo merge-base --is-ancestor "$new" "$old"; then
+    echo
     success "Already up to date."
   else
     git_repo merge-base --is-ancestor "$old" "$new" || {

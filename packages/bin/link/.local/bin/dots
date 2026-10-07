@@ -23,20 +23,24 @@ Usage:
   dots <COMMAND> [ARGS]
 
 Commands:
-  bootstrap                     Set up a fresh Mac from scratch (interactive)
-  sync [-v] [-n] [package...]   Symlink and copy every package, or the named ones, into place; -v lists unchanged files too, -n/--dry-run only previews
-  unsync [--keep] <package>...  Remove the named packages' symlinks, or replace them with copies
-  pull [--sync] [-n]            Fast-forward the repo from its remote; --sync then runs dots sync, -n/--dry-run only previews
-  setup-macos                   Apply the macOS defaults
-  prune-symlinks                Remove symlinks left behind by renamed or removed files
-  build-themes                  Regenerate the per-theme files from the schemes
-  help                          Print this message
+  bootstrap            Set up a fresh Mac from scratch (interactive)
+  sync [package...]    Symlink and copy every package, or the named ones, into place
+  unsync <package>...  Remove the named packages' symlinks, or replace them with copies
+  pull                 Fast-forward the repo from its remote
+  setup-macos          Apply the macOS defaults
+  prune-symlinks       Remove symlinks left behind by renamed or removed files
+  build-themes         Regenerate the per-theme files from the schemes
+  help                 Print this message
 
 Arguments:
   [ARGS]  Passed on to the command, e.g. dots sync -v atuin bat
 
 Options:
-  -h, --help  Print help
+  -v, --verbose  sync, unsync: Show more detail, like unchanged files and hook output
+  -n, --dry-run  sync, unsync, pull: Only report what would change
+      --keep     unsync: Replace each link with a copy instead of removing it
+      --sync     pull: Run dots sync afterwards
+  -h, --help     Print help
 USAGE
 }
 
