@@ -70,3 +70,6 @@ jellybeans-muted      jellybeans-muted-light
 jellybeans-mono       jellybeans-mono-light
 jellybeans-hc         jellybeans-hc-light
 jellybeans-warm       jellybeans-light
+
+# Mellow.
+mellow                mellow-light
