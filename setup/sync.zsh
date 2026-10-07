@@ -5,7 +5,12 @@
 # With package names, only those are synced. Without, every package is, except
 # what the optional config file leaves out (see select_packages).
 #
-# USAGE: sync.zsh [-v] [package...]    — -v also prints the output of successful hooks
+# Every link and copy that changes something is listed (+ new, ~ relinked or
+# changed); the ones already in place are left out unless -v is given.
+#
+# USAGE: sync.zsh [-v] [-n] [package...]
+#        -v    also list what is already in place and print the output of successful hooks
+#        -n    only report what would change, without linking, copying or running hooks
 
 SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES="$(dirname "$SETUP_PATH")"
@@ -17,6 +22,7 @@ skipped=0
 failed=0
 copied=0
 verbose=0
+dry_run=0
 warnings=()
 only=()
 selected=()
@@ -28,6 +34,7 @@ sync_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/sync.toml"
 for arg in "$@"; do
   case "$arg" in
     -v | --verbose) verbose=1 ;;
+    -n | --dry-run) dry_run=1 ;;
     -*)
       error "sync: unknown option '$arg'"
       exit 1
@@ -48,7 +55,11 @@ check_deps() {
 on_start() {
   require_macos
   check_deps
-  echo "Syncing dotfiles..."
+  if (( dry_run )); then
+    echo "Checking what syncing dotfiles would change..."
+  else
+    echo "Syncing dotfiles..."
+  fi
 }
 
 # Prints a warning and remembers it for the summary at the end.
@@ -57,23 +68,62 @@ warn() {
   warnings+=("${pkg:+$pkg: }$*")
 }
 
-# Counts toward the package's "Linked N of M files." line (pkg_link_ok and
-# pkg_link_total, reset for each package) and the totals for the final summary.
+# Counts toward the package's "Linked N of M files." line (pkg_link_ok,
+# pkg_link_changed and pkg_link_total, reset for each package) and the totals
+# for the final summary. A link that already points at the file is left alone.
 symlink() {
-  local src="$1" dest="$2"
+  local src="$1" dest="$2" shown="${2/#$HOME/~}" state mark
   (( ++pkg_link_total ))
   if [[ -e "$dest" && ! -L "$dest" ]]; then
-    warn "Skipped ${dest/#$HOME/~} — already exists and is not a symlink."
+    warn "Skipped $shown — already exists and is not a symlink."
     (( ++failed ))
     return
   fi
-  mkdir -p "$(dirname "$dest")"
-  if ln -sf "$src" "$dest"; then
+  if [[ -L "$dest" && "$(readlink "$dest")" == "$src" ]]; then
     (( ++linked, ++pkg_link_ok ))
-  else
-    warn "Failed to symlink ${dest/#$HOME/~}."
-    (( ++failed ))
+    (( verbose )) && echo "  = $shown"
+    return
   fi
+  if [[ -L "$dest" ]]; then
+    state="relinked" mark="~"
+  else
+    state="new" mark="+"
+  fi
+  if (( ! dry_run )); then
+    mkdir -p "$(dirname "$dest")"
+    ln -sf "$src" "$dest" || {
+      warn "Failed to symlink $shown."
+      (( ++failed ))
+      return
+    }
+  fi
+  (( ++linked, ++pkg_link_ok, ++pkg_link_changed ))
+  echo "  $mark $shown ($state)"
+}
+
+# Copies the repo file $1 to $2 unless $2 already has the same content.
+copy_file() {
+  local src="$1" dest="$2" shown="${2/#$HOME/~}" state mark
+  (( ++pkg_copy_total ))
+  if [[ -f "$dest" ]] && cmp -s "$src" "$dest"; then
+    (( ++copied, ++pkg_copy_ok ))
+    (( verbose )) && echo "  = $shown"
+    return
+  fi
+  if [[ -f "$dest" ]]; then
+    state="changed" mark="~"
+  else
+    state="new" mark="+"
+  fi
+  if (( ! dry_run )); then
+    cp -f "$src" "$dest" || {
+      warn "Failed to copy $src."
+      (( ++failed ))
+      return
+    }
+  fi
+  (( ++copied, ++pkg_copy_ok, ++pkg_copy_changed ))
+  echo "  $mark $shown ($state)"
 }
 
 # A hook's output is hidden unless it fails (or -v is given), so one noisy
@@ -81,6 +131,10 @@ symlink() {
 run_hook() {
   local hook="$1" label="$2" output
   [[ -f "$hook" ]] || return
+  if (( dry_run )); then
+    echo "Would run $label hook."
+    return
+  fi
   if output="$(zsh "$hook" 2>&1)"; then
     (( verbose )) && [[ -n "$output" ]] && echo "$output"
     echo "Ran $label hook."
@@ -145,6 +199,9 @@ select_packages() {
 sync_packages() {
   cd "$DOTFILES"
 
+  local link_verb="Linked" copy_verb="Copied"
+  (( dry_run )) && link_verb="Would link" copy_verb="Would copy"
+
   for pkg in "${selected[@]}"; do
     pkg_dir="packages/$pkg/"
     setup="$pkg_dir/setup.toml"
@@ -182,31 +239,30 @@ sync_packages() {
     run_hook "$pkg_dir/hooks/pre-setup.zsh" "pre-setup"
 
     pkg_link_ok=0
+    pkg_link_changed=0
     pkg_link_total=0
 
     while IFS=$'\t' read -r src dest; do
       symlink "$src" "$dest"
     done < <(package_links "$pkg")
 
-    (( pkg_link_total )) && echo "Linked $pkg_link_ok of $pkg_link_total files."
+    if (( pkg_link_total )); then
+      echo "${link_verb} $pkg_link_ok of $pkg_link_total files$( (( pkg_link_changed )) && echo " ($pkg_link_changed changed)")."
+    fi
 
     if [[ -d "$pkg_dir/copy" ]]; then
       copy_target="$(toml_get "$setup" '.copy.target')"
       copy_target="${copy_target/#\~/$HOME}"
       if [[ -n "$copy_target" ]]; then
-        mkdir -p "$copy_target"
-        local pkg_copy_ok=0 pkg_copy_total=0
+        (( dry_run )) || mkdir -p "$copy_target"
+        pkg_copy_ok=0 pkg_copy_changed=0 pkg_copy_total=0
         for f in "$pkg_dir/copy/"**/*(.N); do
           [[ "${f:t}" == ".DS_Store" ]] && continue
-          (( ++pkg_copy_total ))
-          if cp -f "$f" "$copy_target/"; then
-            (( ++copied, ++pkg_copy_ok ))
-          else
-            warn "Failed to copy $f."
-            (( ++failed ))
-          fi
+          copy_file "$f" "$copy_target/${f:t}"
         done
-        (( pkg_copy_total )) && echo "Copied $pkg_copy_ok of $pkg_copy_total files."
+        if (( pkg_copy_total )); then
+          echo "${copy_verb} $pkg_copy_ok of $pkg_copy_total files$( (( pkg_copy_changed )) && echo " ($pkg_copy_changed changed)")."
+        fi
       fi
     fi
 
@@ -227,6 +283,7 @@ ensure_default_theme() {
   local theme_cmd="$HOME/.local/bin/theme"
   [[ -s "$state_file" ]] && return
   [[ -x "$theme_cmd" ]] || return
+  (( dry_run )) && return
   # A sync of some packages leaves the theme alone unless it includes the theme.
   (( ${#only} && ! ${only[(Ie)theme]} )) && return
   PATH="$HOME/.local/bin:$PATH" "$theme_cmd" rose-pine-moon
@@ -234,6 +291,7 @@ ensure_default_theme() {
 
 on_finish() {
   local summary="Done — symlinks: $linked, files copied: $copied, packages skipped: $skipped, problems: $failed."
+  (( dry_run )) && summary="Dry run, nothing changed — symlinks: $linked, files copied: $copied, packages skipped: $skipped, problems: $failed."
   echo
   if (( ${#warnings} )); then
     warning "$summary"

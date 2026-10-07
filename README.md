@@ -64,6 +64,7 @@ Once the bootstrap has run, everything is available through the `dots` command (
 ```zsh
 dots sync            # every package
 dots sync atuin bat  # only these
+dots sync -n         # preview what would change; -v also lists unchanged files
 ```
 
 To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (it isn't part of the repo), then remove any links they already have with `dots unsync <package>` (add `--keep` to leave a copy of each file):
