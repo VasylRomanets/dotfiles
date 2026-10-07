@@ -63,3 +63,10 @@ ayu-dark              ayu-light
 
 # Belafonte.
 belafonte-night       belafonte-day
+
+# Jellybeans.
+jellybeans            jellybeans-light
+jellybeans-muted      jellybeans-muted-light
+jellybeans-mono       jellybeans-mono-light
+jellybeans-hc         jellybeans-hc-light
+jellybeans-warm       jellybeans-light

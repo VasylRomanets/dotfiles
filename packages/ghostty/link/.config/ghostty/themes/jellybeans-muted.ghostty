@@ -1,0 +1,26 @@
+# Jellybeans Muted
+# Source: https://github.com/WTFox/jellybeans.nvim/blob/main/extras/ghostty/jellybeans-muted
+# Palette indexes 16-21 are left out so 256-color apps keep the standard colors.
+
+palette = 0=#101010
+palette = 1=#cc4d4d
+palette = 2=#909c6e
+palette = 3=#e8c88c
+palette = 4=#7a8aa6
+palette = 5=#b8aed3
+palette = 6=#617b87
+palette = 7=#dad6c8
+palette = 8=#7a7a7a
+palette = 9=#7e2e23
+palette = 10=#98b67c
+palette = 11=#d8a16c
+palette = 12=#83adc3
+palette = 13=#5c1e68
+palette = 14=#7db7cc
+palette = 15=#f9f5ec
+
+background = #101010
+foreground = #dad6c8
+cursor-color = #a6c3d9
+selection-background = #3c3b38
+selection-foreground = #dad6c8
