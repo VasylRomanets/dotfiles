@@ -29,6 +29,7 @@ Usage:
 Without arguments, opens a picker with a live preview.
 
 Commands:
+  pick [dark|light]      Open the picker, optionally with only dark or light themes
   random [dark|light]    Apply a random theme, optionally a dark or light one
   light                  Switch to the light counterpart of the current theme
   dark                   Switch to the dark counterpart of the current theme
@@ -107,6 +108,14 @@ variant_of() {
     source "$data_dir/colors/$1.env" 2>/dev/null
     printf '%s' "$SCHEME_VARIANT"
   )
+}
+
+# Exits with a message unless $2, the kind given to command $1, is empty, dark or light.
+check_kind() {
+  if [[ -n "$2" && "$2" != "dark" && "$2" != "light" ]]; then
+    echo "theme: $1 takes dark or light, not '$2'." >&2
+    exit 1
+  fi
 }
 
 # Prints a theme's homepage from its exported colors.
@@ -207,10 +216,7 @@ fi
 
 if [[ "$1" == "list" || "$1" == "ls" ]]; then
   kind=$2
-  if [[ -n "$kind" && "$kind" != "dark" && "$kind" != "light" ]]; then
-    echo "theme: $1 takes dark or light, not '$kind'." >&2
-    exit 1
-  fi
+  check_kind "$1" "$kind"
   for t in "${themes[@]}"; do
     [[ -z "$kind" || "$(variant_of "$t")" == "$kind" ]] || continue
     if [[ $slug_only -eq 1 ]]; then
@@ -270,10 +276,7 @@ elif [[ "$1" == "home" ]]; then
   exit 0
 elif [[ "$1" == "random" ]]; then
   kind=$2
-  if [[ -n "$kind" && "$kind" != "dark" && "$kind" != "light" ]]; then
-    echo "theme: random takes dark or light, not '$kind'." >&2
-    exit 1
-  fi
+  check_kind "$1" "$kind"
   # Never the theme already applied, so the command always changes something.
   current=$(<"$state_file")
   candidates=()
@@ -315,17 +318,34 @@ elif [[ "$1" == "reload" ]]; then
     echo "Current theme '$theme' no longer exists — pick another one." >&2
     exit 1
   fi
-elif [[ -n "$1" ]] && printf '%s\n' "${themes[@]}" | grep -qxF "$1"; then
+elif [[ -n "$1" && "$1" != "pick" ]] && printf '%s\n' "${themes[@]}" | grep -qxF "$1"; then
   theme="$1"
 else
+  # "pick" opens the picker on all themes, or only the dark or light ones;
+  # anything else that matched no theme is the picker's starting query.
+  kind=""
+  query=$1
+  if [[ "$1" == "pick" ]]; then
+    kind=$2
+    query=""
+    check_kind "$1" "$kind"
+  fi
+  choices=()
+  for t in "${themes[@]}"; do
+    [[ -z "$kind" || "$(variant_of "$t")" == "$kind" ]] && choices+=("$t")
+  done
+  if [[ ${#choices[@]} -eq 0 ]]; then
+    echo "No ${kind:+$kind }theme to pick." >&2
+    exit 1
+  fi
   # Show pretty names in the picker; the slug rides along as a hidden first
   # field so it's what actually comes back on selection, and so the preview
   # can render it with theme-preview. bat already has every theme pre-built
   # in its cache, so no rebuild is needed just to preview one.
   theme=$(
-    for t in "${themes[@]}"; do
+    for t in "${choices[@]}"; do
       printf '%s\t%s\n' "$t" "$(pretty_name "$t")"
-    done | fzf --no-sort --delimiter='\t' --with-nth=2 --query="$1" \
+    done | fzf --no-sort --delimiter='\t' --with-nth=2 --query="$query" \
       --no-scrollbar --preview-window='right:65%,border-none' \
       --preview="$(dirname "${BASH_SOURCE[0]}")/theme-preview {1}" \
       | cut -f1
