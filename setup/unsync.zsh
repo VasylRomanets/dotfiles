@@ -10,8 +10,8 @@
 # the links hooks make at runtime, like bat's current.tmTheme.
 #
 # USAGE: unsync.zsh [--keep] [-n] <package>...
-#        --keep    replace each link with a copy of the file
-#        -n        only print what would change
+#        --keep          replace each link with a copy of the file
+#        -n, --dry-run   only print what would change
 
 SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES="$(dirname "$SETUP_PATH")"

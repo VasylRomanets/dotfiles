@@ -8,8 +8,8 @@
 # or removed it says so and suggests dots sync, or --sync runs it right after.
 #
 # USAGE: pull.zsh [--sync] [-n]
-#        --sync    run dots sync after pulling
-#        -n        only fetch and show what would be pulled
+#        --sync          run dots sync after pulling
+#        -n, --dry-run   only fetch and show what would be pulled
 
 SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES="$(dirname "$SETUP_PATH")"

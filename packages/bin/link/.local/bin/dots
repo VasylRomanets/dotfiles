@@ -24,9 +24,9 @@ Usage:
 
 Commands:
   bootstrap                     Set up a fresh Mac from scratch (interactive)
-  sync [-v] [-n] [package...]   Symlink and copy every package, or the named ones, into place; -v lists unchanged files too, -n only previews
+  sync [-v] [-n] [package...]   Symlink and copy every package, or the named ones, into place; -v lists unchanged files too, -n/--dry-run only previews
   unsync [--keep] <package>...  Remove the named packages' symlinks, or replace them with copies
-  pull [--sync] [-n]            Fast-forward the repo from its remote; --sync then runs dots sync, -n only previews
+  pull [--sync] [-n]            Fast-forward the repo from its remote; --sync then runs dots sync, -n/--dry-run only previews
   setup-macos                   Apply the macOS defaults
   prune-symlinks                Remove symlinks left behind by renamed or removed files
   build-themes                  Regenerate the per-theme files from the schemes

@@ -9,8 +9,8 @@
 # changed); the ones already in place are left out unless -v is given.
 #
 # USAGE: sync.zsh [-v] [-n] [package...]
-#        -v    also list what is already in place and print the output of successful hooks
-#        -n    only report what would change, without linking, copying or running hooks
+#        -v              also list what is already in place and print the output of successful hooks
+#        -n, --dry-run   only report what would change, without linking, copying or running hooks
 
 SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
 DOTFILES="$(dirname "$SETUP_PATH")"
