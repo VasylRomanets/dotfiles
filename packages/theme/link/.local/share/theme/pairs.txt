@@ -60,3 +60,6 @@ dracula               alucard
 # Ayu.
 ayu-mirage            ayu-light
 ayu-dark              ayu-light
+
+# Belafonte.
+belafonte-night       belafonte-day
