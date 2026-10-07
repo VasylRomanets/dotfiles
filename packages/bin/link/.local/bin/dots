@@ -26,6 +26,7 @@ Commands:
   bootstrap                     Set up a fresh Mac from scratch (interactive)
   sync [package...]             Symlink and copy every package, or the named ones, into place
   unsync [--keep] <package>...  Remove the named packages' symlinks, or replace them with copies
+  pull [--sync] [-n]            Fast-forward the repo from its remote; --sync then runs dots sync, -n only previews
   setup-macos                   Apply the macOS defaults
   prune-symlinks                Remove symlinks left behind by renamed or removed files
   build-themes                  Regenerate the per-theme files from the schemes
@@ -56,7 +57,7 @@ case "$command" in
   setup-macos)
     exec "$DOTFILES/setup/macos.zsh" "$@"
     ;;
-  bootstrap | sync | unsync | prune-symlinks | build-themes)
+  bootstrap | sync | unsync | pull | prune-symlinks | build-themes)
     exec "$DOTFILES/setup/$command.zsh" "$@"
     ;;
   *)

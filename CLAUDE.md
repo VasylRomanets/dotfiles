@@ -16,6 +16,7 @@ No build, lint, or test suite exists in this repo — there's nothing to "run te
 dots bootstrap            # ./setup/bootstrap.zsh — full fresh-machine setup (interactive, prompts before each step)
 dots sync [package...]    # ./setup/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes. Names limit it to those packages
 dots unsync <package>...  # ./setup/unsync.zsh — remove the named packages' symlinks (only links to this repo's files); `--keep` leaves a copy of each file instead, `-n` shows what would change
+dots pull [--sync] [-n]   # ./setup/pull.zsh — `git pull --ff-only` the repo (refuses on a dirty tree); `--sync` then runs `dots sync`, `-n` only previews. A plain pull never touches links, it just suggests `dots sync` when package files were added/renamed/removed
 dots prune-symlinks       # ./setup/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync; occasional manual cleanup)
 dots setup-macos          # ./setup/macos.zsh — apply macOS `defaults write` settings only (bootstrap runs it too)
 dots build-themes         # ./setup/build-themes.zsh — regenerate every per-theme file from the schemes (needs only `python3`; see Theming)
