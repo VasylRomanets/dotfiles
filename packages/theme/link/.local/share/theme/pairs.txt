@@ -1,4 +1,4 @@
-# Counterparts for "theme light" and "theme dark": each line names two themes
+# Counterparts for "theme go dark" and "theme go light": each line names two themes
 # (slugs) that stand in for each other. A theme may appear on several lines;
 # the first line whose other side has the wanted variant wins, so list the
 # preferred counterpart first. Themes without a line have no counterpart.

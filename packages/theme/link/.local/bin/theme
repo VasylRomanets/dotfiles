@@ -31,8 +31,7 @@ Without arguments, opens a picker with a live preview.
 Commands:
   pick [dark|light]      Open the picker, optionally with only dark or light themes
   random [dark|light]    Apply a random theme, optionally a dark or light one
-  light                  Switch to the light counterpart of the current theme
-  dark                   Switch to the dark counterpart of the current theme
+  go dark|light          Switch to the dark or light counterpart of the current theme
   toggle                 Switch to the counterpart of the other kind, light or dark
   reload                 Re-apply the current theme
   current                Print the current theme's name
@@ -289,14 +288,18 @@ elif [[ "$1" == "random" ]]; then
     exit 1
   fi
   theme="${candidates[RANDOM % ${#candidates[@]}]}"
-elif [[ "$1" == "light" || "$1" == "dark" || "$1" == "toggle" ]]; then
-  want=$1
+elif [[ "$1" == "go" || "$1" == "toggle" ]]; then
+  want=$2
+  if [[ "$1" == "go" && "$want" != "dark" && "$want" != "light" ]]; then
+    echo "theme: go takes dark or light${want:+, not '$want'}." >&2
+    exit 1
+  fi
   current=$(<"$state_file")
   if [[ -z "$current" ]]; then
     echo "No theme applied yet." >&2
     exit 1
   fi
-  if [[ "$want" == "toggle" ]]; then
+  if [[ "$1" == "toggle" ]]; then
     [[ "$(variant_of "$current")" == "dark" ]] && want=light || want=dark
   fi
   if [[ "$(variant_of "$current")" == "$want" ]]; then
