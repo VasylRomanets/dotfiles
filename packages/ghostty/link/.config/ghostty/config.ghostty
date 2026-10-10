@@ -28,7 +28,6 @@ macos-window-buttons = hidden
 desktop-notifications = false
 
 # Shell
-shell-integration = zsh
 shell-integration-features = no-cursor
 
 # Updates
