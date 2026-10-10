@@ -1,0 +1,25 @@
+# The Black Pharaoh
+# Source: https://github.com/OldJobobo/omarchy-the-black-pharaoh-theme/blob/master/ghostty.conf
+
+palette = 0=#232227
+palette = 1=#b17f6d
+palette = 2=#898b77
+palette = 3=#b4a36f
+palette = 4=#8f9696
+palette = 5=#a58a86
+palette = 6=#6296a0
+palette = 7=#b7a98d
+palette = 8=#736a60
+palette = 9=#c7927a
+palette = 10=#9c9f87
+palette = 11=#d2bd7d
+palette = 12=#adb5b4
+palette = 13=#b79a95
+palette = 14=#7eb7c0
+palette = 15=#c9b99b
+background = #232227
+foreground = #b7a98d
+cursor-color = #c9b99b
+cursor-text = #232227
+selection-background = #6296a0
+selection-foreground = #232227
