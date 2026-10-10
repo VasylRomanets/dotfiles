@@ -73,3 +73,6 @@ jellybeans-warm       jellybeans-light
 
 # Mellow.
 mellow                mellow-light
+
+# Harbor.
+harbor-dark           harbor-light

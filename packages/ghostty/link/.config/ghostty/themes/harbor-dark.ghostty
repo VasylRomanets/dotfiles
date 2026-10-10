@@ -1,0 +1,25 @@
+# Harbor Dark
+# Source: https://github.com/HANCORE-linux/omarchy-harbordark-theme
+
+palette = 0=#1b1b1b
+palette = 1=#f44336
+palette = 2=#a99b7a
+palette = 3=#e1ce98
+palette = 4=#9ba2a6
+palette = 5=#9683a1
+palette = 6=#77868a
+palette = 7=#efebdc
+palette = 8=#87856d
+palette = 9=#e67e22
+palette = 10=#a99b7a
+palette = 11=#e1ce98
+palette = 12=#9ba2a6
+palette = 13=#9683a1
+palette = 14=#77868a
+palette = 15=#f4f2e8
+background = #1b1b1b
+foreground = #efebdc
+cursor-color = #c0af7f
+cursor-text = #1b1b1b
+selection-background = #68332f
+selection-foreground = #efebdc
