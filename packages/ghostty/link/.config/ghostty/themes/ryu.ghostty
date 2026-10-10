@@ -1,0 +1,25 @@
+# Ryu
+# Source: https://github.com/HANCORE-linux/omarchy-ryu-theme/blob/main/colors.toml
+
+palette = 0=#050505
+palette = 1=#da614e
+palette = 2=#8b9388
+palette = 3=#51605b
+palette = 4=#75897f
+palette = 5=#c2a46d
+palette = 6=#717c7c
+palette = 7=#d6d0c5
+palette = 8=#404040
+palette = 9=#df6124
+palette = 10=#525e5a
+palette = 11=#8b9388
+palette = 12=#75897f
+palette = 13=#c2a46d
+palette = 14=#52565e
+palette = 15=#fff9ed
+background = #050505
+foreground = #d6d0c5
+cursor-color = #d6d0c5
+cursor-text = #050505
+selection-background = #d6d0c5
+selection-foreground = #050505
