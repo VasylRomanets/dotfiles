@@ -1,4 +1,5 @@
 # --- Tap ----------------------------------------------------------------------
+tap "bjarneo/cliamp", trusted: true    # required for cliamp
 tap "code-hex/tap", trusted: true      # required for neo-cowsay
 tap "jackielii/tap", trusted: true     # required for skhd-zig
 tap "rose-pine/tap", trusted: true     # required for bloom
