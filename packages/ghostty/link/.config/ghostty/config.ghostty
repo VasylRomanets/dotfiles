@@ -23,26 +23,16 @@ minimum-contrast = 1.3
 theme = dark:Rose Pine Moon,light:Rose Pine Dawn
 
 # Window
-confirm-close-surface = true
-title-report = false
 window-padding-balance = true
 window-padding-x = 10
 window-padding-y = 10
 window-save-state = always
 window-title-font-family = MesloLGS Nerd Font Mono
-window-vsync = true
 
 # macOS
-macos-auto-secure-input = true
 macos-option-as-alt = left
-macos-secure-input-indication = true
 macos-titlebar-style = tabs
 macos-window-buttons = hidden
-
-# Clipboard
-clipboard-paste-bracketed-safe = true
-clipboard-paste-protection = true
-clipboard-trim-trailing-spaces = true
 
 # Notifications
 desktop-notifications = false
