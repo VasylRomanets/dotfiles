@@ -1,7 +1,7 @@
 # Typography
+adjust-cell-height = 6%
 font-family = MesloLGS Nerd Font Mono
 font-size = 18
-adjust-cell-height = 6%
 
 # Appearance
 background-blur = 10
