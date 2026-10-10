@@ -1,0 +1,25 @@
+# White Gold
+# Source: https://github.com/HANCORE-linux/omarchy-whitegold-theme/blob/main/ghostty.conf
+
+palette = 0=#dedbc8
+palette = 1=#4b0304
+palette = 2=#725c0a
+palette = 3=#2e311a
+palette = 4=#005c32
+palette = 5=#762b2f
+palette = 6=#3b3b3b
+palette = 7=#665e4a
+palette = 8=#9a9078
+palette = 9=#4b0304
+palette = 10=#725c0a
+palette = 11=#005c32
+palette = 12=#2e311a
+palette = 13=#762b2f
+palette = 14=#3b3b3b
+palette = 15=#0c0c14
+background = #dedbc8
+foreground = #0c0c14
+cursor-color = #91760d
+cursor-text = #dedbc8
+selection-background = #9a9078
+selection-foreground = #0c0c14
