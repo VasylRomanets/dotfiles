@@ -88,7 +88,7 @@
     {
       "key": "│ {#blue}󰉼 theme    {#keys}│",
       "type": "command",
-      "text": "grep '^theme' $HOME/.config/ghostty/config.local.ghostty | sed -E 's/^theme = \"(.*)\"$/\\1/' | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1))substr($i,2); print}'",
+      "text": "theme current",
     },
     {
       "key": "├────────────┤",
