@@ -34,18 +34,11 @@ ghostty_dir="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty"
 # are referenced by name as is.
 [[ -e "$ghostty_dir/themes/$theme.ghostty" ]] && name="$theme.ghostty"
 
-# The untracked override file config.ghostty includes, which keeps frequent
-# theme switches out of git. Resolved first so the in-place edit below doesn't
-# replace a symlink with a regular file.
-config="$ghostty_dir/config.local.ghostty"
-touch "$config"
-config="$(realpath "$config")"
-
-if grep -q '^theme = ' "$config"; then
-  perl -i -pe "s/^theme = .*/theme = \"$name\"/" "$config"
-else
-  printf 'theme = "%s"\n' "$name" >>"$config"
-fi
+# The generated file config.ghostty includes before config.local.ghostty, so
+# frequent theme switches stay out of git and out of the hand-written overrides.
+generated_dir="${XDG_STATE_HOME:-$HOME/.local/state}/theme/generated"
+mkdir -p "$generated_dir"
+printf 'theme = "%s"\n' "$name" >"$generated_dir/theme.ghostty"
 
 # Ghostty reloads its config on SIGUSR2.
 killall -USR2 ghostty 2>/dev/null

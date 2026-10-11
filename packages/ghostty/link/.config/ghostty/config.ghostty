@@ -33,7 +33,6 @@ shell-integration-features = no-cursor
 # Updates
 auto-update-channel = tip
 
-# Local overrides — not tracked in git;
-# holds the currently active theme
-# so switching themes doesn't dirty this file
+# Local overrides
+config-file = ?~/.local/state/theme/generated/theme.ghostty
 config-file = ?config.local.ghostty
