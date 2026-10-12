@@ -16,24 +16,11 @@ else
   export FZF_DEFAULT_COMMAND="$FZF_CTRL_T_COMMAND"
 fi
 
-if (( $+commands[eza] )); then
-  fzf_tree_preview="eza --tree --color=always {} | head -200"
-else
-  fzf_tree_preview="find {} -maxdepth 3 | head -200"
-fi
-
-if (( $+commands[bat] )); then
-  fzf_file_preview="bat -n --color=always --line-range :500 {}"
-else
-  fzf_file_preview="cat {}"
-fi
-
-# bat only prints a warning for binary files, so skip them. An empty file also
-# reports as binary, hence the size check.
-fzf_preview="if [ -d {} ]; then $fzf_tree_preview; elif [ -s {} ] && [ \"\$(file --brief --mime-encoding {})\" = binary ]; then echo \"Binary file\"; else $fzf_file_preview; fi"
+# One script previews directories, binary files and text files alike.
+fzf_preview="${XDG_CONFIG_HOME:-$HOME/.config}/fzf/scripts/preview.sh {}"
 
 export FZF_CTRL_T_OPTS="--preview '$fzf_preview'"
-export FZF_ALT_C_OPTS="--preview '$fzf_tree_preview'"
+export FZF_ALT_C_OPTS="--preview '$fzf_preview'"
 
 # Customize previews for fzf-tab-completion (**<Tab>) per command.
 _fzf_comprun() {
@@ -41,7 +28,7 @@ _fzf_comprun() {
   shift
 
   case "$command" in
-    cd)           fzf --preview "$fzf_tree_preview"    "$@" ;;
+    cd)           fzf --preview "$fzf_preview"         "$@" ;;
     export|unset) fzf --preview "eval 'echo \${}'"     "$@" ;;
     ssh)          fzf --preview 'dig {}'               "$@" ;;
     *)            fzf --preview "$fzf_preview"         "$@" ;;
