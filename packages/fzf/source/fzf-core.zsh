@@ -28,7 +28,9 @@ else
   fzf_file_preview="cat {}"
 fi
 
-fzf_preview="if [ -d {} ]; then $fzf_tree_preview; else $fzf_file_preview; fi"
+# bat only prints a warning for binary files, so skip them. An empty file also
+# reports as binary, hence the size check.
+fzf_preview="if [ -d {} ]; then $fzf_tree_preview; elif [ -s {} ] && [ \"\$(file --brief --mime-encoding {})\" = binary ]; then echo \"Binary file\"; else $fzf_file_preview; fi"
 
 export FZF_CTRL_T_OPTS="--preview '$fzf_preview'"
 export FZF_ALT_C_OPTS="--preview '$fzf_tree_preview'"
