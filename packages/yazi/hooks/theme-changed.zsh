@@ -16,4 +16,8 @@ flavor="$theme-generated"
 [[ -f "$yazi_dir/flavors/$theme.yazi/flavor.toml" ]] && flavor=$theme
 
 printf '[flavor]\ndark = "%s"\nlight = "%s"\n' "$flavor" "$flavor" >"$yazi_dir/theme.toml"
-(( $+commands[ya] )) && ya emit-to 0 app:theme >/dev/null 2>&1
+# With no instance running there is nothing to notify, and ya would fail with
+# "Connection refused". Any other ya failure is left visible.
+if (( $+commands[ya] )) && pgrep -x yazi >/dev/null; then
+  ya emit-to 0 app:theme
+fi
