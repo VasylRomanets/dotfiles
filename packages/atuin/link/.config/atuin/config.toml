@@ -12,3 +12,6 @@ autostart = true
 
 [keymap.emacs]
 "ctrl-x" = "delete"
+
+[logs]
+dir = "$XDG_STATE_HOME/atuin/logs"
