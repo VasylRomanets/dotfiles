@@ -69,7 +69,7 @@ check_packages() {
 unlink_one() {
   local src="$1" dest="$2" shown="${2/#$HOME/~}"
   if [[ ! -e "$dest" && ! -L "$dest" ]]; then
-    (( verbose )) && echo "  = $shown (not linked)"
+    (( verbose )) && echo "  [=] $shown (not linked)"
     return
   fi
   if [[ ! -L "$dest" || "${dest:A}" != "${src:A}" ]]; then
@@ -87,10 +87,10 @@ unlink_one() {
   (( ++pkg_changed ))
   if (( keep )); then
     (( ++kept ))
-    echo "  ~ $shown (replaced with a copy)"
+    echo "  [~] $shown (replaced with a copy)"
   else
     (( ++unlinked ))
-    echo "  - $shown (removed)"
+    echo "  [-] $shown (removed)"
   fi
 }
 

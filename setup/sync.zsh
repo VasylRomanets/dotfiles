@@ -5,7 +5,7 @@
 # With package names, only those are synced. Without, every package is, except
 # what the optional config file leaves out (see select_packages).
 #
-# Every link and copy that changes something is listed (+ new, ~ relinked or
+# Every link and copy that changes something is listed ([+] new, [~] relinked or
 # changed); the ones already in place are left out unless -v is given.
 #
 # USAGE: sync.zsh [-v] [-n] [package...]
@@ -83,13 +83,13 @@ symlink() {
   fi
   if [[ -L "$dest" && "$(readlink "$dest")" == "$src" ]]; then
     (( ++linked, ++pkg_link_ok ))
-    (( verbose )) && echo "  = $shown"
+    (( verbose )) && echo "  [=] $shown"
     return
   fi
   if [[ -L "$dest" ]]; then
-    state="relinked" mark="~"
+    state="relinked" mark="[~]"
   else
-    state="new" mark="+"
+    state="new" mark="[+]"
   fi
   if (( ! dry_run )); then
     mkdir -p "$(dirname "$dest")"
@@ -109,13 +109,13 @@ copy_file() {
   (( ++pkg_copy_total ))
   if [[ -f "$dest" ]] && cmp -s "$src" "$dest"; then
     (( ++copied, ++pkg_copy_ok ))
-    (( verbose )) && echo "  = $shown"
+    (( verbose )) && echo "  [=] $shown"
     return
   fi
   if [[ -f "$dest" ]]; then
-    state="changed" mark="~"
+    state="changed" mark="[~]"
   else
-    state="new" mark="+"
+    state="new" mark="[+]"
   fi
   if (( ! dry_run )); then
     cp -f "$src" "$dest" || {
