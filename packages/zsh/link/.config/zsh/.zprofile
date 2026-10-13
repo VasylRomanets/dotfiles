@@ -11,4 +11,4 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # already exported. Setting it here instead means these actually end up in
 # front of the system dirs, as intended.
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="${CARGO_HOME:-$XDG_DATA_HOME/cargo}/bin:$PATH"
