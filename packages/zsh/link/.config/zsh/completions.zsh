@@ -30,10 +30,6 @@ zstyle ':completion:*' group-name ''
 # matches '--noinit'.
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
-# Completers to try, in order. _extensions completes file extensions after a
-# glob such as *.<Tab>.
-zstyle ':completion:*' completer _extensions _complete
-
 # Colored output for file completions. Evaluated on each completion (-e) rather
 # than once here, since LS_COLORS is only set later by the vivid package.
 zstyle -e ':completion:*:default' list-colors 'reply=(${(s.:.)LS_COLORS})'
@@ -45,18 +41,3 @@ zstyle ':completion:*:*:*:*:warnings'     format '%F{red}-- no matches found --%
 
 # Complete hidden files (dotfiles) as well.
 _comp_options+=(globdots)
-
-# Don't insert a tab when there's nothing to complete.
-zstyle ':completion:*' insert-tab pending
-
-# Show more context for cd completions.
-zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
-
-# Preferred order for command completions.
-zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
-
-# Sort files by modification time.
-zstyle ':completion:*' file-sort modification
-
-# Keep the prefix when completing.
-zstyle ':completion:*' keep-prefix true
