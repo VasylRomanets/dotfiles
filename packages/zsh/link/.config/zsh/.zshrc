@@ -1,5 +1,7 @@
+# --- Aliases ------------------------------------------------------------------
+alias grep="grep --color=auto"
+
 # --- Config -------------------------------------------------------------------
-source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/settings.zsh"
 
 # Must precede Packages - some tools (e.g. zoxide) skip registering completions
