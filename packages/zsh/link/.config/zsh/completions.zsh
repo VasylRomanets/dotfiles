@@ -5,16 +5,20 @@ autoload -Uz compinit
 # to actually do anything - neither is auto-loaded by compinit.
 zmodload zsh/complist
 
-# Only rebuild completion cache once per day for faster shell startup.
-# On macOS, stat uses -f '%Sm' -t '%j' instead of GNU's date -r.
+# Only rebuild completion cache once per day for faster shell startup. The glob
+# matches the dump file only when it is more than 24 hours old (a missing file
+# matches nothing, and compinit -C then creates it). The touch is needed because
+# compinit leaves an up-to-date dump untouched, so it would stay stale forever.
 ZSH_COMP_DUMP_PATH="$XDG_CACHE_HOME/zsh/zcompdump"
 mkdir -p "$XDG_CACHE_HOME/zsh" # ensure directory exists before writing completion cache
-typeset -i updated_at=$(date +'%j' -r "$ZSH_COMP_DUMP_PATH" 2>/dev/null || stat -f '%Sm' -t '%j' "$ZSH_COMP_DUMP_PATH" 2>/dev/null)
-if [[ $(date +'%j') != $updated_at ]]; then
+stale_dump=($ZSH_COMP_DUMP_PATH(N.mh+24))
+if (( $#stale_dump )); then
   compinit -d "$ZSH_COMP_DUMP_PATH"
+  touch "$ZSH_COMP_DUMP_PATH"
 else
   compinit -C -d "$ZSH_COMP_DUMP_PATH"
 fi
+unset stale_dump
 
 # Cache completions for speed (e.g. brew packages).
 zstyle ':completion::complete:*' use-cache on
