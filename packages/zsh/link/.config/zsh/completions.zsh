@@ -16,7 +16,7 @@ else
   compinit -C -d "$ZSH_COMP_DUMP_PATH"
 fi
 
-# Cache completions for speed (e.g. git branches, brew packages).
+# Cache completions for speed (e.g. brew packages).
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "$XDG_CACHE_HOME/zsh/compcache"
 
