@@ -12,3 +12,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # front of the system dirs, as intended.
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="${CARGO_HOME:-$XDG_DATA_HOME/cargo}/bin:$PATH"
+
+# Keep PATH free of duplicates. This has to come after the exports above and
+# can't live in .zshenv, because path_helper drops the attribute there.
+typeset -U PATH
