@@ -30,17 +30,15 @@ zstyle ':completion:*' group-name ''
 # matches '--noinit'.
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
-# Fuzzy matching — complete even with typos, allows up to 1 error per 3
-# characters typed.
-zstyle ':completion:*' completer _extensions _complete _approximate
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
+# Completers to try, in order. _extensions completes file extensions after a
+# glob such as *.<Tab>.
+zstyle ':completion:*' completer _extensions _complete
 
 # Colored output for file completions. Evaluated on each completion (-e) rather
 # than once here, since LS_COLORS is only set later by the vivid package.
 zstyle -e ':completion:*:default' list-colors 'reply=(${(s.:.)LS_COLORS})'
 
 # Colored messages for completion states.
-zstyle ':completion:*:*:*:*:corrections'  format '%F{yellow}!- %d (errors: %e) -!%f'
 zstyle ':completion:*:*:*:*:descriptions' format '%F{blue}-- %d --%f'
 zstyle ':completion:*:*:*:*:messages'     format '%F{magenta}-- %d --%f'
 zstyle ':completion:*:*:*:*:warnings'     format '%F{red}-- no matches found --%f'
