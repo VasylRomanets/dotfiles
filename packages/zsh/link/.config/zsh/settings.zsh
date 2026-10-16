@@ -1,9 +1,4 @@
-ZSH_STATE_HOME="$XDG_STATE_HOME/zsh"
-
-# Ensure directory exists before writing history.
-mkdir -p "$ZSH_STATE_HOME"
-
-HISTFILE="$ZSH_STATE_HOME/history"
+HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
