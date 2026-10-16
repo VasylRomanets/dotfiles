@@ -23,3 +23,13 @@ export LC_ALL="en_US.UTF-8"
 
 # ripgrep may be invoked from scripts and non-interactive shells.
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
+
+# Pager (less) defaults.
+export LESS="--quit-if-one-screen" # print directly if the text fits on one screen
+LESS+=" --no-init"                 # don't clear the screen when opening or closing
+LESS+=" --ignore-case"             # case-insensitive search unless the pattern has uppercase
+LESS+=" --RAW-CONTROL-CHARS"       # render ANSI colors correctly (e.g. in git output)
+LESS+=" --quiet"                   # no bell at the end of the file
+
+# Disable history file — search patterns don't need to persist.
+export LESSHISTFILE="-"

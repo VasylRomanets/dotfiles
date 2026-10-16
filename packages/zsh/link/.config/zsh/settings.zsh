@@ -7,17 +7,6 @@ HISTFILE="$ZSH_STATE_HOME/history"
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
-# Interactive pager (less) configs:
-# Print directly if content fits on one screen.
-# Don't clear the screen when opening/closing.
-# Case-insensitive search unless pattern contains uppercase.
-# Render ANSI colors correctly (e.g. in git output).
-# No bell sound at end of file.
-export LESS='--quit-if-one-screen --no-init --ignore-case --RAW-CONTROL-CHARS --quiet'
-
-# Disable history file — search patterns don't need to persist.
-export LESSHISTFILE='-'
-
 # Prevent duplicate entries.
 declare -U PATH
 
