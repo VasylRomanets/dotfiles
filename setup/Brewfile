@@ -31,6 +31,7 @@ brew "yq"                  # YAML processor (like jq for YAML)
 brew "zoxide"              # auto-learning navigation (better cd)
 brew "zsh"                 # the Z shell itself
 brew "zsh-autosuggestions" # fish-like command suggestions from history
+brew "zsh-patina"          # Zsh syntax highlighter (better zsh-syntax-highlighting)
 
 # --- Brew: Nice-to-have -------------------------------------------------------
 brew "asciinema"     # record and share terminal sessions

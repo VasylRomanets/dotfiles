@@ -1,0 +1,9 @@
+"dynamic.callable.alias" = "green"
+"dynamic.callable.builtin" = "green"
+"dynamic.callable.command" = "green"
+"dynamic.callable.function" = "green"
+"dynamic.path" = "cyan"
+"string.quoted" = "yellow"
+
+[metadata]
+extends = "patina"
