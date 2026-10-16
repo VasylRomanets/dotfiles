@@ -1,8 +1,3 @@
-SPROMPT="Correct '%F{red}%R%f' to '%F{green}%r%f' [nyae]? "
-
-export CORRECT_IGNORE=".*"
-export CORRECT_IGNORE_FILE="_*"
-
 ZSH_STATE_HOME="$XDG_STATE_HOME/zsh"
 
 # Ensure directory exists before writing history.
@@ -25,9 +20,6 @@ export LESSHISTFILE='-'
 
 # Prevent duplicate entries.
 declare -U PATH
-
-# e.g. gti → git
-setopt CORRECT_ALL
 
 # Skip duplicates when searching.
 setopt HIST_FIND_NO_DUPS
