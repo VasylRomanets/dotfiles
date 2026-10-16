@@ -29,8 +29,8 @@ zstyle ':completion:*' menu select
 # Group completions by category (files, commands, aliases, etc.).
 zstyle ':completion:*' group-name ''
 
-# Case and hyphen insensitive matching — e.g. 'git' matches 'Git', '--no-init'
-# matches '--noinit'.
+# Case-insensitive matching, and a typed fragment may match anywhere in a name:
+# 'readme' matches 'README.md', 'init' matches '--no-init'.
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
 # Colored output for file completions. Evaluated on each completion (-e) rather
