@@ -10,7 +10,6 @@ zmodload zsh/complist
 # matches nothing, and compinit -C then creates it). The touch is needed because
 # compinit leaves an up-to-date dump untouched, so it would stay stale forever.
 ZSH_COMP_DUMP_PATH="$XDG_CACHE_HOME/zsh/zcompdump"
-mkdir -p "$XDG_CACHE_HOME/zsh" # ensure directory exists before writing completion cache
 stale_dump=($ZSH_COMP_DUMP_PATH(N.mh+24))
 if (( $#stale_dump )); then
   compinit -d "$ZSH_COMP_DUMP_PATH"
