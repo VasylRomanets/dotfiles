@@ -12,8 +12,8 @@
 #        -v              also list what is already in place and print the output of successful hooks
 #        -n, --dry-run   only report what would change, without linking, copying or running hooks
 
-SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
-DOTFILES="$(dirname "$SETUP_PATH")"
+SETUP_PATH="${0:A:h}"
+DOTFILES="${SETUP_PATH:h}"
 
 source "$SETUP_PATH/_lib.zsh"
 
@@ -92,7 +92,7 @@ symlink() {
     state="new" mark="[+]"
   fi
   if (( ! dry_run )); then
-    mkdir -p "$(dirname "$dest")"
+    mkdir -p "${dest:h}"
     ln -sf "$src" "$dest" || {
       warn "Failed to symlink $shown."
       (( ++failed ))

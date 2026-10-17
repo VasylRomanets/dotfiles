@@ -6,8 +6,8 @@
 # Not part of `dots sync`: a full $HOME scan is unnecessary overhead on every sync,
 # so run this occasionally instead, whenever you suspect stale symlinks.
 
-SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
-DOTFILES="$(dirname "$SETUP_PATH")"
+SETUP_PATH="${0:A:h}"
+DOTFILES="${SETUP_PATH:h}"
 
 source "$SETUP_PATH/_lib.zsh"
 

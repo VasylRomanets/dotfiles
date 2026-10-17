@@ -2,8 +2,8 @@
 
 # Regenerates the per-theme files of every package from the schemes.
 
-SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
-DOTFILES="$(dirname "$SETUP_PATH")"
+SETUP_PATH="${0:A:h}"
+DOTFILES="${SETUP_PATH:h}"
 
 source "$SETUP_PATH/_lib.zsh"
 

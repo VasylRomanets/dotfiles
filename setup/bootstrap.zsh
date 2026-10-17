@@ -6,7 +6,7 @@
 set -e
 trap on_error ERR
 
-SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
+SETUP_PATH="${0:A:h}"
 TMP_BREWFILE=""
 TMP_MAS_BREWFILE=""
 
@@ -266,7 +266,7 @@ configure_git() {
   echo
 
   if [[ -n "$git_name" && -n "$git_email" ]]; then
-    mkdir -p "$(dirname "$git_config")"
+    mkdir -p "${git_config:h}"
     cat > "$git_config" <<EOF
 [user]
     name = $git_name

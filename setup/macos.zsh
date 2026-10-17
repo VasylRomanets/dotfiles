@@ -5,7 +5,7 @@
 #
 # Note: some settings require a logout/restart to take effect.
 
-SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
+SETUP_PATH="${0:A:h}"
 source "$SETUP_PATH/_lib.zsh"
 require_macos
 

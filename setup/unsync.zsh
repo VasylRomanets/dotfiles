@@ -14,8 +14,8 @@
 #        -v              also list the links that aren't in place
 #        -n, --dry-run   only print what would change
 
-SETUP_PATH="$(cd "$(dirname "$0")" && pwd)"
-DOTFILES="$(dirname "$SETUP_PATH")"
+SETUP_PATH="${0:A:h}"
+DOTFILES="${SETUP_PATH:h}"
 
 source "$SETUP_PATH/_lib.zsh"
 
