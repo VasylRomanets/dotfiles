@@ -28,6 +28,9 @@ setopt SHARE_HISTORY
 # Allow # comments in interactive shell.
 setopt INTERACTIVE_COMMENTS
 
+# Don't beep on errors (e.g. backspace at the start of the line).
+setopt NO_BEEP
+
 # Case-insensitive globbing (e.g. *.MD matches *.md).
 setopt NO_CASE_GLOB
 
