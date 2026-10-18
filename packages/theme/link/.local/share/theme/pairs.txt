@@ -76,3 +76,6 @@ mellow                mellow-light
 
 # Harbor.
 harbor-dark           harbor-light
+
+# Warm Burnout.
+warm-burnout-dark     warm-burnout-light
