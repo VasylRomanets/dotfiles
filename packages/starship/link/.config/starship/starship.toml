@@ -7,7 +7,7 @@
 #  󰉋 󰌾  󱦟  󰜥                  ╭─ ╰─
 
 format = """
-[╭─](dimmed white)\
+[╭─](dimmed)\
 $directory\
 $git_branch\
 $git_state\
@@ -16,7 +16,7 @@ $fill\
 $cmd_duration\
 $time\
 $line_break\
-[╰─](dimmed white)\
+[╰─](dimmed)\
 $character\
 """
 
@@ -25,7 +25,7 @@ success_symbol = "[❯](green)"
 error_symbol = "[❯](red)"
 
 [fill]
-style = "dimmed white"
+style = "dimmed"
 symbol = "·"
 
 # --- Left ---------------------------------------------------------------------
@@ -42,7 +42,7 @@ symbol = " "
 style = "purple"
 truncation_length = 32
 truncation_symbol = "…"
-format = "[on ](dimmed white)[$symbol$branch]($style) "
+format = "[on ](dimmed)[$symbol$branch]($style) "
 
 [git_state]
 style = "red"
@@ -58,7 +58,7 @@ staged = "[+${count} ](yellow)"
 modified = "[!${count} ](yellow)"
 deleted = "[-${count} ](red)"
 untracked = "[?${count} ](yellow)"
-stashed = "[*${count} ](dimmed white)"
+stashed = "[*${count} ](dimmed)"
 format = """
 (\
 $ahead_behind\
@@ -74,11 +74,11 @@ $stashed\
 # --- Right --------------------------------------------------------------------
 [cmd_duration]
 min_time = 3000
-style = "dimmed white"
+style = "dimmed"
 format = "[  $duration]($style)"
 
 [time]
 disabled = false
-style = "dimmed white"
+style = "dimmed"
 time_format = "%H:%M"
 format = "[  $time]($style)"
