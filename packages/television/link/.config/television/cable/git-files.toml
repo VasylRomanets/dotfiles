@@ -8,7 +8,6 @@ command = "git ls-files $(git rev-parse --show-toplevel)"
 
 [preview]
 command = "bat -n --color=always '{}'"
-env = { BAT_THEME = "ansi" }
 
 [keybindings]
 f12 = "actions:edit"
