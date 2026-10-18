@@ -11,7 +11,7 @@ brew "atuin"               # fuzzy-search shell history and sync it across machi
 brew "bat"                 # print syntax-highlighted file contents (better cat)
 brew "eza"                 # list files (better ls)
 brew "fd"                  # find files (better find)
-brew "fzf"                 # fuzzy finder for files, history, and more
+brew "fzf"                 # fuzzy finder CLI
 brew "gh"                  # official GitHub CLI
 brew "git"                 # version control
 brew "git-delta"           # syntax-highlighted diffs (better diff-so-fancy)
@@ -24,6 +24,7 @@ brew "micro"               # text editor (better nano)
 brew "ripgrep"             # search within files (better grep)
 brew "rust"                # Rust compiler and toolchain (includes cargo - Rust's package manager)
 brew "starship"            # cross-shell prompt manager
+brew "television"          # fuzzy finder TUI with built-in channels (files, git, env, and more)
 brew "toml2json"           # TOML to JSON converter
 brew "topgrade"            # update everything in one command - brew, cargo crates, mas apps, and more
 brew "yazi"                # file manager

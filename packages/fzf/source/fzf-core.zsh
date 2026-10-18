@@ -1,6 +1,5 @@
 if (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND="fd --hidden --follow --strip-cwd-prefix --exclude .git"
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="fd --type=d --hidden --follow --strip-cwd-prefix --exclude .git"
 
   # Let fzf's tab-completion (**<Tab>) use fd too, instead of its default walker.
@@ -12,14 +11,12 @@ if (( $+commands[fd] )); then
     fd --type=d --hidden --follow --exclude .git . "$1"
   }
 else
-  export FZF_CTRL_T_COMMAND="find . \( -name .DS_Store -o -name .git \) -prune -o -print"
-  export FZF_DEFAULT_COMMAND="$FZF_CTRL_T_COMMAND"
+  export FZF_DEFAULT_COMMAND="find . \( -name .DS_Store -o -name .git \) -prune -o -print"
 fi
 
 # One script previews directories, binary files and text files alike.
 fzf_preview="${XDG_CONFIG_HOME:-$HOME/.config}/fzf/scripts/preview.sh {}"
 
-export FZF_CTRL_T_OPTS="--preview '$fzf_preview'"
 export FZF_ALT_C_OPTS="--preview '$fzf_preview'"
 
 # Customize previews for fzf-tab-completion (**<Tab>) per command.
@@ -37,6 +34,9 @@ _fzf_comprun() {
 
 # Let atuin own CTRL-R for history search instead of fzf.
 (( $+commands[atuin] )) && export FZF_CTRL_R_COMMAND=""
+
+# Let television own CTRL-T instead of fzf.
+(( $+commands[tv] )) && export FZF_CTRL_T_COMMAND=""
 
 # Behavior shared by every fzf call. The colors come from the generated file below.
 export FZF_DEFAULT_OPTS="--highlight-line --info=inline-right --cycle --bind=change:first"
