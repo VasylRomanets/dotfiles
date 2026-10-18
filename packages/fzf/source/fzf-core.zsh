@@ -32,11 +32,18 @@ _fzf_comprun() {
   esac
 }
 
-# Let atuin own CTRL-R for history search instead of fzf.
+# The fzf --zsh script sourced below binds CTRL-R and CTRL-T unless these
+# variables are empty. Set them to empty when atuin and television are
+# installed, so those own the keys, and leave fzf's bindings as the fallback
+# otherwise.
 (( $+commands[atuin] )) && export FZF_CTRL_R_COMMAND=""
 
-# Let television own CTRL-T instead of fzf.
-(( $+commands[tv] )) && export FZF_CTRL_T_COMMAND=""
+if (( $+commands[tv] )); then
+  export FZF_CTRL_T_COMMAND=""
+else
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_CTRL_T_OPTS="--preview '$fzf_preview'"
+fi
 
 # Behavior shared by every fzf call. The colors come from the generated file below.
 export FZF_DEFAULT_OPTS="--highlight-line --info=inline-right --cycle --bind=change:first"
