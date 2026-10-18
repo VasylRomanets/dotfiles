@@ -101,6 +101,17 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # Use F1, F2, etc. as standard function keys, rather than their media/feature shortcuts.
 # defaults write NSGlobalDomain "com.apple.keyboard.fnState" -bool true
 
+# Free Ctrl+Left/Right for terminal apps (e.g. micro's line start and end)
+# instead of switching Spaces. 79 and 81 are the shortcuts, 80 and 82 their
+# Shift variants.
+for id in 79 80 81 82; do
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys \
+    -dict-add $id '<dict><key>enabled</key><false/></dict>'
+done
+
+# Make macOS re-read the shortcuts without a logout.
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
 # --- Trackpad & Mouse ---------------------------------------------------------
 # Enable natural scrolling direction.
 defaults write NSGlobalDomain "com.apple.swipescrolldirection" -bool true
