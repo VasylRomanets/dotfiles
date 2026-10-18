@@ -4,11 +4,11 @@
 
 # app shortcuts
 alt - b : @launch("Google Chrome")
+alt - d : @launch("Todoist")
 alt - f : ~/.local/bin/finder-focus
 alt - g : @launch("Fork")
 alt - h : open raycast://extensions/raycast/clipboard-history/clipboard-history
 alt - s : @launch("Spotify")
-alt - t : @launch("Todoist")
 alt - w : @launch("Ghostty")
 alt - z : @launch("zoom.us")
 
