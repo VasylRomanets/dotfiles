@@ -29,6 +29,9 @@ desktop-notifications = false
 # Shell
 shell-integration-features = no-cursor
 
+# Behavior
+copy-on-select = clipboard
+
 # Updates
 auto-update-channel = tip
 
