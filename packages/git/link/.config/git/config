@@ -7,15 +7,8 @@
   fsmonitor = true
   untrackedCache = true
 
-[credential]
-  helper =
-  helper = manager
-
-[interactive]
-  diffFilter = delta --color-only
-
-[delta]
-  navigate = true
+[help]
+  autocorrect = prompt
 
 [fetch]
   prune = true
@@ -27,31 +20,27 @@
 [pull]
   rebase = true
 
-[merge]
-  conflictStyle = zdiff3
-
 [diff]
   colorMoved = default
   algorithm = histogram
   mnemonicPrefix = true
   wsErrorHighlight = all
 
-[column]
-  ui = auto
+[merge]
+  conflictStyle = zdiff3
 
-[branch]
-  sort = -committerdate
-
-[tag]
-  sort = version:refname
-  gpgSign = true
+[rebase]
+  autoStash = true
 
 [rerere]
   enabled = true
   autoupdate = true
 
-[rebase]
-  autoStash = true
+[branch]
+  sort = -committerdate
+
+[column]
+  ui = auto
 
 [gpg]
   format = ssh
@@ -62,8 +51,19 @@
 [commit]
   gpgSign = true
 
-[help]
-  autocorrect = prompt
+[tag]
+  sort = version:refname
+  gpgSign = true
+
+[credential]
+  helper =
+  helper = manager
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
 
 [include]
   path = ~/.local/state/theme/generated/delta.gitconfig
