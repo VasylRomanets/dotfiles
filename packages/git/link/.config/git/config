@@ -1,7 +1,3 @@
-[include]
-  path = ~/.config/git/config.local
-  path = ~/.local/state/theme/generated/delta.gitconfig
-
 [init]
   defaultBranch = main
 
@@ -48,6 +44,7 @@
 
 [tag]
   sort = version:refname
+  gpgSign = true
 
 [rerere]
   enabled = true
@@ -65,8 +62,9 @@
 [commit]
   gpgSign = true
 
-[tag]
-  gpgSign = true
-
 [help]
   autocorrect = prompt
+
+[include]
+  path = ~/.local/state/theme/generated/delta.gitconfig
+  path = ~/.config/git/config.local
