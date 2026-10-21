@@ -14,8 +14,11 @@
 # Exclude version control
 --glob=!.git
 
-# Exclude dependency lock files
+# Exclude dependency folders and lock files
+--glob=!node_modules
 --glob=!package-lock.json
+--glob=!pnpm-lock.yaml
+--glob=!*.lock
 
 # Exclude environment files (may contain secrets)
 --glob=!.env
