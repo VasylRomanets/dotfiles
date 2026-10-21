@@ -24,11 +24,10 @@
 --glob=!.env
 --glob=!.env.*
 
-# Everforest Dark Hard color theme
---colors=path:fg:0xa7,0xc0,0x80
+# Colors are ANSI names, so they follow the terminal palette
+--colors=path:fg:green
 --colors=path:style:bold
---colors=line:fg:0x85,0x92,0x89
+--colors=line:fg:blue
 --colors=line:style:nobold
---colors=match:fg:0xdb,0xbc,0x7f
---colors=match:bg:0x2e,0x38,0x3c
+--colors=match:fg:magenta
 --colors=match:style:bold
