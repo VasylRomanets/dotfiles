@@ -11,9 +11,6 @@
 # Skip files larger than 5MB (binary blobs, build artifacts, etc.)
 --max-filesize=5M
 
-# Remove the colon separator between line numbers and matched content
---field-match-separator=
-
 # Exclude version control
 --glob=!.git
 
