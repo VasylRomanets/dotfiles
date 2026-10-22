@@ -1,7 +1,7 @@
 # https://github.com/topgrade-rs/topgrade/blob/main/config.example.toml
 
 [misc]
-disable = ["atuin", "claude_code", "system"]
+disable = ["atuin", "claude_code", "pip3", "system"]
 first = ["git_repos"]
 
 [brew]
