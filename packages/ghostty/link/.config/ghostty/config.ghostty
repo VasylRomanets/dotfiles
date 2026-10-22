@@ -35,6 +35,7 @@ shell-integration-features = no-cursor
 copy-on-select = clipboard
 
 # Updates
+auto-update = off
 auto-update-channel = tip
 
 # Local overrides
