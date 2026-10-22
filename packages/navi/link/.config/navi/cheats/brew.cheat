@@ -1,6 +1,0 @@
-% homebrew, brew
-
-# Show which installed formulae depend on a formula
-brew uses --installed <formula>
-
-$ formula: brew list --formulae
