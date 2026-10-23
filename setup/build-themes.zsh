@@ -10,6 +10,7 @@ source "$SETUP_PATH/_lib.zsh"
 SCHEMES_DIR="$DOTFILES/packages/theme/schemes"
 BAT_THEMES="$DOTFILES/packages/bat/link/.config/bat/themes"
 YAZI_FLAVORS="$DOTFILES/packages/yazi/link/.config/yazi/flavors"
+MICRO_SCHEMES="$DOTFILES/packages/micro/link/.config/micro/colorschemes"
 
 check_deps() {
   command_exists python3 || {
@@ -30,8 +31,9 @@ build_packages() {
 
 # Themes are generated as <slug>-generated, next to anything a person supplied
 # as <slug>: an upstream .tmTheme for bat, a flavor a theme's author wrote for
-# yazi. The supplied one wins (see the bat and yazi hooks), so a generated copy
-# it shadows would never be used, and is dropped.
+# yazi, a colorscheme a theme's author wrote for micro. The supplied one wins
+# (see the bat, yazi and micro hooks), so a generated copy it shadows would
+# never be used, and is dropped.
 prune_shadowed() {
   local dir=$1 extension=$2 generated
   for generated in "$dir"/*-generated.$extension(N); do
@@ -61,6 +63,7 @@ main() {
   build_packages
   prune_shadowed "$BAT_THEMES" tmTheme
   prune_shadowed "$YAZI_FLAVORS" yazi
+  prune_shadowed "$MICRO_SCHEMES" micro
   mirror_bat_themes_to_yazi
 
   echo

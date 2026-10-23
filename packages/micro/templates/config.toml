@@ -3,4 +3,4 @@
 # output is where each theme's file goes, relative to the package.
 
 [colorscheme]
-output = "link/.config/micro/colorschemes/{{slug}}.micro"
+output = "link/.config/micro/colorschemes/{{slug}}-generated.micro"
