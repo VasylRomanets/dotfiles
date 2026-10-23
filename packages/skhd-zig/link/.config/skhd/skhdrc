@@ -8,6 +8,7 @@ alt - d : @launch("Todoist")
 alt - f : ~/.local/bin/finder-focus
 alt - g : @launch("Fork")
 alt - h : open raycast://extensions/raycast/clipboard-history/clipboard-history
+alt - n : open -g raycast://extensions/raycast/system-actions/dismiss-notifications
 alt - s : @launch("Spotify")
 alt - w : @launch("Ghostty")
 alt - z : @launch("zoom.us")
