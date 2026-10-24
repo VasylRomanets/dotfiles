@@ -3,6 +3,8 @@ gui:
 
 git:
   diffRenderers:
-    - command: delta --paging=never
+    - command: delta --paging=never --file-style=omit
+    - command: delta --paging=never --file-style=omit --line-numbers
+    - command: delta --paging=never --file-style=omit --side-by-side
 
 promptToReturnFromSubprocess: false
