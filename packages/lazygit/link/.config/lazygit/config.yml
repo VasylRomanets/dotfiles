@@ -7,4 +7,5 @@ git:
     - command: delta --paging=never --file-style=omit --line-numbers
     - command: delta --paging=never --file-style=omit --side-by-side
 
+notARepository: quit
 promptToReturnFromSubprocess: false
