@@ -36,7 +36,6 @@ copy-on-select = clipboard
 
 # Updates
 auto-update = off
-auto-update-channel = tip
 
 # Local overrides
 config-file = ?~/.local/state/theme/generated/theme.ghostty
