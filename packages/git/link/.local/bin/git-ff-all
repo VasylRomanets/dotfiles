@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Fetch all remotes and fast-forward every local branch that has an upstream.
+# Branches that cannot be fast-forwarded are skipped.
+
+git fetch --all --prune || exit 1
+current=$(git symbolic-ref --short HEAD 2>/dev/null)
+git for-each-ref --format='%(refname:short) %(upstream:remotename) %(upstream:remoteref)' refs/heads |
+while read -r branch remote ref; do
+  case $remote in '' | .) continue ;; esac
+  upstream="refs/remotes/$remote/${ref#refs/heads/}"
+  if [ "$branch" = "$current" ]; then
+    git merge --ff-only "$upstream" || echo "skipped $branch"
+  else
+    git fetch . "$upstream:refs/heads/$branch" || echo "skipped $branch"
+  fi
+done
