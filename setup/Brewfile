@@ -75,7 +75,8 @@ brew "stormy"       # minimal neofetch-like weather CLI
 brew "weathr"       # real-time weather with ASCII animations
 
 # --- Cask: Fonts --------------------------------------------------------------
-cask "font-meslo-lg-nerd-font" # terminal and editor font (MesloLGS NF)
+cask "font-meslo-lg-nerd-font" # cozy programming font with Menlo's DNA
+cask "font-nordwand-mono"      # compact neo-grotesk monospaced font
 
 # --- Cask: Apps ---------------------------------------------------------------
 cask "claude-code@latest"     # AI coding assistant

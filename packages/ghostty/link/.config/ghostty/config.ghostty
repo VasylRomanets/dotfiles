@@ -1,6 +1,5 @@
 # Typography
-adjust-cell-height = 6%
-font-family = MesloLGS Nerd Font Mono
+font-family = Nordwand Mono
 font-size = 18
 
 # Appearance
@@ -18,7 +17,7 @@ theme = dark:Rose Pine Moon,light:Rose Pine Dawn
 window-padding-balance = true
 window-padding-x = 10
 window-padding-y = 10
-window-title-font-family = MesloLGS Nerd Font Mono
+window-title-font-family = Nordwand Mono
 
 # macOS
 macos-option-as-alt = left
