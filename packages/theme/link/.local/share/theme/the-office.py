@@ -18,7 +18,6 @@ class Employee:
     def chaos(self) -> bool:
         return self.chaos_level >= MAX_CHAOS_LEVEL
 
-
 class RegionalManager(Employee):
 
     CATCHPHRASE = "That's what she said."
@@ -33,11 +32,9 @@ class RegionalManager(Employee):
             employee.chaos_level += 1
         return self.CATCHPHRASE
 
-
 def pretzel_day_capacity(employees: list[Employee]) -> int:
     # Pretzel Day always exceeds normal branch capacity
     return len(employees) * 3
-
 
 staff = [
     RegionalManager("Michael Scott"),
