@@ -13,8 +13,11 @@ git:
   autoFetch: false
   diffRenderers:
     - command: delta --paging=never --file-style=omit
+      name: unified
     - command: delta --paging=never --file-style=omit --line-numbers
+      name: line numbers
     - command: delta --paging=never --file-style=omit --side-by-side
+      name: side-by-side
 
 notARepository: quit
 promptToReturnFromSubprocess: false
