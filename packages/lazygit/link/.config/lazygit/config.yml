@@ -8,6 +8,9 @@ customCommands:
 
 gui:
   mouseEvents: false
+  spinner:
+    frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
+    rate: 100
 
 git:
   autoFetch: false
