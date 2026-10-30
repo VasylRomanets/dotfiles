@@ -18,6 +18,9 @@ git:
       name: line numbers
     - command: delta --paging=never --file-style=omit --side-by-side
       name: side-by-side
+    - type: rawGit
+      args: [--color-words]
+      name: color-words
 
 notARepository: quit
 promptToReturnFromSubprocess: false
