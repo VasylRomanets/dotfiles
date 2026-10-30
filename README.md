@@ -103,11 +103,3 @@ A package can also define `hooks/pre-setup.zsh` and/or `hooks/post-setup.zsh` fo
 ## Themes
 
 `theme` switches the theme across Ghostty, bat, cava, delta, fzf, micro, vivid, yazi and `ls`/eza colors. Each theme is one scheme in `packages/theme/schemes` (its 16 terminal colors, UI colors and syntax colors in a small TOML file); `dots build-themes` renders the per-tool files from it and the results are committed, so a normal `dots sync` doesn't need to build anything.
-
-## Credits
-
-Many thanks to the [dotfiles community](https://github.com/topics/dotfiles) for sharing their insights and configurations over the years.
-
-`setup/bootstrap.zsh` is based on [Denys Dovhan's bootstrap.sh](https://github.com/denysdovhan/dotfiles/blob/master/scripts/bootstrap.sh).
-
-`setup/macos.zsh` is inspired by [Mathias Bynens' .macos](https://github.com/mathiasbynens/dotfiles/blob/main/.macos).
