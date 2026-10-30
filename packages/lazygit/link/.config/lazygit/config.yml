@@ -1,7 +1,16 @@
+customCommands:
+  - key: 'U'
+    context: 'global'
+    description: 'Fetch all remotes and fast-forward all local branches'
+    output: log
+    loadingText: 'Fetching and fast-forwarding branches'
+    command: git-ff-all
+
 gui:
   mouseEvents: false
 
 git:
+  autoFetch: false
   diffRenderers:
     - command: delta --paging=never --file-style=omit
     - command: delta --paging=never --file-style=omit --line-numbers
