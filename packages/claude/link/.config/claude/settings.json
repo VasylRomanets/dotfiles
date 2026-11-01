@@ -5,6 +5,7 @@
   "tui": "fullscreen",
   "theme": "auto",
   "terminalProgressBarEnabled": true,
+  "attribution": false,
   "env": {
     "DISABLE_AUTOUPDATER": "1",
     "USE_BUILTIN_RIPGREP": "0"
