@@ -5,6 +5,16 @@ customCommands:
     output: log
     loadingText: 'Fetching and fast-forwarding branches'
     command: git-ff-all
+  - key: 'X'
+    context: 'global'
+    description: 'Push without hooks (--no-verify)'
+    output: log
+    loadingText: 'Pushing without hooks'
+    prompts:
+      - type: 'confirm'
+        title: 'Push without hooks'
+        body: 'Push the current branch with --no-verify, skipping the pre-push hook?'
+    command: git push --no-verify
 
 gui:
   mouseEvents: false
