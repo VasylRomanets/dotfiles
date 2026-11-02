@@ -77,18 +77,6 @@
         ]
       }
     ],
-    "Notification": [
-      {
-        "matcher": "idle_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/notify-idle.sh",
-            "async": true
-          }
-        ]
-      }
-    ],
     "Stop": [
       {
         "hooks": [

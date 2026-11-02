@@ -1,3 +1,0 @@
-#!/bin/sh
-
-# afplay /System/Library/Sounds/Submarine.aiff
