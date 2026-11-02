@@ -93,7 +93,6 @@
     "type": "command",
     "command": "/bin/sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/user-scripts/statusline.sh"
   },
-  "enabledPlugins": {},
   "spinnerVerbs": {
     "mode": "replace",
     "verbs": [
