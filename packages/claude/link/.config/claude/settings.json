@@ -13,8 +13,6 @@
   },
   "permissions": {
     "allow": [
-      "Bash(* --help *)",
-      "Bash(* --version)",
       "Bash(gh issue list *)",
       "Bash(gh issue status *)",
       "Bash(gh issue view *)",
@@ -30,6 +28,28 @@
       "Bash(gh run list *)",
       "Bash(gh run view *)",
       "Bash(gh run watch *)"
+    ],
+    "ask": [
+      "Bash(gh pr close *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh release create *)",
+      "Bash(gh repo delete *)",
+      "Bash(git branch -D *)",
+      "Bash(git clean *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git rebase *)",
+      "Bash(git reset --hard *)",
+      "Bash(rm *)",
+      "Bash(rmdir *)"
+    ],
+    "deny": [
+      "Bash(gh auth status *--show-token*)",
+      "Bash(gh auth status *-t*)",
+      "Bash(gh auth token *)",
+      "Bash(security find-generic-password *)",
+      "Read(~/.ssh/id_*)"
     ],
     "defaultMode": "auto"
   },
