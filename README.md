@@ -10,6 +10,7 @@ My personal macOS dotfiles crafted with love.
 
 ```
 dotfiles/
+├── install.sh             # one-step installer: clones the repo and runs setup/bootstrap.zsh
 ├── packages/
 │   └── <pkg>/
 │       ├── link/          # files to symlink (mirrored structure, optional)
@@ -34,13 +35,14 @@ dotfiles/
 > [!WARNING]
 > Works on my machine! Review the installation scripts and package files before adopting.
 
-1. Clone the repo:
+Run the installer. It clones the repo to `~/.dotfiles` and starts the bootstrap:
 ```zsh
-git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
+/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
 ```
 
-2. Run the bootstrap script:
+Prefer to read the scripts first? Clone the repo and run the bootstrap yourself:
 ```zsh
+git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
 ~/.dotfiles/setup/bootstrap.zsh
 ```
 
@@ -56,7 +58,11 @@ This will:
 - Configure Git and SSH
 - Apply macOS defaults
 
-You'll be prompted before each step.
+You'll be prompted before each step. To skip the questions, pass `--yes` (to the installer after `install`, or to `setup/bootstrap.zsh`). App Store apps are then skipped and existing Git and SSH configs are kept; the Git identity and SSH key come from the environment:
+```zsh
+DOTS_GIT_NAME="Your Name" DOTS_GIT_EMAIL="you@example.com" DOTS_SSH_KEY="~/.ssh/id_ed25519" \
+  /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)" install --yes
+```
 
 ## Updating
 
