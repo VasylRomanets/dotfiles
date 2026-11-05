@@ -21,7 +21,7 @@ dotfiles/
 │       └── setup.toml      # install conditions and copy/link target (optional)
 └── setup/
     ├── _lib.zsh            # shared utilities (colors, logging)
-    ├── Brewfile            # Homebrew formulae, casks, cargo crates, mas apps, and vscode extensions
+    ├── Brewfile            # Homebrew formulae, casks, cargo crates, and mas apps
     ├── bootstrap.zsh       # full machine setup
     ├── sync.zsh            # symlinks package files and copies assets
     ├── pull.zsh            # fast-forwards the repo from its remote, optionally syncing after
@@ -44,7 +44,7 @@ This will:
 - Clone the repo to `~/.dotfiles`
 - Install Xcode Command Line Tools
 - Install Homebrew
-- Install formulae, casks, cargo crates, and App Store apps from Brewfile
+- Install formulae, casks, cargo crates, and mas apps from Brewfile
 - Symlink package files and copy assets
 - Configure Git and SSH
 - Apply macOS defaults
