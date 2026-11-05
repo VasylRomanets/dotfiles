@@ -26,6 +26,7 @@ copied=0
 verbose=0
 dry_run=0
 warnings=()
+denied=()
 only=()
 selected=()
 denied_but_named=()
@@ -211,6 +212,7 @@ select_packages() {
       (( ${deny[(Ie)$name]} )) && forced+=("$name")
     elif (( ${deny[(Ie)$name]} )); then
       skip_reason[$name]="denied in ${sync_config/#$HOME/~}."
+      denied+=("$name")
     elif [[ "$has_allow" == true ]] && (( ! ${allow[(Ie)$name]} )); then
       skip_reason[$name]="not in the allow list of ${sync_config/#$HOME/~}."
     fi
@@ -318,6 +320,11 @@ on_finish() {
     printf '  %s\n' "${warnings[@]}"
   else
     success "$summary"
+  fi
+  if (( ${#denied} )); then
+    echo
+    echo "Skipped — denied in ${sync_config/#$HOME/~}:"
+    printf '  %s\n' "${denied[@]}"
   fi
 }
 
