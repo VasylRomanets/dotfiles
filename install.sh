@@ -33,7 +33,6 @@ main() {
     echo "Updating $dir..."
     git -C "$dir" pull --ff-only || echo "Could not update $dir — using it as it is."
   else
-    echo "Cloning into $dir..."
     git clone https://github.com/VasylRomanets/dotfiles.git "$dir"
   fi
 
