@@ -45,11 +45,13 @@ truncation_symbol = "…"
 format = "[on ](dimmed)[$symbol$branch]($style) "
 
 [git_state]
+disabled = true
 style = "red"
 format = "[\\($state( $progress_current/$progress_total)\\)]($style) "
 cherry_pick = "[🍒 PICKING](bold red)"
 
 [git_status]
+disabled = true
 ahead = "[⇡${count} ](yellow)"
 behind = "[⇣${count} ](yellow)"
 diverged = "[⇣${behind_count}⇡${ahead_count} ](yellow)"
