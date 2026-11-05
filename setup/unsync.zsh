@@ -2,15 +2,12 @@
 
 # Removes the symlinks dots sync made for the named packages, the opposite of
 # syncing them. Only a link that points at the package's own file in this repo
-# is touched; a regular file, or a link to somewhere else, is left alone. With
-# --keep each link is replaced by a copy of the file, so the machine keeps
-# working configuration that no longer follows the repo.
+# is touched; a regular file, or a link to somewhere else, is left alone.
 #
 # Files a package copies (copy/) are not links and stay as they are, and so do
 # the links hooks make at runtime, like bat's current.tmTheme.
 #
-# USAGE: unsync.zsh [--keep] [-v] [-n] <package>...
-#        --keep          replace each link with a copy of the file
+# USAGE: unsync.zsh [-v] [-n] <package>...
 #        -v              also list the links that aren't in place
 #        -n, --dry-run   only print what would change
 
@@ -19,18 +16,15 @@ DOTFILES="${SETUP_PATH:h}"
 
 source "$SETUP_PATH/_lib.zsh"
 
-keep=0
 verbose=0
 dry_run=0
 packages=()
 unlinked=0
-kept=0
 left=0
 sync_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/sync.toml"
 
 for arg in "$@"; do
   case "$arg" in
-    --keep) keep=1 ;;
     -v | --verbose) verbose=1 ;;
     -n | --dry-run) dry_run=1 ;;
     -*)
@@ -65,7 +59,7 @@ check_packages() {
   done
 }
 
-# Unlinks (or replaces with a copy) $2 if it is a link to the repo file $1.
+# Unlinks $2 if it is a link to the repo file $1.
 unlink_one() {
   local src="$1" dest="$2" shown="${2/#$HOME/~}"
   if [[ ! -e "$dest" && ! -L "$dest" ]]; then
@@ -77,21 +71,10 @@ unlink_one() {
     (( ++left ))
     return
   fi
-  if (( ! dry_run && keep )); then
-    # Copy beside the link, then rename over it, so a failed copy never leaves
-    # the file missing.
-    cp -p "$src" "$dest.unsync" && mv -f "$dest.unsync" "$dest"
-  elif (( ! dry_run )); then
-    rm "$dest"
-  fi
+  (( dry_run )) || rm "$dest"
   (( ++pkg_changed ))
-  if (( keep )); then
-    (( ++kept ))
-    echo "  [~] $shown (replaced with a copy)"
-  else
-    (( ++unlinked ))
-    echo "  [-] $shown (removed)"
-  fi
+  (( ++unlinked ))
+  echo "  [-] $shown (removed)"
 }
 
 # Tells the user how to stop dots sync from linking the package again.
@@ -125,20 +108,16 @@ main() {
     (( pkg_total == 1 )) && noun="link"
     if (( pkg_changed == 0 )); then
       echo "Nothing of it is linked."
-    elif (( dry_run && keep )); then
-      echo "Would replace $pkg_changed of $pkg_total $noun with copies."
     elif (( dry_run )); then
       echo "Would remove $pkg_changed of $pkg_total $noun."
-    elif (( keep )); then
-      echo "Replaced $pkg_changed of $pkg_total $noun with copies."
     else
       echo "Removed $pkg_changed of $pkg_total $noun."
     fi
     (( dry_run )) || remind_deny "$pkg"
   done
 
-  local summary="Done — links removed: $unlinked, copies kept: $kept, files left alone: $left."
-  (( dry_run )) && summary="Dry run, nothing changed — links removed: $unlinked, copies kept: $kept, files left alone: $left."
+  local summary="Done — links removed: $unlinked, files left alone: $left."
+  (( dry_run )) && summary="Dry run, nothing changed — links removed: $unlinked, files left alone: $left."
   echo
   success "$summary"
 }

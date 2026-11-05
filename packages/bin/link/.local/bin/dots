@@ -38,7 +38,6 @@ Arguments:
 Options:
   -v, --verbose  sync, unsync: Show more detail, like unchanged files and hook output
   -n, --dry-run  sync, unsync, pull: Only report what would change
-      --keep     unsync: Replace each link with a copy instead of removing it
       --sync     pull: Run dots sync afterwards
   -h, --help     Print help
 USAGE

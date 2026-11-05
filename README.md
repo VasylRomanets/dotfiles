@@ -61,7 +61,7 @@ Once the bootstrap has run, everything goes through the `dots` command (`dots he
 ```zsh
 dots sync [package…]   # link package files; -v also lists unchanged files
 dots pull [--sync]     # fast-forward the repo (refuses on uncommitted changes), optionally syncing after
-dots unsync <package>  # remove a package's links; --keep leaves a copy of each file
+dots unsync <package>  # remove a package's links
 dots prune-symlinks    # clean up stale links left by renamed or removed package files
 ```
 
