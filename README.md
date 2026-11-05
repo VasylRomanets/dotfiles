@@ -40,12 +40,6 @@ Run the installer. It clones the repo to `~/.dotfiles` and starts the bootstrap:
 /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
 ```
 
-Prefer to read the scripts first? Clone the repo and run the bootstrap yourself:
-```zsh
-git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
-~/.dotfiles/setup/bootstrap.zsh
-```
-
 <p align="center">
   <img src=".github/assets/bootstrap.webp" width="60%" alt="Bootstrap process">
 </p>
@@ -53,7 +47,7 @@ git clone https://github.com/vasylromanets/dotfiles.git ~/.dotfiles
 This will:
 - Install Xcode Command Line Tools
 - Install Homebrew
-- Install formulae, casks, cargo crates, App Store apps, and VS Code extensions from Brewfile
+- Install formulae, casks, cargo crates, and App Store apps from Brewfile
 - Symlink package files and copy assets
 - Configure Git and SSH
 - Apply macOS defaults
