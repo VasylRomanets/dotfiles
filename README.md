@@ -16,7 +16,7 @@ dotfiles/
 │       ├── link/          # files to symlink (mirrored structure, optional)
 │       ├── source/        # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
 │       ├── copy/          # files to copy (optional)
-│       ├── hooks/         # pre-setup.zsh / post-setup.zsh run by sync.zsh, theme-changed.zsh run by theme (optional)
+│       ├── hooks/         # pre-setup.zsh / post-setup.zsh (sync), theme-changed.zsh (theme) (optional)
 │       ├── templates/     # Mustache templates dots build-themes renders per scheme (optional)
 │       └── setup.toml     # install conditions and copy/link target (optional)
 └── setup/
@@ -52,30 +52,23 @@ This will:
 - Configure Git and SSH
 - Apply macOS defaults
 
-You'll be prompted before each step. To skip the questions, pass `--yes` (to the installer after `install`, or to `setup/bootstrap.zsh`). App Store apps are then skipped and existing Git and SSH configs are kept; the Git identity and SSH key come from the environment:
-```zsh
-DOTS_GIT_NAME="Your Name" DOTS_GIT_EMAIL="you@example.com" DOTS_SSH_KEY="~/.ssh/id_ed25519" \
-  /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)" install --yes
-```
+You'll be prompted before each step. For an unattended run, add `install --yes` after the installer command (or pass `--yes` to `setup/bootstrap.zsh`); `setup/bootstrap.zsh --help` lists the options.
 
 ## Updating
 
-Once the bootstrap has run, everything is available through the `dots` command (`dots help` lists it). After adding or modifying package files, apply them with:
+Once the bootstrap has run, everything goes through the `dots` command (`dots help` lists it). `sync`, `unsync` and `pull` take `-n` to preview:
 ```zsh
-dots sync            # every package
-dots sync atuin bat  # only these
-dots sync -n         # preview what would change; -v also lists unchanged files
+dots sync [package…]   # link package files; -v also lists unchanged files
+dots pull [--sync]     # fast-forward the repo (refuses on uncommitted changes), optionally syncing after
+dots unsync <package>  # remove a package's links; --keep leaves a copy of each file
+dots prune-symlinks    # clean up stale links left by renamed or removed package files
 ```
 
-To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (it isn't part of the repo), then remove any links they already have with `dots unsync <package>` (add `--keep` to leave a copy of each file):
+To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (not part of the repo), then run `dots unsync` for any that are already linked:
 ```toml
 deny = ["ghostty"]           # never sync these
 allow = ["atuin", "bat"]     # or: sync only these (deny wins over allow)
 ```
-
-To bring in changes made on another machine, run `dots pull` (fast-forward only, and it refuses on uncommitted changes). Add `--sync` to run `dots sync` right after, or `-n` to preview what would be pulled.
-
-Renaming or removing a package file can leave a stale symlink behind. Run `dots prune-symlinks` occasionally to clean those up.
 
 ## Package Setup
 
@@ -96,9 +89,7 @@ target = "~"
 target = "~/Library/..."
 ```
 
-`[requires]` accepts `command`, `app`, or both. `[link]` is rarely needed since `~` is the default. `[copy]` is only used by packages that can't be symlinked because of macOS sandboxing (e.g. any app installed from the Mac App Store).
-
-A package can also define `hooks/pre-setup.zsh` and/or `hooks/post-setup.zsh` for setup steps beyond symlinking/copying (e.g. resolving plugin dependencies). Both are optional and run only for packages that pass `[requires]`.
+`[requires]` accepts `command`, `app`, or both. `[copy]` is for packages that can't be symlinked because of macOS sandboxing (e.g. Mac App Store apps). Optional `hooks/pre-setup.zsh` and `hooks/post-setup.zsh` handle steps beyond linking, such as resolving plugins, and run only for packages that pass `[requires]`.
 
 ## Themes
 
