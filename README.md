@@ -94,4 +94,13 @@ target = "~/Library/..."
 
 ## Themes
 
-`theme` switches the theme across Ghostty, bat, cava, delta, fzf, micro, vivid, yazi and `ls`/eza colors. Each theme is one scheme in `packages/theme/schemes` (its 16 terminal colors, UI colors and syntax colors in a small TOML file); `dots build-themes` renders the per-tool files from it and the results are committed, so a normal `dots sync` doesn't need to build anything.
+`theme` switches the color theme of the terminal and the CLI tools in one go (`theme --help` lists everything):
+```zsh
+theme         # pick one with a live preview
+theme <name>  # apply a theme directly
+theme toggle  # switch to the dark or light counterpart
+theme random  # apply a random theme
+theme list    # print every available theme
+```
+
+Each theme is a small TOML scheme in `packages/theme/schemes`. `dots build-themes` renders the per-tool files from it, and the results are committed, so `dots sync` doesn't need to build anything.
