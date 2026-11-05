@@ -35,16 +35,13 @@ dotfiles/
 > [!WARNING]
 > Works on my machine! Review the installation scripts and package files before adopting.
 
-Run the installer. It clones the repo to `~/.dotfiles` and starts the bootstrap:
+Paste this into Terminal. It asks before each step:
 ```zsh
 /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
 ```
 
-<p align="center">
-  <img src=".github/assets/bootstrap.webp" width="60%" alt="Bootstrap process">
-</p>
-
 This will:
+- Clone the repo to `~/.dotfiles`
 - Install Xcode Command Line Tools
 - Install Homebrew
 - Install formulae, casks, cargo crates, and App Store apps from Brewfile
@@ -52,7 +49,11 @@ This will:
 - Configure Git and SSH
 - Apply macOS defaults
 
-You'll be prompted before each step. For an unattended run, add `install --yes` after the installer command (or pass `--yes` to `setup/bootstrap.zsh`); `setup/bootstrap.zsh --help` lists the options.
+To skip the questions, append `install --yes` to the command above (`setup/bootstrap.zsh --help` lists the options).
+
+<p align="center">
+  <img src=".github/assets/bootstrap.webp" width="60%" alt="Bootstrap process">
+</p>
 
 ## Updating
 
