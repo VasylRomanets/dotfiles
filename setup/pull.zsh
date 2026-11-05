@@ -5,7 +5,8 @@
 # surprise merge would change the machine's configuration at once.
 #
 # A pull alone never touches the links: when package files were added, renamed
-# or removed it says so and suggests dots sync, or --sync runs it right after.
+# or removed, or a copied file or setup hook changed, it says so and suggests
+# dots sync, or --sync runs it right after.
 #
 # USAGE: pull.zsh [--sync] [-n]
 #        --sync          run dots sync after pulling
@@ -94,12 +95,18 @@ main() {
     exec "$SETUP_PATH/sync.zsh"
   fi
 
-  # Only a file that appeared, moved or went away can leave a link missing or stale.
-  local relinked
+  # Only a file that appeared, moved or went away can leave a link missing or
+  # stale. A copied file or a setup hook that merely changed also needs sync,
+  # because copies and hooks only take effect when it runs.
+  local relinked rerun
   relinked="$(git_repo diff --name-only --diff-filter=ADR "$old" HEAD -- packages setup)"
+  rerun="$(git_repo diff --name-only "$old" HEAD -- 'packages/*/copy/*' 'packages/*/hooks/pre-setup.zsh' 'packages/*/hooks/post-setup.zsh')"
   if [[ -n "$relinked" ]]; then
     echo
     warning "Package files were added, renamed or removed — run dots sync."
+  elif [[ -n "$rerun" ]]; then
+    echo
+    warning "Copied files or setup hooks changed — run dots sync."
   fi
 }
 
