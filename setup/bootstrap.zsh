@@ -349,7 +349,7 @@ apply_macos_defaults() {
 on_finish() {
   cleanup
   info "Bootstrap complete — happy coding!"
-  info "P.S.: Don't forget to restart your terminal."
+  info "P.S. Don't forget to restart your terminal."
   echo
   print_nyan
 }
