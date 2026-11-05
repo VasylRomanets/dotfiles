@@ -16,7 +16,7 @@ No build, lint, or test suite exists in this repo — there's nothing to "run te
 dots bootstrap            # ./setup/bootstrap.zsh — full fresh-machine setup (interactive, prompts before each step)
 dots sync [package...]    # ./setup/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes. Names limit it to those packages. Lists each new/relinked/changed file; `-v` also lists unchanged ones and hook output, `-n` only previews
 dots unsync <package>...  # ./setup/unsync.zsh — remove the named packages' symlinks (only links to this repo's files), `-n` shows what would change
-dots pull [--sync] [-n]   # ./setup/pull.zsh — `git pull --ff-only` the repo (refuses on a dirty tree); `--sync` then runs `dots sync`, `-n` only previews. A plain pull never touches links, it just suggests `dots sync` when package files were added/renamed/removed or a `copy/` file or setup hook changed
+dots pull [--sync] [-n]   # ./setup/pull.zsh — `git pull --ff-only` the repo (refuses on a dirty tree); `--sync` then runs `dots sync`, `-n` only previews. A plain pull never touches links, it just suggests `dots sync` when package files were added/renamed/removed or a `copy/` file or sync hook changed
 dots prune-symlinks       # ./setup/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync; occasional manual cleanup)
 dots setup-macos          # ./setup/macos.zsh — apply macOS `defaults write` settings only (bootstrap runs it too)
 dots build-themes         # ./setup/build-themes.zsh — regenerate every per-theme file from the schemes (needs only `python3`; see Theming)
@@ -35,7 +35,7 @@ Each `packages/<pkg>/` directory is independent and can contain any of:
 - `link/` — files mirrored via symlink into the target (default `~`), preserving relative path structure under `link/`.
 - `source/*.zsh` — symlinked into `$ZDOTDIR/source/` (i.e. `~/.config/zsh/source/`) and sourced by `.zshrc`'s loop over that directory. This is how a package hooks into the interactive shell (aliases, `eval "$(tool init zsh)"`, env vars).
 - `copy/` — files copied (not symlinked) into `[copy].target`. Only used when symlinking is impossible, e.g. a macOS-sandboxed Mac App Store app that resolves symlinks outside its container.
-- `hooks/pre-setup.zsh` / `hooks/post-setup.zsh` — arbitrary setup steps beyond linking/copying (e.g. `yazi`'s `post-setup.zsh` runs `ya pkg install` to resolve plugins). Both run inside `sync.zsh`, only for packages that pass `[requires]`.
+- `hooks/pre-sync.zsh` / `hooks/post-sync.zsh` — arbitrary setup steps beyond linking/copying (e.g. `yazi`'s `post-sync.zsh` runs `ya pkg install` to resolve plugins). Both run inside `sync.zsh`, only for packages that pass `[requires]`.
 - `hooks/theme-changed.zsh` — the package's reaction to `theme`; `sync.zsh` symlinks it to `~/.local/share/theme/hooks.d/<pkg>.zsh` (see Theming).
 - `templates/` — inputs to `dots build-themes` (see Theming): the Mustache templates and their `config.toml`; `sync.zsh` ignores it.
 - `setup.toml` — optional. Packages without one are always processed. Schema:
@@ -53,7 +53,7 @@ Each `packages/<pkg>/` directory is independent and can contain any of:
 
 ### `sync.zsh` per-package order
 
-For each `packages/*/`: check `[requires]` (skip package entirely if command/app missing) → run `pre-setup` hook → symlink `link/**` and `source/*.zsh` → copy `copy/**` → run `post-setup` hook. `link` and `source` are independent and a package can have either, both, or neither.
+For each `packages/*/`: check `[requires]` (skip package entirely if command/app missing) → run `pre-sync` hook → symlink `link/**` and `source/*.zsh` → copy `copy/**` → run `post-sync` hook. `link` and `source` are independent and a package can have either, both, or neither.
 
 ### Theming
 

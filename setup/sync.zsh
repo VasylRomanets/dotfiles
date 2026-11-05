@@ -258,7 +258,7 @@ sync_packages() {
       continue
     fi
 
-    run_hook "$pkg_dir/hooks/pre-setup.zsh" "pre-setup"
+    run_hook "$pkg_dir/hooks/pre-sync.zsh" "pre-sync"
 
     pkg_link_ok=0
     pkg_link_changed=0
@@ -284,7 +284,7 @@ sync_packages() {
       fi
     fi
 
-    run_hook "$pkg_dir/hooks/post-setup.zsh" "post-setup"
+    run_hook "$pkg_dir/hooks/post-sync.zsh" "post-sync"
   done
 }
 
@@ -293,7 +293,7 @@ ensure_default_theme() {
   # settings.json points at "current", a symlink the theme command manages, so
   # without this a fresh machine would show an undefined colorscheme until
   # the theme command is run by hand. Runs after sync_packages (not as a per-package
-  # post-setup hook) so every package's hooks.d entry already exists —
+  # post-sync hook) so every package's hooks.d entry already exists —
   # package processing order is alphabetical, and "theme" sorts before
   # several packages (e.g. yazi) that it needs to have reacted.
   # Idempotent: only acts if no theme has ever been chosen.

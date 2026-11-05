@@ -16,7 +16,7 @@ dotfiles/
 │       ├── link/           # files to symlink (mirrored structure, optional)
 │       ├── source/         # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
 │       ├── copy/           # files to copy (optional)
-│       ├── hooks/          # pre-setup.zsh / post-setup.zsh (sync), theme-changed.zsh (theme) (optional)
+│       ├── hooks/          # pre-sync.zsh / post-sync.zsh (sync), theme-changed.zsh (theme) (optional)
 │       ├── templates/      # Mustache templates dots build-themes renders per scheme (optional)
 │       └── setup.toml      # install conditions and copy/link target (optional)
 └── setup/
@@ -90,7 +90,7 @@ target = "~"
 target = "~/Library/..."
 ```
 
-`[requires]` accepts `command`, `app`, or both. `[copy]` is for packages that can't be symlinked because of macOS sandboxing (e.g. Mac App Store apps). Optional `hooks/pre-setup.zsh` and `hooks/post-setup.zsh` handle steps beyond linking, such as resolving plugins, and run only for packages that pass `[requires]`.
+`[requires]` accepts `command`, `app`, or both. `[copy]` is for packages that can't be symlinked because of macOS sandboxing (e.g. Mac App Store apps). Optional `hooks/pre-sync.zsh` and `hooks/post-sync.zsh` handle steps beyond linking, such as resolving plugins, and run only for packages that pass `[requires]`.
 
 ## Themes
 
