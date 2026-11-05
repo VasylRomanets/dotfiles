@@ -10,24 +10,24 @@ My personal macOS dotfiles crafted with love.
 
 ```
 dotfiles/
-├── install.sh             # one-step installer: clones the repo and runs setup/bootstrap.zsh
+├── install.sh              # one-step installer: clones the repo and runs setup/bootstrap.zsh
 ├── packages/
 │   └── <pkg>/
-│       ├── link/          # files to symlink (mirrored structure, optional)
-│       ├── source/        # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
-│       ├── copy/          # files to copy (optional)
-│       ├── hooks/         # pre-setup.zsh / post-setup.zsh (sync), theme-changed.zsh (theme) (optional)
-│       ├── templates/     # Mustache templates dots build-themes renders per scheme (optional)
-│       └── setup.toml     # install conditions and copy/link target (optional)
+│       ├── link/           # files to symlink (mirrored structure, optional)
+│       ├── source/         # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
+│       ├── copy/           # files to copy (optional)
+│       ├── hooks/          # pre-setup.zsh / post-setup.zsh (sync), theme-changed.zsh (theme) (optional)
+│       ├── templates/      # Mustache templates dots build-themes renders per scheme (optional)
+│       └── setup.toml      # install conditions and copy/link target (optional)
 └── setup/
-    ├── _lib.zsh           # shared utilities (colors, logging)
-    ├── Brewfile           # Homebrew formulae, casks, cargo crates, mas apps, and vscode extensions
-    ├── bootstrap.zsh      # full machine setup
-    ├── sync.zsh           # symlinks package files and copies assets
-    ├── pull.zsh           # fast-forwards the repo from its remote, optionally syncing after
-    ├── build-themes.zsh   # renders every theme's per-tool files from packages/theme/schemes
-    ├── prune-symlinks.zsh # removes orphaned symlinks left by renamed/removed package files
-    └── macos.zsh          # sensible macOS defaults
+    ├── _lib.zsh            # shared utilities (colors, logging)
+    ├── Brewfile            # Homebrew formulae, casks, cargo crates, mas apps, and vscode extensions
+    ├── bootstrap.zsh       # full machine setup
+    ├── sync.zsh            # symlinks package files and copies assets
+    ├── pull.zsh            # fast-forwards the repo from its remote, optionally syncing after
+    ├── build-themes.zsh    # renders every theme's per-tool files from packages/theme/schemes
+    ├── prune-symlinks.zsh  # removes orphaned symlinks left by renamed/removed package files
+    └── macos.zsh           # sensible macOS defaults
 ```
 
 ## New Machine Setup
@@ -67,8 +67,8 @@ dots prune-symlinks    # clean up stale links left by renamed or removed package
 
 To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (not part of the repo), then run `dots unsync` for any that are already linked:
 ```toml
-deny = ["ghostty"]           # never sync these
-allow = ["atuin", "bat"]     # or: sync only these (deny wins over allow)
+deny = ["ghostty"]        # never sync these
+allow = ["atuin", "bat"]  # or: sync only these (deny wins over allow)
 ```
 
 ## Package Setup
@@ -78,8 +78,8 @@ Each package may optionally include a `setup.toml`. Packages without one are alw
 ```toml
 # Skip this package if the CLI tool/GUI app is not installed
 [requires]
-command = "bat" # checked via command -v
-app = "Ghostty" # checked via /Applications/Ghostty.app
+command = "bat"  # checked via command -v
+app = "Ghostty"  # checked via /Applications/Ghostty.app
 
 # Override symlink destination (defaults to ~)
 [link]
