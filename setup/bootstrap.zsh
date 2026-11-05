@@ -12,6 +12,37 @@ TMP_MAS_BREWFILE=""
 
 source "$SETUP_PATH/_lib.zsh"
 
+usage() {
+  cat <<'EOF'
+Set up a fresh Mac
+
+Usage:
+  bootstrap.zsh [--yes]
+
+Options:
+  -y, --yes   Run every step without asking. App Store apps are skipped,
+              existing Git and SSH configs are kept, and the Git identity and
+              SSH key come from DOTS_GIT_NAME, DOTS_GIT_EMAIL and DOTS_SSH_KEY
+              (when unset, the Git config is skipped and SSH uses the default key).
+  -h, --help  Print help
+EOF
+}
+
+for arg in "$@"; do
+  case "$arg" in
+    -y | --yes) ASSUME_YES=1 ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    *)
+      error "Unknown option: $arg"
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
 cleanup() {
   [[ -n "$TMP_BREWFILE" ]] && rm -f "$TMP_BREWFILE" || true
   [[ -n "$TMP_MAS_BREWFILE" ]] && rm -f "$TMP_MAS_BREWFILE" || true
@@ -57,10 +88,13 @@ on_start() {
   echo "  · Configure Git and SSH"
   echo "  · Apply macOS defaults"
   echo
-  echo "You'll be prompted before each step."
+  if [[ -n "$ASSUME_YES" ]]; then
+    echo "Running with --yes: every step runs without asking."
+  else
+    echo "You'll be prompted before each step."
+  fi
   echo
-  read -q "?Proceed? [y/N] " || {
-    echo
+  confirm || {
     echo "Skipping bootstrap."
     echo
     info "No rush — come back anytime!"
@@ -68,21 +102,16 @@ on_start() {
     print_nyan
     exit 0
   }
-  echo
-  echo
 }
 
 install_xcode_clt() {
   info "Step 1 - Install Xcode Command Line Tools"
   echo
-  read -q "?Proceed? [y/N] " || {
-    echo
+  confirm || {
     echo "Skipping Xcode Command Line Tools installation."
     echo
     return
   }
-  echo
-  echo
   echo "Checking Xcode Command Line Tools..."
   if ! xcode-select -p &>/dev/null; then
     echo "Opening installer — click Install in the dialog and wait for it to finish."
@@ -101,14 +130,11 @@ install_xcode_clt() {
 install_homebrew() {
   info "Step 2 - Install Homebrew"
   echo
-  read -q "?Proceed? [y/N] " || {
-    echo
+  confirm || {
     echo "Skipping Homebrew installation."
     echo
     return
   }
-  echo
-  echo
   echo "Checking Homebrew..."
   if ! command_exists brew; then
     echo "Installing Homebrew..."
@@ -142,14 +168,11 @@ install_homebrew_packages() {
   warning "Review the Brewfile and comment out anything you don't need:"
   echo "  $SETUP_PATH/Brewfile"
   echo
-  read -q "?Proceed? [y/N] " || {
-    echo
+  confirm || {
     echo "Skipping Homebrew packages installation."
     echo
     return
   }
-  echo
-  echo
 
   # Some casks run privileged installers; authenticate now so brew bundle
   # doesn't stop to prompt partway through.
@@ -188,25 +211,19 @@ install_mas_apps() {
     return
   fi
 
-  read -q "?Proceed? [y/N] " || {
-    echo
+  confirm || {
     echo "Skipping App Store apps installation."
     echo
     return
   }
-  echo
-  echo
 
   warning "Make sure you're signed into the App Store before proceeding."
   open "macappstore://showAccountPage"
-  read -q "?Signed in? [y/N] " || {
-    echo
+  confirm "Signed in?" no || {
     echo "Skipping App Store apps installation."
     echo
     return
   }
-  echo
-  echo
 
   TMP_MAS_BREWFILE="$(mktemp /private/tmp/Brewfile.mas.XXXXXX)"
   grep -E '^mas ' "$SETUP_PATH/Brewfile" >> "$TMP_MAS_BREWFILE" || true
@@ -222,14 +239,11 @@ install_mas_apps() {
 sync_dotfiles() {
   info "Step 5 - Symlink dotfiles and copy assets"
   echo
-  read -q "?Proceed? [y/N] " || {
-    echo
+  confirm || {
     echo "Skipping dotfiles and assets."
     echo
     return
   }
-  echo
-  echo
   "$SETUP_PATH/sync.zsh"
   echo
 }
@@ -237,32 +251,31 @@ sync_dotfiles() {
 configure_git() {
   info "Step 6 - Configure Git"
   echo
-  read -q "?Proceed? [y/N] " || {
-    echo
+  confirm || {
     echo "Skipping Git config."
     echo
     return
   }
-  echo
-  echo
 
   local git_config="$HOME/.config/git/config.local"
 
   if [[ -f "$git_config" ]]; then
-    read -q "?$git_config already exists — overwrite? [y/N] " || {
-      echo
+    confirm "$git_config already exists — overwrite?" no || {
       echo "Skipping Git config."
       echo
       return
     }
-    echo
-    echo
     rm -f "$git_config"
   fi
 
   echo "Git identity — used for commits."
-  read "git_name?  Full name:  "
-  read "git_email?  Email:      "
+  if [[ -n "$ASSUME_YES" ]]; then
+    git_name="$DOTS_GIT_NAME"
+    git_email="$DOTS_GIT_EMAIL"
+  else
+    read "git_name?  Full name:  "
+    read "git_email?  Email:      "
+  fi
   echo
 
   if [[ -n "$git_name" && -n "$git_email" ]]; then
@@ -283,31 +296,29 @@ EOF
 configure_ssh() {
   info "Step 7 - Configure SSH"
   echo
-  read -q "?Proceed? [y/N] " || {
-    echo
+  confirm || {
     echo "Skipping SSH config."
     echo
     return
   }
-  echo
-  echo
 
   local ssh_config="$HOME/.ssh/config.local"
 
   if [[ -f "$ssh_config" ]]; then
-    read -q "?$ssh_config already exists — overwrite? [y/N] " || {
-      echo
+    confirm "$ssh_config already exists — overwrite?" no || {
       echo "Skipping SSH config."
       echo
       return
     }
-    echo
-    echo
     rm -f "$ssh_config"
   fi
 
   echo "SSH config — used for GitHub and other hosts."
-  read "ssh_key?  Key path [~/.ssh/id_ed25519]:  "
+  if [[ -n "$ASSUME_YES" ]]; then
+    ssh_key="$DOTS_SSH_KEY"
+  else
+    read "ssh_key?  Key path [~/.ssh/id_ed25519]:  "
+  fi
   ssh_key="${ssh_key:-~/.ssh/id_ed25519}"
   echo
 
@@ -326,14 +337,11 @@ apply_macos_defaults() {
   warning "Review macos.zsh and comment out anything you don't need:"
   echo "  $SETUP_PATH/macos.zsh"
   echo
-  read -q "?Proceed? [y/N] " || {
-    echo
+  confirm || {
     echo "Skipping macOS defaults."
     echo
     return
   }
-  echo
-  echo
   "$SETUP_PATH/macos.zsh"
   echo
 }

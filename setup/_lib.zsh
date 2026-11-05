@@ -50,6 +50,27 @@ command_exists() {
   command -v "$1" &>/dev/null
 }
 
+# Asks a yes/no question, "no" by default, and returns 0 on yes. With
+# ASSUME_YES set (bootstrap's --yes) it answers for you without asking: yes, or
+# whatever $2 says, for questions that need a person (e.g. "no").
+confirm() {
+  local question="${1:-Proceed?}" assumed="${2:-yes}"
+
+  if [[ -n "$ASSUME_YES" ]]; then
+    echo
+    [[ "$assumed" == "yes" ]]
+    return
+  fi
+
+  if read -q "?$question [y/N] "; then
+    echo
+    echo
+    return 0
+  fi
+  echo
+  return 1
+}
+
 # Prints a value from a TOML file, e.g. toml_get setup.toml '.requires.command'.
 toml_get() {
   local file="$1" query="$2"
