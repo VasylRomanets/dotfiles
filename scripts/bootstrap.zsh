@@ -261,12 +261,11 @@ configure_git() {
   local git_config="$HOME/.config/git/config.local"
 
   if [[ -f "$git_config" ]]; then
-    confirm "$git_config already exists — overwrite?" no || {
+    confirm "$git_config already exists — change the name and email in it?" no || {
       echo "Skipping Git config."
       echo
       return
     }
-    rm -f "$git_config"
   fi
 
   echo "Git identity — used for commits."
@@ -281,12 +280,9 @@ configure_git() {
 
   if [[ -n "$git_name" && -n "$git_email" ]]; then
     mkdir -p "${git_config:h}"
-    cat > "$git_config" <<EOF
-[user]
-    name = $git_name
-    email = $git_email
-EOF
-    success "Created $git_config"
+    git config --file "$git_config" user.name "$git_name"
+    git config --file "$git_config" user.email "$git_email"
+    success "Saved $git_config"
     echo
   else
     echo "No input — skipping Git config."
