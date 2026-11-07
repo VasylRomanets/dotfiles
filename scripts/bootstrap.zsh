@@ -26,7 +26,7 @@ Options:
               existing SSH and Git configs are kept, and the SSH key and Git
               identity come from DOTS_SSH_KEY, DOTS_GIT_NAME and DOTS_GIT_EMAIL
               (when unset, SSH uses the default key and the Git config is skipped).
-              The same key signs your commits.
+              The same key signs your commits. A missing key is not created.
   -h, --help  Print help
 EOF
 }
@@ -263,6 +263,36 @@ ask_ssh_key() {
   ssh_key="${ssh_key:-~/.ssh/id_ed25519}"
 }
 
+# Offers to create the key when it doesn't exist yet, then says where to
+# register it. ssh-keygen asks for the passphrase itself.
+ensure_ssh_key() {
+  local key="${ssh_key%.pub}"
+  key="${key/#\~/$HOME}"
+  [[ -f "$key" || -f "$key.pub" ]] && return
+
+  if [[ -n "$ASSUME_YES" ]]; then
+    warning "$ssh_key does not exist — create it with: ssh-keygen -t ed25519 -f $ssh_key"
+    return
+  fi
+  confirm "$ssh_key does not exist — create it now?" no || return
+
+  mkdir -p -m 700 "${key:h}"
+  ssh-keygen -t ed25519 -f "$key" || {
+    warning "The key was not created."
+    return
+  }
+
+  echo
+  echo "Add this public key to GitHub as both an authentication and a signing key:"
+  echo "  $(<"$key.pub")"
+  if command_exists gh && gh auth status &>/dev/null; then
+    echo "  gh ssh-key add $key.pub --type authentication"
+    echo "  gh ssh-key add $key.pub --type signing"
+  else
+    echo "  https://github.com/settings/keys"
+  fi
+}
+
 configure_ssh() {
   info "Step 6 - Configure SSH"
   echo
@@ -286,6 +316,7 @@ configure_ssh() {
   echo "SSH config — used for GitHub and other hosts."
   ask_ssh_key
   echo
+  ensure_ssh_key
 
   mkdir -p "$HOME/.ssh"
   cat > "$ssh_config" <<EOF
