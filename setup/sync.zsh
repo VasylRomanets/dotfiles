@@ -228,7 +228,7 @@ sync_packages() {
 
   for pkg in "${selected[@]}"; do
     pkg_dir="packages/$pkg/"
-    setup="$pkg_dir/setup.toml"
+    pkg_toml="$pkg_dir/sync.toml"
     echo
     echo "Syncing $pkg..."
     (( ${denied_but_named[(Ie)$pkg]} )) && echo "Denied in ${dots_config/#$HOME/~}, but named here."
@@ -243,8 +243,8 @@ sync_packages() {
       continue
     fi
 
-    req_command="$(toml_get "$setup" '.requires.command')"
-    req_app="$(toml_get "$setup" '.requires.app')"
+    req_command="$(toml_get "$pkg_toml" '.requires.command')"
+    req_app="$(toml_get "$pkg_toml" '.requires.app')"
 
     if [[ -n "$req_command" ]] && ! command_exists "$req_command"; then
       warn "Skipped — $req_command not found."
@@ -273,7 +273,7 @@ sync_packages() {
     (( pkg_link_total )) && report_count "link" "$pkg_link_ok" "$pkg_link_changed" "$pkg_link_total"
 
     if [[ -d "$pkg_dir/copy" ]]; then
-      copy_target="$(toml_get "$setup" '.copy.target')"
+      copy_target="$(toml_get "$pkg_toml" '.copy.target')"
       copy_target="${copy_target/#\~/$HOME}"
       if [[ -n "$copy_target" ]]; then
         (( dry_run )) || mkdir -p "$copy_target"

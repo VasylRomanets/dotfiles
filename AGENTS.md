@@ -41,7 +41,7 @@ Each `packages/<pkg>/` directory is independent and can contain any of:
 - `hooks/pre-sync.zsh` / `hooks/post-sync.zsh` — arbitrary setup steps beyond linking/copying (e.g. `yazi`'s `post-sync.zsh` runs `ya pkg install` to resolve plugins). Both run inside `sync.zsh`, only for packages that pass `[requires]`.
 - `hooks/theme-changed.zsh` — the package's reaction to `theme`; `sync.zsh` symlinks it to `~/.local/share/theme/hooks.d/<pkg>.zsh` (see Theming).
 - `templates/` — inputs to `dots build-themes` (see Theming): the Mustache templates and their `config.toml`; `sync.zsh` ignores it.
-- `setup.toml` — optional. Packages without one are always processed. Schema:
+- `sync.toml` — optional. Packages without one are always processed. Schema:
   ```toml
   [requires]
   command = "bat"  # gate on `command -v` — package skipped entirely if absent

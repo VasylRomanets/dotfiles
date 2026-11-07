@@ -18,7 +18,7 @@ dotfiles/
 │       ├── copy/           # files to copy (optional)
 │       ├── hooks/          # pre-sync.zsh / post-sync.zsh (sync), theme-changed.zsh (theme) (optional)
 │       ├── templates/      # Mustache templates dots build-themes renders per scheme (optional)
-│       └── setup.toml      # install conditions and copy/link target (optional)
+│       └── sync.toml       # install conditions and copy/link target (optional)
 └── setup/
     ├── _lib.zsh            # shared utilities (colors, logging)
     ├── Brewfile            # Homebrew formulae, casks, cargo crates, and mas apps
@@ -74,7 +74,7 @@ allow = ["atuin", "bat"]  # or: sync only these (deny wins over allow)
 
 ## Package Setup
 
-Each package may optionally include a `setup.toml`. Packages without one are always processed, symlinking `link/` to `~` by default.
+Each package may optionally include a `sync.toml`. Packages without one are always processed, symlinking `link/` to `~` by default.
 
 ```toml
 # Skip this package if the CLI tool/GUI app is not installed

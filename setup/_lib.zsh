@@ -71,7 +71,7 @@ confirm() {
   return 1
 }
 
-# Prints a value from a TOML file, e.g. toml_get setup.toml '.requires.command'.
+# Prints a value from a TOML file, e.g. toml_get sync.toml '.requires.command'.
 toml_get() {
   local file="$1" query="$2"
   [[ -f "$file" ]] || return
@@ -80,12 +80,12 @@ toml_get() {
 
 # Prints a tab-separated "<repo file>	<where it is linked>" line for every file
 # package $1 links into the machine: its link/ files (into ~, or the target in
-# its setup.toml), its source/*.zsh (into zsh's source folder) and its theme
+# its sync.toml), its source/*.zsh (into zsh's source folder) and its theme
 # hook. Needs $DOTFILES, so sync and unlink can't disagree about the targets.
 package_links() {
   local pkg="$1" pkg_dir="$DOTFILES/packages/$1" link_target src
   if [[ -d "$pkg_dir/link" ]]; then
-    link_target="$(toml_get "$pkg_dir/setup.toml" '.link.target')"
+    link_target="$(toml_get "$pkg_dir/sync.toml" '.link.target')"
     link_target="${${link_target/#\~/$HOME}:-$HOME}"
     for src in "$pkg_dir/link/"**/*(.DN); do
       [[ "${src:t}" == ".DS_Store" ]] && continue
