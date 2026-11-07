@@ -13,19 +13,19 @@ dotfiles/
 ├── install.sh              # one-step installer: clones the repo and runs setup/bootstrap.zsh
 ├── packages/
 │   └── <pkg>/
-│       ├── link/           # files to symlink (mirrored structure, optional)
+│       ├── link/           # files to symlink (optional)
 │       ├── source/         # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
 │       ├── copy/           # files to copy (optional)
-│       ├── hooks/          # pre-sync.zsh / post-sync.zsh (sync), theme-changed.zsh (theme) (optional)
+│       ├── hooks/          # pre-sync.zsh, post-sync.zsh, theme-changed.zsh (optional)
 │       ├── templates/      # Mustache templates dots build-themes renders per scheme (optional)
 │       └── sync.toml       # install conditions and copy/link target (optional)
 └── setup/
-    ├── _lib.zsh            # shared utilities (colors, logging)
+    ├── _lib.zsh            # shared utilities
     ├── Brewfile            # Homebrew formulae, casks, cargo crates, and mas apps
     ├── bootstrap.zsh       # full machine setup
     ├── sync.zsh            # symlinks package files and copies assets
-    ├── unlink.zsh          # removes a package's symlinks, the opposite of sync
-    ├── pull.zsh            # fast-forwards the repo from its remote, optionally syncing after
+    ├── unlink.zsh          # removes a package's symlinks
+    ├── pull.zsh            # fast-forwards the repo from its remote
     ├── build-themes.zsh    # renders every theme's per-tool files from packages/theme/schemes
     ├── prune-symlinks.zsh  # removes orphaned symlinks left by renamed/removed package files
     └── macos.zsh           # sensible macOS defaults
