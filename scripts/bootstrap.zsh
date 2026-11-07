@@ -180,7 +180,7 @@ install_homebrew_packages() {
   request_sudo
 
   TMP_BREWFILE="$(mktemp /private/tmp/Brewfile.XXXXXX)"
-  grep -E '^(tap |brew |cask |cargo |vscode )' "$DOTFILES/Brewfile" >> "$TMP_BREWFILE" || true
+  grep -v '^mas ' "$DOTFILES/Brewfile" >> "$TMP_BREWFILE" || true
 
   echo "Installing Homebrew packages..."
   brew bundle --file="$TMP_BREWFILE"
