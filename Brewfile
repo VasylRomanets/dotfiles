@@ -104,7 +104,7 @@ cask "skhd-zig"               # global hotkeys that run shell commands (active p
 cask "spotify"                # music streaming
 cask "transmission"           # BitTorrent client
 cask "unity-hub"              # launcher for Unity editor
-cask "zed"                    # fast code editor
+cask "zed"                    # code editor
 cask "zoom"                   # video conferencing
 
 # --- Cargo --------------------------------------------------------------------
