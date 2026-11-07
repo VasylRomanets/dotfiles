@@ -11,6 +11,12 @@
 !.env.sample
 !.env.template
 
+# keys
+id_*
+!id_*.pub
+*.pem
+*.p12
+
 # runtime
 __pycache__/
 *.log
