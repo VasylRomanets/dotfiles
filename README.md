@@ -1,6 +1,6 @@
 # dotfiles
 
-My personal macOS dotfiles crafted with love.
+My personal macOS dotfiles crafted with love. Review the installation scripts and package files before adopting.
 
 <p align="center">
   <img src=".github/assets/rice-terminal.png" width="100%" alt="Riced Terminal Workspace">
@@ -32,9 +32,6 @@ dotfiles/
 ```
 
 ## New Machine Setup
-
-> [!WARNING]
-> Works on my machine! Review the installation scripts and package files before adopting.
 
 Paste this into Terminal. It asks before each step:
 ```sh
