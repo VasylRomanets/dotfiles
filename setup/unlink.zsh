@@ -21,7 +21,7 @@ dry_run=0
 packages=()
 unlinked=0
 left=0
-sync_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/sync.toml"
+dots_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/config.toml"
 
 for arg in "$@"; do
   case "$arg" in
@@ -80,8 +80,8 @@ unlink_one() {
 # Tells the user how to stop dots sync from linking the package again.
 remind_deny() {
   local pkg="$1" denied=""
-  [[ -f "$sync_config" ]] && denied="$(toml2json "$sync_config" | jq -r --arg p "$pkg" '(.deny // []) | index($p) // empty')"
-  [[ -n "$denied" ]] || echo "To keep dots sync from linking $pkg again, add it to deny in ${sync_config/#$HOME/~}."
+  [[ -f "$dots_config" ]] && denied="$(toml2json "$dots_config" | jq -r --arg p "$pkg" '(.deny // []) | index($p) // empty')"
+  [[ -n "$denied" ]] || echo "To keep dots sync from linking $pkg again, add it to deny in ${dots_config/#$HOME/~}."
 }
 
 main() {

@@ -66,7 +66,7 @@ dots unlink <package>  # remove a package's links
 dots prune-symlinks    # clean up stale links left by renamed or removed package files
 ```
 
-To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (not part of the repo), then run `dots unlink` for any that are already linked:
+To keep some packages off a machine, list them in `~/.config/dots/config.toml` (not part of the repo), then run `dots unlink` for any that are already linked:
 ```toml
 deny = ["ghostty"]        # never sync these
 allow = ["atuin", "bat"]  # or: sync only these (deny wins over allow)

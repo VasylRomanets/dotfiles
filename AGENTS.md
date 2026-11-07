@@ -24,7 +24,7 @@ dots build-themes         # ./setup/build-themes.zsh — regenerate every per-th
 
 - It prints one section per package, listing every link or copy it creates or changes (`[+]` new, `[~]` relinked or changed). A hook's output is hidden unless it fails. `-v` adds the unchanged files (`[=]`) and hook output, `-n` previews without changing anything.
 - `dots sync atuin bat` syncs only those packages; named packages ignore the config file below.
-- An optional per-machine `~/.config/dots/sync.toml` (not in the repo) can hold `allow = ["atuin", "bat"]` (sync only these) and `deny = ["ghostty"]` (never sync these; deny wins over allow). A name that isn't a package is reported as a warning.
+- An optional per-machine `~/.config/dots/config.toml` (not in the repo) can hold `allow = ["atuin", "bat"]` (sync only these) and `deny = ["ghostty"]` (never sync these; deny wins over allow). A name that isn't a package is reported as a warning.
 - To take a package off a machine that already has it, add it to `deny` and run `dots unlink <package>`. A denied package that is still linked is flagged in its section of the sync output, and every denied package is listed after the summary.
 - The link targets come from `package_links` in `setup/_lib.zsh`, shared by sync and unlink.
 - It is idempotent and safe to re-run. It needs `toml2json` and `jq` (installed by `bootstrap.zsh`) and exits early with an error if they're missing.

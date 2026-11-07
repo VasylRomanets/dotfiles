@@ -32,7 +32,7 @@ selected=()
 denied_but_named=()
 typeset -A skip_reason
 
-sync_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/sync.toml"
+dots_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/config.toml"
 
 for arg in "$@"; do
   case "$arg" in
@@ -176,7 +176,7 @@ run_hook() {
 # gets a section saying so.
 #
 # Names on the command line win: they are synced even if the config file leaves
-# them out. Otherwise ~/.config/dots/sync.toml may hold lists of package names,
+# them out. Otherwise ~/.config/dots/config.toml may hold lists of package names,
 # like the permission lists in Claude Code's settings:
 #
 #   allow = ["atuin", "bat"]   # sync only these; leave it out to sync all
@@ -193,16 +193,16 @@ select_packages() {
     }
   done
 
-  if [[ -f "$sync_config" ]]; then
-    json="$(toml2json "$sync_config" 2>&1)" || {
-      error "Can't read ${sync_config/#$HOME/~}: $json"
+  if [[ -f "$dots_config" ]]; then
+    json="$(toml2json "$dots_config" 2>&1)" || {
+      error "Can't read ${dots_config/#$HOME/~}: $json"
       exit 1
     }
     has_allow="$(jq 'has("allow")' <<<"$json")"
     allow=(${(f)"$(jq -r '(.allow // [])[]' <<<"$json")"})
     deny=(${(f)"$(jq -r '(.deny // [])[]' <<<"$json")"})
     for name in "${allow[@]}" "${deny[@]}"; do
-      (( ${all[(Ie)$name]} )) || warn "${sync_config/#$HOME/~} lists '$name', which is not a package."
+      (( ${all[(Ie)$name]} )) || warn "${dots_config/#$HOME/~} lists '$name', which is not a package."
     done
   fi
 
@@ -211,10 +211,10 @@ select_packages() {
       (( ${only[(Ie)$name]} )) || continue
       (( ${deny[(Ie)$name]} )) && forced+=("$name")
     elif (( ${deny[(Ie)$name]} )); then
-      skip_reason[$name]="denied in ${sync_config/#$HOME/~}."
+      skip_reason[$name]="denied in ${dots_config/#$HOME/~}."
       denied+=("$name")
     elif [[ "$has_allow" == true ]] && (( ! ${allow[(Ie)$name]} )); then
-      skip_reason[$name]="not in the allow list of ${sync_config/#$HOME/~}."
+      skip_reason[$name]="not in the allow list of ${dots_config/#$HOME/~}."
     fi
     selected+=("$name")
   done
@@ -231,7 +231,7 @@ sync_packages() {
     setup="$pkg_dir/setup.toml"
     echo
     echo "Syncing $pkg..."
-    (( ${denied_but_named[(Ie)$pkg]} )) && echo "Denied in ${sync_config/#$HOME/~}, but named here."
+    (( ${denied_but_named[(Ie)$pkg]} )) && echo "Denied in ${dots_config/#$HOME/~}, but named here."
     if [[ -n "${skip_reason[$pkg]}" ]]; then
       echo "Skipped — ${skip_reason[$pkg]}"
       still_linked=0
@@ -323,7 +323,7 @@ on_finish() {
   fi
   if (( ${#denied} )); then
     echo
-    echo "Skipped — denied in ${sync_config/#$HOME/~}:"
+    echo "Skipped — denied in ${dots_config/#$HOME/~}:"
     printf '  %s\n' "${denied[@]}"
   fi
 }
