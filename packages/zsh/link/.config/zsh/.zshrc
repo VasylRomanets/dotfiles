@@ -1,4 +1,5 @@
 # --- Aliases ------------------------------------------------------------------
+alias brew-uses="brew uses --installed --recursive"
 alias grep="grep --color=auto"
 
 # --- History ------------------------------------------------------------------
