@@ -84,7 +84,7 @@ on_start() {
   echo "This script will set up your Mac from scratch:"
   echo "  · Install Xcode Command Line Tools"
   echo "  · Install Homebrew"
-  echo "  · Install formulae, casks and App Store apps from Brewfile"
+  echo "  · Install formulae, casks, cargo crates, and App Store apps from Brewfile"
   echo "  · Symlink dotfiles and copy assets"
   echo "  · Configure Git and SSH"
   echo "  · Apply macOS defaults"

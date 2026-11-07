@@ -10,7 +10,7 @@ My personal macOS dotfiles crafted with love. Review the installation scripts an
 
 ```
 dotfiles/
-├── Brewfile                # Homebrew formulae, casks, cargo crates, and mas apps
+├── Brewfile                # Homebrew formulae, casks, cargo crates, and App Store apps
 ├── install.sh              # one-step installer: clones the repo and runs scripts/bootstrap.zsh
 ├── packages/
 │   └── <pkg>/
@@ -42,7 +42,7 @@ This will:
 - Clone the repo to `~/.dotfiles`
 - Install Xcode Command Line Tools
 - Install Homebrew
-- Install formulae, casks, cargo crates, and mas apps from Brewfile
+- Install formulae, casks, cargo crates, and App Store apps from Brewfile
 - Symlink package files and copy assets
 - Configure Git and SSH
 - Apply macOS defaults
