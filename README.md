@@ -24,6 +24,7 @@ dotfiles/
     ├── Brewfile            # Homebrew formulae, casks, cargo crates, and mas apps
     ├── bootstrap.zsh       # full machine setup
     ├── sync.zsh            # symlinks package files and copies assets
+    ├── unsync.zsh          # removes a package's symlinks, the opposite of sync
     ├── pull.zsh            # fast-forwards the repo from its remote, optionally syncing after
     ├── build-themes.zsh    # renders every theme's per-tool files from packages/theme/schemes
     ├── prune-symlinks.zsh  # removes orphaned symlinks left by renamed/removed package files
