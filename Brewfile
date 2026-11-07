@@ -1,10 +1,10 @@
 # --- Tap ----------------------------------------------------------------------
-tap "bjarneo/cliamp", trusted: true    # required for cliamp
-tap "code-hex/tap", trusted: true      # required for neo-cowsay
-tap "jackielii/tap", trusted: true     # required for skhd-zig
-tap "rose-pine/tap", trusted: true     # required for bloom
-tap "vasylromanets/tap", trusted: true # required for spinpacks
-tap "veirt/veirt", trusted: true       # required for weathr
+tap "bjarneo/cliamp", trusted: { formulae: ["cliamp"] }
+tap "code-hex/tap", trusted: { formulae: ["neo-cowsay"] }
+tap "jackielii/tap", trusted: { casks: ["skhd-zig"] }
+tap "rose-pine/tap", trusted: { formulae: ["bloom"] }
+tap "vasylromanets/tap", trusted: { formulae: ["spinpacks"] }
+tap "veirt/veirt", trusted: { formulae: ["weathr"] }
 
 # --- Brew: Must-have ----------------------------------------------------------
 brew "atuin"               # fuzzy-search shell history and sync it across machines
