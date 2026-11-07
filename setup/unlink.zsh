@@ -7,7 +7,7 @@
 # Files a package copies (copy/) are not links and stay as they are, and so do
 # the links hooks make at runtime, like bat's current.tmTheme.
 #
-# USAGE: unsync.zsh [-v] [-n] <package>...
+# USAGE: unlink.zsh [-v] [-n] <package>...
 #        -v              also list the links that aren't in place
 #        -n, --dry-run   only print what would change
 
@@ -28,7 +28,7 @@ for arg in "$@"; do
     -v | --verbose) verbose=1 ;;
     -n | --dry-run) dry_run=1 ;;
     -*)
-      error "unsync: unknown option '$arg'"
+      error "unlink: unknown option '$arg'"
       exit 1
       ;;
     *) packages+=("$arg") ;;
@@ -48,7 +48,7 @@ check_deps() {
 check_packages() {
   local all=("$DOTFILES"/packages/*(/:t)) name
   if (( ! ${#packages} )); then
-    error "unsync: name the packages to unsync, e.g. dots unsync git ssh"
+    error "unlink: name the packages to unlink, e.g. dots unlink git ssh"
     exit 1
   fi
   for name in "${packages[@]}"; do
@@ -89,15 +89,15 @@ main() {
   check_deps
   check_packages
   if (( dry_run )); then
-    echo "Checking what unsyncing dotfiles would change..."
+    echo "Checking what unlinking dotfiles would change..."
   else
-    echo "Unsyncing dotfiles..."
+    echo "Unlinking dotfiles..."
   fi
 
   local pkg src dest
   for pkg in "${packages[@]}"; do
     echo
-    echo "Unsyncing $pkg..."
+    echo "Unlinking $pkg..."
     pkg_changed=0
     pkg_total=0
     noun="links"

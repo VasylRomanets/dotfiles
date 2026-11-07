@@ -238,7 +238,7 @@ sync_packages() {
       while IFS=$'\t' read -r src dest; do
         [[ -L "$dest" && "${dest:A}" == "${src:A}" ]] && (( ++still_linked ))
       done < <(package_links "$pkg")
-      (( still_linked )) && echo "Its $still_linked link(s) from before are still in place; dots unsync $pkg removes them."
+      (( still_linked )) && echo "Its $still_linked link(s) from before are still in place; dots unlink $pkg removes them."
       (( ++skipped ))
       continue
     fi

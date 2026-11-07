@@ -25,7 +25,7 @@ Usage:
 Commands:
   bootstrap            Set up a fresh Mac from scratch (interactive)
   sync [package...]    Symlink and copy every package, or the named ones, into place
-  unsync <package>...  Remove the named packages' symlinks, or replace them with copies
+  unlink <package>...  Remove the named packages' symlinks
   pull                 Fast-forward the repo from its remote
   setup-macos          Apply the macOS defaults
   prune-symlinks       Remove symlinks left behind by renamed or removed files
@@ -36,8 +36,8 @@ Arguments:
   [ARGS]  Passed on to the command, e.g. dots sync -v atuin bat
 
 Options:
-  -v, --verbose  sync, unsync: Show more detail, like unchanged files and hook output
-  -n, --dry-run  sync, unsync, pull: Only report what would change
+  -v, --verbose  sync, unlink: Show more detail, like unchanged files and hook output
+  -n, --dry-run  sync, unlink, pull: Only report what would change
       --sync     pull: Run dots sync afterwards
   -h, --help     Print help
 USAGE
@@ -60,7 +60,7 @@ case "$command" in
   setup-macos)
     exec "$DOTFILES/setup/macos.zsh" "$@"
     ;;
-  bootstrap | sync | unsync | pull | prune-symlinks | build-themes)
+  bootstrap | sync | unlink | pull | prune-symlinks | build-themes)
     exec "$DOTFILES/setup/$command.zsh" "$@"
     ;;
   *)

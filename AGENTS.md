@@ -11,7 +11,7 @@ No build, lint, or test suite exists in this repo — there's nothing to "run te
 ```zsh
 dots bootstrap [-y]       # ./setup/bootstrap.zsh — full fresh-machine setup; asks before each step, `-y`/`--yes` answers them all (git identity and SSH key then come from `DOTS_GIT_NAME`, `DOTS_GIT_EMAIL` and `DOTS_SSH_KEY`)
 dots sync [package...]    # ./setup/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes. `-v` also lists unchanged files and hook output, `-n` only previews
-dots unsync <package>...  # ./setup/unsync.zsh — remove the named packages' symlinks (only links to this repo's files), `-n` previews
+dots unlink <package>...  # ./setup/unlink.zsh — remove the named packages' symlinks (only links to this repo's files), `-n` previews
 dots pull [--sync] [-n]   # ./setup/pull.zsh — fast-forward the repo (refuses on a dirty tree); `--sync` then runs `dots sync`. A plain pull never touches links, it just suggests `dots sync` when package files were added/renamed/removed or a `copy/` file or sync hook changed
 dots prune-symlinks       # ./setup/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync; takes no `-n`)
 dots setup-macos          # ./setup/macos.zsh — apply the macOS `defaults write` settings only (bootstrap runs it too)
@@ -25,8 +25,8 @@ dots build-themes         # ./setup/build-themes.zsh — regenerate every per-th
 - It prints one section per package, listing every link or copy it creates or changes (`[+]` new, `[~]` relinked or changed). A hook's output is hidden unless it fails. `-v` adds the unchanged files (`[=]`) and hook output, `-n` previews without changing anything.
 - `dots sync atuin bat` syncs only those packages; named packages ignore the config file below.
 - An optional per-machine `~/.config/dots/sync.toml` (not in the repo) can hold `allow = ["atuin", "bat"]` (sync only these) and `deny = ["ghostty"]` (never sync these; deny wins over allow). A name that isn't a package is reported as a warning.
-- To take a package off a machine that already has it, add it to `deny` and run `dots unsync <package>`. A denied package that is still linked is flagged in its section of the sync output, and every denied package is listed after the summary.
-- The link targets come from `package_links` in `setup/_lib.zsh`, shared by sync and unsync.
+- To take a package off a machine that already has it, add it to `deny` and run `dots unlink <package>`. A denied package that is still linked is flagged in its section of the sync output, and every denied package is listed after the summary.
+- The link targets come from `package_links` in `setup/_lib.zsh`, shared by sync and unlink.
 - It is idempotent and safe to re-run. It needs `toml2json` and `jq` (installed by `bootstrap.zsh`) and exits early with an error if they're missing.
 
 ## Architecture

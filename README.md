@@ -24,7 +24,7 @@ dotfiles/
     ├── Brewfile            # Homebrew formulae, casks, cargo crates, and mas apps
     ├── bootstrap.zsh       # full machine setup
     ├── sync.zsh            # symlinks package files and copies assets
-    ├── unsync.zsh          # removes a package's symlinks, the opposite of sync
+    ├── unlink.zsh          # removes a package's symlinks, the opposite of sync
     ├── pull.zsh            # fast-forwards the repo from its remote, optionally syncing after
     ├── build-themes.zsh    # renders every theme's per-tool files from packages/theme/schemes
     ├── prune-symlinks.zsh  # removes orphaned symlinks left by renamed/removed package files
@@ -58,15 +58,15 @@ To skip the questions, append `install --yes` to the command above (`setup/boots
 
 ## Updating
 
-Once the bootstrap has run, everything goes through the `dots` command (`dots help` lists it). `sync`, `unsync` and `pull` take `-n` to preview:
+Once the bootstrap has run, everything goes through the `dots` command (`dots help` lists it). `sync`, `unlink` and `pull` take `-n` to preview:
 ```zsh
 dots sync [package…]   # link package files; -v also lists unchanged files
 dots pull [--sync]     # fast-forward the repo (refuses on uncommitted changes), optionally syncing after
-dots unsync <package>  # remove a package's links
+dots unlink <package>  # remove a package's links
 dots prune-symlinks    # clean up stale links left by renamed or removed package files
 ```
 
-To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (not part of the repo), then run `dots unsync` for any that are already linked:
+To keep some packages off a machine, list them in `~/.config/dots/sync.toml` (not part of the repo), then run `dots unlink` for any that are already linked:
 ```toml
 deny = ["ghostty"]        # never sync these
 allow = ["atuin", "bat"]  # or: sync only these (deny wins over allow)
