@@ -44,7 +44,7 @@ This will:
 - Install Homebrew
 - Install formulae, casks, cargo crates, and App Store apps from Brewfile
 - Symlink package files and copy assets
-- Configure Git and SSH
+- Configure SSH and Git
 - Apply macOS defaults
 
 To skip the questions, add `sh --yes` at the end of the command (`scripts/bootstrap.zsh --help` lists the options).

@@ -9,7 +9,7 @@ The owner intends to try a Linux distro at some undetermined future point, and i
 No build, lint, or test suite exists in this repo — there's nothing to "run tests" for. The relevant commands apply configuration to the actual machine:
 
 ```zsh
-dots bootstrap [-y]       # ./scripts/bootstrap.zsh — full fresh-machine setup; asks before each step, `-y`/`--yes` answers them all (git identity and SSH key then come from `DOTS_GIT_NAME`, `DOTS_GIT_EMAIL` and `DOTS_SSH_KEY`)
+dots bootstrap [-y]       # ./scripts/bootstrap.zsh — full fresh-machine setup; asks before each step, `-y`/`--yes` answers them all (the SSH key and git identity then come from `DOTS_SSH_KEY`, `DOTS_GIT_NAME` and `DOTS_GIT_EMAIL`; the same key signs commits)
 dots sync [package...]    # ./scripts/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes. `-v` also lists unchanged files and hook output, `-n` only previews
 dots unlink <package>...  # ./scripts/unlink.zsh — remove the named packages' symlinks (only links to this repo's files), `-n` previews
 dots pull [--sync] [-n]   # ./scripts/pull.zsh — fast-forward the repo (refuses on a dirty tree); `--sync` then runs `dots sync`. A plain pull never touches links, it just suggests `dots sync` when package files were added/renamed/removed or a `copy/` file or sync hook changed

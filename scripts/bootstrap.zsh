@@ -10,6 +10,7 @@ SCRIPTS_PATH="${0:A:h}"
 DOTFILES="${SCRIPTS_PATH:h}"
 TMP_BREWFILE=""
 TMP_MAS_BREWFILE=""
+ssh_key=""
 
 source "$SCRIPTS_PATH/_lib.zsh"
 
@@ -22,9 +23,10 @@ Usage:
 
 Options:
   -y, --yes   Run every step without asking. App Store apps are skipped,
-              existing Git and SSH configs are kept, and the Git identity and
-              SSH key come from DOTS_GIT_NAME, DOTS_GIT_EMAIL and DOTS_SSH_KEY
-              (when unset, the Git config is skipped and SSH uses the default key).
+              existing SSH and Git configs are kept, and the SSH key and Git
+              identity come from DOTS_SSH_KEY, DOTS_GIT_NAME and DOTS_GIT_EMAIL
+              (when unset, SSH uses the default key and the Git config is skipped).
+              The same key signs your commits.
   -h, --help  Print help
 EOF
 }
@@ -86,7 +88,7 @@ on_start() {
   echo "  · Install Homebrew"
   echo "  · Install formulae, casks, cargo crates, and App Store apps from Brewfile"
   echo "  · Symlink dotfiles and copy assets"
-  echo "  · Configure Git and SSH"
+  echo "  · Configure SSH and Git"
   echo "  · Apply macOS defaults"
   echo
   if [[ -n "$ASSUME_YES" ]]; then
@@ -249,8 +251,53 @@ sync_dotfiles() {
   echo
 }
 
+# Asks for the SSH key once. The SSH config uses its private key and Git
+# signs commits with its public key.
+ask_ssh_key() {
+  [[ -n "$ssh_key" ]] && return
+  if [[ -n "$ASSUME_YES" ]]; then
+    ssh_key="$DOTS_SSH_KEY"
+  else
+    read "ssh_key?  Key path [~/.ssh/id_ed25519]:  "
+  fi
+  ssh_key="${ssh_key:-~/.ssh/id_ed25519}"
+}
+
+configure_ssh() {
+  info "Step 6 - Configure SSH"
+  echo
+  confirm || {
+    echo "Skipping SSH config."
+    echo
+    return
+  }
+
+  local ssh_config="$HOME/.ssh/config.local"
+
+  if [[ -f "$ssh_config" ]]; then
+    confirm "$ssh_config already exists — overwrite?" no || {
+      echo "Skipping SSH config."
+      echo
+      return
+    }
+    rm -f "$ssh_config"
+  fi
+
+  echo "SSH config — used for GitHub and other hosts."
+  ask_ssh_key
+  echo
+
+  mkdir -p "$HOME/.ssh"
+  cat > "$ssh_config" <<EOF
+Host github.com
+  IdentityFile ${ssh_key%.pub}
+EOF
+  success "Created $ssh_config"
+  echo
+}
+
 configure_git() {
-  info "Step 6 - Configure Git"
+  info "Step 7 - Configure Git"
   echo
   # Without the Command Line Tools, git is a shim that opens an install dialog.
   if ! xcode-select -p &>/dev/null && [[ ! -x /opt/homebrew/bin/git ]]; then
@@ -289,50 +336,16 @@ configure_git() {
     mkdir -p "${git_config:h}"
     git config --file "$git_config" user.name "$git_name"
     git config --file "$git_config" user.email "$git_email"
+    echo "Commit signing — commits and tags are signed with an SSH key."
+    ask_ssh_key
+    git config --file "$git_config" user.signingKey "${ssh_key%.pub}.pub"
+    echo
     success "Saved $git_config"
     echo
   else
     echo "No input — skipping Git config."
     echo
   fi
-}
-
-configure_ssh() {
-  info "Step 7 - Configure SSH"
-  echo
-  confirm || {
-    echo "Skipping SSH config."
-    echo
-    return
-  }
-
-  local ssh_config="$HOME/.ssh/config.local"
-
-  if [[ -f "$ssh_config" ]]; then
-    confirm "$ssh_config already exists — overwrite?" no || {
-      echo "Skipping SSH config."
-      echo
-      return
-    }
-    rm -f "$ssh_config"
-  fi
-
-  echo "SSH config — used for GitHub and other hosts."
-  if [[ -n "$ASSUME_YES" ]]; then
-    ssh_key="$DOTS_SSH_KEY"
-  else
-    read "ssh_key?  Key path [~/.ssh/id_ed25519]:  "
-  fi
-  ssh_key="${ssh_key:-~/.ssh/id_ed25519}"
-  echo
-
-  mkdir -p "$HOME/.ssh"
-  cat > "$ssh_config" <<EOF
-Host github.com
-  IdentityFile $ssh_key
-EOF
-  success "Created $ssh_config"
-  echo
 }
 
 apply_macos_defaults() {
@@ -365,8 +378,8 @@ main() {
   install_homebrew_packages
   install_mas_apps
   sync_dotfiles
-  configure_git
   configure_ssh
+  configure_git
   apply_macos_defaults
   on_finish
 }

@@ -85,7 +85,7 @@ main() {
   echo "  · Install Homebrew"
   echo "  · Install formulae, casks and App Store apps from Brewfile"
   echo "  · Symlink dotfiles and copy assets"
-  echo "  · Configure Git and SSH"
+  echo "  · Configure SSH and Git"
   echo "  · Apply macOS defaults"
   echo
   echo "You'll be prompted before each step."
@@ -169,7 +169,20 @@ main() {
   echo
 
   # Step 6
-  info "Step 6 - Configure Git"
+  info "Step 6 - Configure SSH"
+  echo
+  sleep 0.5
+  proceed
+  echo "SSH config — used for GitHub and other hosts."
+  echo -n "  Key path [~/.ssh/id_ed25519]:  "
+  sleep 1.0
+  echo
+  echo
+  success "Created ~/.ssh/config.local"
+  echo
+
+  # Step 7
+  info "Step 7 - Configure Git"
   echo
   sleep 0.5
   proceed
@@ -182,21 +195,9 @@ main() {
   sleep 0.4
   fake_type "romanets.vasyl@gmail.com"
   echo
+  echo "Commit signing — commits and tags are signed with an SSH key."
   echo
-  success "Created ~/.config/git/config.local"
-  echo
-
-  # Step 7
-  info "Step 7 - Configure SSH"
-  echo
-  sleep 0.5
-  proceed
-  echo "SSH config — used for GitHub and other hosts."
-  echo -n "  Key path [~/.ssh/id_ed25519]:  "
-  sleep 1.0
-  echo
-  echo
-  success "Created ~/.ssh/config.local"
+  success "Saved ~/.config/git/config.local"
   echo
 
   # Step 8
