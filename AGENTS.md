@@ -1,7 +1,3 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Overview
 
 Personal, macOS-only dotfiles repo — shell scripts and config files, applied to the live system via a small custom package manager (not GNU Stow or a framework). `require_macos` in `setup/_lib.zsh` hard-exits on any non-Darwin `uname`.
