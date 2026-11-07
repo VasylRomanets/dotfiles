@@ -252,6 +252,13 @@ sync_dotfiles() {
 configure_git() {
   info "Step 6 - Configure Git"
   echo
+  # Without the Command Line Tools, git is a shim that opens an install dialog.
+  if ! xcode-select -p &>/dev/null && [[ ! -x /opt/homebrew/bin/git ]]; then
+    echo "git is not installed yet — skipping Git config."
+    echo
+    return
+  fi
+
   confirm || {
     echo "Skipping Git config."
     echo
