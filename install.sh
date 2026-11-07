@@ -38,11 +38,6 @@ main() {
   fi
 
   /bin/zsh "$dir/scripts/bootstrap.zsh" "$@"
-
-  # Start a login shell, so PATH and dots work without reopening the terminal.
-  if [ -t 0 ]; then
-    exec /bin/zsh -l
-  fi
 }
 
 main "$@"
