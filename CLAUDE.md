@@ -13,18 +13,25 @@ The owner intends to try a Linux distro at some undetermined future point, and i
 No build, lint, or test suite exists in this repo — there's nothing to "run tests" for. The relevant commands apply configuration to the actual machine:
 
 ```zsh
-dots bootstrap            # ./setup/bootstrap.zsh — full fresh-machine setup (interactive, prompts before each step)
-dots sync [package...]    # ./setup/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes. Names limit it to those packages. Lists each new/relinked/changed file; `-v` also lists unchanged ones and hook output, `-n` only previews
-dots unsync <package>...  # ./setup/unsync.zsh — remove the named packages' symlinks (only links to this repo's files), `-n` shows what would change
-dots pull [--sync] [-n]   # ./setup/pull.zsh — `git pull --ff-only` the repo (refuses on a dirty tree); `--sync` then runs `dots sync`, `-n` only previews. A plain pull never touches links, it just suggests `dots sync` when package files were added/renamed/removed or a `copy/` file or sync hook changed
-dots prune-symlinks       # ./setup/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync; occasional manual cleanup)
-dots setup-macos          # ./setup/macos.zsh — apply macOS `defaults write` settings only (bootstrap runs it too)
+dots bootstrap [-y]       # ./setup/bootstrap.zsh — full fresh-machine setup; asks before each step, `-y`/`--yes` answers them all (git identity and SSH key then come from `DOTS_GIT_NAME`, `DOTS_GIT_EMAIL` and `DOTS_SSH_KEY`)
+dots sync [package...]    # ./setup/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes. `-v` also lists unchanged files and hook output, `-n` only previews
+dots unsync <package>...  # ./setup/unsync.zsh — remove the named packages' symlinks (only links to this repo's files), `-n` previews
+dots pull [--sync] [-n]   # ./setup/pull.zsh — fast-forward the repo (refuses on a dirty tree); `--sync` then runs `dots sync`. A plain pull never touches links, it just suggests `dots sync` when package files were added/renamed/removed or a `copy/` file or sync hook changed
+dots prune-symlinks       # ./setup/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync; takes no `-n`)
+dots setup-macos          # ./setup/macos.zsh — apply the macOS `defaults write` settings only (bootstrap runs it too)
 dots build-themes         # ./setup/build-themes.zsh — regenerate every per-theme file from the schemes (needs only `python3`; see Theming)
 ```
 
-`dots` (`packages/bin/link/.local/bin/dots`) runs these scripts from any directory. It finds the repo through `$DOTFILES`, which `.zshenv` derives from its own symlink into the repo, and passes extra arguments on (`dots sync -v`). On a fresh machine `dots` doesn't exist until the first sync, so the first run is `./setup/bootstrap.zsh`.
+`dots` (`packages/bin/link/.local/bin/dots`) runs these scripts from any directory. It finds the repo through `$DOTFILES`, which `.zshenv` derives from its own symlink into the repo, and passes extra arguments on (`dots sync -v`). A fresh machine starts with `install.sh` at the repo root (`/bin/zsh -c "$(curl -fsSL …/HEAD/install.sh)"`): it installs the Xcode Command Line Tools, clones the repo to `~/.dotfiles` (or pulls it), and runs `setup/bootstrap.zsh` with the arguments it was given. `dots` itself exists only after the first sync.
 
-`sync.zsh` prints one section per package, listing every link or copy it creates or changes (`[+]` new, `[~]` relinked or changed) and hiding a hook's output unless it fails; run `dots sync -v` to also see the unchanged files (`[=]`) and hook output, or `dots sync -n` to preview without changing anything. `dots sync atuin bat` syncs only those (named packages ignore the config file below). An optional per-machine `~/.config/dots/sync.toml` (not in the repo) can hold `allow = ["atuin", "bat"]` (sync only these) and `deny = ["ghostty"]` (never sync these; deny wins over allow); a name that isn't a package is reported as a warning. To take a package off a machine that already has it, add it to `deny` and run `dots unsync <package>`; a denied package that is still linked is flagged in its section of the sync output, and every denied package is listed after the summary. The link targets come from `package_links` in `setup/_lib.zsh`, shared by sync and unsync. It is idempotent and safe to re-run repeatedly — it processes every package each time (there's no "sync just one package" flag). It requires `toml2json` and `jq` (installed by `bootstrap.zsh`); it exits early with an error if they're missing.
+`sync.zsh` behavior worth knowing:
+
+- It prints one section per package, listing every link or copy it creates or changes (`[+]` new, `[~]` relinked or changed). A hook's output is hidden unless it fails. `-v` adds the unchanged files (`[=]`) and hook output, `-n` previews without changing anything.
+- `dots sync atuin bat` syncs only those packages; named packages ignore the config file below.
+- An optional per-machine `~/.config/dots/sync.toml` (not in the repo) can hold `allow = ["atuin", "bat"]` (sync only these) and `deny = ["ghostty"]` (never sync these; deny wins over allow). A name that isn't a package is reported as a warning.
+- To take a package off a machine that already has it, add it to `deny` and run `dots unsync <package>`. A denied package that is still linked is flagged in its section of the sync output, and every denied package is listed after the summary.
+- The link targets come from `package_links` in `setup/_lib.zsh`, shared by sync and unsync.
+- It is idempotent and safe to re-run. It needs `toml2json` and `jq` (installed by `bootstrap.zsh`) and exits early with an error if they're missing.
 
 ## Architecture
 
@@ -44,9 +51,6 @@ Each `packages/<pkg>/` directory is independent and can contain any of:
   command = "bat"  # gate on `command -v` — package skipped entirely if absent
   app = "Ghostty"  # gate on /Applications/Ghostty.app (or ~/Applications)
 
-  [link]
-  target = "~"     # default; rarely overridden
-
   [copy]
   target = "~/Library/..."
   ```
@@ -65,11 +69,11 @@ For each `packages/*/`: check `[requires]` (skip package entirely if command/app
 
 **What a scheme can't express** is handled outside it, in templates and hooks: delta's added/removed tints are blended from `diff-added` and `diff-removed` in `packages/git/hooks/theme-changed.zsh`, file-type colors are chosen in the vivid template, and bold/italic/underline are fixed in the bat template.
 
-**Hand-written bat themes.** A `.tmTheme` names any scope, while a scheme has only 105 syntax keys, so a theme with an upstream `.tmTheme` can use it directly: put it in `packages/bat/link/.config/bat/themes/<slug>.tmTheme`. Generated themes are named `<slug>-generated.tmTheme`, so the two sit side by side and the build never touches a hand-written one. The bat hook, the delta hook and `theme-preview` use `<slug>` when that file exists, else `<slug>-generated`, and yazi's previews get the same file as `tmtheme.xml`. `dots build-themes` deletes a generated theme that a hand-written one shadows. Today the hand-written ones are Catppuccin, Tokyo Night, Nord, Noctis, the Nightfox family and Coppernight. The scheme still carries its own approximate syntax colors, which micro uses unless the theme has a hand-written colorscheme. To hand a theme back to its scheme, delete its hand-written file.
+**Hand-written overrides.** A tool's file written by a theme's author can sit next to the generated one, and the build never touches it. Generated files are named `<slug>-generated…`; a hand-written one takes the plain `<slug>` name, and the hook uses it when it exists. `dots build-themes` deletes a generated file that a hand-written one shadows. To hand a theme back to its scheme, delete the hand-written file (or directory).
 
-**Hand-written yazi flavors.** Generated flavors live in `flavors/<slug>-generated.yazi`, so a flavor written by a theme's author can sit next to them as `flavors/<slug>.yazi` and the build never touches it. The yazi hook uses `<slug>.yazi` when it has a `flavor.toml`, else the generated one, and `dots build-themes` deletes a generated flavor that a hand-written one shadows. To hand a theme back to its scheme, delete its hand-written directory; to take one over, add the directory.
-
-**Hand-written micro colorschemes.** Generated colorschemes live in `colorschemes/<slug>-generated.micro`, so one written by a theme's author can sit next to them as `colorschemes/<slug>.micro` and the build never touches it. The micro hook uses `<slug>.micro` when it exists, else the generated one, and `dots build-themes` deletes a generated colorscheme that a hand-written one shadows. Today the hand-written ones are the three Rosé Pine variants, ported from `rose-pine-micro`. To hand a theme back to its scheme, delete its hand-written file.
+- **bat:** `packages/bat/link/.config/bat/themes/<slug>.tmTheme`. A `.tmTheme` names any scope while a scheme has only 105 syntax keys, so an upstream one is more precise. The bat hook, the delta hook and `theme-preview` use it, and yazi's previews get the same file as `tmtheme.xml`. Today: Catppuccin, Tokyo Night, Nord, Noctis, the Nightfox family and Coppernight.
+- **yazi:** `flavors/<slug>.yazi`, used when it has a `flavor.toml`.
+- **micro:** `colorschemes/<slug>.micro`. Today: the three Rosé Pine variants, ported from `rose-pine-micro`. The scheme still carries approximate syntax colors, which micro uses for themes without one.
 
 **Adding a theme:** write `packages/theme/schemes/<slug>.toml` (copy a similar one, or `packages/theme/tools/tmtheme-to-scheme.py <slug> <file.tmTheme> <ghostty-theme-file> --credit <url> --description <text>` to extract one; its output is the whole scheme), add `packages/bat/link/.config/bat/themes/<slug>.tmTheme` if it has an upstream one, run `dots build-themes`, `dots sync` and `bat cache --build`. Ghostty is separate: a built-in theme named like the title-cased slug works as is (Nightfox, Rose Pine Moon, ...); otherwise add `packages/ghostty/link/.config/ghostty/themes/<slug>.ghostty` — a local file named after the slug is picked up by the hook automatically (and wins over a built-in of the same name). A built-in whose name isn't the title-cased slug (TokyoNight) needs a line in `packages/ghostty/hooks/theme-changed.zsh`.
 
