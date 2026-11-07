@@ -25,11 +25,11 @@ gui:
 git:
   autoFetch: false
   diffRenderers:
-    - command: delta --paging=never --file-style=omit
+    - command: delta --paging=never --file-style=omit --hunk-header-style="file line-number syntax" --hunk-header-file-style=cyan
       name: unified
     - command: delta --paging=never --file-style=omit --line-numbers
       name: line numbers
-    - command: delta --paging=never --file-style=omit --side-by-side
+    - command: delta --paging=never --file-style=omit --side-by-side --hunk-header-style="file line-number syntax" --hunk-header-file-style=cyan
       name: side-by-side
     - type: rawGit
       args: [--color-words]
