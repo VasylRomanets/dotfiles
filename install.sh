@@ -2,11 +2,12 @@
 
 # One-step installer: clones the repo, then runs scripts/bootstrap.zsh.
 #
-#   /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
-#   curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh | sh
+#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
 #
-# Options go to the bootstrap, e.g. `| sh -s -- --yes`. Set DOTFILES_DIR to
-# clone somewhere other than ~/.dotfiles.
+# Options go to the bootstrap after the command, e.g. `… install.sh)" sh --yes`
+# (the first word after the script is the name sh gives it). Run it this way,
+# not piped into sh, so the prompts can read from the terminal. Set DOTFILES_DIR
+# to clone somewhere other than ~/.dotfiles.
 
 set -e
 
@@ -36,19 +37,11 @@ main() {
     git clone https://github.com/VasylRomanets/dotfiles.git "$dir"
   fi
 
-  # When piped into sh, stdin is this script, so the bootstrap's prompts have to
-  # read from the terminal. Without one (e.g. CI with --yes), they get no input.
-  if (exec </dev/tty) 2>/dev/null; then
-    input=/dev/tty
-  else
-    input=/dev/null
-  fi
-
-  /bin/zsh "$dir/scripts/bootstrap.zsh" "$@" <"$input"
+  /bin/zsh "$dir/scripts/bootstrap.zsh" "$@"
 
   # Start a login shell, so PATH and dots work without reopening the terminal.
-  if [ "$input" = /dev/tty ]; then
-    exec /bin/zsh -l </dev/tty
+  if [ -t 0 ]; then
+    exec /bin/zsh -l
   fi
 }
 

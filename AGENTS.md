@@ -18,7 +18,7 @@ dots setup-macos          # ./scripts/macos.zsh — apply the macOS `defaults wr
 dots build-themes         # ./scripts/build-themes.zsh — regenerate every per-theme file from the schemes (needs only `python3`; see Theming)
 ```
 
-`dots` (`packages/bin/link/.local/bin/dots`) runs these scripts from any directory. It finds the repo through `$DOTFILES`, which `.zshenv` derives from its own symlink into the repo, and passes extra arguments on (`dots sync -v`). A fresh machine starts with `install.sh` at the repo root (`/bin/zsh -c "$(curl -fsSL …/HEAD/install.sh)"`): it installs the Xcode Command Line Tools, clones the repo to `~/.dotfiles` (or pulls it), and runs `scripts/bootstrap.zsh` with the arguments it was given. `dots` itself exists only after the first sync.
+`dots` (`packages/bin/link/.local/bin/dots`) runs these scripts from any directory. It finds the repo through `$DOTFILES`, which `.zshenv` derives from its own symlink into the repo, and passes extra arguments on (`dots sync -v`). A fresh machine starts with `install.sh` at the repo root (`sh -c "$(curl -fsSL …/HEAD/install.sh)"`): it installs the Xcode Command Line Tools, clones the repo to `~/.dotfiles` (or pulls it), and runs `scripts/bootstrap.zsh` with the arguments it was given. `dots` itself exists only after the first sync.
 
 `sync.zsh` behavior worth knowing:
 

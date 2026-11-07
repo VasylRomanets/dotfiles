@@ -37,8 +37,8 @@ dotfiles/
 > Works on my machine! Review the installation scripts and package files before adopting.
 
 Paste this into Terminal. It asks before each step:
-```zsh
-/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
 ```
 
 This will:
@@ -50,7 +50,7 @@ This will:
 - Configure Git and SSH
 - Apply macOS defaults
 
-To skip the questions, append `install --yes` to the command above (`scripts/bootstrap.zsh --help` lists the options).
+To skip the questions, add `sh --yes` at the end of the command (`scripts/bootstrap.zsh --help` lists the options).
 
 <p align="center">
   <img src=".github/assets/bootstrap.webp" width="60%" alt="Bootstrap process">
