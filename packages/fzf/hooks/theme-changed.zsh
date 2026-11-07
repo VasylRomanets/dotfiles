@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Reacts to theme (see setup/sync.zsh): points the file fzf-core.zsh sets
+# Reacts to theme (see scripts/sync.zsh): points the file fzf-core.zsh sets
 # FZF_DEFAULT_OPTS_FILE to at the theme's generated color options — fzf reads
 # it fresh on every invocation, no shell-level reactivity needed.
 theme=$1

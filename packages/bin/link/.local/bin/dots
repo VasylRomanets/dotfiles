@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Run the setup scripts of the dotfiles repo from anywhere.
+# Run the scripts of the dotfiles repo from anywhere.
 #
 # The repo is found through $DOTFILES (set in .zshenv). When that isn't set,
 # for instance outside a zsh session, it falls back to this script's own
@@ -17,7 +17,7 @@
 usage() {
   cat <<'USAGE'
 dots
-Run the setup scripts of the dotfiles repo
+Run the scripts of the dotfiles repo
 
 Usage:
   dots <COMMAND> [ARGS]
@@ -58,10 +58,10 @@ case "$command" in
     usage
     ;;
   setup-macos)
-    exec "$DOTFILES/setup/macos.zsh" "$@"
+    exec "$DOTFILES/scripts/macos.zsh" "$@"
     ;;
   bootstrap | sync | unlink | pull | prune-symlinks | build-themes)
-    exec "$DOTFILES/setup/$command.zsh" "$@"
+    exec "$DOTFILES/scripts/$command.zsh" "$@"
     ;;
   *)
     echo "dots: unknown command '$command'" >&2

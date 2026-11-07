@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Reacts to theme (see setup/sync.zsh): writes delta's colors for the new
+# Reacts to theme (see scripts/sync.zsh): writes delta's colors for the new
 # theme into the file the tracked git config includes — git re-reads config on
 # every invocation, so nothing else needs to happen here.
 #

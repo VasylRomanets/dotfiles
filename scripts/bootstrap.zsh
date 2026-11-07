@@ -6,11 +6,12 @@
 set -e
 trap on_error ERR
 
-SETUP_PATH="${0:A:h}"
+SCRIPTS_PATH="${0:A:h}"
+DOTFILES="${SCRIPTS_PATH:h}"
 TMP_BREWFILE=""
 TMP_MAS_BREWFILE=""
 
-source "$SETUP_PATH/_lib.zsh"
+source "$SCRIPTS_PATH/_lib.zsh"
 
 usage() {
   cat <<'EOF'
@@ -166,7 +167,7 @@ install_homebrew_packages() {
   fi
 
   warning "Review the Brewfile and comment out anything you don't need:"
-  echo "  $SETUP_PATH/Brewfile"
+  echo "  $DOTFILES/Brewfile"
   echo
   confirm || {
     echo "Skipping Homebrew packages installation."
@@ -179,7 +180,7 @@ install_homebrew_packages() {
   request_sudo
 
   TMP_BREWFILE="$(mktemp /private/tmp/Brewfile.XXXXXX)"
-  grep -E '^(tap |brew |cask |vscode )' "$SETUP_PATH/Brewfile" >> "$TMP_BREWFILE" || true
+  grep -E '^(tap |brew |cask |vscode )' "$DOTFILES/Brewfile" >> "$TMP_BREWFILE" || true
 
   echo "Installing Homebrew packages..."
   brew bundle --file="$TMP_BREWFILE"
@@ -199,7 +200,7 @@ install_mas_apps() {
     return
   fi
 
-  if ! grep -qE '^mas ' "$SETUP_PATH/Brewfile"; then
+  if ! grep -qE '^mas ' "$DOTFILES/Brewfile"; then
     echo "No App Store apps in Brewfile — skipping."
     echo
     return
@@ -226,7 +227,7 @@ install_mas_apps() {
   }
 
   TMP_MAS_BREWFILE="$(mktemp /private/tmp/Brewfile.mas.XXXXXX)"
-  grep -E '^mas ' "$SETUP_PATH/Brewfile" >> "$TMP_MAS_BREWFILE" || true
+  grep -E '^mas ' "$DOTFILES/Brewfile" >> "$TMP_MAS_BREWFILE" || true
 
   echo "Installing App Store apps..."
   brew bundle --file="$TMP_MAS_BREWFILE"
@@ -244,7 +245,7 @@ sync_dotfiles() {
     echo
     return
   }
-  "$SETUP_PATH/sync.zsh"
+  "$SCRIPTS_PATH/sync.zsh"
   echo
 }
 
@@ -335,14 +336,14 @@ apply_macos_defaults() {
   info "Step 8 - Apply macOS defaults"
   echo
   warning "Review macos.zsh and comment out anything you don't need:"
-  echo "  $SETUP_PATH/macos.zsh"
+  echo "  $SCRIPTS_PATH/macos.zsh"
   echo
   confirm || {
     echo "Skipping macOS defaults."
     echo
     return
   }
-  "$SETUP_PATH/macos.zsh"
+  "$SCRIPTS_PATH/macos.zsh"
   echo
 }
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Reacts to theme (see setup/sync.zsh): repoints the "current.tmTheme"
+# Reacts to theme (see scripts/sync.zsh): repoints the "current.tmTheme"
 # symlink that ~/.config/bat/config always references at the active theme,
 # then rebuilds bat's cache — bat resolves --theme names from a compiled
 # cache rather than reading theme files live, so a plain symlink swap alone

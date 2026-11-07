@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Reacts to theme (see setup/sync.zsh): resolves the slug to Ghostty's
+# Reacts to theme (see scripts/sync.zsh): resolves the slug to Ghostty's
 # own display name and applies it. Most slugs match Title Case exactly;
 # only the irregular ones need an override, and a local .ghostty file named
 # after the slug takes precedence over all of that.

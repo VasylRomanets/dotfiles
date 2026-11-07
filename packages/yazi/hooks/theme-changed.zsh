@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Reacts to theme (see setup/sync.zsh): a flavor is named after the theme slug
+# Reacts to theme (see scripts/sync.zsh): a flavor is named after the theme slug
 # when its author wrote one, and <slug>-generated when dots build-themes made it
 # from the scheme. Yazi only reads theme.toml at startup, so the app:theme action
 # (sent to id 0, i.e. every running instance) tells open ones to reload it.

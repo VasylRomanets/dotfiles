@@ -10,7 +10,8 @@ My personal macOS dotfiles crafted with love.
 
 ```
 dotfiles/
-├── install.sh              # one-step installer: clones the repo and runs setup/bootstrap.zsh
+├── Brewfile                # Homebrew formulae, casks, cargo crates, and mas apps
+├── install.sh              # one-step installer: clones the repo and runs scripts/bootstrap.zsh
 ├── packages/
 │   └── <pkg>/
 │       ├── link/           # files to symlink (optional)
@@ -19,9 +20,8 @@ dotfiles/
 │       ├── hooks/          # pre-sync.zsh, post-sync.zsh, theme-changed.zsh (optional)
 │       ├── templates/      # Mustache templates dots build-themes renders per scheme (optional)
 │       └── sync.toml       # install conditions and copy/link target (optional)
-└── setup/
+└── scripts/
     ├── _lib.zsh            # shared utilities
-    ├── Brewfile            # Homebrew formulae, casks, cargo crates, and mas apps
     ├── bootstrap.zsh       # full machine setup
     ├── sync.zsh            # symlinks package files and copies assets
     ├── unlink.zsh          # removes a package's symlinks
@@ -50,7 +50,7 @@ This will:
 - Configure Git and SSH
 - Apply macOS defaults
 
-To skip the questions, append `install --yes` to the command above (`setup/bootstrap.zsh --help` lists the options).
+To skip the questions, append `install --yes` to the command above (`scripts/bootstrap.zsh --help` lists the options).
 
 <p align="center">
   <img src=".github/assets/bootstrap.webp" width="60%" alt="Bootstrap process">

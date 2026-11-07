@@ -12,10 +12,10 @@
 #        -v              also list what is already in place and print the output of successful hooks
 #        -n, --dry-run   only report what would change, without linking, copying or running hooks
 
-SETUP_PATH="${0:A:h}"
-DOTFILES="${SETUP_PATH:h}"
+SCRIPTS_PATH="${0:A:h}"
+DOTFILES="${SCRIPTS_PATH:h}"
 
-source "$SETUP_PATH/_lib.zsh"
+source "$SCRIPTS_PATH/_lib.zsh"
 
 linked=0
 link_changes=0

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Reacts to theme (see setup/sync.zsh): repoints the "current" gradient that
+# Reacts to theme (see scripts/sync.zsh): repoints the "current" gradient that
 # ~/.config/cava/config always references at the new theme's, then tells a
 # running cava to reload its config. SIGUSR1 reloads everything; SIGUSR2 would
 # only reload the gradient and leave the old background in place.

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# One-step installer: clones the repo, then runs setup/bootstrap.zsh.
+# One-step installer: clones the repo, then runs scripts/bootstrap.zsh.
 #
 #   /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
 #   curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh | sh
@@ -44,7 +44,7 @@ main() {
     input=/dev/null
   fi
 
-  /bin/zsh "$dir/setup/bootstrap.zsh" "$@" <"$input"
+  /bin/zsh "$dir/scripts/bootstrap.zsh" "$@" <"$input"
 
   # Start a login shell, so PATH and dots work without reopening the terminal.
   if [ "$input" = /dev/tty ]; then

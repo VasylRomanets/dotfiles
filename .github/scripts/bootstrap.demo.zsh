@@ -10,7 +10,7 @@
 # - ffmpeg -i bootstrap.mov -vf "fps=15,scale=830:-1" -loop 0 bootstrap.webp
 
 DEMO_PATH="$(cd "$(dirname "$0")" && pwd)"
-source "$DEMO_PATH/../../setup/_lib.zsh"
+source "$DEMO_PATH/../../scripts/_lib.zsh"
 
 fake_type() {
   local text="$1"
@@ -74,7 +74,7 @@ print_nyan() {
 main() {
   # fake_starship_prompt
   # sleep 0.5
-  # fake_type "zsh ~/.dotfiles/setup/bootstrap.zsh"
+  # fake_type "zsh ~/.dotfiles/scripts/bootstrap.zsh"
   echo
   sleep 0.3
 
@@ -117,7 +117,7 @@ main() {
   info "Step 3 - Install Homebrew packages"
   echo
   warning "Review the Brewfile and comment out anything you don't need:"
-  echo "  ~/.dotfiles/setup/Brewfile"
+  echo "  ~/.dotfiles/Brewfile"
   echo
   sleep 0.5
   proceed
@@ -203,7 +203,7 @@ main() {
   info "Step 8 - Apply macOS defaults"
   echo
   warning "Review macos.zsh and comment out anything you don't need:"
-  echo "  ~/.dotfiles/setup/macos.zsh"
+  echo "  ~/.dotfiles/scripts/macos.zsh"
   echo
   sleep 0.5
   proceed

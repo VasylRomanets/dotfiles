@@ -5,8 +5,8 @@
 #
 # Note: some settings require a logout/restart to take effect.
 
-SETUP_PATH="${0:A:h}"
-source "$SETUP_PATH/_lib.zsh"
+SCRIPTS_PATH="${0:A:h}"
+source "$SCRIPTS_PATH/_lib.zsh"
 require_macos
 
 request_sudo

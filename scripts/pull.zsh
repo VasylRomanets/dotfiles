@@ -12,10 +12,10 @@
 #        --sync          run dots sync after pulling
 #        -n, --dry-run   only fetch and show what would be pulled
 
-SETUP_PATH="${0:A:h}"
-DOTFILES="${SETUP_PATH:h}"
+SCRIPTS_PATH="${0:A:h}"
+DOTFILES="${SCRIPTS_PATH:h}"
 
-source "$SETUP_PATH/_lib.zsh"
+source "$SCRIPTS_PATH/_lib.zsh"
 
 run_sync=0
 dry_run=0
@@ -92,14 +92,14 @@ main() {
 
   if (( run_sync )); then
     echo
-    exec "$SETUP_PATH/sync.zsh"
+    exec "$SCRIPTS_PATH/sync.zsh"
   fi
 
   # Only a file that appeared, moved or went away can leave a link missing or
   # stale. A copied file or a sync hook that merely changed also needs sync,
   # because copies and hooks only take effect when it runs.
   local relinked rerun
-  relinked="$(git_repo diff --name-only --diff-filter=ADR "$old" HEAD -- packages setup)"
+  relinked="$(git_repo diff --name-only --diff-filter=ADR "$old" HEAD -- packages scripts)"
   rerun="$(git_repo diff --name-only "$old" HEAD -- 'packages/*/copy/*' 'packages/*/hooks/pre-sync.zsh' 'packages/*/hooks/post-sync.zsh')"
   if [[ -n "$relinked" ]]; then
     echo

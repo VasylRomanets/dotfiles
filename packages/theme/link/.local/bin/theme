@@ -6,9 +6,9 @@
 # This script only resolves the chosen slug and writes it to the state file.
 # Every theme-aware package (bat, cava, fzf, vivid, Ghostty, Yazi, git/delta, micro)
 # reacts independently via its own hooks/theme-changed.zsh, symlinked into
-# hooks.d/ by setup/sync.zsh — this script doesn't know they exist. The themes
+# hooks.d/ by scripts/sync.zsh — this script doesn't know they exist. The themes
 # on offer are the schemes in packages/theme/schemes, built into per-tool files
-# by setup/build-themes.zsh.
+# by scripts/build-themes.zsh.
 #
 # REQUIRES: fzf (brew install fzf)
 #
@@ -203,7 +203,7 @@ if [[ "$1" == "current" ]]; then
 fi
 
 # One <slug>.env per theme, generated from packages/theme/schemes (see
-# setup/build-themes.zsh).
+# scripts/build-themes.zsh).
 themes=()
 for colors_file in "$data_dir/colors/"*.env; do
   [[ -e "$colors_file" ]] && themes+=("$(basename "$colors_file" .env)")
@@ -377,7 +377,7 @@ trap 'rm -rf "$lock_dir"' EXIT
 
 echo "$theme" >"$state_file"
 
-# Fan out to every installed package's own reaction (see setup/sync.zsh for
+# Fan out to every installed package's own reaction (see scripts/sync.zsh for
 # how hooks.d gets populated — a package without a theme-changed.zsh hook
 # just isn't represented here). The hooks don't depend on each other, so they
 # run side by side — bat's cache rebuild alone takes about half a second. Each

@@ -2,10 +2,10 @@
 
 # Regenerates the per-theme files of every package from the schemes.
 
-SETUP_PATH="${0:A:h}"
-DOTFILES="${SETUP_PATH:h}"
+SCRIPTS_PATH="${0:A:h}"
+DOTFILES="${SCRIPTS_PATH:h}"
 
-source "$SETUP_PATH/_lib.zsh"
+source "$SCRIPTS_PATH/_lib.zsh"
 
 SCHEMES_DIR="$DOTFILES/packages/theme/schemes"
 BAT_THEMES="$DOTFILES/packages/bat/link/.config/bat/themes"
