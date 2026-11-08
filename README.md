@@ -33,9 +33,9 @@ dotfiles/
 
 ## New Machine Setup
 
-Paste this into Terminal. It asks before each step:
+Paste this into Terminal. After cloning, it asks before each step:
 ```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/vasylromanets/dotfiles/HEAD/install.sh)"
 ```
 
 This will:
@@ -69,7 +69,7 @@ allow = ["atuin", "bat"]  # or: sync only these (deny wins over allow)
 
 ## Package Setup
 
-Each package may optionally include a `sync.toml`. Packages without one are always processed, symlinking `link/` to `~` by default.
+Each package may optionally include a `sync.toml`. Packages without one are always synced.
 
 ```toml
 # Skip this package if the CLI tool/GUI app is not installed
