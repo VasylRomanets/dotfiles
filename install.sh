@@ -4,10 +4,8 @@
 #
 #   sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
 #
-# Options go to the bootstrap after the command, e.g. `… install.sh)" sh --yes`
-# (the first word after the script is the name sh gives it). Run it this way,
-# not piped into sh, so the prompts can read from the terminal. Set DOTFILES_DIR
-# to clone somewhere other than ~/.dotfiles.
+# Run it this way, not piped into sh, so the prompts can read from the terminal.
+# Set DOTFILES_DIR to clone somewhere other than ~/.dotfiles.
 
 set -e
 
@@ -37,7 +35,7 @@ main() {
     git clone https://github.com/VasylRomanets/dotfiles.git "$dir"
   fi
 
-  /bin/zsh "$dir/scripts/bootstrap.zsh" "$@"
+  /bin/zsh "$dir/scripts/bootstrap.zsh"
 }
 
 main "$@"

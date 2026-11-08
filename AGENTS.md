@@ -9,7 +9,7 @@ The owner intends to try a Linux distro at some undetermined future point, and i
 No build, lint, or test suite exists in this repo — there's nothing to "run tests" for. The relevant commands apply configuration to the actual machine:
 
 ```zsh
-dots bootstrap [-y]       # ./scripts/bootstrap.zsh — full fresh-machine setup; asks before each step, `-y`/`--yes` answers them all (the SSH key and git identity then come from `DOTS_SSH_KEY`, `DOTS_GIT_NAME` and `DOTS_GIT_EMAIL`; the same key signs commits)
+dots bootstrap            # ./scripts/bootstrap.zsh — full fresh-machine setup; asks before each step (the SSH key also signs commits)
 dots sync [package...]    # ./scripts/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes. `-v` also lists unchanged files and hook output, `-n` only previews
 dots unlink <package>...  # ./scripts/unlink.zsh — remove the named packages' symlinks (only links to this repo's files), `-n` previews
 dots pull [--sync] [-n]   # ./scripts/pull.zsh — fast-forward the repo (refuses on a dirty tree); `--sync` then runs `dots sync`. A plain pull never touches links, it just suggests `dots sync` when package files were added/renamed/removed or a `copy/` file or sync hook changed
@@ -18,7 +18,7 @@ dots setup-macos          # ./scripts/macos.zsh — apply the macOS `defaults wr
 dots build-themes         # ./scripts/build-themes.zsh — regenerate every per-theme file from the schemes (needs only `python3`; see Theming)
 ```
 
-`dots` (`packages/bin/link/.local/bin/dots`) runs these scripts from any directory. It finds the repo through `$DOTFILES`, which `.zshenv` derives from its own symlink into the repo, and passes extra arguments on (`dots sync -v`). A fresh machine starts with `install.sh` at the repo root (`sh -c "$(curl -fsSL …/HEAD/install.sh)"`): it installs the Xcode Command Line Tools, clones the repo to `~/.dotfiles` (or pulls it), and runs `scripts/bootstrap.zsh` with the arguments it was given. `dots` itself exists only after the first sync.
+`dots` (`packages/bin/link/.local/bin/dots`) runs these scripts from any directory. It finds the repo through `$DOTFILES`, which `.zshenv` derives from its own symlink into the repo, and passes extra arguments on (`dots sync -v`). A fresh machine starts with `install.sh` at the repo root (`sh -c "$(curl -fsSL …/HEAD/install.sh)"`): it installs the Xcode Command Line Tools, clones the repo to `~/.dotfiles` (or pulls it), and runs `scripts/bootstrap.zsh`. `dots` itself exists only after the first sync.
 
 `sync.zsh` behavior worth knowing:
 

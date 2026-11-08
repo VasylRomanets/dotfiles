@@ -19,21 +19,15 @@ usage() {
 Set up a fresh Mac
 
 Usage:
-  bootstrap.zsh [--yes]
+  bootstrap.zsh
 
 Options:
-  -y, --yes   Run every step without asking. App Store apps are skipped,
-              existing SSH and Git configs are kept, and the SSH key and Git
-              identity come from DOTS_SSH_KEY, DOTS_GIT_NAME and DOTS_GIT_EMAIL
-              (when unset, SSH uses the default key and the Git config is skipped).
-              The same key signs your commits. A missing key is not created.
   -h, --help  Print help
 EOF
 }
 
 for arg in "$@"; do
   case "$arg" in
-    -y | --yes) ASSUME_YES=1 ;;
     -h | --help)
       usage
       exit 0
@@ -91,11 +85,7 @@ on_start() {
   echo "  · Configure SSH and Git"
   echo "  · Apply macOS defaults"
   echo
-  if [[ -n "$ASSUME_YES" ]]; then
-    echo "Running with --yes: every step runs without asking."
-  else
-    echo "You'll be prompted before each step."
-  fi
+  echo "You'll be prompted before each step."
   echo
   confirm || {
     echo "Skipping bootstrap."
@@ -222,7 +212,7 @@ install_mas_apps() {
 
   warning "Make sure you're signed into the App Store before proceeding."
   open "macappstore://showAccountPage"
-  confirm "Signed in?" no || {
+  confirm "Signed in?" || {
     echo "Skipping App Store apps installation."
     echo
     return
@@ -255,11 +245,7 @@ sync_dotfiles() {
 # signs commits with its public key.
 ask_ssh_key() {
   [[ -n "$ssh_key" ]] && return
-  if [[ -n "$ASSUME_YES" ]]; then
-    ssh_key="$DOTS_SSH_KEY"
-  else
-    read "ssh_key?  Key path [~/.ssh/id_ed25519]:  "
-  fi
+  read "ssh_key?  Key path [~/.ssh/id_ed25519]:  "
   ssh_key="${ssh_key:-~/.ssh/id_ed25519}"
 }
 
@@ -270,11 +256,7 @@ ensure_ssh_key() {
   key="${key/#\~/$HOME}"
   [[ -f "$key" || -f "$key.pub" ]] && return
 
-  if [[ -n "$ASSUME_YES" ]]; then
-    warning "$ssh_key does not exist — create it with: ssh-keygen -t ed25519 -f $ssh_key"
-    return
-  fi
-  confirm "$ssh_key does not exist — create it now?" no || return
+  confirm "$ssh_key does not exist — create it now?" || return
 
   mkdir -p -m 700 "${key:h}"
   ssh-keygen -t ed25519 -f "$key" || {
@@ -305,7 +287,7 @@ configure_ssh() {
   local ssh_config="$HOME/.ssh/config.local"
 
   if [[ -f "$ssh_config" ]]; then
-    confirm "$ssh_config already exists — overwrite?" no || {
+    confirm "$ssh_config already exists — overwrite?" || {
       echo "Skipping SSH config."
       echo
       return
@@ -346,7 +328,7 @@ configure_git() {
   local git_config="$HOME/.config/git/config.local"
 
   if [[ -f "$git_config" ]]; then
-    confirm "$git_config already exists — change the name and email in it?" no || {
+    confirm "$git_config already exists — change the name and email in it?" || {
       echo "Skipping Git config."
       echo
       return
@@ -354,13 +336,8 @@ configure_git() {
   fi
 
   echo "Git identity — used for commits."
-  if [[ -n "$ASSUME_YES" ]]; then
-    git_name="$DOTS_GIT_NAME"
-    git_email="$DOTS_GIT_EMAIL"
-  else
-    read "git_name?  Full name:  "
-    read "git_email?  Email:      "
-  fi
+  read "git_name?  Full name:  "
+  read "git_email?  Email:      "
   echo
 
   if [[ -n "$git_name" && -n "$git_email" ]]; then

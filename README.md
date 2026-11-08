@@ -47,8 +47,6 @@ This will:
 - Configure SSH and Git
 - Apply macOS defaults
 
-To skip the questions, add `sh --yes` at the end of the command (`scripts/bootstrap.zsh --help` lists the options).
-
 <p align="center">
   <img src=".github/assets/bootstrap.webp" width="60%" alt="Bootstrap process">
 </p>
