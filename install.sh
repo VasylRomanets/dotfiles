@@ -30,10 +30,17 @@ main() {
 
   if [ -d "$dir/.git" ]; then
     echo "Updating $dir..."
-    git -C "$dir" pull --ff-only || echo "Could not update $dir — using it as it is."
+    if git -C "$dir" pull --ff-only --quiet; then
+      echo "Updated ✓"
+    else
+      echo "Could not update $dir — using it as it is."
+    fi
   else
-    git clone https://github.com/VasylRomanets/dotfiles.git "$dir"
+    echo "Cloning into $dir..."
+    git clone --quiet https://github.com/VasylRomanets/dotfiles.git "$dir"
+    echo "Cloned ✓"
   fi
+  echo
 
   /bin/zsh "$dir/scripts/bootstrap.zsh"
 }
