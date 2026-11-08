@@ -75,7 +75,7 @@ warn() {
 # pkg_link_changed and pkg_link_total, reset for each package) and the totals
 # for the final summary. A link that already points at the file is left alone.
 symlink() {
-  local src="$1" dest="$2" shown="${2/#$HOME/~}" state mark
+  local src="$1" dest="$2" shown="${2/#$HOME/~}" mark
   (( ++pkg_link_total ))
   if [[ -e "$dest" && ! -L "$dest" ]]; then
     warn "Skipped $shown — already exists and is not a symlink."
@@ -88,9 +88,9 @@ symlink() {
     return
   fi
   if [[ -L "$dest" ]]; then
-    state="relinked" mark="[~]"
+    mark="[~]"
   else
-    state="new" mark="[+]"
+    mark="[+]"
   fi
   if (( ! dry_run )); then
     mkdir -p "${dest:h}"
@@ -101,12 +101,12 @@ symlink() {
     }
   fi
   (( ++linked, ++pkg_link_ok, ++pkg_link_changed, ++link_changes ))
-  echo "  $mark $shown ($state)"
+  echo "  $mark $shown"
 }
 
 # Copies the repo file $1 to $2 unless $2 already has the same content.
 copy_file() {
-  local src="$1" dest="$2" shown="${2/#$HOME/~}" state mark
+  local src="$1" dest="$2" shown="${2/#$HOME/~}" mark
   (( ++pkg_copy_total ))
   if [[ -f "$dest" ]] && cmp -s "$src" "$dest"; then
     (( ++copied, ++pkg_copy_ok ))
@@ -114,9 +114,9 @@ copy_file() {
     return
   fi
   if [[ -f "$dest" ]]; then
-    state="changed" mark="[~]"
+    mark="[~]"
   else
-    state="new" mark="[+]"
+    mark="[+]"
   fi
   if (( ! dry_run )); then
     cp -f "$src" "$dest" || {
@@ -126,7 +126,7 @@ copy_file() {
     }
   fi
   (( ++copied, ++pkg_copy_ok, ++pkg_copy_changed, ++copy_changes ))
-  echo "  $mark $shown ($state)"
+  echo "  $mark $shown"
 }
 
 # Prints a package's "Linked N of M files." line, where $1 is link or copy, $2
