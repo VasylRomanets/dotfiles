@@ -40,7 +40,7 @@ format = "[ $path]($style)[$read_only]($read_only_style) "
 [git_branch]
 symbol = " "
 style = "purple"
-truncation_length = 32
+truncation_length = 48
 truncation_symbol = "…"
 format = "[on ](dimmed)[$symbol$branch]($style) "
 
