@@ -1,1 +1,1 @@
-eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(atuin init zsh)"

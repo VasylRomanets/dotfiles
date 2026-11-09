@@ -1,5 +1,6 @@
 # See docs: https://docs.atuin.sh/latest/
 
+bind_up_arrow = false
 update_check = false
 enter_accept = false
 search_mode = "daemon-fuzzy"
