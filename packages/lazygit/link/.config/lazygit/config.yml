@@ -19,7 +19,7 @@ customCommands:
 gui:
   mouseEvents: false
   spinner:
-    frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
+    frames: ['⠖', '⠲', '⠴', '⠦']
     rate: 100
 
 git:
