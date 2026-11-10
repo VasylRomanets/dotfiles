@@ -20,7 +20,7 @@ gui:
   mouseEvents: false
   spinner:
     frames: ['⠖', '⠲', '⠴', '⠦']
-    rate: 100
+    rate: 150
 
 git:
   autoFetch: false
