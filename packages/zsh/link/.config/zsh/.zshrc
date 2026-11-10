@@ -1,6 +1,7 @@
 # --- Aliases ------------------------------------------------------------------
 alias brew-uses="brew uses --installed --recursive"
 alias grep="grep --color=auto"
+alias rms="trash"
 
 # --- History ------------------------------------------------------------------
 HISTFILE="$XDG_STATE_HOME/zsh/history"

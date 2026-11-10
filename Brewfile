@@ -50,7 +50,6 @@ brew "stow"                 # symlink farm manager
 brew "taplo"                # TOML toolkit
 brew "tealdeer"             # simplified man pages (tldr command)
 brew "tokei"                # count lines of code by language (better cloc)
-brew "trash-cli"            # move files to trash instead of permanently deleting (safer rm)
 brew "vivid"                # LS_COLORS theme generator (colorizes output of eza, fd, etc)
 brew "watch"                # run commands periodically
 brew "wifi-password"        # show password for connected Wi-Fi network
