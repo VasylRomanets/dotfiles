@@ -79,31 +79,31 @@ cask "font-meslo-lg-nerd-font" # cozy programming font with Menlo's DNA
 cask "font-nordwand-mono"      # compact neo-grotesk monospaced font
 
 # --- Cask: Apps ---------------------------------------------------------------
-cask "claude-code@latest"     # AI coding assistant
-cask "cleanmymac"             # system cleaner and optimizer
-cask "discord"                # voice, video, and text chat
-cask "espanso"                # text expander
-cask "fork"                   # git client
-cask "ghostty"                # terminal emulator
-cask "google-chrome"          # web browser
-cask "hammerspoon"            # Lua-driven macOS automation and scripting
-cask "handbrake-app"          # video transcoder
-cask "hiddenbar"              # hide clutter from the menu bar
-cask "iina"                   # media player
-cask "keka"                   # file archiver
-cask "markdown-preview"       # Markdown previewer with bundled Quick Look extension
-cask "mediamate"              # now-playing overlay for Spotify and media controls
-cask "obsidian"               # Markdown-based personal knowledge base
-cask "raycast"                # app launcher, window manager, clipboard history, and more
-cask "rectangle"              # window manager (driven from skhd via URL scheme)
-cask "shottr"                 # screenshot tool
-cask "signal"                 # encrypted, privacy-focused messaging
-cask "skhd-zig"               # global hotkeys that run shell commands (active port of skhd)
-cask "spotify"                # music streaming
-cask "transmission"           # BitTorrent client
-cask "unity-hub"              # launcher for Unity editor
-cask "zed"                    # code editor
-cask "zoom"                   # video conferencing
+cask "claude-code@latest" # AI coding assistant
+cask "cleanmymac"         # system cleaner and optimizer
+cask "discord"            # voice, video, and text chat
+cask "espanso"            # text expander
+cask "fork"               # git client
+cask "ghostty"            # terminal emulator
+cask "google-chrome"      # web browser
+cask "hammerspoon"        # Lua-driven macOS automation and scripting
+cask "handbrake-app"      # video transcoder
+cask "hiddenbar"          # hide clutter from the menu bar
+cask "iina"               # media player
+cask "keka"               # file archiver
+cask "markdown-preview"   # Markdown previewer with bundled Quick Look extension
+cask "mediamate"          # now-playing overlay for Spotify and media controls
+cask "obsidian"           # Markdown-based personal knowledge base
+cask "raycast"            # app launcher, window manager, clipboard history, and more
+cask "rectangle"          # window manager (driven from skhd via URL scheme)
+cask "shottr"             # screenshot tool
+cask "signal"             # encrypted, privacy-focused messaging
+cask "skhd-zig"           # global hotkeys that run shell commands (active port of skhd)
+cask "spotify"            # music streaming
+cask "transmission"       # BitTorrent client
+cask "unity-hub"          # launcher for Unity editor
+cask "zed"                # code editor
+cask "zoom"               # video conferencing
 
 # --- Cargo --------------------------------------------------------------------
 cargo "cargo-update" # update installed crates
