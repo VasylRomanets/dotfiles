@@ -52,7 +52,6 @@ brew "tealdeer"             # simplified man pages (tldr command)
 brew "tokei"                # count lines of code by language (better cloc)
 brew "vivid"                # LS_COLORS theme generator (colorizes output of eza, fd, etc)
 brew "watch"                # run commands periodically
-brew "wifi-password"        # show password for connected Wi-Fi network
 brew "xdg-ninja"            # check $HOME for unwanted files and directories
 
 # --- Brew: Fun & Rice ---------------------------------------------------------
