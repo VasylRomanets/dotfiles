@@ -55,10 +55,6 @@
   sort = version:refname
   gpgSign = true
 
-[credential]
-  helper =
-  helper = manager
-
 [interactive]
   diffFilter = delta --color-only
 

@@ -85,7 +85,6 @@ cask "discord"                # voice, video, and text chat
 cask "espanso"                # text expander
 cask "fork"                   # git client
 cask "ghostty"                # terminal emulator
-cask "git-credential-manager" # git credential storage (supports OAuth, unlike osxkeychain)
 cask "google-chrome"          # web browser
 cask "hammerspoon"            # Lua-driven macOS automation and scripting
 cask "handbrake-app"          # video transcoder
