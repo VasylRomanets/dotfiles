@@ -15,7 +15,6 @@ brew "fzf"                 # fuzzy finder CLI
 brew "gh"                  # official GitHub CLI
 brew "git"                 # version control
 brew "git-delta"           # syntax-highlighted diffs (better diff-so-fancy)
-brew "git-filter-repo"     # rewrite git history (better bfg)
 brew "git-lfs"             # git large file storage extension
 brew "jq"                  # JSON processor
 brew "lazygit"             # TUI git client
@@ -28,30 +27,20 @@ brew "television"          # fuzzy finder TUI with built-in channels (files, git
 brew "toml2json"           # TOML to JSON converter
 brew "topgrade"            # update everything in one command - brew, cargo crates, mas apps, and more
 brew "yazi"                # file manager
-brew "yq"                  # YAML processor (like jq for YAML)
 brew "zoxide"              # auto-learning navigation (better cd)
 brew "zsh"                 # the Z shell itself
 brew "zsh-autosuggestions" # ghost-text suggestions from history (fish-style)
 brew "zsh-patina"          # Zsh syntax highlighter (better zsh-syntax-highlighting)
 
 # --- Brew: Nice-to-have -------------------------------------------------------
-brew "asciinema"            # record and share terminal sessions
 brew "bloom"                # Rosé Pine themes generator
 brew "btop"                 # resource and process monitor (better htop)
-brew "croc"                 # encrypted peer-to-peer file transfer
-brew "duf"                  # mounted disk usage overview (better df)
-brew "faker"                # fake data generator
-brew "grex"                 # generate regex from provided examples
-brew "jrnl"                 # journal and note taker
 brew "leaf-markdown-viewer" # terminal Markdown previewer
 brew "mole"                 # system cleaner and optimizer (like CleanMyMac but CLI)
 brew "shellcheck"           # static analysis tool for shell scripts
-brew "stow"                 # symlink farm manager
-brew "taplo"                # TOML toolkit
 brew "tealdeer"             # simplified man pages (tldr command)
 brew "tokei"                # count lines of code by language (better cloc)
 brew "vivid"                # LS_COLORS theme generator (colorizes output of eza, fd, etc)
-brew "watch"                # run commands periodically
 brew "xdg-ninja"            # check $HOME for unwanted files and directories
 
 # --- Brew: Fun & Rice ---------------------------------------------------------
@@ -79,20 +68,16 @@ cask "font-nordwand-mono"      # compact neo-grotesk monospaced font
 
 # --- Cask: Apps ---------------------------------------------------------------
 cask "claude-code@latest" # AI coding assistant
-cask "cleanmymac"         # system cleaner and optimizer
 cask "discord"            # voice, video, and text chat
 cask "espanso"            # text expander
 cask "fork"               # git client
 cask "ghostty"            # terminal emulator
 cask "google-chrome"      # web browser
 cask "hammerspoon"        # Lua-driven macOS automation and scripting
-cask "handbrake-app"      # video transcoder
 cask "hiddenbar"          # hide clutter from the menu bar
-cask "iina"               # media player
 cask "keka"               # file archiver
 cask "markdown-preview"   # Markdown previewer with bundled Quick Look extension
 cask "mediamate"          # now-playing overlay for Spotify and media controls
-cask "obsidian"           # Markdown-based personal knowledge base
 cask "raycast"            # app launcher, window manager, clipboard history, and more
 cask "rectangle"          # window manager (driven from skhd via URL scheme)
 cask "shottr"             # screenshot tool
@@ -116,3 +101,21 @@ mas "Spark Desktop", id: 6445813049 # email client
 mas "Today", id: 6443714928         # today’s schedule in the menu bar
 mas "Todoist", id: 585829637        # to-do list
 mas "WhatsApp", id: 310633997       # encrypted messaging
+
+# --- Honorable Mentions -------------------------------------------------------
+# brew "asciinema"       # record and share terminal sessions
+# brew "croc"            # encrypted peer-to-peer file transfer
+# brew "duf"             # mounted disk usage overview (better df)
+# brew "faker"           # fake data generator
+# brew "git-filter-repo" # rewrite git history (better bfg)
+# brew "grex"            # generate regex from provided examples
+# brew "jrnl"            # journal and note taker
+# brew "stow"            # symlink farm manager
+# brew "taplo"           # TOML toolkit
+# brew "watch"           # run commands periodically
+# brew "yq"              # YAML processor (like jq for YAML)
+
+# cask "cleanmymac"    # system cleaner and optimizer
+# cask "handbrake-app" # video transcoder
+# cask "iina"          # media player
+# cask "obsidian"      # Markdown-based personal knowledge base
