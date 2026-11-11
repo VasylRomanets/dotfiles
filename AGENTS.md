@@ -2,7 +2,7 @@
 
 Personal, macOS-only dotfiles repo — shell scripts and config files, applied to the live system via a small custom package manager (not GNU Stow or a framework). `require_macos` in `scripts/_lib.zsh` hard-exits on any non-Darwin `uname`.
 
-The owner intends to try a Linux distro at some undetermined future point, and if that happens, the plan is to extend this single repo (matching how `chezmoi`/`yadm` handle multi-OS) rather than fork a separate one — not to maintain two repos. No Linux work is planned right now, and don't start any unprompted. What this means day to day: most of `packages/*/source` and `packages/*/link` content has no OS dependency and should stay that way where it's free to do so; the genuinely macOS-only chokepoints are `scripts/macos.zsh`, the Homebrew `cask`/`mas`/`vscode` sections of `Brewfile`, and the `/Applications/*.app` checks in `sync.zsh`.
+The owner intends to try a Linux distro at some undetermined future point, and if that happens, the plan is to extend this single repo (matching how `chezmoi`/`yadm` handle multi-OS) rather than fork a separate one — not to maintain two repos. No Linux work is planned right now, and don't start any unprompted. What this means day to day: most of `packages/*/source` and `packages/*/link` content has no OS dependency and should stay that way where it's free to do so; the genuinely macOS-only chokepoints are `scripts/macos.zsh`, the Homebrew `cask`/`mas` sections of `Brewfile`, and the `/Applications/*.app` checks in `sync.zsh`.
 
 ## Commands
 
