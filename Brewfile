@@ -9,6 +9,7 @@ tap "veirt/veirt", trusted: { formulae: ["weathr"] }
 # --- Brew: Must-have ----------------------------------------------------------
 brew "atuin"               # fuzzy-search shell history and sync it across machines
 brew "bat"                 # print syntax-highlighted file contents (better cat)
+brew "cargo-update"        # update installed cargo crates
 brew "eza"                 # list files (better ls)
 brew "fd"                  # find files (better find)
 brew "fzf"                 # fuzzy finder CLI
@@ -90,8 +91,7 @@ cask "zed"                # code editor
 cask "zoom"               # video conferencing
 
 # --- Cargo --------------------------------------------------------------------
-cargo "cargo-update" # update installed crates
-cargo "pokeget"      # print pokemon sprites
+cargo "pokeget" # print pokemon sprites
 
 # --- App Store ----------------------------------------------------------------
 mas "Bitwarden", id: 1352778147     # password manager
