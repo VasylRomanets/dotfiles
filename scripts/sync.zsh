@@ -113,6 +113,7 @@ copy_file() {
     mark="[+]"
   fi
   if (( ! dry_run )); then
+    mkdir -p "${dest:h}"
     cp -f "$src" "$dest" || {
       warn "Failed to copy $src."
       (( ++failed ))
@@ -274,7 +275,7 @@ sync_packages() {
         pkg_copy_ok=0 pkg_copy_changed=0 pkg_copy_total=0
         for f in "$pkg_dir/copy/"**/*(.N); do
           [[ "${f:t}" == ".DS_Store" ]] && continue
-          copy_file "$f" "$copy_target/${f:t}"
+          copy_file "$f" "$copy_target/${f#$pkg_dir/copy/}"
         done
         (( pkg_copy_total )) && report_count "copy" "$pkg_copy_ok" "$pkg_copy_changed" "$pkg_copy_total"
       fi

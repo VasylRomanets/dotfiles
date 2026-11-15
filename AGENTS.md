@@ -37,7 +37,7 @@ Each `packages/<pkg>/` directory is independent and can contain any of:
 
 - `link/` — files mirrored via symlink into the target (default `~`), preserving relative path structure under `link/`.
 - `shell/*.zsh` — symlinked into `$ZDOTDIR/source/` (i.e. `~/.config/zsh/source/`) and sourced by `.zshrc`'s loop over that directory. This is how a package hooks into the interactive shell (aliases, `eval "$(tool init zsh)"`, env vars).
-- `copy/` — files copied (not symlinked) into `[copy].target`. Only used when symlinking is impossible, e.g. a macOS-sandboxed Mac App Store app that resolves symlinks outside its container.
+- `copy/` — files copied (not symlinked) into `[copy].target`, keeping their paths under `copy/`. Only used when symlinking is impossible, e.g. a macOS-sandboxed Mac App Store app that resolves symlinks outside its container.
 - `hooks/pre-sync.zsh` / `hooks/post-sync.zsh` — arbitrary setup steps beyond linking/copying (e.g. `yazi`'s `post-sync.zsh` runs `ya pkg install` to resolve plugins). Both run inside `sync.zsh`, only for packages that pass `[requires]`.
 - `hooks/theme-changed.zsh` — the package's reaction to `theme`; `sync.zsh` symlinks it to `~/.local/share/theme/hooks.d/<pkg>.zsh` (see Theming).
 - `templates/` — inputs to `dots build-themes` (see Theming): the Mustache templates and their `config.toml`; `sync.zsh` ignores it.
