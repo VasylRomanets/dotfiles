@@ -15,7 +15,7 @@ dotfiles/
 ├── packages/
 │   └── <pkg>/
 │       ├── link/           # files to symlink (optional)
-│       ├── source/         # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
+│       ├── shell/          # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
 │       ├── copy/           # files to copy (optional)
 │       ├── hooks/          # pre-sync.zsh, post-sync.zsh, theme-changed.zsh (optional)
 │       ├── templates/      # Mustache templates dots build-themes renders per scheme (optional)

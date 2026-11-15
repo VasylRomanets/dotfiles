@@ -2,7 +2,7 @@
 
 Personal, macOS-only dotfiles repo — shell scripts and config files, applied to the live system via a small custom package manager (not GNU Stow or a framework). `require_macos` in `scripts/_lib.zsh` hard-exits on any non-Darwin `uname`.
 
-The owner intends to try a Linux distro at some undetermined future point, and if that happens, the plan is to extend this single repo (matching how `chezmoi`/`yadm` handle multi-OS) rather than fork a separate one — not to maintain two repos. No Linux work is planned right now, and don't start any unprompted. What this means day to day: most of `packages/*/source` and `packages/*/link` content has no OS dependency and should stay that way where it's free to do so; the genuinely macOS-only chokepoints are `scripts/macos.zsh`, the `cask` and `mas` entries in `Brewfile`, and the `/Applications/*.app` checks in `sync.zsh`.
+The owner intends to try a Linux distro at some undetermined future point, and if that happens, the plan is to extend this single repo (matching how `chezmoi`/`yadm` handle multi-OS) rather than fork a separate one — not to maintain two repos. No Linux work is planned right now, and don't start any unprompted. What this means day to day: most of `packages/*/shell` and `packages/*/link` content has no OS dependency and should stay that way where it's free to do so; the genuinely macOS-only chokepoints are `scripts/macos.zsh`, the `cask` and `mas` entries in `Brewfile`, and the `/Applications/*.app` checks in `sync.zsh`.
 
 ## Commands
 
@@ -36,7 +36,7 @@ dots build-themes         # ./scripts/build-themes.zsh — regenerate every per-
 Each `packages/<pkg>/` directory is independent and can contain any of:
 
 - `link/` — files mirrored via symlink into the target (default `~`), preserving relative path structure under `link/`.
-- `source/*.zsh` — symlinked into `$ZDOTDIR/source/` (i.e. `~/.config/zsh/source/`) and sourced by `.zshrc`'s loop over that directory. This is how a package hooks into the interactive shell (aliases, `eval "$(tool init zsh)"`, env vars).
+- `shell/*.zsh` — symlinked into `$ZDOTDIR/source/` (i.e. `~/.config/zsh/source/`) and sourced by `.zshrc`'s loop over that directory. This is how a package hooks into the interactive shell (aliases, `eval "$(tool init zsh)"`, env vars).
 - `copy/` — files copied (not symlinked) into `[copy].target`. Only used when symlinking is impossible, e.g. a macOS-sandboxed Mac App Store app that resolves symlinks outside its container.
 - `hooks/pre-sync.zsh` / `hooks/post-sync.zsh` — arbitrary setup steps beyond linking/copying (e.g. `yazi`'s `post-sync.zsh` runs `ya pkg install` to resolve plugins). Both run inside `sync.zsh`, only for packages that pass `[requires]`.
 - `hooks/theme-changed.zsh` — the package's reaction to `theme`; `sync.zsh` symlinks it to `~/.local/share/theme/hooks.d/<pkg>.zsh` (see Theming).
@@ -53,7 +53,7 @@ Each `packages/<pkg>/` directory is independent and can contain any of:
 
 ### `sync.zsh` per-package order
 
-For each `packages/*/`: check `[requires]` (skip package entirely if command/app missing) → run `pre-sync` hook → symlink `link/**` and `source/*.zsh` → copy `copy/**` → run `post-sync` hook. `link` and `source` are independent and a package can have either, both, or neither.
+For each `packages/*/`: check `[requires]` (skip package entirely if command/app missing) → run `pre-sync` hook → symlink `link/**` and `shell/*.zsh` → copy `copy/**` → run `post-sync` hook. `link` and `shell` are independent and a package can have either, both, or neither.
 
 ### Theming
 
@@ -79,11 +79,11 @@ Committed config files `include`/reference a sibling `*.local` file that is giti
 
 ### Shell startup chain
 
-`.zshenv` (`packages/zsh/link/.zshenv`) sets `DOTFILES`, XDG_* dirs and `ZDOTDIR`, and is sourced for *every* zsh invocation (interactive, scripts, subshells) — keep it limited to genuinely global env vars. `.zprofile` (`packages/zsh/link/.zprofile`) loads next, for login shells only, and is where `PATH` is set instead of `.zshenv` — macOS's `path_helper` runs between the two, re-prepending system dirs ahead of anything `.zshenv` already exported, so a `PATH` entry only actually ends up in front of the system dirs if it's set in `.zprofile`. `.zshrc` sources the core config files, then `zsh-autosuggestions`/`zsh-syntax-highlighting`, then every `$ZDOTDIR/source/*.zsh` file — which is how each package's own `source/*.zsh` actually gets loaded into a real shell session.
+`.zshenv` (`packages/zsh/link/.zshenv`) sets `DOTFILES`, XDG_* dirs and `ZDOTDIR`, and is sourced for *every* zsh invocation (interactive, scripts, subshells) — keep it limited to genuinely global env vars. `.zprofile` (`packages/zsh/link/.zprofile`) loads next, for login shells only, and is where `PATH` is set instead of `.zshenv` — macOS's `path_helper` runs between the two, re-prepending system dirs ahead of anything `.zshenv` already exported, so a `PATH` entry only actually ends up in front of the system dirs if it's set in `.zprofile`. `.zshrc` sources the core config files, then `zsh-autosuggestions`/`zsh-syntax-highlighting`, then every `$ZDOTDIR/source/*.zsh` file — which is how each package's own `shell/*.zsh` actually gets loaded into a real shell session.
 
 ## Conventions
 
-- **Guarding a package that might not be installed**: in `.zsh` files (anything under `source/` or a zsh `hooks/*.zsh`), use zsh's native `(( $+commands[name] ))` — see `packages/fzf/source/fzf-core.zsh` (guards `fd`, `eza`, `bat`, `atuin`, each with a fallback) and `packages/cowsay/source/cowsay.zsh`. In POSIX `.sh` scripts (e.g. Claude Code hook scripts under `packages/claude/link/.config/claude/hooks/`), use `command -v name` instead, since these aren't zsh and must stay portable to whatever shell actually invokes them. Skip guarding tools confirmed to always be present (macOS system binaries, or the package's own binary in its own `source/*.zsh` — that file is only symlinked in if the package itself was set up).
+- **Guarding a package that might not be installed**: in `.zsh` files (anything under `shell/` or a zsh `hooks/*.zsh`), use zsh's native `(( $+commands[name] ))` — see `packages/fzf/shell/fzf-core.zsh` (guards `fd`, `eza`, `bat`, `atuin`, each with a fallback) and `packages/cowsay/shell/cowsay.zsh`. In POSIX `.sh` scripts (e.g. Claude Code hook scripts under `packages/claude/link/.config/claude/hooks/`), use `command -v name` instead, since these aren't zsh and must stay portable to whatever shell actually invokes them. Skip guarding tools confirmed to always be present (macOS system binaries, or the package's own binary in its own `shell/*.zsh` — that file is only symlinked in if the package itself was set up).
 - **Invoking a script from a non-interactive/external-tool context** (a hook `"command"` in JSON config, etc.): use an absolute path (`/bin/sh`, not bare `sh`) and prefer resolving directories through whatever env var already governs them, with a fallback to the tool's real unconfigured default — e.g. `${CLAUDE_CONFIG_DIR:-$HOME/.claude}` rather than hardcoding `~/.config/claude`. Don't rely on `~` inside a shell parameter-expansion default (`${VAR:-~/path}`) — tilde does not expand there; use `$HOME` instead.
 - **macOS defaults (`scripts/macos.zsh`)**: organized into `# --- Label ---...---` (80-char) section headers by feature area, one `defaults write` (or small group) per comment explaining *why*, not what. Settings that were deliberately considered but left off are kept as commented-out lines rather than deleted, so the option stays visible for later. Preserve this style when adding entries.
 - **Comment style**:
