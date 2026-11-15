@@ -274,7 +274,6 @@ configure_ssh() {
       echo
       return
     }
-    rm -f "$ssh_config"
   fi
 
   echo "SSH config — used for GitHub and other hosts."
