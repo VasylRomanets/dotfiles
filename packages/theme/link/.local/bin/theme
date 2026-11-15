@@ -92,10 +92,19 @@ mkdir -p "$state_dir"
 touch "$state_file"
 
 # Converts a slug to its display name, e.g. rose-pine-moon -> Rose Pine Moon.
+# The macOS bash is 3.2, which has no ${var^}, so a letter is capitalized by its
+# position in the alphabet. Starting no process makes this fast enough to run for
+# every theme at once.
 pretty_name() {
-  local slug=$1 word result=""
+  local slug=$1 word first before result=""
+  local lower=abcdefghijklmnopqrstuvwxyz upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ
   for word in ${slug//-/ }; do
-    result="$result${result:+ }$(tr '[:lower:]' '[:upper:]' <<<"${word:0:1}")${word:1}"
+    first=${word:0:1}
+    before=${lower%%"$first"*}
+    # A lowercase letter is found inside the alphabet, so what comes before it
+    # is shorter than the whole; anything else is left as it is.
+    (( ${#before} < 26 )) && first=${upper:${#before}:1}
+    result="$result${result:+ }$first${word:1}"
   done
   printf '%s' "$result"
 }
