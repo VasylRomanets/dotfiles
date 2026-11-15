@@ -5,4 +5,4 @@
 # USAGE: joke
 # URL:   https://v2.jokeapi.dev
 
-curl -s 'https://v2.jokeapi.dev/joke/Programming?type=single' | jq -r '.joke'
+curl -sf --max-time 10 'https://v2.jokeapi.dev/joke/Programming?type=single' | jq -r '.joke'
