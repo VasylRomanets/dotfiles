@@ -8,8 +8,6 @@ trap on_error ERR
 
 SCRIPTS_PATH="${0:A:h}"
 DOTFILES="${SCRIPTS_PATH:h}"
-TMP_BREWFILE=""
-TMP_MAS_BREWFILE=""
 ssh_key=""
 
 source "$SCRIPTS_PATH/_lib.zsh"
@@ -40,13 +38,7 @@ for arg in "$@"; do
   esac
 done
 
-cleanup() {
-  [[ -n "$TMP_BREWFILE" ]] && rm -f "$TMP_BREWFILE" || true
-  [[ -n "$TMP_MAS_BREWFILE" ]] && rm -f "$TMP_MAS_BREWFILE" || true
-}
-
 on_error() {
-  cleanup
   echo
   error "Bootstrap failed — check the output above."
   exit 1
@@ -171,13 +163,8 @@ install_homebrew_packages() {
   # doesn't stop to prompt partway through.
   request_sudo
 
-  TMP_BREWFILE="$(mktemp /private/tmp/Brewfile.XXXXXX)"
-  grep -v '^mas ' "$DOTFILES/Brewfile" >> "$TMP_BREWFILE" || true
-
   echo "Installing Homebrew packages..."
-  brew bundle --file="$TMP_BREWFILE"
-  rm -f "$TMP_BREWFILE"
-  TMP_BREWFILE=""
+  brew bundle --file=<(grep -v '^mas ' "$DOTFILES/Brewfile")
   success "Homebrew packages installed."
   echo
 }
@@ -218,13 +205,8 @@ install_mas_apps() {
     return
   }
 
-  TMP_MAS_BREWFILE="$(mktemp /private/tmp/Brewfile.mas.XXXXXX)"
-  grep -E '^mas ' "$DOTFILES/Brewfile" >> "$TMP_MAS_BREWFILE" || true
-
   echo "Installing App Store apps..."
-  brew bundle --file="$TMP_MAS_BREWFILE"
-  rm -f "$TMP_MAS_BREWFILE"
-  TMP_MAS_BREWFILE=""
+  brew bundle --file=<(grep -E '^mas ' "$DOTFILES/Brewfile")
   success "App Store apps installed."
   echo
 }
@@ -372,7 +354,6 @@ apply_macos_defaults() {
 }
 
 on_finish() {
-  cleanup
   info "Bootstrap complete — happy coding!"
   info "P.S. Don't forget to restart your terminal."
   echo
