@@ -72,6 +72,7 @@ tap "vasylromanets/tap",      trusted: { formulae: ["spinpacks"] }
 tap "veirt/veirt",            trusted: { formulae: ["weathr"] }
 
 brew "asciiquarium" # aquarium animation
+brew "c2048"        # 2048 game
 brew "cava"         # bar spectrum audio visualizer
 brew "cbonsai"      # grow bonsai trees
 brew "cliamp"       # retro terminal music player inspired by Winamp 2.x
