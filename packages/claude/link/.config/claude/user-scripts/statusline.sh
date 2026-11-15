@@ -23,23 +23,31 @@ format_countdown() {
 input=$(cat)
 now=$(date +%s)
 
-model=$(echo "$input" | jq -r '.model.display_name // empty')
-used_pct_raw=$(echo "$input" | jq -r 'if (.context_window.used_percentage // 0) > 0 then .context_window.used_percentage else "" end')
-effort=$(echo "$input" | jq -r '.effort.level // empty')
-# Only present for Pro/Max subscribers (or behind a spend-limit gateway), and only
-# after the first API response in the session — absent otherwise.
-five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
-seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
-five_hour_reset_epoch=$(echo "$input" | jq -r '(.rate_limits.five_hour.resets_at // empty) | floor')
-seven_day_reset_epoch=$(echo "$input" | jq -r '(.rate_limits.seven_day.resets_at // empty) | floor')
+# One jq call reads every field. They come back joined by the ASCII unit
+# separator, which no value contains, so an empty field keeps its place. The
+# rate limits are only present for Pro/Max subscribers (or behind a spend-limit
+# gateway), and only after the first API response in the session.
+fields=$(printf '%s\n' "$input" | jq -r '[
+  (.model.display_name // ""),
+  (if (.context_window.used_percentage // 0) > 0 then .context_window.used_percentage else "" end),
+  (.effort.level // ""),
+  (.rate_limits.five_hour.used_percentage // ""),
+  (.rate_limits.seven_day.used_percentage // ""),
+  ((.rate_limits.five_hour.resets_at // null) | if . == null then "" else floor end),
+  ((.rate_limits.seven_day.resets_at // null) | if . == null then "" else floor end),
+  (.cost.total_cost_usd // ""),
+  ((.cost.total_duration_ms // 0) | . / 60000 | floor as $t | ($t / 1440 | floor) as $d | (($t % 1440) / 60 | floor) as $h | ($t % 60) as $m | (if $d > 0 then (($d | tostring) + "d ") else "" end) + (if $h > 0 then (($h | tostring) + "h ") else "" end) + (($m | tostring) + "m")),
+  (.cost.total_lines_added // ""),
+  (.cost.total_lines_removed // "")
+] | map(tostring) | join("\u001f")')
+IFS=$(printf '\037') read -r model used_pct_raw effort five_hour_pct seven_day_pct \
+  five_hour_reset_epoch seven_day_reset_epoch cost duration added removed <<EOF
+$fields
+EOF
 five_hour_reset=""
 seven_day_reset=""
 [ -n "$five_hour_reset_epoch" ] && five_hour_reset=$(format_countdown "$five_hour_reset_epoch")
 [ -n "$seven_day_reset_epoch" ] && seven_day_reset=$(format_countdown "$seven_day_reset_epoch")
-cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
-duration=$(echo "$input" | jq -r '(.cost.total_duration_ms // 0) | . / 60000 | floor as $t | ($t / 1440 | floor) as $d | (($t % 1440) / 60 | floor) as $h | ($t % 60) as $m | (if $d > 0 then (($d | tostring) + "d ") else "" end) + (if $h > 0 then (($h | tostring) + "h ") else "" end) + (($m | tostring) + "m")')
-added=$(echo "$input" | jq -r '.cost.total_lines_added // empty')
-removed=$(echo "$input" | jq -r '.cost.total_lines_removed // empty')
 
 dim='\033[2m'
 reset='\033[0m'
