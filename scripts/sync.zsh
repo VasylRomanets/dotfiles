@@ -16,6 +16,7 @@ SCRIPTS_PATH="${0:A:h}"
 DOTFILES="${SCRIPTS_PATH:h}"
 
 source "$SCRIPTS_PATH/_lib.zsh"
+zmodload -F zsh/stat b:zstat
 
 linked=0
 link_changes=0
@@ -66,14 +67,16 @@ warn() {
 # pkg_link_changed and pkg_link_total, reset for each package) and the totals
 # for the final summary. A link that already points at the file is left alone.
 symlink() {
-  local src="$1" dest="$2" shown="${2/#$HOME/~}" mark
+  local src="$1" dest="$2" shown="${2/#$HOME/~}" mark target
   (( ++pkg_link_total ))
   if [[ -e "$dest" && ! -L "$dest" ]]; then
     warn "Skipped $shown — already exists and is not a symlink."
     (( ++failed ))
     return
   fi
-  if [[ -L "$dest" && "$(readlink "$dest")" == "$src" ]]; then
+  # zstat reads the link's target without starting a readlink process per file.
+  [[ -L "$dest" ]] && zstat -A target +link -- "$dest"
+  if [[ -L "$dest" && "$target" == "$src" ]]; then
     (( ++linked, ++pkg_link_ok ))
     (( verbose )) && echo "  [=] $shown"
     return
