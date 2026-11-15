@@ -13,7 +13,7 @@ dots bootstrap            # ./scripts/bootstrap.zsh — full fresh-machine setup
 dots sync [package...]    # ./scripts/sync.zsh — re-symlink/copy after adding or editing package files; the command you run after most changes. `-v` also lists unchanged files and hook output, `-n` only previews
 dots unlink <package>...  # ./scripts/unlink.zsh — remove the named packages' symlinks (only links to this repo's files), `-n` previews
 dots pull [--sync] [-n]   # ./scripts/pull.zsh — fast-forward the repo (refuses on a dirty tree); `--sync` then runs `dots sync`. A plain pull never touches links, it just suggests `dots sync` when package files were added/renamed/removed or a `copy/` file or sync hook changed
-dots prune-symlinks       # ./scripts/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync; takes no `-n`)
+dots prune-symlinks [-n]  # ./scripts/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync); `-n` only lists them
 dots setup-macos          # ./scripts/macos.zsh — apply the macOS `defaults write` settings only (bootstrap runs it too)
 dots build-themes         # ./scripts/build-themes.zsh — regenerate every per-theme file from the schemes (needs only `python3`; see Theming)
 ```

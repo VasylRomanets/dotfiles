@@ -5,6 +5,9 @@
 #
 # Not part of `dots sync`: a full $HOME scan is unnecessary overhead on every sync,
 # so run this occasionally instead, whenever you suspect stale symlinks.
+#
+# USAGE: prune-symlinks.zsh [-n]
+#        -n, --dry-run   only list the symlinks that would be removed
 
 SCRIPTS_PATH="${0:A:h}"
 DOTFILES="${SCRIPTS_PATH:h}"
@@ -12,6 +15,17 @@ DOTFILES="${SCRIPTS_PATH:h}"
 source "$SCRIPTS_PATH/_lib.zsh"
 
 pruned=0
+dry_run=0
+
+for arg in "$@"; do
+  case "$arg" in
+    -n | --dry-run) dry_run=1 ;;
+    *)
+      error "prune-symlinks: unknown argument '$arg'"
+      exit 1
+      ;;
+  esac
+done
 
 prune_orphaned_symlinks() {
   local dest
@@ -31,8 +45,12 @@ prune_orphaned_symlinks() {
     [[ -n "$dest" ]] || continue
     # Still broken? (leave alone e.g. links into a currently-unmounted drive).
     if [[ ! -e "$dest" ]]; then
-      echo "Removing orphaned symlink: $dest"
-      rm -f "$dest"
+      if (( dry_run )); then
+        echo "Would remove orphaned symlink: $dest"
+      else
+        echo "Removing orphaned symlink: $dest"
+        rm -f "$dest"
+      fi
       (( ++pruned ))
     fi
   done
@@ -43,7 +61,11 @@ main() {
   echo "Scanning \$HOME for orphaned dotfiles symlinks..."
   prune_orphaned_symlinks
   echo
-  success "Done — $pruned orphaned symlink(s) removed."
+  if (( dry_run )); then
+    success "Dry run, nothing changed — $pruned orphaned symlink(s) to remove."
+  else
+    success "Done — $pruned orphaned symlink(s) removed."
+  fi
 }
 
 main

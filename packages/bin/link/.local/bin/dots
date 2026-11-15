@@ -37,7 +37,7 @@ Arguments:
 
 Options:
   -v, --verbose  sync, unlink: Show more detail, like unchanged files and hook output
-  -n, --dry-run  sync, unlink, pull: Only report what would change
+  -n, --dry-run  sync, unlink, pull, prune-symlinks: Only report what would change
       --sync     pull: Run dots sync afterwards
   -h, --help     Print help
 USAGE
