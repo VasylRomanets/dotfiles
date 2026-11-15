@@ -14,9 +14,9 @@ dotfiles/
 ├── install.sh              # one-step installer: clones the repo and runs scripts/bootstrap.zsh
 ├── packages/
 │   └── <pkg>/
-│       ├── link/           # files to symlink (optional)
-│       ├── shell/          # <pkg>.zsh sourced from ~/.config/zsh/source/ (optional)
 │       ├── copy/           # files to copy (optional)
+│       ├── link/           # files to symlink (optional)
+│       ├── shell/          # <pkg>.zsh sourced by .zshrc (optional)
 │       ├── hooks/          # pre-sync.zsh, post-sync.zsh, theme-changed.zsh (optional)
 │       ├── templates/      # Mustache templates dots build-themes renders per scheme (optional)
 │       └── sync.toml       # install conditions and copy/link target (optional)
