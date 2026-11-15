@@ -3,79 +3,79 @@
 # the first line whose other side has the wanted variant wins, so list the
 # preferred counterpart first. Themes without a line have no counterpart.
 
-# Catppuccin.
-catppuccin-mocha      catppuccin-latte
-catppuccin-macchiato  catppuccin-latte
-catppuccin-frappe     catppuccin-latte
+# Catppuccin
+catppuccin-frappe    catppuccin-latte
+catppuccin-macchiato catppuccin-latte
+catppuccin-mocha     catppuccin-latte
 
-# Rose Pine.
-rose-pine-moon        rose-pine-dawn
-rose-pine             rose-pine-dawn
+# Rose Pine
+rose-pine      rose-pine-dawn
+rose-pine-moon rose-pine-dawn
 
-# Tokyo Night.
-tokyonight-night      tokyonight-day
-tokyonight-storm      tokyonight-day
-tokyonight-moon       tokyonight-day
+# Tokyo Night
+tokyonight-moon  tokyonight-day
+tokyonight-night tokyonight-day
+tokyonight-storm tokyonight-day
 
-# Kanagawa.
-kanagawa-wave         kanagawa-lotus
-kanagawa-dragon       kanagawa-lotus
+# Kanagawa
+kanagawa-dragon kanagawa-lotus
+kanagawa-wave   kanagawa-lotus
 
-# Kanso.
-kanso-ink             kanso-pearl
-kanso-zen             kanso-pearl
-kanso-mist            kanso-pearl
+# Kanso
+kanso-ink  kanso-pearl
+kanso-mist kanso-pearl
+kanso-zen  kanso-pearl
 
-# Ember.
-ember                 ember-light
-ember-soft            ember-light
+# Ember
+ember      ember-light
+ember-soft ember-light
 
-# Nightfox.
-nightfox              dayfox
-carbonfox             dayfox
-terafox               dayfox
-duskfox               dawnfox
-nordfox               dawnfox
+# Nightfox
+carbonfox dayfox
+duskfox   dawnfox
+nightfox  dayfox
+nordfox   dawnfox
+terafox   dayfox
 
-# Tomorrow.
-tomorrow-night        tomorrow
-tomorrow-night-blue   tomorrow
-tomorrow-night-bright tomorrow
+# Tomorrow
+tomorrow-night          tomorrow
+tomorrow-night-blue     tomorrow
+tomorrow-night-bright   tomorrow
 tomorrow-night-eighties tomorrow
 
-# No Clown Fiesta.
-no-clown-fiesta       no-clown-fiesta-light
+# No Clown Fiesta
+no-clown-fiesta no-clown-fiesta-light
 
-# Noctis.
-noctis                noctis-lux
-noctis-viola          noctis-lilac
-noctis-azureus        noctis-hibernus
+# Noctis
+noctis         noctis-lux
+noctis-azureus noctis-hibernus
+noctis-viola   noctis-lilac
 
-# Flexoki.
-flexoki-dark          flexoki-light
+# Flexoki
+flexoki-dark flexoki-light
 
-# Dracula.
-dracula               alucard
+# Dracula
+dracula alucard
 
-# Ayu.
-ayu-mirage            ayu-light
-ayu-dark              ayu-light
+# Ayu
+ayu-dark   ayu-light
+ayu-mirage ayu-light
 
-# Belafonte.
-belafonte-night       belafonte-day
+# Belafonte
+belafonte-night belafonte-day
 
-# Jellybeans.
-jellybeans            jellybeans-light
-jellybeans-muted      jellybeans-muted-light
-jellybeans-mono       jellybeans-mono-light
-jellybeans-hc         jellybeans-hc-light
-jellybeans-warm       jellybeans-light
+# Jellybeans
+jellybeans       jellybeans-light
+jellybeans-hc    jellybeans-hc-light
+jellybeans-mono  jellybeans-mono-light
+jellybeans-muted jellybeans-muted-light
+jellybeans-warm  jellybeans-light
 
-# Mellow.
-mellow                mellow-light
+# Mellow
+mellow mellow-light
 
-# Harbor.
-harbor-dark           harbor-light
+# Harbor
+harbor-dark harbor-light
 
-# Warm Burnout.
-warm-burnout-dark     warm-burnout-light
+# Warm Burnout
+warm-burnout-dark warm-burnout-light
