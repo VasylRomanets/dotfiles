@@ -12,10 +12,10 @@ BAT_THEMES="$DOTFILES/packages/bat/link/.config/bat/themes"
 YAZI_FLAVORS="$DOTFILES/packages/yazi/link/.config/yazi/flavors"
 MICRO_SCHEMES="$DOTFILES/packages/micro/link/.config/micro/colorschemes"
 
-# Renders every package that has templates/config.toml, once per scheme. The
+# Renders every package that has theme-templates/config.toml, once per scheme. The
 # renderer stops at a placeholder with no value or a color that isn't #rrggbb.
 build_packages() {
-  local packages=("$DOTFILES"/packages/*/templates/config.toml(N:h:h))
+  local packages=("$DOTFILES"/packages/*/theme-templates/config.toml(N:h:h))
   python3 "$DOTFILES/packages/theme/tools/render-themes.py" "$SCHEMES_DIR" "${packages[@]}" || {
     error "Building themes failed."
     exit 1

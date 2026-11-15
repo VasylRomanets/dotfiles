@@ -4,7 +4,7 @@
 # background. Used as the fzf preview in theme's picker.
 #
 # bat only emits foreground colors, so the background (exported per theme in
-# the colors directory, see packages/theme/templates) is painted here:
+# the colors directory, see packages/theme/theme-templates) is painted here:
 # re-applied after every reset bat emits, then extended to the pane's edges
 # and bottom with erase-to-end-of-line.
 #

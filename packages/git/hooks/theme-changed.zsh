@@ -8,7 +8,7 @@
 # The tint behind added and removed lines is the theme's diff-added or
 # diff-removed color (its green and red unless the scheme says otherwise)
 # blended into its background, which a Mustache template can't compute, so it's
-# worked out here from the colors packages/theme/templates exports.
+# worked out here from the colors packages/theme/theme-templates exports.
 theme=$1
 
 colors_file="${XDG_DATA_HOME:-$HOME/.local/share}/theme/colors/$theme.env"

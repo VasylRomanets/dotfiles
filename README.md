@@ -10,25 +10,25 @@ My personal macOS dotfiles crafted with love. Review the installation scripts an
 
 ```
 dotfiles/
-├── Brewfile                # Homebrew formulae, casks, cargo crates, and App Store apps
-├── install.sh              # one-step installer: clones the repo and runs scripts/bootstrap.zsh
+├── Brewfile                 # Homebrew formulae, casks, cargo crates, and App Store apps
+├── install.sh               # one-step installer: clones the repo and runs scripts/bootstrap.zsh
 ├── packages/
 │   └── <pkg>/
-│       ├── copy/           # files to copy (optional)
-│       ├── link/           # files to symlink (optional)
-│       ├── shell/          # <pkg>.zsh sourced by .zshrc (optional)
-│       ├── hooks/          # pre-sync.zsh, post-sync.zsh, theme-changed.zsh (optional)
-│       ├── templates/      # Mustache templates dots build-themes renders per scheme (optional)
-│       └── sync.toml       # install conditions and copy/link target (optional)
+│       ├── copy/            # files to copy (optional)
+│       ├── link/            # files to symlink (optional)
+│       ├── shell/           # <pkg>.zsh sourced by .zshrc (optional)
+│       ├── hooks/           # pre-sync.zsh, post-sync.zsh, theme-changed.zsh (optional)
+│       ├── theme-templates/ # Mustache templates dots build-themes renders per scheme (optional)
+│       └── sync.toml        # install conditions and copy/link target (optional)
 └── scripts/
-    ├── _lib.zsh            # shared utilities
-    ├── bootstrap.zsh       # full machine setup
-    ├── sync.zsh            # symlinks package files and copies assets
-    ├── unlink.zsh          # removes a package's symlinks
-    ├── pull.zsh            # fast-forwards the repo from its remote
-    ├── build-themes.zsh    # renders every theme's per-tool files from packages/theme/schemes
-    ├── prune-symlinks.zsh  # removes orphaned symlinks left by renamed/removed package files
-    └── macos.zsh           # sensible macOS defaults
+    ├── _lib.zsh             # shared utilities
+    ├── bootstrap.zsh        # full machine setup
+    ├── sync.zsh             # symlinks package files and copies assets
+    ├── unlink.zsh           # removes a package's symlinks
+    ├── pull.zsh             # fast-forwards the repo from its remote
+    ├── build-themes.zsh     # renders every theme's per-tool files from packages/theme/schemes
+    ├── prune-symlinks.zsh   # removes orphaned symlinks left by renamed/removed package files
+    └── macos.zsh            # sensible macOS defaults
 ```
 
 ## New Machine Setup

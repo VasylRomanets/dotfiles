@@ -2,8 +2,8 @@
 
 """Renders every package's templates once per theme scheme.
 
-A package with templates/config.toml lists its templates, one section per file
-templates/<name>.mustache, each with the path its output is written to
+A package with theme-templates/config.toml lists its templates, one section per
+file theme-templates/<name>.mustache, each with the path its output is written to
 (relative to the package directory):
 
     [tmtheme]
@@ -85,14 +85,14 @@ def main():
     if not schemes:
         sys.exit(f"No schemes in {schemes_dir}")
     for package in map(Path, sys.argv[2:]):
-        config = package / "templates" / "config.toml"
+        config = package / "theme-templates" / "config.toml"
         outputs = {}
         for key, value in parse(config).items():
             name, _, field = key.partition(".")
             if field == "output":
                 outputs[name] = value
         for name, output in outputs.items():
-            template = package / "templates" / f"{name}.mustache"
+            template = package / "theme-templates" / f"{name}.mustache"
             text = template.read_text()
             for scheme in schemes:
                 values = parse(scheme)
