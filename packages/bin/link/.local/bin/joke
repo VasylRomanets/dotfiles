@@ -5,4 +5,11 @@
 # USAGE: joke
 # URL:   https://v2.jokeapi.dev
 
-curl -sf --max-time 10 'https://v2.jokeapi.dev/joke/Programming?type=single' | jq -r '.joke'
+# Without pipefail a failed curl would leave the exit status to jq, which
+# succeeds on empty input.
+set -o pipefail
+
+curl -sf --max-time 10 'https://v2.jokeapi.dev/joke/Programming?type=single' | jq -r '.joke' || {
+  echo "joke: could not fetch a joke." >&2
+  exit 1
+}
