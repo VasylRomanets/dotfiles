@@ -12,13 +12,6 @@ BAT_THEMES="$DOTFILES/packages/bat/link/.config/bat/themes"
 YAZI_FLAVORS="$DOTFILES/packages/yazi/link/.config/yazi/flavors"
 MICRO_SCHEMES="$DOTFILES/packages/micro/link/.config/micro/colorschemes"
 
-check_deps() {
-  command_exists python3 || {
-    error "python3 not found."
-    exit 1
-  }
-}
-
 # Renders every package that has templates/config.toml, once per scheme. The
 # renderer stops at a placeholder with no value or a color that isn't #rrggbb.
 build_packages() {
@@ -55,7 +48,7 @@ mirror_bat_themes_to_yazi() {
 }
 
 main() {
-  check_deps
+  require_commands python3
   [[ -d "$SCHEMES_DIR" ]] || { error "No schemes at $SCHEMES_DIR"; exit 1; }
   local schemes=("$SCHEMES_DIR"/*.toml(N))
 

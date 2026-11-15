@@ -35,15 +35,6 @@ for arg in "$@"; do
   esac
 done
 
-check_deps() {
-  for cmd in toml2json jq; do
-    command_exists "$cmd" || {
-      error "$cmd not found — run bootstrap.zsh first!"
-      exit 1
-    }
-  done
-}
-
 # Fails unless every name is a package of the repo.
 check_packages() {
   local all=("$DOTFILES"/packages/*(/:t)) name
@@ -86,7 +77,7 @@ remind_deny() {
 
 main() {
   require_macos
-  check_deps
+  require_commands toml2json jq
   check_packages
   if (( dry_run )); then
     echo "Checking what unlinking dotfiles would change..."

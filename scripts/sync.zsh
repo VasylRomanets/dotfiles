@@ -46,18 +46,9 @@ for arg in "$@"; do
   esac
 done
 
-check_deps() {
-  for cmd in toml2json jq; do
-    command_exists "$cmd" || {
-      error "$cmd not found — run bootstrap.zsh first!"
-      exit 1
-    }
-  done
-}
-
 on_start() {
   require_macos
-  check_deps
+  require_commands toml2json jq
   if (( dry_run )); then
     echo "Checking what syncing dotfiles would change..."
   else

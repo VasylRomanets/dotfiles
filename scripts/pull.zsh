@@ -36,10 +36,7 @@ git_repo() {
 }
 
 main() {
-  command_exists git || {
-    error "git not found — run bootstrap.zsh first!"
-    exit 1
-  }
+  require_commands git
 
   git_repo rev-parse --abbrev-ref '@{u}' &>/dev/null || {
     error "The current branch has no upstream to pull from."

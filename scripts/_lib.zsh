@@ -50,6 +50,17 @@ command_exists() {
   command -v "$1" &>/dev/null
 }
 
+# Exits with an error unless every named command is installed.
+require_commands() {
+  local cmd
+  for cmd in "$@"; do
+    command_exists "$cmd" || {
+      error "$cmd not found — run bootstrap.zsh first!"
+      exit 1
+    }
+  done
+}
+
 # Asks a yes/no question, "no" by default, and returns 0 on yes.
 confirm() {
   local question="${1:-Proceed?}"
