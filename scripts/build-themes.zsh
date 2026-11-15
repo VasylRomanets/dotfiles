@@ -57,6 +57,7 @@ mirror_bat_themes_to_yazi() {
 main() {
   check_deps
   [[ -d "$SCHEMES_DIR" ]] || { error "No schemes at $SCHEMES_DIR"; exit 1; }
+  local schemes=("$SCHEMES_DIR"/*.toml(N))
 
   echo "Building themes..."
 
@@ -67,7 +68,7 @@ main() {
   mirror_bat_themes_to_yazi
 
   echo
-  success "Done — built themes from $(ls "$SCHEMES_DIR" | wc -l | tr -d ' ') scheme(s)."
+  success "Done — built themes from ${#schemes} scheme(s)."
 }
 
 main
