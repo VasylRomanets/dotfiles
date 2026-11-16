@@ -5,6 +5,8 @@
 # USAGE: nyan
 # URL:   https://github.com/steckel/Git-Nyan-Graph
 
+# shellcheck disable=SC1003
+
 e='\033'
 RESET="${e}[0m"
 BOLD="${e}[1m"
@@ -15,11 +17,11 @@ GREEN="${e}[0;92m"
 
 echo
 echo -en "$RED"'-_-_-_-_-_-_-_'
-echo -e "$RESET"$BOLD',------,'"$RESET"
+echo -e "$RESET$BOLD"',------,'"$RESET"
 echo -en "$YELLOW"'_-_-_-_-_-_-_-'
-echo -e "$RESET"$BOLD'|   /\_/\\'"$RESET"
+echo -e "$RESET$BOLD"'|   /\_/\\'"$RESET"
 echo -en "$GREEN"'-_-_-_-_-_-_-'
-echo -e "$RESET"$BOLD'~|__( ^ .^)'"$RESET"
+echo -e "$RESET$BOLD"'~|__( ^ .^)'"$RESET"
 echo -en "$CYAN"'-_-_-_-_-_-_-_-'
-echo -e "$RESET"$BOLD'""  ""'"$RESET"
+echo -e "$RESET$BOLD"'""  ""'"$RESET"
 echo

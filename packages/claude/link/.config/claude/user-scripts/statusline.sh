@@ -59,6 +59,7 @@ else
 fi
 
 if [ -n "$five_hour_pct" ] || [ -n "$seven_day_pct" ]; then
+    # shellcheck disable=SC2059
     printf "${dim} • "
     if [ -n "$five_hour_pct" ]; then
         printf "5h:%.0f%%" "$five_hour_pct"
@@ -69,6 +70,7 @@ if [ -n "$five_hour_pct" ] || [ -n "$seven_day_pct" ]; then
         printf "7d:%.0f%%" "$seven_day_pct"
         [ -n "$seven_day_reset" ] && printf " (resets in %s)" "$seven_day_reset"
     fi
+    # shellcheck disable=SC2059
     printf "${reset}"
 fi
 

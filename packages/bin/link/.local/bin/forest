@@ -5,6 +5,8 @@
 # USAGE: forest
 # URL:   https://ascii.co.uk/art/forest (original art by ejm96)
 
+# shellcheck disable=SC1003
+
 e=$'\033'
 RESET="${e}[0m"
 GREEN="${e}[0;92m"

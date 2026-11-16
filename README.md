@@ -28,6 +28,7 @@ dotfiles/
     ├── pull.zsh             # fast-forwards the repo from its remote
     ├── build-themes.zsh     # renders every theme's per-tool files from packages/theme/schemes
     ├── prune-symlinks.zsh   # removes orphaned symlinks left by renamed/removed package files
+    ├── lint.zsh             # checks the shell scripts for syntax errors and common mistakes
     └── macos.zsh            # sensible macOS defaults
 ```
 
@@ -59,6 +60,7 @@ dots sync [package…]   # link package files; -v also lists unchanged files
 dots pull              # fast-forward the repo (refuses on uncommitted changes)
 dots unlink <package>  # remove a package's links
 dots prune-symlinks    # clean up stale links left by renamed or removed package files
+dots lint              # check the shell scripts for syntax errors and common mistakes
 ```
 
 To keep some packages off a machine, list them in `~/.config/dots/config.toml` (not part of the repo), then run `dots unlink` for any that are already linked:

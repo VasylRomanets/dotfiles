@@ -300,6 +300,7 @@ elif [[ "$1" == "random" ]]; then
 elif [[ "$1" == "go" || "$1" == "toggle" ]]; then
   want=$2
   if [[ "$1" == "go" && "$want" != "dark" && "$want" != "light" ]]; then
+    # shellcheck disable=SC2016
     echo "theme: go takes dark or light${want:+, not '$want'}." >&2
     exit 1
   fi

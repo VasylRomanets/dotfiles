@@ -6,7 +6,7 @@ The owner intends to try a Linux distro at some undetermined future point, and i
 
 ## Commands
 
-No build, lint, or test suite exists in this repo — there's nothing to "run tests" for. The relevant commands apply configuration to the actual machine:
+No build or test suite exists in this repo — there's nothing to "run tests" for; `dots lint` only parses the shell scripts. The relevant commands apply configuration to the actual machine:
 
 ```zsh
 dots bootstrap            # ./scripts/bootstrap.zsh — full fresh-machine setup; asks before each step (the SSH key also signs commits)
@@ -16,6 +16,7 @@ dots pull [-n]            # ./scripts/pull.zsh — fast-forward the repo (refuse
 dots prune-symlinks [-n]  # ./scripts/prune-symlinks.zsh — remove orphaned symlinks left by renamed/removed package files (not run by sync); `-n` only lists them
 dots setup-macos          # ./scripts/macos.zsh — apply the macOS `defaults write` settings only (bootstrap runs it too)
 dots build-themes         # ./scripts/build-themes.zsh — regenerate every per-theme file from the schemes (needs only `python3`; see Theming)
+dots lint [file...]       # ./scripts/lint.zsh — check the shell scripts without running them: zsh files with `zsh -n`, sh and bash files with ShellCheck (accepted exceptions are `# shellcheck disable=` comments in the scripts); run it after editing scripts
 ```
 
 `dots` (`packages/bin/link/.local/bin/dots`) runs these scripts from any directory. It finds the repo through `$DOTFILES`, which `.zshenv` derives from its own symlink into the repo, and passes extra arguments on (`dots sync -v`). A fresh machine starts with `install.sh` at the repo root (`sh -c "$(curl -fsSL …/HEAD/install.sh)"`): it installs the Xcode Command Line Tools, clones the repo to `~/.dotfiles` (or pulls it), and runs `scripts/bootstrap.zsh`. `dots` itself exists only after the first sync.
