@@ -348,6 +348,7 @@ main() {
   sync_packages
   ensure_default_theme
   on_finish
+  (( ! failed )) || exit 1
 }
 
 main

@@ -27,7 +27,7 @@ dots build-themes         # ./scripts/build-themes.zsh — regenerate every per-
 - An optional per-machine `~/.config/dots/config.toml` (not in the repo) can hold `allow = ["atuin", "bat"]` (sync only these) and `deny = ["ghostty"]` (never sync these; deny wins over allow). A name that isn't a package is reported as a warning.
 - To take a package off a machine that already has it, add it to `deny` and run `dots unlink <package>`. A denied package that is still linked is flagged in its section of the sync output, and every denied package is listed after the summary.
 - The link targets come from `package_links` in `scripts/_lib.zsh`, shared by sync and unlink.
-- It is idempotent and safe to re-run. It needs `toml2json` and `jq` (installed by `bootstrap.zsh`) and exits early with an error if they're missing.
+- It is idempotent and safe to re-run. It exits 1 when there were problems (a regular file where a link belongs, a failed link or copy, a failed hook) and 0 otherwise; warnings alone don't change the exit status. It needs `toml2json` and `jq` (installed by `bootstrap.zsh`) and exits early with an error if they're missing.
 
 ## Architecture
 
