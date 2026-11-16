@@ -6,7 +6,7 @@
 #
 # A pull alone never touches the links: when package files were added, renamed
 # or removed, or a copied file or sync hook changed, it says so and suggests
-# dots sync, or --sync runs it right after.
+# dots sync.
 #
 # USAGE: pull.zsh [OPTIONS] — run it with --help for the full list
 
@@ -15,7 +15,6 @@ DOTFILES="${SCRIPTS_PATH:h}"
 
 source "$SCRIPTS_PATH/_lib.zsh"
 
-run_sync=0
 dry_run=0
 
 usage() {
@@ -26,7 +25,6 @@ Usage:
   pull.zsh [OPTIONS]
 
 Options:
-      --sync     Run dots sync afterwards
   -n, --dry-run  Only fetch and show what would be pulled
   -h, --help     Print help
 EOF
@@ -38,7 +36,6 @@ for arg in "$@"; do
       usage
       exit 0
       ;;
-    --sync) run_sync=1 ;;
     -n | --dry-run) dry_run=1 ;;
     *)
       error "pull: unknown argument '$arg'"
@@ -102,11 +99,6 @@ main() {
   fi
 
   (( dry_run )) && exit 0
-
-  if (( run_sync )); then
-    echo
-    exec "$SCRIPTS_PATH/sync.zsh"
-  fi
 
   # Only a file that appeared, moved or went away can leave a link missing or
   # stale. A copied file or a sync hook that merely changed also needs sync,
