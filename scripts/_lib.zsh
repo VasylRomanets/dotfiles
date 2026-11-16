@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Shared utilities sourced by bootstrap.zsh, sync.zsh and macos.zsh.
+# Shared utilities sourced by the other scripts.
 
 RESET=$'\033[0m'
 BOLD=$'\033[1m'
