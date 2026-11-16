@@ -7,6 +7,32 @@ DOTFILES="${SCRIPTS_PATH:h}"
 
 source "$SCRIPTS_PATH/_lib.zsh"
 
+usage() {
+  cat <<'EOF'
+Regenerate the per-theme files of every package from the schemes
+
+Usage:
+  build-themes.zsh
+
+Options:
+  -h, --help  Print help
+EOF
+}
+
+for arg in "$@"; do
+  case "$arg" in
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    *)
+      error "Unknown option: $arg"
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
 SCHEMES_DIR="$DOTFILES/packages/theme/schemes"
 BAT_THEMES="$DOTFILES/packages/bat/link/.config/bat/themes"
 YAZI_FLAVORS="$DOTFILES/packages/yazi/link/.config/yazi/flavors"

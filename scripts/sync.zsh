@@ -35,8 +35,29 @@ typeset -A skip_reason
 
 dots_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/config.toml"
 
+usage() {
+  cat <<'EOF'
+Symlink and copy the packages of the repo into place
+
+Usage:
+  sync.zsh [OPTIONS] [PACKAGE...]
+
+Arguments:
+  [PACKAGE...]  Only these packages; every package when omitted
+
+Options:
+  -v, --verbose  Also list what is already in place and print hook output
+  -n, --dry-run  Only report what would change
+  -h, --help     Print help
+EOF
+}
+
 for arg in "$@"; do
   case "$arg" in
+    -h | --help)
+      usage
+      exit 0
+      ;;
     -v | --verbose) verbose=1 ;;
     -n | --dry-run) dry_run=1 ;;
     -*)

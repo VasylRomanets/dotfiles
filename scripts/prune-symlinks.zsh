@@ -17,8 +17,25 @@ source "$SCRIPTS_PATH/_lib.zsh"
 pruned=0
 dry_run=0
 
+usage() {
+  cat <<'EOF'
+Remove broken symlinks under $HOME that point into this repo
+
+Usage:
+  prune-symlinks.zsh [OPTIONS]
+
+Options:
+  -n, --dry-run  Only list the symlinks that would be removed
+  -h, --help     Print help
+EOF
+}
+
 for arg in "$@"; do
   case "$arg" in
+    -h | --help)
+      usage
+      exit 0
+      ;;
     -n | --dry-run) dry_run=1 ;;
     *)
       error "prune-symlinks: unknown argument '$arg'"

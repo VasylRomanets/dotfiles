@@ -23,8 +23,26 @@ unlinked=0
 left=0
 dots_config="${XDG_CONFIG_HOME:-$HOME/.config}/dots/config.toml"
 
+usage() {
+  cat <<'EOF'
+Remove the symlinks that dots sync made for the named packages
+
+Usage:
+  unlink.zsh [OPTIONS] PACKAGE...
+
+Options:
+  -v, --verbose  Also list the links that aren't in place
+  -n, --dry-run  Only print what would change
+  -h, --help     Print help
+EOF
+}
+
 for arg in "$@"; do
   case "$arg" in
+    -h | --help)
+      usage
+      exit 0
+      ;;
     -v | --verbose) verbose=1 ;;
     -n | --dry-run) dry_run=1 ;;
     -*)

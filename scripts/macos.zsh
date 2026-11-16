@@ -7,6 +7,33 @@
 
 SCRIPTS_PATH="${0:A:h}"
 source "$SCRIPTS_PATH/_lib.zsh"
+
+usage() {
+  cat <<'EOF'
+Apply the macOS defaults
+
+Usage:
+  macos.zsh
+
+Options:
+  -h, --help  Print help
+EOF
+}
+
+for arg in "$@"; do
+  case "$arg" in
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    *)
+      error "Unknown option: $arg"
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
 require_macos
 
 request_sudo

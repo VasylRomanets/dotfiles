@@ -20,8 +20,26 @@ source "$SCRIPTS_PATH/_lib.zsh"
 run_sync=0
 dry_run=0
 
+usage() {
+  cat <<'EOF'
+Fast-forward the repo from its remote
+
+Usage:
+  pull.zsh [OPTIONS]
+
+Options:
+      --sync     Run dots sync afterwards
+  -n, --dry-run  Only fetch and show what would be pulled
+  -h, --help     Print help
+EOF
+}
+
 for arg in "$@"; do
   case "$arg" in
+    -h | --help)
+      usage
+      exit 0
+      ;;
     --sync) run_sync=1 ;;
     -n | --dry-run) dry_run=1 ;;
     *)
