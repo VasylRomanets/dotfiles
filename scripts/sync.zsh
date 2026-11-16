@@ -8,9 +8,7 @@
 # Every link and copy that changes something is listed ([+] new, [~] relinked or
 # changed); the ones already in place are left out unless -v is given.
 #
-# USAGE: sync.zsh [-v] [-n] [package...]
-#        -v              also list what is already in place and print the output of successful hooks
-#        -n, --dry-run   only report what would change, without linking, copying or running hooks
+# USAGE: sync.zsh [OPTIONS] [PACKAGE...] — run it with --help for the full list
 
 SCRIPTS_PATH="${0:A:h}"
 DOTFILES="${SCRIPTS_PATH:h}"

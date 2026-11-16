@@ -6,8 +6,7 @@
 # Not part of `dots sync`: a full $HOME scan is unnecessary overhead on every sync,
 # so run this occasionally instead, whenever you suspect stale symlinks.
 #
-# USAGE: prune-symlinks.zsh [-n]
-#        -n, --dry-run   only list the symlinks that would be removed
+# USAGE: prune-symlinks.zsh [OPTIONS] — run it with --help for the full list
 
 SCRIPTS_PATH="${0:A:h}"
 DOTFILES="${SCRIPTS_PATH:h}"

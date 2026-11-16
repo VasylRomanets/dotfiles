@@ -8,9 +8,7 @@
 # or removed, or a copied file or sync hook changed, it says so and suggests
 # dots sync, or --sync runs it right after.
 #
-# USAGE: pull.zsh [--sync] [-n]
-#        --sync          run dots sync after pulling
-#        -n, --dry-run   only fetch and show what would be pulled
+# USAGE: pull.zsh [OPTIONS] — run it with --help for the full list
 
 SCRIPTS_PATH="${0:A:h}"
 DOTFILES="${SCRIPTS_PATH:h}"

@@ -7,9 +7,7 @@
 # Files a package copies (copy/) are not links and stay as they are, and so do
 # the links hooks make at runtime, like bat's current.tmTheme.
 #
-# USAGE: unlink.zsh [-v] [-n] <package>...
-#        -v              also list the links that aren't in place
-#        -n, --dry-run   only print what would change
+# USAGE: unlink.zsh [OPTIONS] PACKAGE... — run it with --help for the full list
 
 SCRIPTS_PATH="${0:A:h}"
 DOTFILES="${SCRIPTS_PATH:h}"
