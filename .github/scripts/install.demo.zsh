@@ -1,7 +1,6 @@
 #!/bin/zsh
 
-# Demo version of bootstrap.zsh — used to record the README webp.
-# Simulates the full bootstrap flow without making any system changes.
+# Demo of install.sh — used to record the README webp.
 #
 # To create a webp for GitHub README:
 # - brew install ffmpeg-full
@@ -10,13 +9,15 @@
 # - ffmpeg -i bootstrap.mov -vf "fps=15,scale=830:-1" -loop 0 bootstrap.webp
 
 DEMO_PATH="$(cd "$(dirname "$0")" && pwd)"
+INSTALL_CMD='sh -c "$(curl -fsSL https://raw.githubusercontent.com/vasylromanets/dotfiles/HEAD/install.sh)"'
 source "$DEMO_PATH/../../scripts/_lib.zsh"
 
+# Types $1 one character at a time, $2 seconds apart (default 0.07).
 fake_type() {
-  local text="$1"
+  local text="$1" delay="${2:-0.07}"
   for ((i = 1; i <= ${#text}; i++)); do
-    echo -n "${text[i]}"
-    sleep 0.07
+    printf "%s" "${text[i]}"
+    sleep "$delay"
   done
 }
 
@@ -37,27 +38,43 @@ print_logo() {
   echo "${CYAN}         by @vasylromanets${RESET}"
 }
 
+# Mirrors packages/starship/link/.config/starship/starship.toml, with the colors
+# starship uses for them (cyan, purple, green and dim).
 fake_starship_prompt() {
-  local dim=$'\033[2;37m'
-  local folder=$''
-  local branch=$''
-  local clock=$''
+  local dim=$'\033[2m' cyan=$'\033[36m' purple=$'\033[35m' green=$'\033[32m'
+  local branch=$'\uf126'
+  local clock=$'\uf017'
 
+  # Like starship, fill the whole width of the terminal. The size comes from the
+  # terminal itself, since tput can't see it from inside $(...).
   local cols
-  cols=$(tput cols 2>/dev/null || echo 100)
+  cols=$({ stty size </dev/tty; } 2>/dev/null)
+  cols=${cols##* }
+  [[ "$cols" == <-> ]] || cols=100
 
-  # Visible left: "╭─ <folder> dotfiles on <branch> main " ≈ 24 cols.
-  # Visible right: " <clock> 12:34" ≈ 8 cols.
-  local fill_len=$(( cols - 24 - 8 ))
+  # Visible left: "╭─ dotfiles on <branch> main " = 22 cols.
+  # Visible right: " <clock> HH:MM" = 8 cols.
+  local fill_len=$(( cols - 22 - 8 ))
   (( fill_len < 1 )) && fill_len=1
   local fill=""
-  repeat $fill_len { fill+="─" }
+  repeat $fill_len { fill+="·" }
 
   printf "${dim}╭─${RESET}"
-  printf "${CYAN} ${folder} dotfiles${RESET} "
-  printf "${dim}on ${RESET}${MAGENTA}${branch} main${RESET} "
-  printf "${dim}${fill} ${clock} 12:34${RESET}\n"
-  printf "${dim}╰─${RESET}${GREEN}❯${RESET} "
+  printf "${cyan} dotfiles${RESET} "
+  printf "${dim}on ${RESET}${purple}${branch} main${RESET} "
+  printf "${dim}${fill} ${clock} $(date +%H:%M)${RESET}\n"
+  printf "${dim}╰─${RESET}${green}❯${RESET} "
+}
+
+# Prints one package's section like sync.zsh does: its first new link and the
+# count of all of them.
+sync_demo() {
+  local pkg="$1" count="$2" file="$3"
+  echo
+  echo "Syncing $pkg..."
+  echo "  [+] ~/$file"
+  echo "Linked $count of $count $( (( count == 1 )) && echo file || echo files) ($count changed)."
+  sleep 0.1
 }
 
 print_nyan() {
@@ -72,18 +89,24 @@ print_nyan() {
 }
 
 main() {
-  # fake_starship_prompt
-  # sleep 0.5
-  # fake_type "zsh ~/.dotfiles/scripts/bootstrap.zsh"
+  clear
+  # What install.sh prints before it hands over to the bootstrap.
+  fake_starship_prompt
+  sleep 0.5
+  echo "$INSTALL_CMD"
+  sleep 0.8
+  echo "Cloning into ~/.dotfiles..."
+  sleep 1.5
+  echo "Cloned ✓"
   echo
-  sleep 0.3
+  sleep 0.5
 
   print_logo
   echo
   echo "This script will set up your Mac from scratch:"
   echo "  · Install Xcode Command Line Tools"
   echo "  · Install Homebrew"
-  echo "  · Install formulae, casks and App Store apps from Brewfile"
+  echo "  · Install formulae, casks, cargo crates, and App Store apps from Brewfile"
   echo "  · Symlink dotfiles and copy assets"
   echo "  · Configure SSH and Git"
   echo "  · Apply macOS defaults"
@@ -158,14 +181,20 @@ main() {
   proceed
   echo "Creating symlinks and copying files..."
   sleep 0.2
-  local linked_pkgs=(bat eza fzf git ghostty starship zsh)
-  for pkg in $linked_pkgs; do
-    success "Linked $pkg"
-    sleep 0.1
-  done
-  success "Copied coteditor"
+  sync_demo bat 1 .config/bat/config
+  sync_demo eza 1 .config/eza/theme.yml
+  sync_demo fzf 1 .config/fzf/fzf.zsh
+  sync_demo git 3 .config/git/config
+  sync_demo ghostty 2 .config/ghostty/config.ghostty
+  sync_demo starship 1 .config/starship/starship.toml
+  sync_demo zsh 4 .zshenv
   echo
-  success "Done — 14 symlinks, 1 file copied, 0 skipped, 0 conflicts."
+  echo "Syncing coteditor..."
+  echo "  [+] ~/Library/Application Support/CotEditor/Themes/Rose Pine Moon.cottheme"
+  echo "Copied 1 of 1 file (1 changed)."
+  sleep 0.2
+  echo
+  success "Done — symlinks: 13, files copied: 1, packages skipped: 0, problems: 0."
   echo
 
   # Step 6
@@ -195,6 +224,7 @@ main() {
   sleep 0.4
   fake_type "romanets.vasyl@gmail.com"
   echo
+  echo
   echo "Commit signing — commits and tags are signed with an SSH key."
   echo
   success "Saved ~/.config/git/config.local"
@@ -214,7 +244,7 @@ main() {
   echo
 
   info "Bootstrap complete — happy coding!"
-  info "P.S.: Don't forget to restart your terminal."
+  info "P.S. Don't forget to restart your terminal."
   echo
   print_nyan
 }
