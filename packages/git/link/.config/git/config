@@ -22,6 +22,7 @@
 
 [diff]
   colorMoved = default
+  colorMovedWS = allow-indentation-change
   algorithm = histogram
   mnemonicPrefix = true
   wsErrorHighlight = all
