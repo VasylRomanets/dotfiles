@@ -108,6 +108,7 @@ cargo "pokeget" # print pokemon sprites
 # brew "jrnl"            # journal and note taker
 # brew "stow"            # symlink farm manager
 # brew "taplo"           # TOML toolkit
+# brew "tuicr"           # code review TUI with vim keybindings
 # brew "watch"           # run commands periodically
 # brew "xdg-ninja"       # check $HOME for unwanted files and directories
 # brew "yq"              # YAML processor (like jq for YAML)
