@@ -2,7 +2,7 @@
 
 # One-step installer: clones the repo, then runs scripts/bootstrap.zsh.
 #
-#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasylRomanets/dotfiles/HEAD/install.sh)"
+#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/vasylromanets/dotfiles/HEAD/install.sh)"
 #
 # Run it this way, not piped into sh, so the prompts can read from the terminal.
 # Set DOTFILES_DIR to clone somewhere other than ~/.dotfiles.
@@ -37,7 +37,7 @@ main() {
     fi
   else
     echo "Cloning into $dir..."
-    git clone --quiet https://github.com/VasylRomanets/dotfiles.git "$dir"
+    git clone --quiet https://github.com/vasylromanets/dotfiles.git "$dir"
     echo "Cloned ✓"
   fi
   echo
