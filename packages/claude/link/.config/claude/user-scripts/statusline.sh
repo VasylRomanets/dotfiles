@@ -8,16 +8,16 @@
 # Formats a countdown to a future Unix-epoch-seconds timestamp as "Xd Xh Xm", omitting
 # leading zero units (but always keeping minutes) to match the session-duration format below.
 format_countdown() {
-    diff=$(($1 - now))
-    [ "$diff" -lt 0 ] && diff=0
-    total_min=$((diff / 60))
-    d=$((total_min / 1440))
-    h=$(((total_min % 1440) / 60))
-    m=$((total_min % 60))
-    out=""
-    [ "$d" -gt 0 ] && out="${d}d "
-    [ "$h" -gt 0 ] && out="${out}${h}h "
-    printf '%s' "${out}${m}m"
+  diff=$(($1 - now))
+  [ "$diff" -lt 0 ] && diff=0
+  total_min=$((diff / 60))
+  d=$((total_min / 1440))
+  h=$(((total_min % 1440) / 60))
+  m=$((total_min % 60))
+  out=""
+  [ "$d" -gt 0 ] && out="${d}d "
+  [ "$h" -gt 0 ] && out="${out}${h}h "
+  printf '%s' "${out}${m}m"
 }
 
 input=$(cat)
@@ -53,25 +53,25 @@ dim='\033[2m'
 reset='\033[0m'
 
 if [ -n "$used_pct_raw" ]; then
-    printf "${dim}%.0f%%${reset}" "$used_pct_raw"
+  printf "${dim}%.0f%%${reset}" "$used_pct_raw"
 else
-    printf "${dim}?%%${reset}"
+  printf "${dim}?%%${reset}"
 fi
 
 if [ -n "$five_hour_pct" ] || [ -n "$seven_day_pct" ]; then
-    # shellcheck disable=SC2059
-    printf "${dim} • "
-    if [ -n "$five_hour_pct" ]; then
-        printf "5h:%.0f%%" "$five_hour_pct"
-        [ -n "$five_hour_reset" ] && printf " (resets in %s)" "$five_hour_reset"
-    fi
-    [ -n "$five_hour_pct" ] && [ -n "$seven_day_pct" ] && printf " "
-    if [ -n "$seven_day_pct" ]; then
-        printf "7d:%.0f%%" "$seven_day_pct"
-        [ -n "$seven_day_reset" ] && printf " (resets in %s)" "$seven_day_reset"
-    fi
-    # shellcheck disable=SC2059
-    printf "${reset}"
+  # shellcheck disable=SC2059
+  printf "${dim} • "
+  if [ -n "$five_hour_pct" ]; then
+    printf "5h:%.0f%%" "$five_hour_pct"
+    [ -n "$five_hour_reset" ] && printf " (resets in %s)" "$five_hour_reset"
+  fi
+  [ -n "$five_hour_pct" ] && [ -n "$seven_day_pct" ] && printf " "
+  if [ -n "$seven_day_pct" ]; then
+    printf "7d:%.0f%%" "$seven_day_pct"
+    [ -n "$seven_day_reset" ] && printf " (resets in %s)" "$seven_day_reset"
+  fi
+  # shellcheck disable=SC2059
+  printf "${reset}"
 fi
 
 [ -n "$cost" ]                       && printf "${dim} • \$%.2f${reset}"  "$cost"
